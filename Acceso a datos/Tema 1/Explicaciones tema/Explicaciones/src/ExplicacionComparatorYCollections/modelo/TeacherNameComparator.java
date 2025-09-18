@@ -1,4 +1,4 @@
-package modelo;
+package ExplicacionComparatorYCollections.modelo;
 
 import java.util.Comparator;
 

@@ -1,6 +1,7 @@
-import modelo.Student;
-import modelo.Teacher;
-import modelo.TeacherNameComparator;
+package ExplicacionComparatorYCollections;
+
+import ExplicacionComparatorYCollections.modelo.Teacher;
+import ExplicacionComparatorYCollections.modelo.TeacherNameComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;

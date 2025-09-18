@@ -1,4 +1,4 @@
-package modelo;
+package ExplicacionComparatorYCollections.modelo;
 
 public class Student implements Comparable<Student>{
     int id;
