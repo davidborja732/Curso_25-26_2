@@ -3,8 +3,8 @@ import java.io.IOException;
 
 public class Ej_1 {
     public static void main(String[] args) {
-        String carpeta="C:\\Users\\david\\Documents";
-        //String carpeta="C:\\Users\\Dam2\\Documents";
+        //String carpeta="C:\\Users\\david\\Documents";
+        String carpeta="C:\\Users\\dam2\\Documents";
         File carpetadocumento=new File(carpeta);
         if (carpetadocumento.isDirectory()){
             File[] documento=carpetadocumento.listFiles();

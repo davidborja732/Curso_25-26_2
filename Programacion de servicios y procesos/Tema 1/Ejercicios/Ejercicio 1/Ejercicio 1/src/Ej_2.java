@@ -18,7 +18,7 @@ public class Ej_2 {
 
                 Process proceso = processBuilder.start();
 
-                // Espero que finalize el proceso hasta pasar al siguiente
+                // Espero que finalize el proceso hasta poder pasar al siguiente
                 proceso.waitFor();
             }
         } catch (IOException | InterruptedException e) {

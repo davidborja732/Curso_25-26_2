@@ -42,7 +42,7 @@ public class Ej_3_sin_interrupcion {
 
         // Retraso para sincronizar salida
         try {
-            Thread.sleep(20); // 20 milisegundos
+            Thread.sleep(20);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
