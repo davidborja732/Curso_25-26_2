@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>calendario</title>
+    </head>
+    <body>
+        <script>
+        var nombre = prompt("¿De qué mes quieres el calendario?");
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("h2titulo").textContent =nombre;
+            if(nombre=="Enero" || nombre=="Marzo" || nombre=="Mayo" || nombre=="Julio" || nombre=="Agosto" || nombre=="Octubre" || nombre=="Diciembre"){
+                document.querySelectorAll("tr td").forEach(function(td, index) {
+                    if (index < 31) {
+                        td.textContent = index + 1;
+                    } else {
+                        td.textContent = "";
+                    }
+                });
+            } else if(nombre=="Abril" || nombre=="Junio" || nombre=="Septiembre" || nombre=="Noviembre"){
+                document.querySelectorAll("tr td").forEach(function(td, index) {
+                    if (index < 30) {
+                        td.textContent = index + 1;
+                    } else {
+                        td.textContent = "";
+                    }
+                });
+            } else if(nombre=="Febrero"){
+                document.querySelectorAll("tr td").forEach(function(td, index) {
+                    if (index < 28) {
+                        td.textContent = index + 1;
+                    } else {
+                        td.textContent = "";
+                    }
+                });
+            } else{
+                alert("No has introducido un mes correcto");
+            }
+        });
+        </script>
+        <h2 id="h2titulo">nombre</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Lunes</th>
+                    <th>Martes</th>
+                    <th>Miercoles</th>
+                    <th>Jueves</th>
+                    <th>Viernes</th>
+                    <th>Sabado</th>
+                    <th>Domingo</th>
+                </tr>
+            </thead>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>    
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>    
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>    
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>    
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>    
+            </tr>
+            
+        </table>
+    </body>
+</html>
