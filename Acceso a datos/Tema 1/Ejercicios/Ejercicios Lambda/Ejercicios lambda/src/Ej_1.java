@@ -17,7 +17,7 @@ public class Ej_1 {
             return "El resultado de la division es "+divi;
         }
     }
-    static void main() {
+    public static void main(String[] args) {
         int n1=15;
         int n2=3;
         System.out.println(Calculator.sumar(n1,n2));

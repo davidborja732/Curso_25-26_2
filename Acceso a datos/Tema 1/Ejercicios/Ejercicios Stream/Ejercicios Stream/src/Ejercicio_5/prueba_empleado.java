@@ -42,21 +42,21 @@ public class prueba_empleado {
         // Mostrar empleados de un departamento
         Scanner scanner=new Scanner(System.in);
         System.out.println("De que departamento quieres ver los empleados ");
-        String departamento= scanner.nextLine();
-        if (empleados.stream().filter(empleado -> empleado.getDepartamento().equals(departamento)).count()>=1){
-            empleados.stream().filter(empleado -> empleado.getDepartamento().equals(departamento)).forEach(System.out::println);
+        String departamento= scanner.nextLine().toLowerCase();
+        if (empleados.stream().anyMatch(empleado -> empleado.getDepartamento().toLowerCase().equals(departamento))){
+            empleados.stream().filter(empleado -> empleado.getDepartamento().toLowerCase().equals(departamento)).forEach(System.out::println);
         }else {
-            System.out.println("Departamento desconocido");
+            System.out.println("Departamento vacio o desconocido");
         }
         // Mostrar departamento de empleado
         System.out.println("De que empleado quieres saber su departamento ");
         String empleadobuscar= scanner.nextLine();
-        if (empleados.stream().filter(empleado -> empleado.getNombre().equals(empleadobuscar)).count()>=1) {
-            empleados.stream().filter(empleado -> empleado.getNombre().equals(empleadobuscar)).forEach(
+        if (empleados.stream().filter(empleado -> empleado.getNombre().toLowerCase().equals(empleadobuscar)).count()>=1) {
+            empleados.stream().filter(empleado -> empleado.getNombre().toLowerCase().equals(empleadobuscar)).forEach(
                     empleado -> System.out.println("Su departamento es " + empleado.getDepartamento())
             );
         }else {
-            System.out.println("Empleado desconocido");
+            System.out.println("Empleado desconocido o sin departamento");
         }
     }
 }

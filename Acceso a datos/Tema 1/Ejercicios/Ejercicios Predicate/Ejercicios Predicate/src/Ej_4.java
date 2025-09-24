@@ -6,7 +6,7 @@ public class Ej_4 {
     static void main() {
         int contador=0;
         while (contador<10){
-            Supplier<Integer> aleatorio = () -> (int) (Math.random()*100);
+            Supplier<Integer> aleatorio = () -> (int) (Math.random()*10);
             System.out.println(aleatorio.get());
             contador+=1;
         }

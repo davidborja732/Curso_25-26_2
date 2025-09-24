@@ -1,7 +1,6 @@
 package Ejercicio_1_y_2;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -20,11 +19,16 @@ public class prueba_fruta {
                 new Fruta("Papaya", "Naranja", "Brasil")
         );
 
-        List<String> nombresfruta=fruteria.stream().map(fruta -> fruta.getNombre()).toList();
-        nombresfruta.forEach(System.out::println);
+        List<String> nombresfruta=fruteria.stream().map(Fruta::getNombre).toList();
+        System.out.println("Nombres=");
+        System.out.println(nombresfruta);
+        //nombresfruta.forEach(System.out::println);
         // Ejercicio 2
-        Set<String> coloresfruta=fruteria.stream().map(fruta -> fruta.getColor()).collect(Collectors.toSet());
-        coloresfruta.forEach(System.out::println);
+        System.out.println("Sin colores repetidos=");
+        //Set<String> coloresfruta=fruteria.stream().map(Fruta::getColor).collect(Collectors.toSet());
+        List<String> coloresfruta= fruteria.stream().map(Fruta::getColor).distinct().toList();
+        System.out.println(coloresfruta);
+        //coloresfruta.forEach(System.out::println);
 
     }
 }

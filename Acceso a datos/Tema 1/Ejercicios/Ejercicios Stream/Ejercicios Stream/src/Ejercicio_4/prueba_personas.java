@@ -16,6 +16,8 @@ public class prueba_personas {
                 new Persona("Sofía", 27),
                 new Persona("Raúl", 24)
         );
-        personas.stream().sorted((o1, o2) -> Integer.compare(o1.edad,o2.edad)).forEach(System.out::println);
+        personas.stream().sorted((p1, p2) -> Integer.compare(p2.getEdad(),p1.getEdad())).forEach(System.out::println);
+        System.out.println("Orden de nombres");
+        personas.stream().sorted((p1, p2) -> CharSequence.compare(p1.getNombre(),p2.getNombre())).forEach(System.out::println);
     }
 }
