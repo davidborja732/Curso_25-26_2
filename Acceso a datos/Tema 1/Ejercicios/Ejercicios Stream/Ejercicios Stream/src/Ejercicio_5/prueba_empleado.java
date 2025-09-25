@@ -28,9 +28,10 @@ public class prueba_empleado {
         Map<String, List<Empleado>> agrupados = empleados.stream()
                 .collect(Collectors.groupingBy(Empleado::getDepartamento));
         System.out.println("Empleados agrupados por departamento:");
-        agrupados.forEach((departamento, lista) -> {
+        System.out.println(agrupados);
+        /*agrupados.forEach((departamento, lista) -> {
             System.out.println(departamento +"= "+lista);
-        });
+        });*/
         // Contar Empleados por departamento
         Map<String, Long> conteoPorDepartamento = empleados.stream()
                 .collect(Collectors.groupingBy(Empleado::getDepartamento, Collectors.counting()));
@@ -51,7 +52,7 @@ public class prueba_empleado {
         // Mostrar departamento de empleado
         System.out.println("De que empleado quieres saber su departamento ");
         String empleadobuscar= scanner.nextLine();
-        if (empleados.stream().filter(empleado -> empleado.getNombre().toLowerCase().equals(empleadobuscar)).count()>=1) {
+        if (empleados.stream().anyMatch(empleado -> empleado.getNombre().toLowerCase().equals(empleadobuscar))) {
             empleados.stream().filter(empleado -> empleado.getNombre().toLowerCase().equals(empleadobuscar)).forEach(
                     empleado -> System.out.println("Su departamento es " + empleado.getDepartamento())
             );

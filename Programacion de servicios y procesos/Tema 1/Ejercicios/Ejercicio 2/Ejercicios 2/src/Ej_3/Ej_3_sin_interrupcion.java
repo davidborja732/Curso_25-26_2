@@ -23,7 +23,7 @@ public class Ej_3_sin_interrupcion {
             }
         });
 
-        // Creo el hilo hola
+        // Creo el hilo mundo
         Thread hiloMundo = new Thread(() -> {
             try {
                 // Bucle for que hace que se ejecute 15 veces el hilo e imprima mundo!
@@ -40,7 +40,7 @@ public class Ej_3_sin_interrupcion {
         // Inicio el hilo que imprime hola
         hiloHola.start();
 
-        // Retraso para sincronizar salida
+        // Retraso para sincronizar salida de los hilos
         try {
             Thread.sleep(20);
         } catch (InterruptedException e) {
