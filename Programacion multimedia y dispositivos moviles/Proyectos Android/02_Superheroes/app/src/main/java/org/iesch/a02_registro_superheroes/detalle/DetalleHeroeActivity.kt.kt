@@ -7,7 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import org.iesch.a02_registro_superheroes.R
 
-class DetalleHeroeActivity : AppCompatActivity() {
+class `DetalleHeroeActivity.kt` : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
