@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="377.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesch.color_checker.HelloController">
+   <children>
+      <HBox layoutX="52.0" layoutY="35.0" prefHeight="31.0" prefWidth="200.0">
+         <children>
+            <Label text="Tamaño de letra:" />
+            <ComboBox fx:id="tamanocampo" prefHeight="25.0" prefWidth="72.0">
+               <HBox.margin>
+                  <Insets left="4.0" />
+               </HBox.margin>
+            </ComboBox>
+         </children>
+      </HBox>
+      <HBox layoutX="52.0" layoutY="66.0" prefHeight="31.0" prefWidth="200.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="121.0" text="Color de fondo:" />
+            <ColorPicker fx:id="color1" onAction="#cambiarfondo" />
+         </children>
+      </HBox>
+      <HBox layoutX="289.0" layoutY="66.0" prefHeight="31.0" prefWidth="200.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="109.0" text="Color de texto" />
+            <ColorPicker fx:id="color2" />
+         </children>
+      </HBox>
+      <TextArea fx:id="textoamanipular" layoutX="122.0" layoutY="117.0" prefHeight="247.0" prefWidth="429.0" text="On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains" wrapText="true" />
+   </children>
+</Pane>
