@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <script>
+        function añadir(){
+            const nuevoli=document.createElement("li")
+            const contenedorlista=document.getElementById("lista")
+            nuevoli.textContent=Math.random(100)
+            contenedorlista.append(nuevoli)
+        }
+        function borrar(){
+            const miLista = document.getElementById("lista")
+            if (miLista && miLista.lastChild) {
+                miLista.removeChild(miLista.lastChild)
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul id="lista">
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+    </ul>
+    <button onclick="añadir()">Agregar</button>
+    <button onclick="borrar()">Eliminar</button>
+    
+</body>
+</html>
