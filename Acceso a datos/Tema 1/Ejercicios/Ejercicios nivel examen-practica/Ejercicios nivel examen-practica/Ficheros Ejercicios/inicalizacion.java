@@ -1,4 +1,4 @@
-lista.add(new Persona(1, "Adélie", "Deinhard", "Angular", 10, 45));
+        lista.add(new Persona(1, "Adélie", "Deinhard", "Angular", 10, 45));
         lista.add(new Persona(2, "Angélique", "Cloake", "sql", 10, 33));
         lista.add(new Persona(3, "Gaëlle", "Cheales", "Express", 5, 47));
         lista.add(new Persona(4, "Illustrée", "Maunton", "XML", 4, 68));

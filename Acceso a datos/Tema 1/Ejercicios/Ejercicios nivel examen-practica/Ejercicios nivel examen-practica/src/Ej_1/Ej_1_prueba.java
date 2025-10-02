@@ -7,8 +7,7 @@ import java.util.Arrays;
 
 public class Ej_1_prueba {
     static void main() {
-        ArrayList<Producto> productos = new ArrayList<>();
-        productos.addAll(Arrays.asList(
+        ArrayList<Producto> productos = new ArrayList<>(Arrays.asList(
                 new Producto(1, "Camiseta", 19.99, true, 'R'),
                 new Producto(2, "Portátil", 799.99, false, 'E'),
                 new Producto(3, "Libro", 12.50, true, 'C'),
@@ -29,8 +28,7 @@ public class Ej_1_prueba {
             // Captura y muestra cualquier error de escritura
             System.err.println("Error al escribir: " + e.getMessage());
         }
-
-// Lectura desde el archivo aleatorio
+        // Lectura desde el archivo aleatorio
         try (RandomAccessFile archivo = new RandomAccessFile("Aleatorio_fichero.txt", "rw")) {
             // Posicionarse al inicio del archivo
             archivo.seek(0);
@@ -47,7 +45,5 @@ public class Ej_1_prueba {
             // Captura y relanza cualquier error de lectura como RuntimeException
             throw new RuntimeException(e);
         }
-
-
     }
 }

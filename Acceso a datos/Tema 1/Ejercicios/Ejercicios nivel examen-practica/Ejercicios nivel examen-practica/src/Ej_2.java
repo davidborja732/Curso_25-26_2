@@ -2,8 +2,8 @@ import java.io.*;
 
 public class Ej_2 {
     static void main() {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("Ejercicios/fichero original.txt"));
-             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Ejercicios/fichero con reemplazos.txt"))
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("Ficheros Ejercicios/fichero original.txt"));
+             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Ficheros Ejercicios/fichero con reemplazos.txt"))
         ) {
             String linea;
             while ((linea= bufferedReader.readLine())!=null){
