@@ -59,7 +59,7 @@ public class Ej_6_Prueba {
         System.out.println(2);
         personas.stream().filter(persona -> persona.getCoches().stream().anyMatch(coche -> coche.marca.equals("Opel"))).forEach(System.out::println);
         System.out.println(3);
-        personas.stream().max(Comparator.comparingInt(p -> p.getCoches().size())).stream().forEach(
+        personas.stream().max(Comparator.comparingInt(p -> p.getCoches().size())).ifPresent(
                 persona -> System.out.println("La persona con mas coches es "+persona.nombre+" con el dni "+persona.dni+" que tiene "+persona.getCoches().size()+" coches"));
     }
 }
