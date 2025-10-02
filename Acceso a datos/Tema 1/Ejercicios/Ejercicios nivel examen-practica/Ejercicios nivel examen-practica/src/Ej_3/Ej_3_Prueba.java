@@ -16,15 +16,10 @@ public class Ej_3_Prueba {
                 new Persona("Mario",12)
             )
         );
-        int menor;
-        List<Persona> listaedades=personas.stream().sorted((o1, o2) -> Integer.compare(o1.getEdad(),o2.getEdad())).toList();
-        List<Persona> listaedades30=personas.stream().filter(persona -> persona.getEdad()>30).toList();
-        int edad_promedio=0;
-        for (Persona persona:personas){
-            edad_promedio+= persona.getEdad();
-        }
-        System.out.println("La edad media es "+edad_promedio/ personas.size());
-        System.out.println("La persona con menos edad es "+listaedades.getFirst());
-        System.out.println("Las personas mayores de 30 años son \n"+listaedades30);
+        List<String> listaEdades30=personas.stream().filter(persona -> persona.getEdad()>30).map(Persona::getNombre).toList();
+        System.out.println("La edad media es ");
+        personas.stream().mapToInt(Persona::getEdad).average().ifPresent(System.out::println);
+        System.out.println("La persona con menos edad es "+personas.stream().min((o1, o2) -> Integer.compare(o1.edad,o2.edad)).toString());
+        System.out.println("Las personas mayores de 30 años son \n"+listaEdades30);
     }
 }

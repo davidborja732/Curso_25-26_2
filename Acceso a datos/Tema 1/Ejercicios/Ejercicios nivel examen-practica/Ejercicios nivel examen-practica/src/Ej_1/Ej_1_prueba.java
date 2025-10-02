@@ -32,7 +32,6 @@ public class Ej_1_prueba {
         try (RandomAccessFile archivo = new RandomAccessFile("Aleatorio_fichero.txt", "rw")) {
             // Posicionarse al inicio del archivo
             archivo.seek(0);
-
             String linea;
             // Leer mientras no se llegue al final del archivo
             while (archivo.getFilePointer() < archivo.length()) {
