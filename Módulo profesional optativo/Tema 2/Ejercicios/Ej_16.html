@@ -1,0 +1,53 @@
+<!--
+Crea un script que dado un par de números, alto y ancho cree un rectángulo, el
+borde y el relleno serán caracteres pedidos. Puedes utilizar las etiquetas <tt> y
+<pre>
+Ej. Alto = 4 y ancho = 6, borde =’%’; relleno=’&’
+
+%%%%%%
+%&&&&%
+%&&&&%
+%%%%%%
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var alto=Number(prompt("Dime el alto"))
+        var ancho=Number(prompt("Dime el ancho"))
+        var borde=prompt("Dime el borde")
+        var relleno=prompt("Dime el relleno")
+        var contador=1
+        for(k=0;k<alto;k++){
+            if(contador==1){
+                for (i= 0; i< ancho; i++) {
+                document.write(borde)
+                }
+            }else if (contador!=1 && contador!=alto){
+                for (i= 0; i< 1; i++) {
+                    document.write(borde)
+                }
+                for (i=0;i<ancho-2; i++){
+                    document.write(relleno)
+                }
+                for (i= 0; i< 1; i++) {
+                    document.write(borde)
+                }
+            }else{
+                for (i= 0; i< ancho; i++) {
+                document.write(borde)
+                }
+            }
+            document.write("<br>")
+            contador++
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
