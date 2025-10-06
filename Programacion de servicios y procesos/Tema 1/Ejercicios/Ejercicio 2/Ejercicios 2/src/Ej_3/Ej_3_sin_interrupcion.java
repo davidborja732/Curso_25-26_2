@@ -15,7 +15,7 @@ public class Ej_3_sin_interrupcion {
                     }
                     // Si no es el caso imprimo hola
                     System.out.print("Hola ");
-                    // Hago un apausa en el hilo de 2 segundos
+                    // Hago una pausa en el hilo de 2 segundos
                     Thread.sleep(2000);
                 }
             } catch (InterruptedException e) {
