@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var lista=[]
+        var numero=1
+        while(numero!=0){
+            numero=Number(prompt("Dime un numero "))
+            if(Number.isInteger(numero) && numero!=0){
+                lista.push(numero)
+            }else if(!Number.isInteger(numero)){
+                alert("Dime un numero")
+                continue
+            }
+        }
+        var suma=0
+        lista.forEach(element => {
+            suma+=element
+        });
+        alert(lista)
+        alert("La media ritmetica es "+suma/lista.length)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

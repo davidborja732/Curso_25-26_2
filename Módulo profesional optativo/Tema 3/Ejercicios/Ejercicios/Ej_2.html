@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var letras = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E','T']
+        var dni=prompt("Dime un dni ")
+        var letradni=dni.charAt(dni.length-1)
+        var numerosdni=Number(dni.slice(0,-1))
+        var resto=parseInt(numerosdni%23)
+        var letracalculo=letras[resto]
+        alert(letradni)
+        alert(numerosdni)
+        alert(resto)
+        alert(letracalculo)
+        if(letradni==letracalculo){
+            alert("El valor alfabetico del dni es correcto")
+        }else{
+            alert("El valor alfabetico del dni es incorrecto")
+        }
+    
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
