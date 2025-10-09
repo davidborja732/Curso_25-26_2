@@ -33,6 +33,7 @@ public class Lectura {
                     }
                 }
             }
+            // Collectors.maxBy(Comparator.comparing(Producto::getPrecio)) otra forma de hacerlo
             System.out.println("El producto mas caro de cada categoria es ");
             productos.stream().collect(Collectors.groupingBy(Producto::getCategoria)).forEach((s, productos1) -> System.out.println(s+" el producto mas caro es "+productos1.stream().max((o1, o2) -> o1.getPrecio().compareTo(o2.getPrecio())).toString()));
             System.out.println("Los productos con un precio entre 10 y 20 euros son =");

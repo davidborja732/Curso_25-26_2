@@ -12,7 +12,7 @@ public class Ej_8_Prueba {
                 new Cancion("It's my Life", "Bon Jovi"),
                 new Cancion("Dolor Fantasma", "Amadeus"),
                 new Cancion("Run To You", "Bryan Adams"),
-                new Cancion("Summer of 69", "Bryna Adams"),
+                new Cancion("Summer of 69", "Bryan Adams"),
                 new Cancion("Paranoid", "Black Sabbath"),
                 new Cancion("Cherokee", "Europe"),
                 new Cancion("River Bank", "Brad Paisley")

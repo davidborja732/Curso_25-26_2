@@ -1007,10 +1007,8 @@ public class Ej_7_Prueba {
         lista.add(new Persona(998, "Maëlys", "Fabbri", "Patrones de diseño", 10, 32));
         lista.add(new Persona(999, "Mahélie", "Laughlan", "Java", 7, 34));
         lista.add(new Persona(1000, "Céline", "Rosborough", "sql", 10, 22));
-        // Personas mayores de edad, que están cursando un curso que empieza por A y su
-        //nombre contiene una N
         System.out.println(1);
-        lista.stream().filter(persona -> persona.curso.startsWith("A") && persona.nombre.toLowerCase().contains("n")).forEach(System.out::println);
+        lista.stream().filter(persona -> persona.curso.startsWith("A") && persona.nombre.toLowerCase().contains("n") && persona.edad>=18).forEach(System.out::println);
         System.out.println(2);
         lista.stream().filter(persona -> persona.curso.equals("Acceso a datos") && persona.edad>=20 && persona.edad<=25).forEach(System.out::println);
         System.out.println(3);

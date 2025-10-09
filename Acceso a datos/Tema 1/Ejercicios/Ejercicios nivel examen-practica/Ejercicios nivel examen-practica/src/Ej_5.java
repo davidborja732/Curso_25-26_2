@@ -9,6 +9,6 @@ public class Ej_5 {
     static void main(String[] args) {
         String texto="El sol brilla, brilla sin parar, la brisa suave acaricia el mar. El mar canta, el mar sueña, el mar vive, y en su canto, una historia se escribe.".replaceAll("[,.]", "").toLowerCase();
         List<String> lista= Arrays.stream(texto.split(" ")).toList();
-        lista.stream().collect(Collectors.groupingBy(s -> s,Collectors.counting())).forEach((s, aLong) -> System.out.println("La palabra "+s+" aparece "+aLong+" vez(es)."));
+        lista.stream().collect(Collectors.groupingBy(s -> s,Collectors.counting())).forEach((s, aLong) -> System.out.println("La palabra "+s.toUpperCase()+" aparece "+aLong+" vez(es)."));
     }
 }
