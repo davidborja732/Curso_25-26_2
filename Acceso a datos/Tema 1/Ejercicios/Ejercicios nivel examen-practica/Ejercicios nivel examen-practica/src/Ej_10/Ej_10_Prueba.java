@@ -57,5 +57,8 @@ public class Ej_10_Prueba {
         productos.stream().max((o1, o2) -> Double.compare(o1.unitPrice,o2.unitPrice)).ifPresent(System.out::println);
         System.out.println(11);
         productos.stream().limit(50).forEach(System.out::println);
+        System.out.println(12);
+        //Imprimir sin mostrar los 10 primeros
+        productos.stream().skip(10).forEach(System.out::println);
     }
 }

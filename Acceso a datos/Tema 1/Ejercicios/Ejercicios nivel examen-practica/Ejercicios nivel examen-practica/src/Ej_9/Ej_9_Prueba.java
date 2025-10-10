@@ -37,7 +37,7 @@ public class Ej_9_Prueba {
         System.out.println(7);
         listaAlumnos.stream().max(Comparator.comparing(Alumno::getEdad)).ifPresent(System.out::println);
         System.out.println(8);
-        listaAlumnos.stream().findAny().stream().limit(1).forEach(System.out::println);
+        listaAlumnos.stream().findFirst().ifPresent(System.out::println);
         System.out.println(9);
         listaAlumnos.stream().filter(alumno -> alumno.getNombreCurso().toLowerCase().contains("a")).forEach(System.out::println);
         System.out.println(10);

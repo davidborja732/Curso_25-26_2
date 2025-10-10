@@ -1,1 +1,16 @@
+La solicitud de ping no pudo encontrar el host www.dam2chomon.org. Compruebe el nombre y
+vuelva a intentarlo.
 
+Haciendo ping a www.google.es [142.250.201.3] con 32 bytes de datos:
+Respuesta desde 142.250.201.3: bytes=32 tiempo=25ms TTL=103
+Respuesta desde 142.250.201.3: bytes=32 tiempo=26ms TTL=103
+Respuesta desde 142.250.201.3: bytes=32 tiempo=27ms TTL=103
+Respuesta desde 142.250.201.3: bytes=32 tiempo=26ms TTL=103
+
+Estad¡sticas de ping para 142.250.201.3:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 25ms, M ximo = 27ms, Media = 26ms
+"pring" no se reconoce como un comando interno o externo,
+programa o archivo por lotes ejecutable.
