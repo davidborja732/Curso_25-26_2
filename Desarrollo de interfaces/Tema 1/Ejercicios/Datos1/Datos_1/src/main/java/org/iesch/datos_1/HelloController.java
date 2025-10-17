@@ -12,7 +12,9 @@ import java.util.List;
 
 public class HelloController {
     List<Persona> personas=new ArrayList<>();
+    Connection con = DriverManager.getConnection(url, user, clave);
     int actualpersona=0;
+    StringBuilder sb = new StringBuilder();
     ResultSet rs;
     String nombre = "";
     String apellidos= "";
@@ -41,11 +43,14 @@ public class HelloController {
     private TextField texto3;
     @FXML
     private TextField texto4;
+
+    public HelloController() throws SQLException {
+    }
+
     @FXML
     public void initialize() {
         Persona persona;
         try {
-            Connection con = DriverManager.getConnection(url, user, clave);
             Statement stat = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             String sql = "SELECT Nombre,Apellidos,Localidad,Salario from datos.empleados";
@@ -98,7 +103,7 @@ public class HelloController {
         }
     }
     public void setBoton3(){
-        if (actualpersona==7){
+        if (actualpersona==personas.size()-1){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Ver personas");
             alert.setContentText("Ya estas en la ultima persona");
@@ -113,13 +118,13 @@ public class HelloController {
         }
     }
     public void setBoton4(){
-        if (actualpersona==7){
+        if (actualpersona==personas.size()-1){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Ver personas");
             alert.setContentText("Ya estas en la ultima persona");
             alert.show();
         }else {
-            actualpersona=7;
+            actualpersona=personas.size()-1;
             Persona personaboton=personas.get(actualpersona);
             texto1.setText(personaboton.nombre);
             texto2.setText(personaboton.apellidos);
@@ -135,6 +140,39 @@ public class HelloController {
         texto4.setText(null);
     }
     public void guardaraccion(){
+        try  {
+            PreparedStatement stmt = con.prepareStatement("Insert into empleados VALUES (?,?,?,?)");
+            stmt.setString(1, texto1.getText());
+            stmt.setString(2,texto2.getText());
+            stmt.setString(3,texto3.getText());
+            stmt.setInt(4,Integer.parseInt(texto4.getText()));
+            int filas= stmt.executeUpdate();
+            if (filas>0){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Insertar personas");
+                alert.setContentText("Dato insertado correctamente");
+                alert.show();
+            }else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Insertar personas");
+                alert.setContentText("Insercion fallida");
+                alert.show();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        personas.add(new Persona(texto1.getText(),texto2.getText(),texto3.getText(),Integer.parseInt(texto4.getText())));
+        initialize();
+        texto1.setText(null);
+        texto2.setText(null);
+        texto3.setText(null);
+        texto4.setText(null);
+        actualpersona=0;
+        Persona personaboton=personas.get(actualpersona);
+        texto1.setText(personaboton.nombre);
+        texto2.setText(personaboton.apellidos);
+        texto3.setText(personaboton.localidad);
+        texto4.setText(String.valueOf(personaboton.salario));
 
     }
 

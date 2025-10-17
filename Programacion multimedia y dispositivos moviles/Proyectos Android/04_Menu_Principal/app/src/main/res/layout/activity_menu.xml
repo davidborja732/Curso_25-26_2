@@ -41,7 +41,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -125,6 +125,8 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/btn_heroe"
+                    android:clickable="true"
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
                     android:layout_marginStart="12dp"
@@ -166,6 +168,8 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/btn_preguntas"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -211,6 +215,8 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/btn_Api"
+                    android:clickable="true"
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
                     android:layout_marginStart="12dp"
