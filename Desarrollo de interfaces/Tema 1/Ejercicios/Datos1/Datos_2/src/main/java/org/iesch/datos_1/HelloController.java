@@ -13,7 +13,6 @@ public class HelloController {
     List<Persona> personas=new ArrayList<>();
     Connection con = DriverManager.getConnection(url, user, clave);
     int actualpersona=0;
-    StringBuilder sb = new StringBuilder();
     ResultSet rs;
     String nombre = "";
     String apellidos= "";

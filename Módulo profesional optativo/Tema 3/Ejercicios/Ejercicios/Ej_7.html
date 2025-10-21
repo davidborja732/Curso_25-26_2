@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        var frase="Alli ves Sevilla"
-        alert(frase.split("").join(""))
-        alert(frase.split("").reverse().join(""))
-        if (frase==frase.split("").reverse().join("").reverse()){
+        var frase="allivessevilla"
+    
+        console.log(frase.split(' ').reverse().join(''))
+        console.log(frase.split(' ').join(''))
+        if (frase==frase.split("").reverse().join("")){
             alert("Palindromo")
         }else{
             alert("No Palindromo")
