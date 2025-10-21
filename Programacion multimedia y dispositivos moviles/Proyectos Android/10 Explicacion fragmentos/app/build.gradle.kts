@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "org.iesch.a04_menu_principal"
+    namespace = "org.iesch.explicacion_fragmentos"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "org.iesch.a04_menu_principal"
+        applicationId = "org.iesch.explicacion_fragmentos"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -33,25 +33,16 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        viewBinding=true
-    }
 }
 
 dependencies {
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    // Picaso
-    implementation(libs.picasso)
-    // Corrutinas
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+    // Me cargo la libreria fragments
+    implementation("androidx.fragment:fragment-ktx:1.8.9")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
