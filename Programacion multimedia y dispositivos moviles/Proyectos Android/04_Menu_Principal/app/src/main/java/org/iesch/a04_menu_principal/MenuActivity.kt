@@ -29,6 +29,10 @@ class MenuActivity : AppCompatActivity() {
         binding.btnApi2.setOnClickListener {
             irAmenusfragmento()
         }
+        binding.btnPreguntas2.setOnClickListener {
+            irArConfiguracionActvity()
+        }
+
     }
 
     private fun irAmenusfragmento(){
@@ -39,5 +43,10 @@ class MenuActivity : AppCompatActivity() {
         val irraza= Intent(this, RazasActivity::class.java)
         startActivity(irraza)
     }
+    private fun irArConfiguracionActvity() {
+        val irraza= Intent(this, SettingsActivity::class.java)
+        startActivity(irraza)
+    }
+
 
 }

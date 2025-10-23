@@ -7,4 +7,5 @@
     <color name="bg_profile">#E91E63</color>
     <color name="bg_settings">#9D0B0B</color>
     <color name="bg_botton_menu">#F44336</color>
+    <color name="bg_botton_menuconfi">#1E5F89</color>
 </resources>

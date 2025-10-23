@@ -259,7 +259,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/btn_preguntas2"
+                android:id="@+id/btn_preguntas4"
                 android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -271,8 +271,9 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="12dp"
                     android:clickable="true"
+                    android:id="@+id/btn_preguntas2"
                     android:layout_weight="0.5"
-                    android:background="@drawable/btn_background_3">
+                    android:background="@color/bg_botton_menuconfi">
 
                     <ImageView
                         android:id="@+id/ic_quizzes2"
@@ -282,7 +283,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/pregunta" />
+                        app:srcCompat="@drawable/outline_admin_panel_settings_24" />
 
                     <ImageView
                         android:id="@+id/ic_trans_quizzes2"
@@ -298,7 +299,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="Quizzes"
+                        android:text="Configuracion"
                         android:textColor="@color/white"
                         android:textSize="18dp"
                         app:layout_constraintEnd_toEndOf="@+id/ic_quizzes2"
@@ -323,7 +324,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="API Rest"
+                        android:text="Fragments"
                         android:textColor="@color/white"
                         android:textSize="18dp"
                         app:layout_constraintEnd_toEndOf="@+id/ic_API2"
@@ -339,7 +340,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/api" />
+                        app:srcCompat="@drawable/outline_accessibility_24" />
 
                     <ImageView
                         android:id="@+id/ic_trans_"

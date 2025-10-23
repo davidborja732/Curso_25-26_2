@@ -22,7 +22,7 @@ public class ControllerEj2 {
     }
     @GetMapping("/conTemp/{temp}")
     public Map<String, Double> generatemperatura(@PathVariable double temp){
-        return Map.of("En millas es", (temp*9/5)+32);
+        return Map.of("En Grados Celsius es ", (temp*9/5)+32);
     }
 }
 
