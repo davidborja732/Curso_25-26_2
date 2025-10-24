@@ -8,6 +8,7 @@ public class Ej_1 {
         File carpetadocumento=new File(carpeta);
         if (carpetadocumento.isDirectory()){
             File[] documento=carpetadocumento.listFiles();
+            assert documento != null;
             for (File archivo:documento){
                 if (archivo.isFile() && archivo.getName().endsWith(".txt")){
                     System.out.println(archivo.getPath());

@@ -1,6 +1,8 @@
 package org.iesch.proyectobase.proyectobase.config;
 
+import org.iesch.proyectobase.proyectobase.modelo.Persona;
 import org.iesch.proyectobase.proyectobase.modelo.Producto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,5 +23,11 @@ public class Configuracion {
         productos.put(7L,Producto.builder().id(7).name("Teclado").categoria("Informatica").price(45.80).descripcion("producto 7").stock(132).build());
         productos.put(8L,Producto.builder().id(8).name("Pendrive").categoria("Informatica").price(12.98).descripcion("producto 8").stock(23).build());
         return productos;
+    }
+    @Bean
+    public Map<Long, Persona> initpersona(){
+        Map<Long,Persona> usuarios=new HashMap<>();
+        usuarios.put(1L, Persona.builder().id(1).nombre("David").apellido("Borja").password("Admin1234").build());
+        return usuarios;
     }
 }
