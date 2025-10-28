@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIREST</title>
+</head>
+<body>
+    <button onclick="obtenerTareas()">ObtenerTareas</button> 
+    <button onclick="get()">GET</button>
+    <button onclick="post()">POST</button>
+    <button onclick="put()">PUT</button>
+    <button onclick="del()">DELETE</button>
+
+    <script>
+    function obtenerTareas(){
+        fetch( "http://192.168.50.120:8069/listartareas" )
+        //procesa la respuesta y la convierte a JSON
+        .then(res => res.json())
+        //trabaja con los datos JSON
+        .then(data => {console.log(data)})
+        //captura errores
+        .catch(err => console.error(err))           
+    }    
+
+    function get() {
+        fetch('http://192.168.50.120:8069/gestion/lista_tareas.lista_tareas?data={"id":"1"}', {method: 'GET',})
+            .then(response => {
+                // Verificamos si la respuesta es exitosa (código 200)
+                if (!response.ok) {
+                throw new Error('Error en la respuesta de la red: ' + response.statusText);
+                }
+                // Si es exitosa, convertimos la respuesta a JSON
+                return response.json();
+            })
+            .then(data => {
+                // Aquí ya tenemos los datos
+                console.log(data);
+                // Podemos hacer lo que queramos con los datos, como mostrarlos en la página
+            })
+            .catch(error => {
+                // Manejamos cualquier error que haya ocurrido en la cadena
+                console.error('Hubo un problema con la petición fetch:', error);
+            });
+
+    }
+
+    function post(){
+        
+        const datostarea = JSON.stringify({
+            'task': 'EnviarCorreo',
+            'prioridad': '20',
+            'id':'5'})
+        console.log(datostarea);        
+      
+        fetch('http://192.168.50.120:8069/gestion/lista_tareas.lista_tareas?data='+datostarea, {
+            method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+            console.log('Éxito:', data);
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+
+        }
+    
+        //ERROR en las CORS del servidor, configuracion del servidor
+    function put(){
+        const tareamodificar = JSON.stringify({
+            'id':'5', 
+            'prioridad': '10'
+            })
+
+      
+        fetch('http://192.168.50.120:8069/gestion/lista_tareas.lista_tareas?data='+tareamodificar, {
+            method: 'PUT',
+            })
+            .then(response => response.json())
+            .then(data => {
+            console.log('Éxito:', data);
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+
+        }
+
+
+    function del(){
+        fetch('http://192.168.50.120:8069/gestion/lista_tareas.lista_tareas?data={"id":"8"}', {
+        method: 'DELETE',
+        })
+        .then(response => {
+        if (!response.ok) {
+            throw new Error('La respuesta de la red no fue correcta');
+        }
+        console.log('Recurso eliminado correctamente');
+        })
+        .catch(error => {
+        console.error('Hubo un problema con la solicitud DELETE:', error.message);
+        });
+
+    }
+    </script>
+</body>
+</html>
