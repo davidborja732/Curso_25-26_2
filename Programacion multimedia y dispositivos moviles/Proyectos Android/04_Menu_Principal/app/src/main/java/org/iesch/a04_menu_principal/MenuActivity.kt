@@ -8,8 +8,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import org.iesch.a04_menu_principal.apiRazas.RazasActivity
 import org.iesch.a04_menu_principal.databinding.ActivityMenuBinding
-import org.iesch.a04_menu_principal.databinding.ActivityRazasBinding
 import org.iesch.a04_menu_principal.fragments.FragmentoActivity
+import org.iesch.a04_menu_principal.settings.SettingsActivity
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding

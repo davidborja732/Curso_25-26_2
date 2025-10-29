@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme._04_Menu_Principal">
         <activity
-            android:name=".SettingsActivity"
+            android:name=".settings.SettingsActivity"
+            android:theme="@style/Theme.edad_canina"
             android:exported="false" />
         <activity
             android:name=".fragments.FragmentoActivity"

@@ -7,4 +7,8 @@
 
 
     <style name="Theme._04_Menu_Principal" parent="Base.Theme._04_Menu_Principal" />
+    <style name="Theme.edad_canina" parent="Base.Theme._04_Menu_Principal">
+        <item name="colorPrimary">@color/amarillo</item>
+        <item name="windowActionBar">true</item>
+    </style>
 </resources>
