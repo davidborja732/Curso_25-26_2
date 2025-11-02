@@ -1,0 +1,37 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme._03_Menu_Principal" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme._03_Menu_Principal" parent="Base.Theme._03_Menu_Principal" />
+    <!-- Tema para SplashScreen -->
+    <style name="SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <!--Duracion de la animacion-->
+        <item name="windowSplashScreenAnimationDuration">2000</item>
+        <item name="postSplashScreenTheme">@style/Theme._03_Menu_Principal</item>
+    </style>
+    <!-- Tema para Edad Canina -->
+    <style name="Edad_Canina" parent="Theme.AppCompat.DayNight.DarkActionBar" >
+
+        <item name="colorPrimary">@color/menu_verde</item>
+        <item name="colorOnPrimary">@color/menu_verde</item>
+        <item name="colorAccent">@color/menu_verde</item>
+        <item name="colorButtonNormal">@color/menu_verde</item>
+        <item name="statusBarBackground">@color/menu_verde</item>
+
+    </style>
+
+    <!-- Tema para Registro de SuperHeroes -->
+    <style name="Registro_SuperHeroes" parent="Theme.AppCompat.DayNight.DarkActionBar" >
+        <item name="colorPrimary">@color/menu_naranja</item>
+        <item name="colorOnPrimary">@color/menu_naranja</item>
+        <item name="colorAccent">@color/menu_naranja</item>
+        <item name="colorButtonNormal">@color/menu_naranja</item>
+        <item name="statusBarBackground">@color/menu_naranja</item>
+</style>
+
+</resources>

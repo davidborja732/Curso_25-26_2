@@ -22,15 +22,24 @@ public class HelloController {
         for (int i = 0; i < 10; i++) {
             choice.getItems().add(i);
         }
+        v.registerValidator(check, (Control c, Boolean newValue)
+                -> ValidationResult.fromErrorIf(c,"CheckBox pulsado",!newValue));
+        v.registerValidator(choice, Validator.createEmptyValidator("Numero requerido"));
+        v.registerValidator(texto, Validator.createEmptyValidator("Texto requerido"));
     }
     @FXML
     public void botonaccion(){
         /*Alert alert=new Alert(Alert.AlertType.INFORMATION);
         alert.show();*/
-        v.registerValidator(check, (Control c, Boolean newValue)
-                -> ValidationResult.fromErrorIf(c,"CheckBox pulsado",!newValue));
-        v.registerValidator(choice, Validator.createEmptyValidator("Numero requerido"));
-        v.registerValidator(texto, Validator.createEmptyValidator("Texto requerido"));
+        if (v.isInvalid()){
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("LLena todos los datos");
+            alert.show();
+        }else {
+            Alert alert=new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Todo ok continua");
+            alert.show();
+        }
     }
 
 }

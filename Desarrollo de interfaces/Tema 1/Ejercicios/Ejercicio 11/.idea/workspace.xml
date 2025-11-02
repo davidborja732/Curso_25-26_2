@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bb380122-783e-4c25-9eaa-92eedfe04624" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion ActionEvent/ActionEvent/Accion Event/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion ActionEvent/ActionEvent/Accion Event/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion ActionEvent/ActionEvent/Accion Event/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion ActionEvent/ActionEvent/Accion Event/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion ActionEvent/ActionEvent/Accion Event/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion Contol errores/Control Errores/html/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion Contol errores/Control Errores/src/main/java/org/iesch/proyectobase/proyectobase/config/Configuracion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion Contol errores/Control Errores/src/main/java/org/iesch/proyectobase/proyectobase/controlador/EstadianteControlador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion Contol errores/Control Errores/src/main/java/org/iesch/proyectobase/proyectobase/excepciones/DatosInvalidosException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion Contol errores/Control Errores/src/main/java/org/iesch/proyectobase/proyectobase/excepciones/EmailDuplicadoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion Contol errores/Control Errores/src/main/java/org/iesch/proyectobase/proyectobase/excepciones/EstudianteNoEncontradoExcepcion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion Contol errores/Control Errores/src/main/java/org/iesch/proyectobase/proyectobase/excepciones/ManejadorGlobal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion Contol errores/Control Errores/src/main/java/org/iesch/proyectobase/proyectobase/modelo/dto/ErrorResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion Contol errores/Control Errores/src/main/java/org/iesch/proyectobase/proyectobase/modelo/dto/EstudianteRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion Contol errores/Control Errores/src/main/java/org/iesch/proyectobase/proyectobase/modelo/dto/EstudianteResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion Contol errores/Control Errores/src/main/java/org/iesch/proyectobase/proyectobase/service/EstudianteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion Contol errores/Control Errores/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion estados/Estados Spring/src/main/java/org/iesch/proyectobase/proyectobase/modelo/UsuarioDTOPeticion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion estados/Estados Spring/src/main/java/org/iesch/proyectobase/proyectobase/modelo/UsuarioDTORespuesta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio_10/Ejercicio 10/Audios/music1.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio_10/Ejercicio 10/Audios/music2.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio_10/Ejercicio 10/Audios/music3.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio_10/Ejercicio 10/src/main/resources/org/iesch/ejercicio_10/Imagenes/pausa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ejercicio_10/Ejercicio 10/src/main/resources/org/iesch/ejercicio_10/Imagenes/stop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programacion de servicios y procesos/Tema 1/Ejercicios/Ejercicio 2/Ejercicios 2/src/Ej_5/Ej_5_Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programacion de servicios y procesos/Tema 1/Ejercicios/Ejercicio 2/Ejercicios 2/src/Ej_5/Operacion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Programacion de servicios y procesos/Tema 1/Ejercicios/Ejercicio 2/Ejercicios 2/src/Ej_5/Saldo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion estados/Estados Spring/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion estados/Estados Spring/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion estados/Estados Spring/src/main/java/org/iesch/proyectobase/proyectobase/config/Configuracion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion estados/Estados Spring/src/main/java/org/iesch/proyectobase/proyectobase/config/Configuracion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion estados/Estados Spring/src/main/java/org/iesch/proyectobase/proyectobase/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion estados/Estados Spring/src/main/java/org/iesch/proyectobase/proyectobase/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion estados/Estados Spring/src/main/java/org/iesch/proyectobase/proyectobase/modelo/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion estados/Estados Spring/src/main/java/org/iesch/proyectobase/proyectobase/modelo/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion estados/Estados Spring/src/main/java/org/iesch/proyectobase/proyectobase/modelo/UsuarioDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion Contol errores/Control Errores/src/main/java/org/iesch/proyectobase/proyectobase/modelo/Estudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion estados/Estados Spring/src/main/java/org/iesch/proyectobase/proyectobase/service/PersonasService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Acceso a datos/Tema 3/Explicaciones/Explicacion estados/Estados Spring/src/main/java/org/iesch/proyectobase/proyectobase/service/UsuariosService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Validator/Validator/Validator/src/main/java/org/iesch/validator/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Validator/Validator/Validator/src/main/java/org/iesch/validator/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion de servicios y procesos/Tema 1/Ejercicios/Ejercicio 1/Ejercicio 1/src/Ej_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Programacion de servicios y procesos/Tema 1/Ejercicios/Ejercicio 1/Ejercicio 1/src/Ej_2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion de servicios y procesos/Tema 1/Ejercicios/Ejercicio 2/Ejercicios 2/src/Ej_4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Programacion de servicios y procesos/Tema 1/Ejercicios/Ejercicio 2/Ejercicios 2/src/Ej_4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/.idea/AndroidProjectSystem.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/.idea/deploymentTargetSelector.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/.idea/deviceManager.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/.idea/migrations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/androidTest/java/org/iesch/a04_menu_principal/ExampleInstrumentedTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/java/org/iesch/a04_menu_principal/MenuActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/java/org/iesch/a04_menu_principal/apiRazas/RazasActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/java/org/iesch/a04_menu_principal/apiRazas/adapter/DogAdapter.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/java/org/iesch/a04_menu_principal/apiRazas/adapter/DogViewHolder.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/java/org/iesch/a04_menu_principal/apiRazas/model/APIService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/java/org/iesch/a04_menu_principal/apiRazas/model/DogsResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/java/org/iesch/a04_menu_principal/fragments/FragmentoActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/java/org/iesch/a04_menu_principal/fragments/fragmentos/HomeFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/java/org/iesch/a04_menu_principal/fragments/fragmentos/ProfileFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/java/org/iesch/a04_menu_principal/fragments/fragmentos/SettingsFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/java/org/iesch/a04_menu_principal/settings/SettingsActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/java/org/iesch/a04_menu_principal/settings/SettingsData.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/bg_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/bg_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/bg_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/bg_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/bg_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/bottom_btn1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/bottom_btn2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/bottom_btn3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/bottom_btn4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/bottom_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/btn_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/btn_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/btn_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/btn_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/ic_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/ic_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/ic_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/ic_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/ic_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/light_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/light_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/light_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/light_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/today.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/top_tight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-hdpi/user_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/bg_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/bg_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/bg_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/bg_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/bg_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/bottom_btn1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/bottom_btn2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/bottom_btn3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/bottom_btn4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/bottom_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/btn_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/btn_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/btn_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/btn_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/ic_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/ic_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/ic_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/ic_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/ic_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/light_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/light_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/light_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/light_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/today.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/top_tight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-ldpi/user_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/bg_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/bg_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/bg_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/bg_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/bg_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/bottom_btn1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/bottom_btn2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/bottom_btn3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/bottom_btn4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/bottom_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/btn_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/btn_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/btn_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/btn_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/ic_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/ic_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/ic_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/ic_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/ic_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/light_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/light_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/light_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/light_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/today.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/top_tight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-mdpi/user_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/bg_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/bg_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/bg_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/bg_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/bg_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/bottom_btn1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/bottom_btn2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/bottom_btn3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/bottom_btn4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/bottom_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/btn_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/btn_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/btn_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/btn_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/ic_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/ic_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/ic_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/ic_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/ic_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/light_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/light_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/light_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/light_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/today.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/top_tight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xhdpi/user_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/bg_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/bg_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/bg_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/bg_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/bg_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/bottom_btn1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/bottom_btn2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/bottom_btn3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/bottom_btn4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/bottom_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/btn_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/btn_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/btn_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/btn_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/ic_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/ic_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/ic_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/ic_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/ic_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/light_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/light_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/light_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/light_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/today.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/top_tight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxhdpi/user_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/bg_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/bg_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/bg_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/bg_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/bg_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/bottom_btn1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/bottom_btn2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/bottom_btn3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/bottom_btn4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/bottom_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/btn_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/btn_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/btn_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/btn_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/ic_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/ic_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/ic_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/ic_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/ic_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/light_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/light_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/light_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/light_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/today.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/top_tight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable-xxxhdpi/user_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/api.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/banner_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/baseline_home_24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/btn_background_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/btn_background_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/btn_background_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/btn_background_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/calculadora.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/darkmode.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/list_background_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/nodarkmode.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/outline_accessibility_24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/outline_add_box_24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/outline_admin_panel_settings_24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/outline_bluetooth_24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/outline_bottom_navigation_24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/outline_edit_audio_24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/perro.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/pregunta.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/drawable/superheroe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/layout/activity_fragmento.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/layout/activity_menu.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/layout/activity_razas.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/layout/activity_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/layout/fragment_home.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/layout/fragment_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/layout/item_dog.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/menu/bottom_menu.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/values-night/themes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/values/themes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/xml/backup_rules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/app/src/test/java/org/iesch/a04_menu_principal/ExampleUnitTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/gradle/libs.versions.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/04_Menu_Principal/settings.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/05_Login/practica-02-davidborja732" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/05_Login/practica-02-davidborja732" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/09-Practica04/practica-04-davidborja732" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Proyectos Android/09-Practica04/practica-04-davidborja732" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Repositorio Clase/PMDM2526" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Programacion multimedia y dispositivos moviles/Repositorio Clase/PMDM2526" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="34qRpIhPsH8le3OAxU51F6vyRRZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "E:/Grado Superior/Curso_25-26_2/Desarrollo de interfaces/Tema 1/Ejercicios/Ejercicio 11"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bb380122-783e-4c25-9eaa-92eedfe04624" name="Changes" comment="" />
+      <created>1761939296404</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761939296404</updated>
+    </task>
+    <servers />
+  </component>
+</project>

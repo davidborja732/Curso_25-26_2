@@ -1,8 +1,7 @@
 package org.iesch.proyectobase.proyectobase.config;
 
-import org.iesch.proyectobase.proyectobase.modelo.Persona;
+import org.iesch.proyectobase.proyectobase.modelo.Usuario;
 import org.iesch.proyectobase.proyectobase.modelo.Producto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,9 +24,9 @@ public class Configuracion {
         return productos;
     }
     @Bean
-    public Map<Long, Persona> initpersona(){
-        Map<Long,Persona> usuarios=new HashMap<>();
-        usuarios.put(1L, Persona.builder().id(1).nombre("David").apellido("Borja").password("Admin1234").build());
+    public Map<Long, Usuario> initpersona(){
+        Map<Long, Usuario> usuarios=new HashMap<>();
+        usuarios.put(1L, Usuario.builder().id(1).nombre("David").apellido("Borja").password("Admin1234").build());
         return usuarios;
     }
 }

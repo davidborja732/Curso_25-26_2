@@ -11,7 +11,6 @@ public class Ej_2 {
 
             while ((linea = bufferedReader.readLine()) != null) {
 
-
                 ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", linea);
 
                 // Escribo el resultado del CMD en el log
