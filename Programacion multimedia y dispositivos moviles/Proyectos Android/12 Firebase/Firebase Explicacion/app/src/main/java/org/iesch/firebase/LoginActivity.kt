@@ -1,20 +1,46 @@
 package org.iesch.firebase
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.credentials.Credential
+import androidx.credentials.CredentialManager
+import androidx.credentials.CustomCredential
+import androidx.credentials.GetCredentialRequest
+import androidx.lifecycle.lifecycleScope
+import com.google.android.libraries.identity.googleid.GetGoogleIdOption
+import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
+import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential.Companion.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL
 import com.google.firebase.Firebase
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.analytics
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
+import com.google.firebase.messaging.messaging
+import kotlinx.coroutines.launch
 import org.iesch.firebase.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission(),
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            Log.e("FCM", "Concedido permiso")
+        } else {
+            Log.e("FCM", "No concedido permiso")
+        }
+    }
     // Inicializar Analytic
     private lateinit var firebaseAnalytics: FirebaseAnalytics
     // Autenticacion
@@ -80,6 +106,43 @@ class LoginActivity : AppCompatActivity() {
                 //Toast.makeText(this, "Rellene ambos campos", Toast.LENGTH_SHORT).show()
             }
         }
+        binding.loginGoogleButton.setOnClickListener {
+            logueocongoogle()
+        }
+        // Solicitar permisos de notificacion
+        solicitarPermisosPush()
+        notificacionesPush()
+        // Me puedo suscribir a temas
+        Firebase.messaging.subscribeToTopic("RealValladolid")
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("FCM", "Suscrito al Real Valladolid")
+                } else {
+                    avisoUsuario("NO se ha suscrito", "Suscripcion Real Valladolid")
+                }
+            }
+    }
+
+    private fun solicitarPermisosPush() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
+                PackageManager.PERMISSION_GRANTED
+            ) else {
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+    }
+
+    private fun notificacionesPush() {
+        // Obtenemos token de registro
+        Firebase.messaging.token.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val token = task.result
+                Log.e("FCM", "Token de registro:$token")
+            } else {
+                Log.e("FCM", "Error al obtener el token de registro")
+            }
+        }
     }
 
     private fun avisoUsuario(mensaje: String,titulo: String) {
@@ -92,7 +155,7 @@ class LoginActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun mostrarHomeActivity(usuario: String,provider: String) {
+    private fun mostrarHomeActivity(usuario: String, provider: String) {
         val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra("usuario",usuario)
         intent.putExtra("provider",provider)
@@ -116,4 +179,61 @@ class LoginActivity : AppCompatActivity() {
         bundle.putString("mensaje","Integracion con firebase realizada correctamente")
         firebaseAnalytics.logEvent("LoginScreen",bundle)
     }
+    private fun logueocongoogle() {
+        // Vamos a crearlo siguiendo la documentacion oficial
+        // Instanciamos solicitud de incio con google
+        val googleIdOption = GetGoogleIdOption.Builder()
+            .setServerClientId(getString(R.string.web_client))
+            .setFilterByAuthorizedAccounts(false)
+            .build()
+        //Generamos la solicitud de credenciales
+        val request = GetCredentialRequest.Builder()
+            .addCredentialOption(googleIdOption)
+            .build()
+        // Obtenemos el CredentialManager y lanzamos las solicitudes
+        lifecycleScope.launch {
+            try {
+                val credentialManager = CredentialManager.create(this@LoginActivity)
+                val result = credentialManager.getCredential(
+                    request = request,
+                    context = this@LoginActivity
+                )
+                handleSignIn(result.credential)
+            } catch (e: Exception) {
+                Log.e("DAM", "Error al obtener las credenciales")
+            }
+        }
+    }
+
+    private fun handleSignIn(credential: Credential) {
+        // Check if credential is of type Google ID
+        if (credential is CustomCredential && credential.type == TYPE_GOOGLE_ID_TOKEN_CREDENTIAL) {
+            // Create Google ID Token
+            val googleIdTokenCredential = GoogleIdTokenCredential.createFrom(credential.data)
+
+            // Sign in to Firebase with using the token
+            firebaseAuthWithGoogle(googleIdTokenCredential.idToken)
+        } else {
+            Log.w("DAM", "Credential is not of type Google ID!")
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // AQui ya nos hemos logueado con google
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d("DAM", "signInWithCredential:success")
+                    val user = auth.currentUser
+                    mostrarHomeActivity(user?.email.toString(), ProviderType.GOOGLE.toString())
+                } else {
+                    // If sign in fails, display a message to the user
+                    Log.w("DAM", "signInWithCredential:failure", task.exception)
+                    Log.e("DAM", "Error al lofuearse con google")
+                }
+            }
+    }
+
 }

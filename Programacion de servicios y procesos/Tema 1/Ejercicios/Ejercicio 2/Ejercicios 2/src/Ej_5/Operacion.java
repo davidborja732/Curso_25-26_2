@@ -2,8 +2,8 @@ package Ej_5;
 
 public class Operacion implements Runnable {
     Saldo saldo=new Saldo();
-    private int cantidad;
-    private String nombre;
+    private final int cantidad;
+    private final String nombre;
 
     public Operacion(Saldo saldo, int cantidad, String nombre) {
         this.saldo = saldo;
@@ -12,6 +12,6 @@ public class Operacion implements Runnable {
     }
 
     public void run() {
-        saldo.añadir(cantidad, nombre);
+        saldo.anadir(cantidad, nombre);
     }
 }

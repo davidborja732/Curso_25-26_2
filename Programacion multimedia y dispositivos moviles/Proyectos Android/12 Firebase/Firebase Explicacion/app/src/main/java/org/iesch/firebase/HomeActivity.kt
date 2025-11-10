@@ -10,7 +10,8 @@ import com.google.firebase.auth.auth
 import org.iesch.firebase.databinding.ActivityHomeBinding
 
 enum class ProviderType{
-    EMAIL_PASSWORD
+    EMAIL_PASSWORD,
+    GOOGLE
 }
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding

@@ -59,7 +59,7 @@ public class Ej_4 {
         } catch (InterruptedException ignored) {}
 
         long duracion = (System.currentTimeMillis() - inicio) / 1000;
-        System.out.println("Hilo 1 finalizado duro: " + duracion);
+        System.out.println("Hilo 1 finalizado ha durado: " + duracion);
     }
 }
 

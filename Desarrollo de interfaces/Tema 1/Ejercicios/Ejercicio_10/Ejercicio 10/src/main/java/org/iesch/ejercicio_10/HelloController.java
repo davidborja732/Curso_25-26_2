@@ -28,6 +28,7 @@ public class HelloController {
         final String[] audiofile = new String[1];
         File carpeta=new File("Audios");
         File[] archivos=carpeta.listFiles();
+        assert archivos != null;
         for (File archivocarpeta : Arrays.stream(archivos).toList()) {
             nombres.getItems().add(archivocarpeta.toString());
         }

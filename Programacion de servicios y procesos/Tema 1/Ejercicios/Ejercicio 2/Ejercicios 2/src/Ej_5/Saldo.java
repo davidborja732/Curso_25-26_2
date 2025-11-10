@@ -22,7 +22,7 @@ public class Saldo {
         saldo = nuevo;
     }
 
-    public synchronized void añadir(int cantidad, String hilo) {
+    public synchronized void anadir(int cantidad, String hilo) {
         int antes = getSaldo();
         setSaldo(antes + cantidad);
         System.out.println(hilo+" mete "+cantidad+" tenias "+antes+" tienes "+getSaldo());

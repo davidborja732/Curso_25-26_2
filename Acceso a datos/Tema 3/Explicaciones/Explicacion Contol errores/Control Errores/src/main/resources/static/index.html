@@ -92,69 +92,93 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📚 Lista de Estudiantes</h1>
-        
-        <button class="btn" onclick="cargarEstudiantes()">🔄 Recargar Estudiantes</button>
-        
-        <div id="error-message"></div>
-        <div id="loading" class="loading" style="display: none;">Cargando estudiantes...</div>
-        
-        <table id="tabla-estudiantes">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                </tr>
-            </thead>
-            <tbody id="tbody-estudiantes">
-                <!-- Los datos se cargarán aquí con JavaScript -->
-            </tbody>
-        </table>
-    </div>
-    <script>
-        // URL API
-        const API_URL = 'http://localhost:8080/estudiantes';
-        async function cargarestudiantes() {
-            const loading=document.getElementById('loading');
-            const errorMessage=document.getElementById('error-message');
-            const tbodyEstudiantes=document.getElementById('tbody-estudiantes');
-            // Limpiar mensajes previos
-            errorMessage.innerHTML='';
-            tbodyEstudiantes.innerHTML='';
-            loading.style.display='block';
-            try{
-                // Peticion a la API
-                const estudiantes=await response.json();
-                loading.style.display='none';
-                // Si no hay estudiantes
-                if(estudiantes.length===0){
-                    tbodyEstudiantes.innerHTML='<tr><td colspan="3" class="no-data">No hay estudiantes registrados.</td></tr>';
-                    return;
-                }
-                // Hay datos y rellenar la tabla
-                estudiantes.forEach(estudiante=>{
-                    const fila=document.createElement('tr');
-                    fila.innerHTML=`
-                        <td>${estudiante.id}</td>
-                        <td>${estudiante.nombre}</td>
-                        <td>${estudiante.apellidos}</td>
-                    `;
-                    tbodyEstudiantes.appendChild(fila);
-                });
-            
-        }catch(error){
-                //ocultar loading
-                loading.style.display='none';
-                // Mostrar mensaje de error
-                errorMessage.innerHTML=`<div class="error">Error al cargar los datos: ${error.message}<br> Asegurate que esta corriendo el servidor</div>`;
+<div class="container">
+    <h1>📚 Lista de Estudiantes</h1>
+
+    <button class="btn" onclick="cargarEstudiantes()">🔄 Recargar Estudiantes</button>
+
+    <div id="error-message"></div>
+    <div class="loading" id="loading" style="display: none;">Cargando estudiantes...</div>
+
+    <table id="tabla-estudiantes">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+
+        </tr>
+        </thead>
+        <tbody id="tbody-estudiantes">
+        <!-- Los datos se cargarán aquí con JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    //URL de la API
+    const API_URL  = "http://localhost:8080/api/estudiantes";
+
+    //Funcion para cargar los estudiantes
+    async function cargarEstudiantes() {
+        const loading = document.getElementById('loading');
+        const errorMessage = document.getElementById('error-message');
+        const tbody = document.getElementById('tbody-estudiantes');
+
+        //Limpiar mensajes anteriores
+        errorMessage.innerHTML='';
+        tbody.innerHTML='';
+        loading.style.display='block';
+
+        try{
+            //HAcer la petición get a la api
+            const response = await fetch(API_URL);
+
+            //VErificar si la respuesta es exitosa
+            if(!response.ok){
+                throw new Error (`Error HTTP: ${response.status}`)
             }
-            console.error('Error al cargar los estudiantes:',error);
-    }
-        // Cargar estudiantes al cargar la pagina
-        window.addEventListener('DOMContentLoaded',cargarEstudiantes);
-        cargarestudiantes();
-    </script>
+
+            //Convertir a JSON
+
+            const estudiantes = await response.json();
+
+            //Ocultar el loading
+            loading.style.display = 'none';
+
+            //Si no hay estudiantes
+            if(estudiantes.length === 0) {
+                tbody.innerHTML= '<tr><td colspan="3" class="no-data"> no hay estudiantes registrados </td></tr>'
+
+                return;
+            }
+            //HAy datos, creamos las filas;
+            estudiantes.forEach(estudiante => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                <td>${estudiante.id}</td>
+                <td>${estudiante.nombre}</td>
+                <td>${estudiante.apellidos}</td>`;
+                tbody.appendChild(fila);
+
+                });
+        }catch (error){
+            //OCulatar le loading
+               loading.style.display = 'none';
+
+               //Mostrar error:
+                  errorMessage.innerHTML=`<div class="error"> <strong> Error al cargar los datos </strong><br>
+                    ${error.message} <br>
+                    Asegurate que está corriendo el server.</div>`;
+                    console.error('Error: ', error);
+        }
+
+    }//ffuncion
+
+//Cargar los estudiantes
+    window.addEventListener('DOMContentLoaded', cargarEstudiantes);
+
+</script>
+
 </body>
 </html>

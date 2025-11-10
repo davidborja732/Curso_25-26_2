@@ -1,7 +1,6 @@
 package Ej_5;
 
 import java.util.Random;
-
 /*
 Crea una clase llamada Saldo, con un atributo que indique el saldo disponible.
 El constructor dará valor inicial al saldo. Crea los métodos get (público) y set
@@ -36,7 +35,9 @@ public class Ej_5_Main {
             t1.join();
             t2.join();
             t3.join();
-        } catch (InterruptedException ignored) {}
+        } catch (InterruptedException ignored) {
+            System.out.println("Fallo");
+        }
 
         System.out.println("Saldo final: " + saldo.getSaldo());
     }

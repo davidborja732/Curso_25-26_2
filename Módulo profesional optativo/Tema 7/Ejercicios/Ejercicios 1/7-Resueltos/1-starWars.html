@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Star Wars API - Práctica Fetch</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #111;
+      color: #eee;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #ffe81f;
+    }
+    #characters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .card {
+      background: #222;
+      border: 1px solid #333;
+      padding: 15px;
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      background-color: #333;
+    }
+    #details {
+      margin-top: 30px;
+      padding: 20px;
+      background: #222;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Personajes de Star Wars</h1>
+  <div id="characters"></div>
+  <div id="details"></div>
+
+  <script>
+    // Obtener lista de personajes desde la API
+    fetch("https://swapi.dev/api/people/")
+      .then(response => {
+        if (!response.ok) throw new Error("Error en la petición");
+        return response.json();
+      })
+      .then(data => {
+        const characters = data.results;
+        const container = document.getElementById("characters");
+
+        // Crear una tarjeta por personaje
+        characters.forEach(person => {
+          const card = document.createElement("div");
+          card.classList.add("card");
+          card.textContent = person.name;
+          card.addEventListener("click", () => showDetails(person));
+          container.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
+
+    // Mostrar detalles del personaje seleccionado
+    function showDetails(person) {
+        const details = document.getElementById("details");
+  
+        details.innerHTML = ""; // Limpiar contenido previo
+
+        const title = document.createElement("h2");
+        title.textContent = person.name;
+        details.appendChild(title);
+
+        const p1 = document.createElement("p");
+        p1.innerHTML = "<strong>Altura:</strong> " + person.height + " cm";
+        details.appendChild(p1);
+
+        const p2 = document.createElement("p");
+        p2.innerHTML = "<strong>Peso:</strong> " + person.mass + " kg";
+        details.appendChild(p2);
+
+        const p3 = document.createElement("p");
+        p3.innerHTML = "<strong>Color de cabello:</strong> " + person.hair_color;
+        details.appendChild(p3);
+
+        const p4 = document.createElement("p");
+        p4.innerHTML = "<strong>Color de piel:</strong> " + person.skin_color;
+        details.appendChild(p4);
+
+        const p5 = document.createElement("p");
+        p5.innerHTML = "<strong>Color de ojos:</strong> " + person.eye_color;
+        details.appendChild(p5);
+
+        const p6 = document.createElement("p");
+        p6.innerHTML = "<strong>Año de nacimiento:</strong> " + person.birth_year;
+        details.appendChild(p6);
+
+        const p7 = document.createElement("p");
+        p7.innerHTML = "<strong>Género:</strong> " + person.gender;
+        details.appendChild(p7);
+
+    }
+  </script>
+</body>
+</html>

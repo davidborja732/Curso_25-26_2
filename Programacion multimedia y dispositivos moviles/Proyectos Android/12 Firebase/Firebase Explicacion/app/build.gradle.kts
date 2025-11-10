@@ -47,6 +47,12 @@ dependencies {
     implementation(libs.firebase.analytics)
     // firebase
     implementation(platform(libs.firebase.bom))
+    // Firebase Auth con google
+    implementation(libs.androidx.credentials)
+    // Firebase Cloud Messaging
+    implementation(libs.firebase.messaging)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

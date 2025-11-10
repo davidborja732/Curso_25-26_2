@@ -1,7 +1,6 @@
 package org.iesch.proyectobase.proyectobase.controlador;
 
 import jakarta.validation.Valid;
-import org.iesch.proyectobase.proyectobase.modelo.Estudiante;
 import org.iesch.proyectobase.proyectobase.modelo.dto.EstudianteRequestDTO;
 import org.iesch.proyectobase.proyectobase.modelo.dto.EstudianteResponseDTO;
 import org.iesch.proyectobase.proyectobase.service.EstudianteService;
@@ -10,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -20,6 +18,7 @@ public class EstadianteControlador {
     EstudianteService estudianteService;
 
     @GetMapping
+    //@CrossOrigin(origins="http://localhost")
     public ResponseEntity<List<EstudianteResponseDTO>> obtenerTodos() {
         List<EstudianteResponseDTO> studiantes = estudianteService.obtenertodos();
         return ResponseEntity.ok(studiantes);

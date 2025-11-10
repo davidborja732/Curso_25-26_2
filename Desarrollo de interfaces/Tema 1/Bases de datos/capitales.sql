@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `capitales`
 --
-use poblacion
+
 CREATE TABLE `capitales` (
   `Provincia` varchar(30) NOT NULL,
   `Autonomía` varchar(30) NOT NULL,

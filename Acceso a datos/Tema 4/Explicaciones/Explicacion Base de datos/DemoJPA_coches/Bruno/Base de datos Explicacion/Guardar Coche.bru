@@ -1,0 +1,26 @@
+meta {
+  name: Guardar Coche
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/coches
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "marca":"Seat",
+      "modelo":"Ibiza",
+      "cilindrada":"1900",
+      "potencia":"255",
+      "matricula":"5467POL"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
