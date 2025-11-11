@@ -1,0 +1,17 @@
+.button {
+    -fx-border-color: white;
+    -fx-border-width: 10px;
+    -fx-background-radius: white;
+    -fx-border-radius: 1px;
+    -fx-background-color: dodgerblue;
+    -fx-text-fill: white;
+    -fx-font-size:20;
+}sss
+.Pane {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+.Label {
+    -fx-text-fill: white;
+    fx-font-weight: lighter;
+}

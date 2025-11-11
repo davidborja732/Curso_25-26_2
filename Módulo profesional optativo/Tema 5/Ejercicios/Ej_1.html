@@ -4,12 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 1</title>
-    
+    <script>
+        function devolverdni(){
+            var dni=document.getElementById("DNIusuario")
+            var letradni=dni.value(dni.value.length-1)
+            var numerosdni=Number(dni.value.slice(0,-1))
+            var resto=parseInt(numerosdni%23)
+            var letracalculo=letras[resto]
+            var elemento=document.getElementById("miform")
+            if(letradni==letracalculo){
+                elemento.submit()
+            }else{
+                console.log("El dni no es valido")
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="miform" action="https://google.es/">
-        <p>Introduce tu DNI</p>
-    
+        <p>
+            Introduce tu DNI
+            <input type="text" name="dni" id="DNIusuario"> 
+            <input type="button" value="Enviar" onclick=devolverdni()>
+        </p>
+        
     </form>
 </body>
 </html>
