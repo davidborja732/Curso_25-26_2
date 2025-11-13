@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -40,5 +39,17 @@ public class CocheControlador {
         }else {
             return ResponseEntity.noContent().build();
         }
+    }
+    @GetMapping("/colorbuscado/{color}")
+    public ResponseEntity<List<Coche>> obtenerUnoPorColor(@PathVariable String color){
+        return ResponseEntity.ok(cocheService.obtenerUnoPorColor(color));
+    }
+    @GetMapping("/colorbuscado/{color}/{marca}")
+    public ResponseEntity<List<Coche>> obtenerUnoPorColoryMarca(@PathVariable String color,@PathVariable String marca){
+        return ResponseEntity.ok(cocheService.obtenerUnoPorColorYMarca(color,marca));
+    }
+    @GetMapping("/colorbuscado/{color}/{marca}/{potencia}")
+    public ResponseEntity<List<Coche>> obtenerUnoPorColoryMarcaYMenosPotencia(@PathVariable String color,@PathVariable String marca,@PathVariable int potencia){
+        return ResponseEntity.ok(cocheService.obtenerUnoPorColorYMarcaYPotenciaMenor(color,marca,potencia));
     }
 }

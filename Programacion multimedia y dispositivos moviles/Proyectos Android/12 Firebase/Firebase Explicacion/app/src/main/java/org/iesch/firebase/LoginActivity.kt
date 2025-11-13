@@ -28,6 +28,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
 import com.google.firebase.messaging.messaging
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
+import com.google.firebase.remoteconfig.remoteConfig
+import com.google.firebase.remoteconfig.remoteConfigSettings
 import kotlinx.coroutines.launch
 import org.iesch.firebase.databinding.ActivityLoginBinding
 
@@ -112,6 +115,8 @@ class LoginActivity : AppCompatActivity() {
         // Solicitar permisos de notificacion
         solicitarPermisosPush()
         notificacionesPush()
+        // Configuracion remota
+            configuracionRemota();
         // Me puedo suscribir a temas
         Firebase.messaging.subscribeToTopic("RealValladolid")
             .addOnCompleteListener { task ->
@@ -121,6 +126,23 @@ class LoginActivity : AppCompatActivity() {
                     avisoUsuario("NO se ha suscrito", "Suscripcion Real Valladolid")
                 }
             }
+    }
+
+    private fun configuracionRemota() {
+        // Lo recomendable es escribir un valor por defecto para todos los valores remotos
+        val configSettings: FirebaseRemoteConfigSettings= remoteConfigSettings {
+            minimumFetchIntervalInSeconds = 60
+        }
+        // Obtenemos la instancia de RemoteConfig
+        val firebaseConfig= Firebase.remoteConfig
+        // Aplicamos la configuracion a remoteConfig
+        firebaseConfig.setConfigSettingsAsync(configSettings)
+        // Establecemos los valores por defecto en caso que fale la obtencion de valores remotos
+        firebaseConfig.setDefaultsAsync(mapOf(
+            "boton_opcional" to false,
+            "texto_opcional" to "Texto por defecto",
+            "color_bg" to "bg_1"
+        ))
     }
 
     private fun solicitarPermisosPush() {

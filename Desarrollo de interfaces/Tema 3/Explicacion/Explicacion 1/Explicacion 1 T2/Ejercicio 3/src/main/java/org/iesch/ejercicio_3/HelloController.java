@@ -3,8 +3,11 @@ package org.iesch.ejercicio_3;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 public class HelloController {
+    @FXML
+    private Pane panel;
     @FXML
     private Button boton1;
     @FXML
@@ -18,7 +21,7 @@ public class HelloController {
 
     @FXML
     public void boton1Action(){
-
+        panel.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
     }
     @FXML
     public void boton2Action(){
@@ -30,7 +33,7 @@ public class HelloController {
     }
     @FXML
     public void boton4Action(){
-
+        panel.getStylesheets().add(getClass().getResource("default").toExternalForm());
     }
     @FXML
     public void boton5Action(){

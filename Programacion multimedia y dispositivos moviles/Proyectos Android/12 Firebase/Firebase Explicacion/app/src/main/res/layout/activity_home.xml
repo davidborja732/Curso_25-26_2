@@ -44,6 +44,30 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="8dp" />
+        <EditText
+            android:id="@+id/adressEditText"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:ems="10"
+            tools:hint="Calle, numero, piso"
+            />
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+        <EditText
+            android:id="@+id/phoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Telefono"
+            android:inputType="number"
+            />
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
 
 
         <LinearLayout
@@ -58,6 +82,58 @@
                 android:backgroundTint="@color/black"
                 android:textColor="@color/white"
                 android:text="Cerrar Sesion" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/EspecialButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/bg_2"
+                android:textColor="@color/white"
+                android:text="Boton especial" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/GuardarButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:text="Boton guardar" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/EliminarButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:text="Boton Eliminar" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/recuperarButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                android:text="Recuperar boton" />
         </LinearLayout>
         <Space
             android:layout_width="match_parent"

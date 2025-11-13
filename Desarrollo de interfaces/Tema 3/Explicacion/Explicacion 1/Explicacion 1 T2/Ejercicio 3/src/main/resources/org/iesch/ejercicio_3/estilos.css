@@ -1,17 +1,23 @@
-.button {
+.Button {
     -fx-border-color: white;
-    -fx-border-width: 10px;
-    -fx-background-radius: white;
+    -fx-border-width: 3px;
+    -fx-background-radius: 2px;
     -fx-border-radius: 1px;
     -fx-background-color: dodgerblue;
-    -fx-text-fill: white;
     -fx-font-size:20;
-}sss
+    -fx-text-fill: white;
+}
 .Pane {
     -fx-background-color: black;
     -fx-text-fill: white;
 }
 .Label {
     -fx-text-fill: white;
-    fx-font-weight: lighter;
+    -fx-font-weight: lighter;
+    -fx-font-size: 26;
+}
+.button:hover {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
 }

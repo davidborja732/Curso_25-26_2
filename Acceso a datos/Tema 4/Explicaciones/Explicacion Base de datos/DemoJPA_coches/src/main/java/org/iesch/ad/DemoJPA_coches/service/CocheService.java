@@ -40,4 +40,15 @@ public class CocheService {
         cocheRepositorio.deleteById(id);
         return coche;
     }
+
+    public List<Coche> obtenerUnoPorColor(String color) {
+        return cocheRepositorio.findByColor(color);
+    }
+
+    public List<Coche> obtenerUnoPorColorYMarca(String color, String marca) {
+        return cocheRepositorio.findByColorAndMarca(color,marca);
+    }
+    public List<Coche> obtenerUnoPorColorYMarcaYPotenciaMenor(String color, String marca,int potencia) {
+        return cocheRepositorio.findByColorAndMarcaAndPotenciaLessThan(color,marca,potencia);
+    }
 }

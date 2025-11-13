@@ -1,13 +1,20 @@
-.button {
+.Button {
     -fx-border-color: white;
-    -fx-border-width: 10px;
-    -fx-background-radius: 50px;
-    -fx-border-radius: 50px;
-    -fx-background-color: linear-gradient(to bottom, white, orange);
+    -fx-border-width: 3px;
+    -fx-background-radius: 2px;
+    -fx-border-radius: 1px;
+    -fx-background-color: dodgerblue;
+    -fx-font-size:20;
     -fx-text-fill: white;
-    -fx-font-weight:bolder;
+}
+.Pane {
+    -fx-background-color: black;
     -fx-text-fill: white;
-    -fx-font-size:16;
+}
+.Label {
+    -fx-text-fill: white;
+    -fx-font-weight: lighter;
+    -fx-font-size: 26;
 }
 .button:hover {
     -fx-background-color: orange;
