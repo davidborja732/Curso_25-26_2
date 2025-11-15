@@ -3,12 +3,13 @@
     -fx-border-width: 3px;
     -fx-background-radius: 2px;
     -fx-border-radius: 1px;
-    -fx-background-color: dodgerblue;
+    -fx-background-color: green;
     -fx-font-size:20;
-    -fx-text-fill: white;
+    -fx-font-style=oblique;
+    -fx-text-fill: yellow;
 }
 .Pane {
-    -fx-background-color: black;
+    -fx-background-color: purple;
     -fx-text-fill: white;
 }
 .Label {

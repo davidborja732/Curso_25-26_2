@@ -1,0 +1,30 @@
+.check-box .box {
+    -fx-background-color:yellow;
+}
+.check-box:selected .mark {
+    -fx-background-color:orange;
+}
+.check-box:selected .box {
+    -fx-background-color:green;
+}
+.radio-button .radio {
+    -fx-background-color:yellow;
+}
+.radio-button:selected .radio {
+    -fx-background-color:orange;
+}
+.radio-button:selected .dot {
+    -fx-background-color:yellow;
+}
+.slider .track {
+    -fx-background-color:orange;
+}
+.slider .thumb {
+    -fx-background-color:yellow;
+}
+.toggle-button {
+    -fx-background-color:yellow;
+}
+.toggle-button:selected {
+    -fx-background-color:orange;
+}

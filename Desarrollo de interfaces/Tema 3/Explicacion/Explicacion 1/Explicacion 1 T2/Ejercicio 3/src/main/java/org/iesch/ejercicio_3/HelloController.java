@@ -21,23 +21,26 @@ public class HelloController {
 
     @FXML
     public void boton1Action(){
+        boton4Action();
         panel.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
     }
     @FXML
     public void boton2Action(){
-
+        boton4Action();
+        panel.getStylesheets().add(getClass().getResource("estilos2.css").toExternalForm());
     }
     @FXML
     public void boton3Action(){
-
+        boton4Action();
+        panel.getStylesheets().add(getClass().getResource("estilos3.css").toExternalForm());
     }
     @FXML
     public void boton4Action(){
-        panel.getStylesheets().add(getClass().getResource("default").toExternalForm());
+        panel.getStylesheets().clear();
     }
     @FXML
     public void boton5Action(){
-
+        System.exit(1);
     }
 
 }
