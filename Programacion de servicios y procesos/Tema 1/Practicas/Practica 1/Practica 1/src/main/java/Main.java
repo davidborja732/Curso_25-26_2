@@ -1,40 +1,35 @@
-import java.io.File;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.google.gson.Gson;
+
+import java.io.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        File carpeta = new File("Archivos");
-        File[] archivos = carpeta.listFiles();
-        if (archivos == null || archivos.length == 0) {
-            System.out.println("No se encontraron archivos.");
-            return;
+    static void main() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        ZipInputStream zis = null;
+        try {
+            zis = new ZipInputStream(new FileInputStream("Archivos/items.zip"));
+            ZipEntry entrada;
+            while ((entrada = zis.getNextEntry()) != null) {
+                System.out.println("Leyendo archivo: " + entrada.getName());
+
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(zis));
+                String linea;
+                while ((linea = bufferedReader.readLine()) != null) {
+                    Temperatura temperatura=mapper.readValue(linea.replaceAll("(?<=\\d),", "."),Temperatura.class);
+                    System.out.println(temperatura.toString());
+                }
+                System.out.println("--------------------------------------------------------------------");
+                zis.closeEntry();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-
-        Map<String, ResultadoMensual> resultados = new ConcurrentHashMap<>();
-        AtomicReference<RegistroClima> maxAbsoluto = new AtomicReference<>();
-        AtomicReference<RegistroClima> minAbsoluto = new AtomicReference<>();
-
-        ExecutorService pool = Executors.newFixedThreadPool(2);
-
-        for (File archivo : archivos) {
-            pool.execute(new ProcesadorArchivo(archivo.toPath(), resultados, maxAbsoluto, minAbsoluto));
-        }
-
-        pool.shutdown();
-        pool.awaitTermination(2, TimeUnit.MINUTES);
-
-        System.out.println("📅 Resultados por mes:");
-        resultados.forEach((mes, resultado) -> {
-            System.out.println("Mes: " + mes);
-            System.out.println("  🔴 Máxima: " + resultado.getMaximo());
-            System.out.println("  🔵 Mínima: " + resultado.getMinimo());
-        });
-
-        System.out.println("\n🏁 Extremas absolutas:");
-        System.out.println("🔴 Máxima absoluta: " + maxAbsoluto.get());
-        System.out.println("🔵 Mínima absoluta: " + minAbsoluto.get());
     }
 }
