@@ -1,0 +1,139 @@
+2025-11-19 17:26:51.503024+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO autores (nombre, apellido, nacionalidad) VALUES[*]"; se esperaba "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"
+Syntax error in SQL statement "INSERT INTO autores (nombre, apellido, nacionalidad) VALUES[*]"; expected "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+INSERT INTO autores (nombre, apellido, nacionalidad) VALUES [42001-232]
+2025-11-19 17:26:51.510274+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Gabriel', 'Garcia Marquez', 'Colombiana'),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Gabriel', 'Garcia Marquez', 'Colombiana'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Gabriel', 'Garcia Marquez', 'Colombiana'), [42001-232]
+2025-11-19 17:26:51.512272+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Isabel', 'Allende', 'Chilena'),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Isabel', 'Allende', 'Chilena'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Isabel', 'Allende', 'Chilena'), [42001-232]
+2025-11-19 17:26:51.512272+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Mario', 'Vargas Llosa', 'Peruana'),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Mario', 'Vargas Llosa', 'Peruana'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Mario', 'Vargas Llosa', 'Peruana'), [42001-232]
+2025-11-19 17:26:51.513272+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Jorge Luis', 'Borges', 'Argentina'),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Jorge Luis', 'Borges', 'Argentina'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Jorge Luis', 'Borges', 'Argentina'), [42001-232]
+2025-11-19 17:26:51.514272+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Julio', 'Cortazar', 'Argentina')"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Julio', 'Cortazar', 'Argentina')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Julio', 'Cortazar', 'Argentina') [42001-232]
+2025-11-19 17:26:51.519272+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES[*]"; se esperaba "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"
+Syntax error in SQL statement "INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES[*]"; expected "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES [42001-232]
+2025-11-19 17:26:51.520273+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Cien años de soledad', '978-0-06-088328-7', 15.99, 1967, 1),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Cien años de soledad', '978-0-06-088328-7', 15.99, 1967, 1),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Cien años de soledad', '978-0-06-088328-7', 15.99, 1967, 1), [42001-232]
+2025-11-19 17:26:51.520273+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'El amor en los tiempos del colera', '978-0-307-38973-4', 14.50, 1985, 1),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'El amor en los tiempos del colera', '978-0-307-38973-4', 14.50, 1985, 1),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('El amor en los tiempos del colera', '978-0-307-38973-4', 14.50, 1985, 1), [42001-232]
+2025-11-19 17:26:51.521273+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Cronica de una muerte anunciada', '978-1-4000-3494-9', 12.99, 1981, 1)"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Cronica de una muerte anunciada', '978-1-4000-3494-9', 12.99, 1981, 1)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Cronica de una muerte anunciada', '978-1-4000-3494-9', 12.99, 1981, 1) [42001-232]
+2025-11-19 17:26:51.521273+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES[*]"; se esperaba "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"
+Syntax error in SQL statement "INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES[*]"; expected "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES [42001-232]
+2025-11-19 17:26:51.522273+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'La casa de los espiritus', '978-0-553-38371-4', 13.95, 1982, 2),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'La casa de los espiritus', '978-0-553-38371-4', 13.95, 1982, 2),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('La casa de los espiritus', '978-0-553-38371-4', 13.95, 1982, 2), [42001-232]
+2025-11-19 17:26:51.523272+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'De amor y de sombra', '978-0-553-27391-4', 12.50, 1984, 2),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'De amor y de sombra', '978-0-553-27391-4', 12.50, 1984, 2),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('De amor y de sombra', '978-0-553-27391-4', 12.50, 1984, 2), [42001-232]
+2025-11-19 17:26:51.524271+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Eva Luna', '978-0-553-28253-4', 11.99, 1987, 2)"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Eva Luna', '978-0-553-28253-4', 11.99, 1987, 2)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Eva Luna', '978-0-553-28253-4', 11.99, 1987, 2) [42001-232]
+2025-11-19 17:26:51.525272+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES[*]"; se esperaba "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"
+Syntax error in SQL statement "INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES[*]"; expected "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES [42001-232]
+2025-11-19 17:26:51.526272+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'La ciudad y los perros', '978-84-376-0494-7', 16.50, 1963, 3),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'La ciudad y los perros', '978-84-376-0494-7', 16.50, 1963, 3),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('La ciudad y los perros', '978-84-376-0494-7', 16.50, 1963, 3), [42001-232]
+2025-11-19 17:26:51.527272+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Conversacion en La Catedral', '978-84-376-0495-4', 18.99, 1969, 3),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Conversacion en La Catedral', '978-84-376-0495-4', 18.99, 1969, 3),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Conversacion en La Catedral', '978-84-376-0495-4', 18.99, 1969, 3), [42001-232]
+2025-11-19 17:26:51.529272+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'La tia Julia y el escribidor', '978-84-376-0496-1', 14.75, 1977, 3)"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'La tia Julia y el escribidor', '978-84-376-0496-1', 14.75, 1977, 3)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('La tia Julia y el escribidor', '978-84-376-0496-1', 14.75, 1977, 3) [42001-232]
+2025-11-19 17:26:51.531273+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES[*]"; se esperaba "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"
+Syntax error in SQL statement "INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES[*]"; expected "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES [42001-232]
+2025-11-19 17:26:51.531273+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Ficciones', '978-0-8021-3037-8', 13.50, 1944, 4),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Ficciones', '978-0-8021-3037-8', 13.50, 1944, 4),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Ficciones', '978-0-8021-3037-8', 13.50, 1944, 4), [42001-232]
+2025-11-19 17:26:51.532271+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'El Aleph', '978-0-525-43448-6', 12.25, 1949, 4)"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'El Aleph', '978-0-525-43448-6', 12.25, 1949, 4)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('El Aleph', '978-0-525-43448-6', 12.25, 1949, 4) [42001-232]
+2025-11-19 17:26:51.532271+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES[*]"; se esperaba "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"
+Syntax error in SQL statement "INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES[*]"; expected "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+INSERT INTO libros (titulo, isbn, precio, anio_publicacion, autor_id) VALUES [42001-232]
+2025-11-19 17:26:51.533272+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Rayuela', '978-84-376-0497-8', 17.99, 1963, 5),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Rayuela', '978-84-376-0497-8', 17.99, 1963, 5),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Rayuela', '978-84-376-0497-8', 17.99, 1963, 5), [42001-232]
+2025-11-19 17:26:51.533272+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Bestiario', '978-84-376-0498-5', 11.50, 1951, 5),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Bestiario', '978-84-376-0498-5', 11.50, 1951, 5),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Bestiario', '978-84-376-0498-5', 11.50, 1951, 5), [42001-232]
+2025-11-19 17:26:51.534272+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Final del juego', '978-84-376-0499-2', 10.99, 1956, 5)"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Final del juego', '978-84-376-0499-2', 10.99, 1956, 5)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Final del juego', '978-84-376-0499-2', 10.99, 1956, 5) [42001-232]
+2025-11-20 18:08:45.834267+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT a.nombre,a.apellido,a.nacionalidad,\000acount (l.id) as total_libros,\000aAVG(l.precio) as precio_promedio,\000aMIN(l.anio_publicacion) as primer_libro\000a[*]MAX(l.anio_publicacion) as ultimo_libro\000aFROM autores a\000aLEFT JOIN libros l ON a.id = l.autor_id\000aGROUP BY a.id,a.nombre,a.apellido,a.nacionalidad\000a\000a"
+Syntax error in SQL statement "SELECT a.nombre,a.apellido,a.nacionalidad,\000acount (l.id) as total_libros,\000aAVG(l.precio) as precio_promedio,\000aMIN(l.anio_publicacion) as primer_libro\000a[*]MAX(l.anio_publicacion) as ultimo_libro\000aFROM autores a\000aLEFT JOIN libros l ON a.id = l.autor_id\000aGROUP BY a.id,a.nombre,a.apellido,a.nacionalidad\000a\000a"; SQL statement:
+SELECT a.nombre,a.apellido,a.nacionalidad,
+count (l.id) as total_libros,
+AVG(l.precio) as precio_promedio,
+MIN(l.anio_publicacion) as primer_libro
+MAX(l.anio_publicacion) as ultimo_libro
+FROM autores a
+LEFT JOIN libros l ON a.id = l.autor_id
+GROUP BY a.id,a.nombre,a.apellido,a.nacionalidad
+
+ [42000-232]
+2025-11-20 18:09:30.677462+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT a.nombre,a.apellido,a.nacionalidad,\000acount (l.id) as total_libros,\000aAVG(l.precio) as precio_promedio,\000aMIN(l.anio_publicacion) as primer_libro\000a[*]MAX(l.anio_publicacion) as ultimo_libro\000aFROM autores a\000aLEFT JOIN libros l ON a.id = l.autor_id\000aGROUP BY a.id,a.nombre,a.apellido,a.nacionalidad\000aORDER BY total_libros DESC\000a"
+Syntax error in SQL statement "SELECT a.nombre,a.apellido,a.nacionalidad,\000acount (l.id) as total_libros,\000aAVG(l.precio) as precio_promedio,\000aMIN(l.anio_publicacion) as primer_libro\000a[*]MAX(l.anio_publicacion) as ultimo_libro\000aFROM autores a\000aLEFT JOIN libros l ON a.id = l.autor_id\000aGROUP BY a.id,a.nombre,a.apellido,a.nacionalidad\000aORDER BY total_libros DESC\000a"; SQL statement:
+SELECT a.nombre,a.apellido,a.nacionalidad,
+count (l.id) as total_libros,
+AVG(l.precio) as precio_promedio,
+MIN(l.anio_publicacion) as primer_libro
+MAX(l.anio_publicacion) as ultimo_libro
+FROM autores a
+LEFT JOIN libros l ON a.id = l.autor_id
+GROUP BY a.id,a.nombre,a.apellido,a.nacionalidad
+ORDER BY total_libros DESC
+ [42000-232]
+2025-11-20 18:10:50.174497+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT a.nombre,a.apellido,a.nacionalidad,\000acount (l.id) as total_libros,\000aAVG(l.precio) as precio_promedio,\000aMIN(l.anio_publicacion) as primer_libro\000a[*]MAX(l.anio_publicacion) as ultimo_libro\000aFROM autores a\000aLEFT JOIN libros l ON a.id = l.autor_id\000aGROUP BY a.nombre,a.apellido,a.nacionalidad\000aORDER BY total_libros DESC\000a"
+Syntax error in SQL statement "SELECT a.nombre,a.apellido,a.nacionalidad,\000acount (l.id) as total_libros,\000aAVG(l.precio) as precio_promedio,\000aMIN(l.anio_publicacion) as primer_libro\000a[*]MAX(l.anio_publicacion) as ultimo_libro\000aFROM autores a\000aLEFT JOIN libros l ON a.id = l.autor_id\000aGROUP BY a.nombre,a.apellido,a.nacionalidad\000aORDER BY total_libros DESC\000a"; SQL statement:
+SELECT a.nombre,a.apellido,a.nacionalidad,
+count (l.id) as total_libros,
+AVG(l.precio) as precio_promedio,
+MIN(l.anio_publicacion) as primer_libro
+MAX(l.anio_publicacion) as ultimo_libro
+FROM autores a
+LEFT JOIN libros l ON a.id = l.autor_id
+GROUP BY a.nombre,a.apellido,a.nacionalidad
+ORDER BY total_libros DESC
+ [42000-232]

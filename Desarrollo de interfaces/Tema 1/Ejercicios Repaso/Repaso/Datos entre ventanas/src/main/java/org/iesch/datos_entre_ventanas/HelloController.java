@@ -15,7 +15,7 @@ import java.util.List;
 
 public class HelloController {
     List<String> lista=new ArrayList<>();
-    public static String localidad;
+    public static String localidadparametro;
     Connection con = DriverManager.getConnection(url, user, clave);
     ResultSet rs;
     static String url = "jdbc:mysql://localhost:3306/datos";
@@ -47,20 +47,21 @@ public class HelloController {
 
     }
     public void AccionBoton(){
+        combo();
         Stage stage=new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view-tabla.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view1.fxml"));
         Scene scene = null;
         try {
-            scene = new Scene(fxmlLoader.load(), 622, 487);
+            scene = new Scene(fxmlLoader.load(), 600, 430);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        stage.setTitle("Personas de "+localidad);
+        stage.setTitle("Personas de "+localidadparametro);
         stage.setScene(scene);
         stage.show();
     }
+
     public void combo(){
-        System.out.println(localidadeslegir.getValue());
-        localidad=localidadeslegir.getValue();
+        localidadparametro=localidadeslegir.getValue();
     }
 }

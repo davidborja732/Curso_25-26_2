@@ -36,10 +36,11 @@ public class HelloController {
             audiofile[0] =new File(nombres.getValue()).toURI().toString();
             Media media = new Media(audiofile[0]);
             MediaPlayer mediaPlayer=new MediaPlayer(media);
+            mediaPlayer.stop();
             mediaPlayer.play();
             boton1.setOnAction(event1 -> mediaPlayer.play());
-            boton2.setOnAction(event2 -> mediaPlayer.pause());
-            boton3.setOnAction(event3-> mediaPlayer.stop());
+            boton2.setOnAction(event1 -> mediaPlayer.pause());
+            boton3.setOnAction(event1-> mediaPlayer.stop());
         });
     }
 }
