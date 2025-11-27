@@ -26,7 +26,10 @@ class _CounterScreenState extends State<CounterScreen> {
         )
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){contador++;},
+        onPressed: (){
+          setState(() {
+            contador++;
+          });},
         child: Icon(Icons.add),
         )
     );

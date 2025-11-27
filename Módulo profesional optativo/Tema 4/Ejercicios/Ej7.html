@@ -1,0 +1,26 @@
+<!--
+Haz un programa que cuando se presione una tecla, calcule cuantos DNIs de 4 cifras (del
+0001 al 9999) tienen esa letra y te mostrará los DNIs y sus letras en un elemento XHTML
+(Ejemplo, un <p>).
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+    <script>
+        let variabletexto = prompt("Dime la letra del abecedario");
+
+        while (Number.isInteger(Number(variabletexto)) || variabletexto.length !== 1 || !isNaN(Number(variabletexto))) {
+            alert("El valor solo puede ser UNA letra");
+            variabletexto = prompt("Dime la letra del abecedario");
+        }
+        const dnip = document.getElementById("dni");
+        dnip.innerText = variabletexto;
+    </script>
+</head>
+<body>
+    <p id="dni"></p>
+</body>
+</html>

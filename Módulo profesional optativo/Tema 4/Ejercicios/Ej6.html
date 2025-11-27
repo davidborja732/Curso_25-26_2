@@ -1,0 +1,38 @@
+<!--
+Realizar un programa con dos botones “Comenzar Saludos” y “Parar Saludos”. Al hacer
+click en “Comenzar Saludos”, lance un setInterval que cada 5 segundos muestre un alert con
+“Hola”. El botón “Parar Saludos” parará esa secuencia.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+    <script>
+        let nIntervId;
+        function lanzarsaludos(){
+            alert("Hola usuario")
+        }
+        function intervaloinicio(){
+            nIntervId=setInterval(lanzarsaludos,1000)
+        }
+        function intervalofin() {
+            clearInterval(nIntervId);
+            nIntervId = null;
+        }
+    </script>
+</head>
+<body>
+    <button id="iniciar">Iniciar</button>
+    <button id="acabar">Parar</button>
+    <script>
+        const botoniniciar=document.getElementById("iniciar");
+        const botonacabar=document.getElementById("acabar");
+        botoniniciar.addEventListener('click',intervaloinicio)
+        botonacabar.addEventListener('click',intervalofin)
+    </script>
+    
+    
+</body>
+</html>
