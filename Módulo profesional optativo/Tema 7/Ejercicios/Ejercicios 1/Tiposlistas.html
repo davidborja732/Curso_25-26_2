@@ -1,0 +1,353 @@
+<!DOCTYPE html> <!-- Documento HTML5 -->
+<html lang="es"> <!-- Idioma español -->
+<head> <!-- Cabecera del documento -->
+<meta charset="UTF-8"> <!-- Codificación UTF-8 -->
+<title>CRUD de listas en JavaScript</title> <!-- Título de la página -->
+<style>
+  /* Estilos mínimos para claridad */
+  body { font-family: Arial; padding: 16px; } /* Fuente y espaciado general */
+  h2 { margin-top: 24px; } /* Separación entre secciones */
+  .bloque { border: 1px solid #ccc; padding: 12px; margin-bottom: 16px; } /* Caja por sección */
+  .acciones { margin: 8px 0; } /* Espacio para botones */
+  button { margin-right: 8px; } /* Separación entre botones */
+  pre { background: #f7f7f7; padding: 8px; overflow-x: auto; } /* Área de salida con fondo */
+</style> <!-- Fin estilos -->
+</head> <!-- Fin cabecera -->
+<body> <!-- Inicio cuerpo -->
+
+<h1>CRUD de tipos de listas en JavaScript</h1> <!-- Encabezado principal -->
+
+<div class="bloque" id="arraySection"> <!-- Sección para Array -->
+  <h2>Array (lista indexada)</h2> <!-- Título de la sección -->
+  <div class="acciones"> <!-- Contenedor de acciones -->
+    <button id="arrCreate">Crear</button> <!-- Crear elementos iniciales -->
+    <button id="arrRead">Leer</button> <!-- Leer/mostrar contenido -->
+    <button id="arrUpdate">Actualizar</button> <!-- Actualizar un elemento -->
+    <button id="arrDelete">Eliminar</button> <!-- Eliminar elemento -->
+    <button id="arrClear">Limpiar</button> <!-- Vaciar lista -->
+  </div> <!-- Fin acciones -->
+  <pre id="arrOut"></pre> <!-- Área de salida -->
+</div> <!-- Fin sección Array -->
+
+<div class="bloque" id="setSection"> <!-- Sección para Set -->
+  <h2>Set (lista sin duplicados)</h2> <!-- Título de la sección -->
+  <div class="acciones"> <!-- Contenedor de acciones -->
+    <button id="setCreate">Crear</button> <!-- Crear elementos iniciales -->
+    <button id="setRead">Leer</button> <!-- Leer/mostrar contenido -->
+    <button id="setUpdate">Actualizar</button> <!-- Actualizar: reemplazar un valor -->
+    <button id="setDelete">Eliminar</button> <!-- Eliminar un valor -->
+    <button id="setClear">Limpiar</button> <!-- Vaciar lista -->
+  </div> <!-- Fin acciones -->
+  <pre id="setOut"></pre> <!-- Área de salida -->
+</div> <!-- Fin sección Set -->
+
+<div class="bloque" id="mapSection"> <!-- Sección para Map -->
+  <h2>Map (lista clave-valor ordenada)</h2> <!-- Título de la sección -->
+  <div class="acciones"> <!-- Contenedor de acciones -->
+    <button id="mapCreate">Crear</button> <!-- Crear pares clave-valor -->
+    <button id="mapRead">Leer</button> <!-- Leer/mostrar contenido -->
+    <button id="mapUpdate">Actualizar</button> <!-- Actualizar valor por clave -->
+    <button id="mapDelete">Eliminar</button> <!-- Eliminar por clave -->
+    <button id="mapClear">Limpiar</button> <!-- Vaciar lista -->
+  </div> <!-- Fin acciones -->
+  <pre id="mapOut"></pre> <!-- Área de salida -->
+</div> <!-- Fin sección Map -->
+
+<div class="bloque" id="weaksetSection"> <!-- Sección para WeakSet -->
+  <h2>WeakSet (referencias débiles, solo objetos)</h2> <!-- Título de la sección -->
+  <div class="acciones"> <!-- Contenedor de acciones -->
+    <button id="weakSetCreate">Crear</button> <!-- Crear objetos iniciales -->
+    <button id="weakSetRead">Leer</button> <!-- Comprobar pertenencia -->
+    <button id="weakSetUpdate">Actualizar</button> <!-- Reemplazar objeto simulado -->
+    <button id="weakSetDelete">Eliminar</button> <!-- Eliminar objeto -->
+    <button id="weakSetClear">Limpiar</button> <!-- "Limpiar" simulando eliminación de referencias -->
+  </div> <!-- Fin acciones -->
+  <pre id="weakSetOut"></pre> <!-- Área de salida -->
+  <p>Nota: WeakSet no es iterable; no se puede listar directamente su contenido.</p> <!-- Aclaración -->
+</div> <!-- Fin sección WeakSet -->
+
+<div class="bloque" id="weakmapSection"> <!-- Sección para WeakMap -->
+  <h2>WeakMap (clave-valor con claves objeto y referencias débiles)</h2> <!-- Título de la sección -->
+  <div class="acciones"> <!-- Contenedor de acciones -->
+    <button id="weakMapCreate">Crear</button> <!-- Crear pares clave-valor -->
+    <button id="weakMapRead">Leer</button> <!-- Comprobar por clave -->
+    <button id="weakMapUpdate">Actualizar</button> <!-- Actualizar valor por clave -->
+    <button id="weakMapDelete">Eliminar</button> <!-- Eliminar por clave -->
+    <button id="weakMapClear">Limpiar</button> <!-- "Limpiar" soltando referencias -->
+  </div> <!-- Fin acciones -->
+  <pre id="weakMapOut"></pre> <!-- Área de salida -->
+  <p>Nota: WeakMap no es iterable; no se puede listar directamente su contenido.</p> <!-- Aclaración -->
+</div> <!-- Fin sección WeakMap -->
+
+<script>
+/* ----- Estado global de las listas ----- */
+let arr = []; // Array para operaciones CRUD
+let miSet = new Set(); // Set para operaciones CRUD
+let miMap = new Map(); // Map para operaciones CRUD
+
+// Para WeakSet/WeakMap necesitamos objetos referenciables
+let weakSet = new WeakSet(); // WeakSet: solo objetos, no iterable
+let weakMap = new WeakMap(); // WeakMap: claves objeto, no iterable
+
+// Objetos de ejemplo que reutilizaremos (para poder "leer" pertenencias)
+let objA = { id: 1, nombre: 'A' }; // Objeto A ejemplo
+let objB = { id: 2, nombre: 'B' }; // Objeto B ejemplo
+
+/* ----- Helpers de salida ----- */
+const out = { // Mapa de áreas de salida por sección
+  arr: document.getElementById('arrOut'), // Salida Array
+  set: document.getElementById('setOut'), // Salida Set
+  map: document.getElementById('mapOut'), // Salida Map
+  wset: document.getElementById('weakSetOut'), // Salida WeakSet
+  wmap: document.getElementById('weakMapOut') // Salida WeakMap
+};
+
+function printArray() { // Muestra el contenido del array
+  out.arr.textContent = JSON.stringify(arr, null, 2); // Formatea a JSON legible
+}
+
+function printSet() { // Muestra contenido del set convirtiéndolo a array
+  out.set.textContent = JSON.stringify(Array.from(miSet), null, 2); // Array.from para visualizar
+}
+
+function printMap() { // Muestra contenido del map como array de pares
+  out.map.textContent = JSON.stringify(Array.from(miMap.entries()), null, 2); // entries() a array
+}
+
+function printWeakSetInfo() { // Muestra información verificable del WeakSet
+  const info = { // Objeto con resultados de has()
+    hasObjA: weakSet.has(objA), // ¿Contiene objA?
+    hasObjB: weakSet.has(objB)  // ¿Contiene objB?
+  };
+  out.wset.textContent = JSON.stringify(info, null, 2); // Imprime resultados
+}
+
+function printWeakMapInfo() { // Muestra información verificable del WeakMap
+  const info = { // Objeto con resultados get()
+    valObjA: weakMap.get(objA) ?? null, // Valor asociado a objA (o null)
+    valObjB: weakMap.get(objB) ?? null  // Valor asociado a objB (o null)
+  };
+  out.wmap.textContent = JSON.stringify(info, null, 2); // Imprime resultados
+}
+
+/* ----- CRUD para Array ----- */
+// Crear: inicializa el array con valores de ejemplo
+document.getElementById('arrCreate').addEventListener('click', () => { // Click en "Crear"
+  arr = ['tarea1', 'tarea2', 'tarea3']; // Asigna valores de ejemplo
+  printArray(); // Muestra el estado
+});
+
+// Leer: simplemente imprime el array actual
+document.getElementById('arrRead').addEventListener('click', () => { // Click en "Leer"
+  printArray(); // Muestra el estado
+});
+
+// Actualizar: cambia un elemento por índice (ej: índice 1)
+document.getElementById('arrUpdate').addEventListener('click', () => { // Click en "Actualizar"
+  if (arr.length === 0) { // Si está vacío, no hay qué actualizar
+    out.arr.textContent = 'Array vacío, crea datos primero.'; // Mensaje informativo
+    return; // Sale
+  }
+  const idx = 1; // Índice a actualizar (ejemplo fijo)
+  if (idx < arr.length) { // Verifica que existe el índice
+    arr[idx] = arr[idx] + ' (editada)'; // Modifica el valor
+  }
+  printArray(); // Muestra el nuevo estado
+});
+
+// Eliminar: borra el último elemento
+document.getElementById('arrDelete').addEventListener('click', () => { // Click en "Eliminar"
+  if (arr.length === 0) { // Si no hay elementos
+    out.arr.textContent = 'Array vacío, nada que eliminar.'; // Mensaje
+    return; // Sale
+  }
+  arr.pop(); // Elimina el último elemento
+  printArray(); // Muestra el estado
+});
+
+// Limpiar: vacía completamente el array
+document.getElementById('arrClear').addEventListener('click', () => { // Click en "Limpiar"
+  arr = []; // Reinicia el array
+  printArray(); // Muestra el estado (vacío)
+});
+
+/* ----- CRUD para Set ----- */
+// Crear: inicializa el Set con valores (duplicados se ignoran)
+document.getElementById('setCreate').addEventListener('click', () => { // Click en "Crear"
+  miSet = new Set(['rojo', 'verde', 'azul', 'rojo']); // Crea set (rojo duplicado)
+  printSet(); // Muestra el estado
+});
+
+// Leer: imprime el contenido actual del Set
+document.getElementById('setRead').addEventListener('click', () => { // Click en "Leer"
+  printSet(); // Muestra el estado
+});
+
+// Actualizar: "reemplaza" un valor (elimina y añade uno nuevo)
+document.getElementById('setUpdate').addEventListener('click', () => { // Click en "Actualizar"
+  if (miSet.size === 0) { // Si está vacío
+    out.set.textContent = 'Set vacío, crea datos primero.'; // Mensaje
+    return; // Sale
+  }
+  if (miSet.has('verde')) { // Si existe 'verde'
+    miSet.delete('verde'); // Elimina 'verde'
+    miSet.add('verde (editado)'); // Añade versión editada
+  } else { // Si no existe 'verde'
+    // Tomamos un elemento cualquiera y lo marcamos como editado
+    const first = miSet.values().next().value; // Obtiene primer valor
+    miSet.delete(first); // Lo elimina
+    miSet.add(String(first) + ' (editado)'); // Añade editado
+  }
+  printSet(); // Muestra el estado
+});
+
+// Eliminar: borra un elemento concreto (ej: 'azul')
+document.getElementById('setDelete').addEventListener('click', () => { // Click en "Eliminar"
+  if (miSet.size === 0) { // Si vacío
+    out.set.textContent = 'Set vacío, nada que eliminar.'; // Mensaje
+    return; // Sale
+  }
+  if (!miSet.delete('azul')) { // Intenta eliminar 'azul'; si no está
+    // Elimina el primer elemento del set
+    const first = miSet.values().next().value; // Primer valor
+    miSet.delete(first); // Elimina ese valor
+  }
+  printSet(); // Muestra el estado
+});
+
+// Limpiar: vacía completamente el Set
+document.getElementById('setClear').addEventListener('click', () => { // Click en "Limpiar"
+  miSet.clear(); // Limpia el set
+  printSet(); // Muestra el estado (vacío)
+});
+
+/* ----- CRUD para Map ----- */
+// Crear: inicializa el Map con pares clave-valor
+document.getElementById('mapCreate').addEventListener('click', () => { // Click en "Crear"
+  miMap = new Map([ // Crea map con pares
+    ['id1', { tarea: 'comprar', done: false }], // Par 1
+    ['id2', { tarea: 'limpiar', done: true }],  // Par 2
+    ['id3', { tarea: 'estudiar', done: false }] // Par 3
+  ]);
+  printMap(); // Muestra el estado
+});
+
+// Leer: imprime el contenido actual del Map
+document.getElementById('mapRead').addEventListener('click', () => { // Click en "Leer"
+  printMap(); // Muestra el estado
+});
+
+// Actualizar: modifica el valor asociado a una clave (ej: 'id2')
+document.getElementById('mapUpdate').addEventListener('click', () => { // Click en "Actualizar"
+  if (miMap.size === 0) { // Si vacío
+    out.map.textContent = 'Map vacío, crea datos primero.'; // Mensaje
+    return; // Sale
+  }
+  if (miMap.has('id2')) { // Si existe 'id2'
+    const val = miMap.get('id2'); // Obtiene valor actual
+    miMap.set('id2', { ...val, done: !val.done, tarea: val.tarea + ' (editada)' }); // Actualiza
+  } else { // Si no existe 'id2', actualiza el primero
+    const firstKey = miMap.keys().next().value; // Primera clave
+    const firstVal = miMap.get(firstKey); // Valor actual
+    miMap.set(firstKey, { ...firstVal, tarea: String(firstVal.tarea) + ' (editada)' }); // Actualiza
+  }
+  printMap(); // Muestra el estado
+});
+
+// Eliminar: borra por clave específica (ej: 'id3')
+document.getElementById('mapDelete').addEventListener('click', () => { // Click en "Eliminar"
+  if (miMap.size === 0) { // Si vacío
+    out.map.textContent = 'Map vacío, nada que eliminar.'; // Mensaje
+    return; // Sale
+  }
+  if (!miMap.delete('id3')) { // Intenta eliminar 'id3'; si no existe
+    const firstKey = miMap.keys().next().value; // Primera clave
+    miMap.delete(firstKey); // Elimina por esa clave
+  }
+  printMap(); // Muestra el estado
+});
+
+// Limpiar: vacía completamente el Map
+document.getElementById('mapClear').addEventListener('click', () => { // Click en "Limpiar"
+  miMap.clear(); // Limpia el map
+  printMap(); // Muestra el estado (vacío)
+});
+
+/* ----- CRUD para WeakSet ----- */
+// Crear: añade objetos al WeakSet
+document.getElementById('weakSetCreate').addEventListener('click', () => { // Click en "Crear"
+  weakSet.add(objA); // Añade objeto A
+  weakSet.add(objB); // Añade objeto B
+  printWeakSetInfo(); // Muestra pertenencia de objetos
+});
+
+// Leer: verifica si los objetos están en el WeakSet
+document.getElementById('weakSetRead').addEventListener('click', () => { // Click en "Leer"
+  printWeakSetInfo(); // Muestra pertenencia
+});
+
+// Actualizar: "reemplaza" objB por una versión modificada
+document.getElementById('weakSetUpdate').addEventListener('click', () => { // Click en "Actualizar"
+  if (!weakSet.has(objB)) { // Si objB no está
+    out.wset.textContent = 'objB no presente, crea datos primero.'; // Mensaje
+    return; // Sale
+  }
+  weakSet.delete(objB); // Elimina referencia anterior
+  objB = { id: 2, nombre: 'B (editado)' }; // Crea nuevo objeto editado
+  weakSet.add(objB); // Añade nueva referencia
+  printWeakSetInfo(); // Muestra pertenencia
+});
+
+// Eliminar: elimina objA del WeakSet
+document.getElementById('weakSetDelete').addEventListener('click', () => { // Click en "Eliminar"
+  weakSet.delete(objA); // Elimina objA si estaba
+  printWeakSetInfo(); // Muestra pertenencia
+});
+
+// Limpiar: "simula" limpiar soltando referencias (GC lo gestionará)
+document.getElementById('weakSetClear').addEventListener('click', () => { // Click en "Limpiar"
+  // No existe clear(); liberamos referencias conocidas
+  weakSet.delete(objA); // Intenta eliminar objA
+  weakSet.delete(objB); // Intenta eliminar objB
+  printWeakSetInfo(); // Muestra estado
+});
+
+/* ----- CRUD para WeakMap ----- */
+// Crear: establece valores para claves objeto
+document.getElementById('weakMapCreate').addEventListener('click', () => { // Click en "Crear"
+  weakMap.set(objA, { role: 'admin' }); // Asocia valor a objA
+  weakMap.set(objB, { role: 'user' }); // Asocia valor a objB
+  printWeakMapInfo(); // Muestra valores asociados
+});
+
+// Leer: obtiene valores por clave objeto
+document.getElementById('weakMapRead').addEventListener('click', () => { // Click en "Leer"
+  printWeakMapInfo(); // Muestra valores
+});
+
+// Actualizar: cambia el valor asociado a objB
+document.getElementById('weakMapUpdate').addEventListener('click', () => { // Click en "Actualizar"
+  const val = weakMap.get(objB); // Obtiene valor actual de objB
+  if (!val) { // Si no hay valor
+    out.wmap.textContent = 'objB no presente, crea datos primero.'; // Mensaje
+    return; // Sale
+  }
+  weakMap.set(objB, { ...val, role: 'power-user' }); // Actualiza valor
+  printWeakMapInfo(); // Muestra valores
+});
+
+// Eliminar: elimina la entrada de objA
+document.getElementById('weakMapDelete').addEventListener('click', () => { // Click en "Eliminar"
+  weakMap.delete(objA); // Elimina por clave objeto
+  printWeakMapInfo(); // Muestra valores
+});
+
+// Limpiar: "simula" limpiar soltando referencias conocidas
+document.getElementById('weakMapClear').addEventListener('click', () => { // Click en "Limpiar"
+  weakMap.delete(objA); // Elimina objA si existía
+  weakMap.delete(objB); // Elimina objB si existía
+  printWeakMapInfo(); // Muestra valores
+});
+</script> <!-- Fin script -->
+</body> <!-- Fin cuerpo -->
+</html> <!-- Fin documento -->

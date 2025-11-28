@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- Declaración del tipo de documento HTML5 -->
+<html lang="es">
+<!-- Etiqueta raíz del documento con idioma español -->
+<head>
+    <!-- Sección de metadatos del documento -->
+    <meta charset="UTF-8">
+    <!-- Define la codificación de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Asegura que el formulario sea responsive en dispositivos móviles -->
+    <title>Formulario Completo</title>
+    <!-- Título que aparece en la pestaña del navegador -->
+</head>
+<body>
+    <!-- Inicio del cuerpo del documento -->
+    <form action="#" method="POST">
+        <!-- Formulario que enviaría datos por POST a la URL especificada -->
+        <h1>Formulario Completo</h1>
+        <!-- Título principal -->
+
+        <!-- CAMPO DE TEXTO -->
+        <div>
+            <!-- Grupo de formulario para organizarlo mejor -->
+            <label for="nombre">Nombre Completo:</label>
+            <!-- Etiqueta asociada al campo nombre -->
+            <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+            <!-- Input de texto con placeholder, id y atributo required -->
+        </div>
+
+        <!-- CAMPO DE EMAIL -->
+        <div>
+            <label for="email">Correo Electrónico:</label>
+            <!-- Etiqueta para email -->
+            <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+            <!-- Input de tipo email con validación automática -->
+        </div>
+
+        <!-- CAMPO DE TELÉFONO -->
+        <div>
+            <label for="telefono">Teléfono:</label>
+            <!-- Etiqueta para teléfono -->
+            <input type="tel" id="telefono" name="telefono" placeholder="+34 123 456 789">
+            <!-- Input de tipo tel para números de teléfono -->
+        </div>
+
+        <!-- CAMPO DE CONTRASEÑA -->
+        <div>
+            <label for="contraseña">Contraseña:</label>
+            <!-- Etiqueta para contraseña -->
+            <input type="password" id="contraseña" name="contraseña" placeholder="Mínimo 8 caracteres" required>
+            <!-- Input tipo password que oculta el texto ingresado -->
+        </div>
+
+        <!-- CAMPO DE NÚMERO -->
+        <div>
+            <label for="edad">Edad:</label>
+            <!-- Etiqueta para edad -->
+            <input type="number" id="edad" name="edad" min="18" max="120" placeholder="18-120">
+            <!-- Input número con valores mínimo y máximo -->
+        </div>
+
+        <!-- CAMPO DE FECHA -->
+        <div>
+            <label for="fecha">Fecha de Nacimiento:</label>
+            <!-- Etiqueta para fecha -->
+            <input type="date" id="fecha" name="fecha">
+            <!-- Input tipo date con selector de calendario -->
+        </div>
+
+        <!-- CAMPO DE RANGO -->
+        <div>
+            <label for="rango">Nivel de Satisfacción (0-10):</label>
+            <!-- Etiqueta para rango -->
+            <input type="range" id="rango" name="rango" min="0" max="10" value="5">
+            <!-- Input tipo range para seleccionar valores en un rango -->
+        </div>
+
+        <!-- CAMPO DE ARCHIVO -->
+        <div>
+            <label for="archivo">Cargar Archivo:</label>
+            <!-- Etiqueta para archivo -->
+            <input type="file" id="archivo" name="archivo" accept=".pdf,.jpg,.png">
+            <!-- Input para subir archivos con tipos específicos -->
+        </div>
+
+        <!-- CAMPO SELECT (DESPLEGABLE) -->
+        <div>
+            <label for="pais">País:</label>
+            <!-- Etiqueta para el select -->
+            <select id="pais" name="pais" required>
+                <!-- Select desplegable con opciones -->
+                <option value="">-- Seleccione un país --</option>
+                <!-- Opción por defecto vacía -->
+                <option value="españa">España</option>
+                <!-- Opción 1 -->
+                <option value="mexico">México</option>
+                <!-- Opción 2 -->
+                <option value="argentina">Argentina</option>
+                <!-- Opción 3 -->
+                <option value="colombia">Colombia</option>
+                <!-- Opción 4 -->
+            </select>
+        </div>
+
+        <!-- CAMPO TEXTAREA (ÁREA DE TEXTO) -->
+        <div>
+            <label for="comentarios">Comentarios:</label>
+            <!-- Etiqueta para el textarea -->
+            <textarea id="comentarios" name="comentarios" placeholder="Escriba sus comentarios aquí..."></textarea>
+            <!-- Área de texto para párrafos largos -->
+        </div>
+
+        <!-- CHECKBOXES (CASILLAS DE VERIFICACIÓN) -->
+        <div>
+            <label>¿Cuáles son tus intereses?</label>
+            <!-- Etiqueta principal para checkboxes -->
+            <div>
+                <!-- Contenedor de checkboxes -->
+                <input type="checkbox" id="tecnologia" name="intereses" value="tecnologia">
+                <!-- Checkbox 1 -->
+                <label for="tecnologia">Tecnología</label>
+                <!-- Etiqueta para checkbox 1 -->
+            </div>
+            <div>
+                <input type="checkbox" id="deportes" name="intereses" value="deportes">
+                <!-- Checkbox 2 -->
+                <label for="deportes">Deportes</label>
+                <!-- Etiqueta para checkbox 2 -->
+            </div>
+            <div>
+                <input type="checkbox" id="musica" name="intereses" value="musica">
+                <!-- Checkbox 3 -->
+                <label for="musica">Música</label>
+                <!-- Etiqueta para checkbox 3 -->
+            </div>
+        </div>
+
+        <!-- RADIO BUTTONS (BOTONES DE OPCIÓN) -->
+        <div>
+            <label>Género:</label>
+            <!-- Etiqueta principal para radios -->
+            <div>
+                <!-- Contenedor de radios -->
+                <input type="radio" id="masculino" name="genero" value="masculino">
+                <!-- Radio button 1 -->
+                <label for="masculino">Masculino</label>
+                <!-- Etiqueta para radio 1 -->
+            </div>
+            <div>
+                <input type="radio" id="femenino" name="genero" value="femenino">
+                <!-- Radio button 2 -->
+                <label for="femenino">Femenino</label>
+                <!-- Etiqueta para radio 2 -->
+            </div>
+            <div>
+                <input type="radio" id="otro" name="genero" value="otro">
+                <!-- Radio button 3 -->
+                <label for="otro">Otro</label>
+                <!-- Etiqueta para radio 3 -->
+            </div>
+        </div>
+
+        <!-- CHECKBOX PARA ACEPTAR TÉRMINOS -->
+        <div>
+            <input type="checkbox" id="terminos" name="terminos" required>
+            <!-- Checkbox para aceptar términos -->
+            <label for="terminos">Acepto los términos y condiciones</label>
+            <!-- Etiqueta para términos -->
+        </div>
+
+        <!-- BOTÓN DE ENVÍO -->
+        <button type="submit">Enviar Formulario</button>
+        <!-- Botón para enviar el formulario -->
+
+        <!-- BOTÓN DE RESET -->
+        <button type="reset">Limpiar Formulario</button>
+        <!-- Botón para limpiar todos los campos -->
+    </form>
+</body>
+<!-- Cierre del cuerpo del documento -->
+</html>
+<!-- Cierre del documento HTML -->

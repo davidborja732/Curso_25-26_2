@@ -28,23 +28,18 @@
                 'Matemáticas', 'Inglés', 'Química', 'Recreo','Programación',
                 'Historia', 'Lengua'
             ]
-};
-
-
+        };
         function generarHorario() {
             let tabla = "<table border='1'>";
-
             // Cabecera: primera columna "Horario" + días
             tabla += "<tr><th>Horario</th>";
-            for (let d of diasSemana) {
-                tabla += `<th>${d}</th>`;
+            for (let dia of diasSemana) {
+                tabla += `<th>${dia}</th>`;
             }
             tabla += "</tr>";
-
             // Generar horarios
             let horaInicio = new Date(0,0,0,15,45); // 15:45
             let filas = [];
-
             while (horaInicio.getHours() < 21 || (horaInicio.getHours() === 21 && horaInicio.getMinutes() <= 20)) {
                 let horaFin = new Date(horaInicio.getTime() + 50*60000); // +50 min
                 filas.push({
@@ -60,7 +55,6 @@
                     horaInicio = new Date(horaFin.getTime() + 5*60000);
                 }
             }
-
             // Pintar filas
             for (let i = 0; i < filas.length; i++) {
                 tabla += "<tr>";
@@ -78,11 +72,9 @@
                 }
                 tabla += "</tr>";
             }
-
             tabla += "</table>";
             return tabla;
         }
-
         document.addEventListener("DOMContentLoaded", () => {
             document.body.innerHTML += generarHorario();
         });

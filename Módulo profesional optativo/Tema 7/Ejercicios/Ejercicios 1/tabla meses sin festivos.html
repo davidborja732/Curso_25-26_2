@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendario mensual</title>
+    <script>
+        // Función que solicita al usuario el mes a mostrar
+        function solicitarMes() {
+            const mes = prompt("¿Qué mes deseas ver? (1-12):", new Date().getMonth() + 1);
+            if (mes && mes >= 1 && mes <= 12) {
+                const año = new Date().getFullYear();
+                document.body.innerHTML = generarCalendario(mes, año);
+            } else if (mes !== null) {
+                alert("Por favor, ingresa un número entre 1 y 12");
+                solicitarMes();
+            }
+        }
+        
+        window.addEventListener("DOMContentLoaded", solicitarMes);
+        
+        // Función que genera la tabla HTML del calendario
+        function generarCalendario(mes, año = new Date().getFullYear()) {
+            const nombresMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                                 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+            const diasSemana = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+            
+            let tabla = `<h2>${nombresMeses[mes - 1]} ${año}</h2>`;
+            tabla += "<table border='1' style='text-align:center; width:100%; border-collapse:collapse;'>";
+            
+            tabla += "<tr>";
+            for (let dia of diasSemana) {
+                tabla += `<th style='padding:10px; background-color:#ddd;'>${dia}</th>`;
+            }
+            tabla += "</tr>";
+            
+            let primerDia = new Date(año, mes - 1, 1).getDay();
+            primerDia = (primerDia === 0) ? 6 : primerDia - 1;
+            
+            let ultimoDia = new Date(año, mes, 0).getDate();
+            let dia = 1;
+            
+            while (dia <= ultimoDia) {
+                tabla += "<tr>";
+                for (let i = 0; i < 7; i++) {
+                    if (dia === 1 && i < primerDia) {
+                        tabla += "<td></td>";
+                    } else if (dia <= ultimoDia) {
+                        let esFinSemana = (i === 5 || i === 6);
+                        let estilo = esFinSemana ? 'background-color:#f0f0f0;' : '';
+                        tabla += `<td style='padding:10px; ${estilo}'>${dia}</td>`;
+                        dia++;
+                    } else {
+                        tabla += "<td></td>";
+                    }
+                }
+                tabla += "</tr>";
+            }
+            
+            tabla += "</table>";
+            return tabla;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const mes = parseInt(params.get('mes')) || new Date().getMonth() + 1;
+            const año = parseInt(params.get('año')) || new Date().getFullYear();
+            document.body.innerHTML += generarCalendario(mes, año);
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

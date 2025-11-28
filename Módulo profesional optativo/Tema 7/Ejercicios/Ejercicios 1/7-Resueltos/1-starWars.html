@@ -48,7 +48,6 @@
   <h1>Personajes de Star Wars</h1>
   <div id="characters"></div>
   <div id="details"></div>
-
   <script>
     // Obtener lista de personajes desde la API
     fetch("https://swapi.dev/api/people/")
@@ -59,7 +58,6 @@
       .then(data => {
         const characters = data.results;
         const container = document.getElementById("characters");
-
         // Crear una tarjeta por personaje
         characters.forEach(person => {
           const card = document.createElement("div");
@@ -76,41 +74,31 @@
     // Mostrar detalles del personaje seleccionado
     function showDetails(person) {
         const details = document.getElementById("details");
-  
         details.innerHTML = ""; // Limpiar contenido previo
-
         const title = document.createElement("h2");
         title.textContent = person.name;
         details.appendChild(title);
-
         const p1 = document.createElement("p");
         p1.innerHTML = "<strong>Altura:</strong> " + person.height + " cm";
         details.appendChild(p1);
-
         const p2 = document.createElement("p");
         p2.innerHTML = "<strong>Peso:</strong> " + person.mass + " kg";
         details.appendChild(p2);
-
         const p3 = document.createElement("p");
         p3.innerHTML = "<strong>Color de cabello:</strong> " + person.hair_color;
         details.appendChild(p3);
-
         const p4 = document.createElement("p");
         p4.innerHTML = "<strong>Color de piel:</strong> " + person.skin_color;
         details.appendChild(p4);
-
         const p5 = document.createElement("p");
         p5.innerHTML = "<strong>Color de ojos:</strong> " + person.eye_color;
         details.appendChild(p5);
-
         const p6 = document.createElement("p");
         p6.innerHTML = "<strong>Año de nacimiento:</strong> " + person.birth_year;
         details.appendChild(p6);
-
         const p7 = document.createElement("p");
         p7.innerHTML = "<strong>Género:</strong> " + person.gender;
         details.appendChild(p7);
-
     }
   </script>
 </body>

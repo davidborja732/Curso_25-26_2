@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora sencilla</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      gap: 10px;
+      width: max-content;
+    }
+    button {
+      padding: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Calculadora sencilla</h2>
+<div class="grid" id="teclado">
+  <!-- Botones de la calculadora -->
+  <button>1</button><button>2</button><button>3</button><button>+</button>
+  <button>4</button><button>5</button><button>6</button><button>-</button>
+  <button>7</button><button>8</button><button>9</button><button>*</button>
+  <button>0</button><button>=</button><button>/</button><button>C</button>
+</div>
+
+<script>
+// Variables para almacenar el estado actual
+let primerNumero = "";     // Acumula los dígitos del primer número
+let operacion = "";        // Guarda la operación (+, -, *, /)
+let segundoNumero = "";    // Acumula los dígitos del segundo número
+
+// Función que gestiona cada pulsación
+function manejarClick(valor) {
+  if (!isNaN(valor)) { // Si es un número
+    if (operacion === "") {
+      primerNumero += valor; // Acumula en el primer número
+      alert(primerNumero);   // Muestra el número actual
+    } else {
+      segundoNumero += valor; // Acumula en el segundo número
+      alert(`${primerNumero} ${operacion} ${segundoNumero}`); // Muestra la operación parcial
+    }
+  } else if (["+", "-", "*", "/"].includes(valor)) { // Si es una operación
+    if (primerNumero === "") return; // No hace nada si no hay primer número
+    operacion = valor; // Guarda la operación
+    alert(`${primerNumero} ${operacion}`); // Muestra el número y la operación
+  } else if (valor === "=") { // Si es igual
+    if (primerNumero && operacion && segundoNumero) {
+      const resultado = eval(`${primerNumero}${operacion}${segundoNumero}`); // Calcula el resultado
+      alert(`${primerNumero} ${operacion} ${segundoNumero} = ${resultado}`); // Muestra la operación completa
+      primerNumero = "";
+      operacion = "";
+      segundoNumero = ""; // Resetea para nueva operación
+    }
+  } else if (valor === "C") { // Si es reset
+    primerNumero = "";
+    operacion = "";
+    segundoNumero = "";
+    alert("Calculadora reiniciada"); // Muestra mensaje de reinicio
+  }
+}
+
+// Asocia cada botón a la función de manejo
+document.querySelectorAll("#teclado button").forEach(btn => {
+  btn.addEventListener("click", () => manejarClick(btn.textContent));
+});
+</script>
+
+</body>
+</html>
