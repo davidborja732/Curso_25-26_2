@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Aquí definimos las rutas de archivos que el FileProvider puede compartir -->
+
+    <external-files-path
+        name="images"
+        path="Pictures" />
+    <!--
+        - external-files-path: indica que se usarán archivos dentro del directorio externo privado de la app.
+        - name="images": es un alias que identifica esta ruta (puede usarse en código).
+        - path="Pictures": subcarpeta dentro de getExternalFilesDir(Environment.DIRECTORY_PICTURES).
+          Es decir, las imágenes que guardes en esa carpeta podrán ser compartidas con otras apps
+          (por ejemplo, la cámara al tomar una foto).
+    -->
+</paths>
+

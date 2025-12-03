@@ -1,19 +1,49 @@
-// ignore: unnecessary_import
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 
 class MenuItem {
+
   final String titulo;
   final String subtitulo;
   final String link;
   final IconData icono;
-  MenuItem({ required this.titulo, required this.subtitulo, required this.link, required this.icono});
+
+  MenuItem({ 
+    required this.titulo, 
+    required this.subtitulo, 
+    required this.link, 
+    required this.icono,
+    });
+
 }
 
-final MenuItems=<MenuItem>[
-  MenuItem(titulo: 'Listas', subtitulo: 'Ejemplo de lista', link: '/listas', icono: Icons.list,),
-  MenuItem(titulo: 'Tarjetas', subtitulo: 'Ejemplo de tarjetas', link: '/tarjetas', icono: Icons.credit_card,),
-  MenuItem(titulo: 'Botones', subtitulo: 'Ejemplo de Botones', link: '/boton', icono: Icons.radio_button_checked,),
-  MenuItem(titulo: 'Alertas', subtitulo: 'Ejemplo de Alertas', link: '/alertas', icono: Icons.add_alert,),
+
+final menuItems = <MenuItem>[
+
+  MenuItem(
+    titulo: 'Botones', 
+    subtitulo: 'Muchos botones que ofrece Flutter', 
+    link: '/botones', 
+    icono: Icons.radio_button_checked,
+  ),
+
+  MenuItem(
+    titulo: 'Listas', 
+    subtitulo: 'Un simple ejemplo de Lista', 
+    link: '/listas', 
+    icono: Icons.list,
+  ),
+
+  MenuItem(
+    titulo: 'Tarjetas', 
+    subtitulo: 'Un simple ejemplo de tarjetas', 
+    link: '/tarjetas', 
+    icono: Icons.credit_card,
+  ),
+
+  MenuItem(
+    titulo: 'Alertas', 
+    subtitulo: 'Un simple ejemplo de alertas en Flutter', 
+    link: '/alertas', 
+    icono: Icons.alarm_add_outlined,
+  ),
 ];

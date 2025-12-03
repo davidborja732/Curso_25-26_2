@@ -3,13 +3,14 @@ package org.iesch.ejercicio_3;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.Pane;
 
 public class HelloController {
     @FXML
     private Pane panel;
     @FXML
-    private Button boton1;
+    private MenuBar bar;
     @FXML
     private Button boton2;
     @FXML

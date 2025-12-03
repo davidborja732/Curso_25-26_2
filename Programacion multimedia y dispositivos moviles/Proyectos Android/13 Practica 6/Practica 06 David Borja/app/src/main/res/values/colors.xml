@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="texto_principal">#000000</color>
+    <color name="menu_verde">#37C9BB</color>
+    <color name="menu_naranja">#FF9D43</color>
+    <color name="menu_rosa">#F36095</color>
+    <color name="menu_azul">#389EF2</color>
+    <color name="menu_amarillo">#ECD42D</color>
+    <color name="menu_gris">#A9B5AC</color>
+    <color name="menu_violeta">#A279ED</color>
+    <color name="menu_rojo">#F47268</color>
+    <color name="my_dark_primary">#AD8202</color>
+    <color name="splash_background">#FBE6DB</color>
+    <color name="blue_700">#1976D2</color>
+    <color name="blue_200">#90CAF9</color>
+    <color name="green_700">#388E3C</color>
+    <color name="green_100">#C8E6C9</color>
+    <color name="purple_700">#7B1FA2</color>
+    <color name="purple_200">#CE93D8</color>
+    <color name="orange_700">#F57C00</color>
+    <color name="orange_100">#FFE0B2</color>
+    <color name="red_700">#D32F2F</color>
+    <color name="red_200">#EF9A9A</color>
+    <color name="blue_900">#0D47A1</color>
+    <color name="green_900">#1B5E20</color>
+    <color name="purple_900">#4A148C</color>
+    <color name="orange_900">#E65100</color>
+    <color name="red_900">#B71C1C</color>
+    <color name="green_200">#0B3304</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="orange_200">#9E431A</color>
+    <color name="green">#009688</color>
+    <color name="bg_home_fragment">#ADE49A</color>
+    <color name="bg_profile_fragment">#E590EB</color>
+    <color name="bg_settings_fragment">#F0A7A1</color>
+    <color name="bg_bottom_menu">#4197E5</color>
+    <color name="Green">#6FF436</color>
+    <color name="purple">#4F1AA8</color>
+
+</resources>
