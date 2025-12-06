@@ -23,7 +23,7 @@ hilo que imprime por consola cada vez que muestres un mensaje de salida.
 public class Ej_4 {
     public static void main(String[] args) {
         //int tiempoMax = Integer.parseInt(args[0]);
-        int tiempoMax =13;
+        int tiempoMax =10;
         String[] mensajes = {"Programas", "Procesos", "Servicios", "Hilos"};
 
         Thread hilo = new Thread(() -> {
@@ -42,7 +42,7 @@ public class Ej_4 {
         long inicio = System.currentTimeMillis();
         hilo.start();
 
-        for (int i = 0; i < tiempoMax && hilo.isAlive(); i++) {
+        for (int i = 1; i < tiempoMax+1 && hilo.isAlive(); i++) {
             System.out.println("Hilo 1 esperando "+i+" s");
             try {
                 Thread.sleep(1000);
