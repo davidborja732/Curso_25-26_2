@@ -8,7 +8,7 @@ class GridScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('GridView con bordes')),
       body: GridView.count(
-        crossAxisCount: 2, // número de columnas
+        crossAxisCount: 2, 
         children: [
           Container(
             margin: const EdgeInsets.all(8),

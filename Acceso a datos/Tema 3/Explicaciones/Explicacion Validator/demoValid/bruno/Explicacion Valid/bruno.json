@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Explicacion Valid",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

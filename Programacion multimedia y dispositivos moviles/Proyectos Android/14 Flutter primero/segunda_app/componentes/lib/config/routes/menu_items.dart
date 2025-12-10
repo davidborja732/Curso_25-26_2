@@ -53,4 +53,16 @@ final MenuItems = <MenuItem>[
     link: '/gridview',
     icono: Icons.grid_on,
   ),
+  MenuItem(
+    titulo: 'Animaciones',
+    subtitulo: 'Ejemplo de animaciones',
+    link: '/animations',
+    icono: Icons.animation,
+  ),
+  MenuItem(
+    titulo: 'Progress Indicator & SnackBar',
+    subtitulo: 'Progress Indicator & SnackBar ejemplo',
+    link: '/progreso',
+    icono: Icons.refresh,
+  ),
 ];

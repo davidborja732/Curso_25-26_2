@@ -1,4 +1,5 @@
 import 'package:componentes/config/theme/app_theme.dart';
+import 'package:componentes/presentation/screens/indicador_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -25,6 +26,8 @@ class MyApp extends StatelessWidget {
         '/alertas': (context) => Alertasscreen(),
         '/sliders': (context) => SlidersScreens(),
         '/gridview': (context) => GridScreen(),
+        '/animations': (context) => AnimacionesScreen(),
+        '/progreso':(context) => IndicadorScreen(),
       },
     );
   }
