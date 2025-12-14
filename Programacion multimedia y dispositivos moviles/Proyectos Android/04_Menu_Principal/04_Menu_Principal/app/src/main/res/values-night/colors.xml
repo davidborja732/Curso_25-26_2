@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="amarillo">#FFEB3B</color>
+    <!-- Colores del menu-->
+    <color name="bg_home">#72CA0B</color>
+    <color name="bg_profile">#3F51B5</color>
+    <color name="bg_settings">#E91E63</color>
+    <color name="bg_botton_menu">#BF360C</color>
+    <color name="bg_botton_menuconfi">#827717</color>
+    <!-- Colores -->
+    <color name="my_dark_primary">#006064</color>
+    <color name="purple_700">#AEEA00</color>
+    <color name="teal_200">#50043D</color>
+    <color name="teal_700">#C5A3B3</color>
+</resources>

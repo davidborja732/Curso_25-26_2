@@ -1,0 +1,55 @@
+<!--Crea un script que calcule el precio de un billete de autobús, IVA incluido.
+Para ello, se deben seguir los siguientes criterios:
+• Pedir: nombre, edad y día de la semana que quiere viajar.
+• Si tiene entre 18 y 26 años o es mayor de 60 se le aplicará un descuento
+del 15%.
+• Si viaja miércoles o viernes, además se le aplicará un descuento del 5%.
+• El precio de un billete simple es de 12,5 euros SIN IVA. • El resultado
+debe expresar el motivo del descuento y un resumen del precio con IVA y
+SIN IVA-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var diassemana=["lunes","martes","miercoles","jueves","viernes","sabado","domingo"]
+        var nombre=prompt("Dime el nombre")
+        var edad=Number(prompt("Dime tu edad"))
+        var dia_semana=prompt("Dime el dia que viajas").toLowerCase()
+        var preciobase=Number(12.5)
+        var descuento
+        if(Number.isInteger(edad)){
+            if(diassemana.includes(dia_semana)){
+                document.write("El precio base es 12.5")
+                document.write("<br>")
+                var preciobaseIVA=preciobase+(preciobase*0.21)
+                document.write("El precio con IVA es "+preciobaseIVA)
+                document.write("<br>")
+                if(edad>18 && edad<=26||edad>60){
+                    descuento=preciobaseIVA*0.15
+                    preciobaseIVA=preciobaseIVA-descuento
+                    document.write("El precio con descuento por edad es "+preciobaseIVA)
+                    document.write("<br>")
+                }
+                if (dia_semana=="miercoles" || dia_semana=="viernes"){
+                    descuento=preciobaseIVA*0.05
+                    preciobaseIVA=preciobaseIVA-descuento
+                    document.write("El precio con descuento por dia es "+preciobaseIVA)
+                    document.write("<br>")
+                }
+                document.write("El precio final es "+preciobaseIVA)
+                document.write("<br>")
+            }else{
+                alert("Introduce un dia de la semana que sea correcto")
+            }
+        }else{
+            alert("Mete un numero entero")
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

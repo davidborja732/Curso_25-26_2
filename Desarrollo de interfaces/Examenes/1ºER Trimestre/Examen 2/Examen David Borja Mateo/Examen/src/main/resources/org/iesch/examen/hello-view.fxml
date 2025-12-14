@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane fx:id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="328.0" prefWidth="594.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesch.examen.HelloController">
+   <children>
+      <VBox layoutX="36.0" layoutY="47.0" prefHeight="271.0" prefWidth="244.0">
+         <children>
+            <Label id=".labeltitulo" styleClass=".label-titulo" text="Aplicacion sobre autismo" />
+            <Label prefHeight="30.0" prefWidth="168.0" styleClass=".label" text="1- ¿Atiende cuando se le llama?">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <HBox prefHeight="45.0" prefWidth="257.0">
+               <children>
+                  <ToggleButton fx:id="botonF" mnemonicParsing="false" onAction="#setBotonF" styleClass=".toggle-button" text="F">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="appb" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton fx:id="botonAM" mnemonicParsing="false" onAction="#setBotonAM" styleClass=".toggle-button" text="AM" toggleGroup="$appb">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ToggleButton>
+                  <ToggleButton fx:id="botonPV" mnemonicParsing="false" onAction="#setBotonPV" styleClass=".toggle-button" text="PV" toggleGroup="$appb">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ToggleButton>
+                  <ToggleButton fx:id="botonN" mnemonicParsing="false" onAction="#setBotonN" styleClass=".toggle-button" text="N" toggleGroup="$appb" />
+               </children>
+            </HBox>
+            <Label prefHeight="29.0" prefWidth="83.0" styleClass=".label" text="2- ¿Habla?">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <HBox prefHeight="27.0" prefWidth="244.0">
+               <children>
+                  <RadioButton fx:id="radioF" mnemonicParsing="false" onAction="#setRadioF" text="F">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="app" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="radioAM" mnemonicParsing="false" onAction="#setRadioAM" text="AM" toggleGroup="$app">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="radioPV" mnemonicParsing="false" onAction="#setRadioPV" text="PV" toggleGroup="$app">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="radioN" mnemonicParsing="false" onAction="#setRadioN" text="N" toggleGroup="$app" />
+               </children>
+            </HBox>
+            <Label prefHeight="34.0" prefWidth="185.0" styleClass=".label" text="3- Indica el nivel de independencia">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Slider id=".slider" fx:id="slider" onMouseDragExited="#Setslider" onMouseDragged="#Setslider">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Slider>
+         </children>
+      </VBox>
+      <VBox layoutX="309.0" layoutY="47.0" prefHeight="229.0" prefWidth="237.0">
+         <children>
+            <Label id=".labeltitulo" styleClass=".label-titulo" text="Resultados finales" />
+            <Label styleClass=".label" text="Atencion" />
+            <ProgressBar fx:id="atencionBarra" prefWidth="200.0" progress="0.0" />
+            <Label styleClass=".label" text="Habla" />
+            <ProgressIndicator id="progressindicator" fx:id="atencionHabla" progress="0.0" styleClass=".progressindicator" />
+            <Label styleClass=".label" text="Independencia" />
+            <ImageView fx:id="independenciaimagen" fitHeight="92.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </VBox>
+      <VBox layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="122.0">
+         <children>
+            <MenuBar fx:id="menu" prefHeight="25.0" prefWidth="116.0">
+              <menus>
+                <Menu fx:id="menuestilos" mnemonicParsing="false" text="Estilos">
+                  <items>
+                    <MenuItem fx:id="menuestilo1" mnemonicParsing="false" onAction="#SetEstilo1" text="Estilo 1" />
+                        <MenuItem fx:id="menuestilo2" mnemonicParsing="false" onAction="#SetEstilo2" text="Estilo 2" />
+                        <MenuItem fx:id="menuestiloborrar" mnemonicParsing="false" onAction="#SetEstiloDefecto" text="Borrar" />
+                  </items>
+                </Menu>
+                <Menu fx:id="menuayu" mnemonicParsing="false" text="Ayuda">
+                  <items>
+                    <MenuItem fx:id="menuayuda" mnemonicParsing="false" onAction="#setMenuayu" text="Ayuda" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </VBox>
+   </children>
+</Pane>

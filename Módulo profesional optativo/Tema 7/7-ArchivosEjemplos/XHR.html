@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- comentarios Ctrl+Shift+A -->
+    <!-- <meta charset="UTF-8"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XHR</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+
+        peticion_http=new XMLHttpRequest();
+        //le asigna la función de procesamiento
+        //prepara la petición (open)
+        peticion_http.open("GET","http://192.168.50.120:8069/aleatorioretardo",true);
+
+
+        //envía la petición
+        peticion_http.send(null);//no parámetros
+        var dato1=peticion_http.responseText;
+        console.log(dato1)
+        
+        peticion_http.onreadystatechange=function(){
+            if (peticion_http.readyState==1) {
+                    console.log("CARGANDO...")
+                            }
+            // Si se ha completado
+            if ((peticion_http.readyState==4) && (peticion_http.status==200)){
+                // de httpRequest.responseText obtenemos la cadena con la respuesta
+                var dato=peticion_http.responseText;
+                console.log(dato)
+
+            }
+
+        }
+ 
+
+    </script>
+
+        
+    </body>
+</html>

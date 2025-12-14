@@ -1,0 +1,16 @@
+Combinación de archivos en uno solo: Escribir un programa en Java que permita
+combinar varios archivos en uno solo. El programa debe tomar como entrada una lista de
+archivos de origen y el nombre del archivo de destino. El programa debe leer cada archivo
+de origen y escribir su contenido en el archivo de destino en el orden en que se
+especificaron en la lista
+------------------------------
+Contar el número de líneas en un archivo: Escribir un programa en Java que lea un
+archivo de texto y cuente el número de líneas que contiene. El programa debe imprimir el
+número de líneas en la consola.
+------------------------------
+Cifrado y descifrado de archivos: Escribir un programa en Java que permita cifrar y
+descifrar un archivo utilizando un algoritmo de cifrado. El programa debe tomar como
+entrada el nombre del archivo de origen, el nombre del archivo de destino, y una clave de
+cifrado. El cifrado debe ser reversible, es decir, el archivo cifrado debe poder ser
+descifrado con la misma clave. Puedes usar el algoritmo de cifrado AES
+------------------------------

@@ -1,0 +1,34 @@
+.menu-bar {
+ -fx-background-color: yellow;
+}
+u-bar .menu:hover {
+  -fx-background-color: blue;
+}
+.menu-bar .menu:showing {
+ -fx-background-color: orange;
+}
+.menu-item {
+ -fx-background-color: black;
+}
+.menu-item:hover {
+ -fx-background-color: orange;
+}
+.button {
+    -fx-border-color: white;
+    -fx-border-width: 3px;
+    -fx-background-radius: 2px;
+    -fx-border-radius: 1px;
+    -fx-background-color: yellow;
+    -fx-font-size:20;
+    -fx-text-fill: white;
+}
+.button:hover {
+    -fx-background-color: orange;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+.Label {
+    -fx-text-fill: white;
+    -fx-font-weight: lighter;
+    -fx-font-size: 26;
+}

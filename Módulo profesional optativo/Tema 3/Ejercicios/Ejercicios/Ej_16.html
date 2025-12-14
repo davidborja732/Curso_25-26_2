@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Horario 2º DAM</title>
+</head>
+<body>
+  <h2>Horario 2º DAM</h2>
+  <table border="1" id="tablaHorario">
+    <!-- La tabla se llenará dinámicamente con JavaScript -->
+  </table>
+
+  <script>
+    // Array con los días de la semana
+    const dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+
+    // Array bidimensional con las asignaturas por franja horaria
+    const asignaturas = [
+            ["IPPE", "PROY", "IPPE", "AD", "SGE"],
+            ["DI", "SGE", "AD", "AD", "SGE"],
+            ["DI", "SGE", "AD", "AD", "SASP"],
+            ["RECREO","RECREO","RECREO","RECREO","RECREO"],
+            ["DWC", "PMDM", "PMDM", "PROY", "DI"],
+            ["DWC", "PMDM", "PMDM", "PSP", "DI"],
+            ["DWC", "PMDM", "PMDM", "PSP", "DI"]
+        ];
+
+    // Función para generar las franjas horarias sumando 50 minutos
+    function generarHoras(inicio, bloques) {
+      const horas = [];
+      let actual = new Date(`1970-01-01T${inicio}:00`);
+      for (let i = 0; i < bloques; i++) {
+        const inicioStr = actual.toTimeString().substring(0, 5);
+        actual.setMinutes(actual.getMinutes() + 55);
+        const finStr = actual.toTimeString().substring(0, 5);
+        horas.push(`${inicioStr} - ${finStr}`);
+      }
+      return horas;
+    }
+
+    // Generamos las 7 franjas horarias desde las 15:45
+    const franjas = generarHoras("15:45", asignaturas.length);
+
+    // Referencia a la tabla HTML
+    const tabla = document.getElementById("tablaHorario");
+
+    // Crear la fila de encabezado con los días
+    const encabezado = document.createElement("tr");
+    const celdaHora = document.createElement("th");
+    celdaHora.textContent = "Hora";
+    encabezado.appendChild(celdaHora);
+    dias.forEach(dia => {
+      const th = document.createElement("th");
+      th.textContent = dia;
+      encabezado.appendChild(th);
+    });
+    tabla.appendChild(encabezado);
+
+    // Crear las filas del horario con las asignaturas
+    for (let i = 0; i < franjas.length; i++) {
+      const fila = document.createElement("tr");
+
+      // Celda de la hora
+      const celdaHora = document.createElement("td");
+      celdaHora.textContent = franjas[i];
+      fila.appendChild(celdaHora);
+
+      // Celdas de asignaturas por día
+      for (let j = 0; j < dias.length; j++) {
+        const celda = document.createElement("td");
+        celda.textContent = asignaturas[i][j];
+        fila.appendChild(celda);
+      }
+
+      tabla.appendChild(fila);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!--
+20.   Crea un script que pida dos números, y genere un aleatorio entre ambos 
+números (incluidos). Hay que controlar que sean números entero, si no lo son, 
+los ha de volver a pedir. Ojo que pueden darnos primero el número más alto o el 
+más bajo, lo debemos controlar.
+Ayudate de la siguiente funcion:
+ Math.floor(Math.random() * (MAX - MIN + 1)) + MIN; 
+Ha de pedir también al usuario el nivel de dificultad. Fácil, normal o difícil. 
+Fácil significa que el usuario tiene N/2 intentos siendo N el rango del número aleatorio 
+Normal significa que el usuario tiene N/4 intentos siendo N el rango del número 
+aleatorio 
+Difícil significa que el usuario tiene N/8 intentos siendo N el rango del número aleatorio 
+Después se le dirá al usuario que acierte el número, haciendo que inserte un número. 
+Si acierta antes de que se le acaben los intentos. El juego terminará felicitando al usuario 
+y pidiéndole su nombre para colocar la puntuación (Número de intentos), la dificultad en 
+la página. Además, se le preguntará si quiere jugar de nuevo, volviendo a pedir todos los 
+datos del juego. 
+Si falla se le pedirá otro número hasta que agote los intentos. Además, si el nivel de 
+dificultad es “fácil” o “normal”, cada vez que falle le indicará si el número es mayor o 
+menor al que ha puesto 
+Pon el código en una función llamada jugar() y haz que se ejecute en atributo onclick del 
+botón. <button onclick="myFunction()">Click me</button>
+21. Ya sabemos usar algo, botones enlazarlos a funciones javascript. Realiza una 
+calculadora sencilla como la del dibujo.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function jugar(){
+            let numero1=Number(prompt("Dime el numero 1 entero"))
+            let numero2=Number(prompt("Dime el numero 2 entero"))
+            while(!Number.isInteger(numero1)){
+                alert("Introduce un numero entero valido")
+                numero1=Number(prompt("Dime el numero 1 entero"))
+            }
+            while(!Number.isInteger(numero2)){
+                alert("Introduce un numero entero valido")
+                numero2=Number(prompt("Dime el numero 2 entero"))
+            }
+            while(numero2<numero1){
+                alert("El primer numero debe ser menor al segundo valor numero1 ="+numero1)
+                numero2=Number(prompt("Dime el numero 2 entero"))
+            }
+            document.write(Math.floor(Math.random() * (numero2 - numero1) + numero1))
+        }
+    </script>
+        
+</head>
+<body>
+    <script>
+        jugar()
+    </script>
+</body>
+</html>

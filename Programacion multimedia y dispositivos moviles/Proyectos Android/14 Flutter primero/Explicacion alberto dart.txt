@@ -1,0 +1,91 @@
+void main() {
+  variables();
+  funcionsimple();
+  optionalfuncion();
+  optionalfuncion("Nombre",34);
+  // Estructuras de datos
+  List<dynamic> lista = [];
+  lista.add("Lunes");
+  lista.add("Prueba");
+  lista.add("Prueba4");
+  lista.add("Prueba2");
+  lista.add(664);
+  print(lista.length);
+  lista.forEach((element) => print(element));
+  lista.removeAt(2);
+  lista.insert(3,"Jueves");
+  lista.forEach((element) => print(element));
+  Set<String> dias={"Lunes","Martes","Miercoles"};
+  print(dias.contains("Martes"));
+  Map<int,String> usuario={
+    1 : "david",
+    2 : "Luis"
+  };
+  final Heroe superman=Heroe(nombre: 'superman',modelo:'Volar');
+  print(superman.toString);
+  usuario.forEach((key, value) => print("$key $value"));
+}
+
+void variables() {
+  var nombre = "David";
+  var edad = 43;
+  int edad2 = 23;
+  double edad3 = 23.89;
+  bool escierto = true;
+  String numero = "89";
+  print(edad);
+  print(edad2 + edad);
+  print(nombre);
+  print(edad3);
+  if (!escierto) {
+    print("Es cierto");
+  } else if (edad > 45) {
+    print("mayor a 20");
+  } else {
+    print("Es falso");
+  }
+  const PI = 3.1415;
+  final token = "267472642164296417";
+  print(edad + int.parse(numero));
+  print("Mi edad es $edad y mi nombre es $nombre");
+  print("Dime el dia de la semana");
+  int numeroDia = 1;
+  switch (numeroDia) {
+    case 1:
+      print("Lunes");
+      break;
+    case 2:
+      print("Martes");
+      break;
+    case 3:
+      print("Miercoles");
+      break;
+    case 4:
+      print("Jueves");
+      break;
+    case 5:
+      print("Viernes");
+      break;
+    default:
+      print("Fin de semana NO!");
+  }
+  var suma=sumar(edad,edad2);
+  print(suma);
+}
+void funcionsimple() {
+  print('Esto es una funcion simple');
+}
+int sumar(int a,int b){
+  return a+b;
+}
+void optionalfuncion([String nombre="NoName",int edad=21]){
+  print("Mi edad es $nombre y mi nombre es $edad"); 
+}
+void parametrosopconales({String nombre='', required String saludo}){
+   print("Mi edad es $nombre y mi nombre saludo es $saludo"); 
+}
+class Heroe{
+  String? nombre;
+  String? modelo;
+  Heroe({this.nombre,this.modelo});
+}

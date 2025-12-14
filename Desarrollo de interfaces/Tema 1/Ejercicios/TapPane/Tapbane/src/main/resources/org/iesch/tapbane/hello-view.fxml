@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesch.tapbane.HelloController">
+  <tabs>
+    <Tab text="Datos Conductor">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="600.0">
+               <children>
+                  <HBox layoutX="58.0" layoutY="69.0" prefHeight="43.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="33.0" prefWidth="66.0" text="Nombre" />
+                        <TextField fx:id="nombre" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="58.0" layoutY="106.0" prefHeight="38.0" prefWidth="238.0">
+                     <children>
+                        <Label text="Apellidos" />
+                        <TextField fx:id="apellidos" prefHeight="25.0" prefWidth="165.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <CheckBox fx:id="coche" layoutX="79.0" layoutY="156.0" mnemonicParsing="false" onAction="#desabilitarvehi" text="Coche" />
+                  <CheckBox fx:id="monovolumen" layoutX="79.0" layoutY="193.0" mnemonicParsing="false" onAction="#desabilitarmono" text="Monovolumen " />
+               </children></AnchorPane>
+      </content>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imagenes/cara.png" />
+               </image>
+            </ImageView>
+         </graphic>
+    </Tab>
+    <Tab fx:id="cochepestaña" text="Coche">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+      </content>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imagenes/coche.png" />
+               </image>
+            </ImageView>
+         </graphic>
+    </Tab>
+      <Tab fx:id="monovolumenpestaña" text="Monovolumen">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imagenes/monovolumen.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Tab>
+  </tabs>
+</TabPane>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        fetch('https://swapi.dev/api/people/')//Obtengo los personajes desde la API
+        .then(response => {//Proceso la respuesta
+            if (!response.ok) {//Si la respuesta no es correcta
+                throw new Error('Peticion fallida');//Lanzo un error
+            }
+            return response.json();//Devuelvo la respuesta en formato JSON
+        }).then(data=>{//Proceso los datos que he obtenido de la API
+            const personajes=data.results;//Obtengo el array de personajes 
+            const contenedor=document.getElementById('characters');//Obtengo el contenedor donde voy a mostrar los personajes
+            personajes.forEach(personajetarjeta => {
+                const tarjeta=document.createElement('div');//Creo un div para cada personaje
+                tarjeta.classList.add('card');//Le añado la clase card 
+                tarjeta.textContent=personajetarjeta.name;//Le añado el nombre del personaje
+                tarjeta.addEventListener('click', ()=> mostrarDetalles(personajetarjeta));//Cuando haga click en la tarjeta
+                contenedor.appendChild(tarjeta);//Añado la tarjeta al contenedor
+            });
+        })
+        function mostrarDetalles(personajeelegido){
+            const details = document.getElementById("details");
+            details.innerHTML = ""; // Limpiar contenido previo
+
+            const title = document.createElement("h2");
+            title.textContent = personajeelegido.name;
+            details.appendChild(title);//Añado el nombre del personaje como título
+
+            const p1 = document.createElement("p");//Creo un párrafo para la altura
+            p1.innerHTML = "<strong>Altura:</strong> " + personajeelegido.height + " cm";//Añado la altura del personaje
+            details.appendChild(p1);
+
+            const p2 = document.createElement("p");//Creo un párrafo para el peso
+            p2.innerHTML = "<strong>Peso:</strong> " + personajeelegido.mass + " kg";//Añado el peso del personaje
+            details.appendChild(p2);
+
+            const p3 = document.createElement("p");//Creo un párrafo para el color de cabello
+            p3.innerHTML = "<strong>Color de cabello:</strong> " + personajeelegido.hair_color;//Añado el color de cabello del personaje
+            details.appendChild(p3);
+
+            const p4 = document.createElement("p");//Creo un párrafo para el color de piel
+            p4.innerHTML = "<strong>Color de piel:</strong> " + personajeelegido.skin_color;//Añado el color de piel del personaje
+            details.appendChild(p4);
+
+            const p5 = document.createElement("p");//Creo un párrafo para el color de ojos
+            p5.innerHTML = "<strong>Color de ojos:</strong> " + personajeelegido.eye_color;//Añado el color de ojos del personaje
+            details.appendChild(p5);
+
+            const p6 = document.createElement("p");//Creo un párrafo para el año de nacimiento
+            p6.innerHTML = "<strong>Año de nacimiento:</strong> " + personajeelegido.birth_year;//Añado el año de nacimiento del personaje
+            details.appendChild(p6);
+
+            const p7 = document.createElement("p");//Creo un párrafo para el género
+            p7.innerHTML = "<strong>Género:</strong> " + personajeelegido.gender;//Añado el género del personaje
+            details.appendChild(p7);
+        }
+    </script>
+</head>
+<body>
+    <h1>Personajes de starwars</h1>
+    <div id="characters"></div>
+    <div id="details"></div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html> <!-- Declara el documento como HTML5 -->
+<html lang="es"> <!-- Define el idioma principal como español -->
+<head> <!-- Inicio de la cabecera -->
+  <meta charset="UTF-8"> <!-- Codificación de caracteres UTF-8 -->
+  <title>Ingredientes de Pizza</title> <!-- Título que aparece en la pestaña del navegador -->
+</head>
+<body> <!-- Inicio del cuerpo del documento -->
+
+  <h2>Selecciona los ingredientes de tu pizza:</h2> <!-- Título visible en la página -->
+
+  <form id="formPizza"> <!-- Formulario con ID para manipulación en JavaScript -->
+    <!-- Cada ingrediente se representa con un checkbox y su etiqueta -->
+    <div class="ingrediente">
+      <input type="checkbox" value="Tomate" id="tomate"> <!-- Checkbox con valor "Tomate" -->
+      <label for="tomate">Tomate</label> <!-- Etiqueta asociada al checkbox -->
+    </div>
+    <div class="ingrediente">
+      <input type="checkbox" value="Atún" id="atun"> <!-- Checkbox con valor "Atún" -->
+      <label for="atun">Atún</label>
+    </div>
+    <div class="ingrediente">
+      <input type="checkbox" value="Champiñón" id="champinon"> <!-- Checkbox con valor "Champiñón" -->
+      <label for="champinon">Champiñón</label>
+    </div>
+    <div class="ingrediente">
+      <input type="checkbox" value="Pimiento rojo" id="pimiento"> <!-- Checkbox con valor "Pimiento rojo" -->
+      <label for="pimiento">Pimiento rojo</label>
+    </div>
+    <div class="ingrediente">
+      <input type="checkbox" value="Mozzarella di buffala" id="mozzarella"> <!-- Checkbox con valor "Mozzarella di buffala" -->
+      <label for="mozzarella">Mozzarella di buffala</label>
+    </div>
+    <div class="ingrediente">
+      <input type="checkbox" value="Cebolla" id="cebolla"> <!-- Checkbox con valor "Cebolla" -->
+      <label for="cebolla">Cebolla</label>
+    </div>
+  </form> <!-- Fin del formulario -->
+
+  <textarea id="resultado" readonly placeholder="Ingredientes seleccionados..."></textarea>
+  <!-- Área de texto donde se mostrarán los ingredientes seleccionados. Es de solo lectura -->
+
+  <script>
+    // Espera a que el DOM esté cargado para que los elementos existan
+    document.addEventListener('DOMContentLoaded', () => {
+      const formulario = document.getElementById('formPizza'); // Obtiene el formulario por su ID
+      const resultado = document.getElementById('resultado'); // Obtiene el textarea por su ID
+
+      // Escucha cualquier cambio en los checkboxes del formulario
+      formulario.addEventListener('change', () => {
+        const seleccionados = []; // Inicializa un array vacío para guardar los ingredientes seleccionados
+
+        // Recorre todos los checkboxes dentro del formulario
+        formulario.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+          if (checkbox.checked) { // Si el checkbox está marcado
+            seleccionados.push(checkbox.value); // Añade el valor del checkbox al array
+          }
+        });
+
+        // Une los ingredientes seleccionados con comas y los muestra en el textarea
+        resultado.value = seleccionados.join(', ');
+      });
+    });
+  </script>
+</body> <!-- Fin del cuerpo del documento -->
+</html> <!-- Fin del documento HTML -->

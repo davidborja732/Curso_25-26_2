@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Base de datos Explicacion",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

@@ -1,0 +1,26 @@
+meta {
+  name: Guardar Coche
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/coches
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "marca":"Seat",
+      "modelo":"Boxer",
+      "cilindrada":"2000",
+      "potencia":"320",
+      "matricula":"5421LOI"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

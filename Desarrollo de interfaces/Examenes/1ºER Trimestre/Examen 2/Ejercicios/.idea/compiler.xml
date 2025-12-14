@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Elementos_Menu" />
+        <module name="Ejercicio" />
+        <module name="BotonFX" />
+        <module name="Explicacion_Custom" />
+        <module name="Ejercicio_6" />
+        <module name="Ejercicio_14" />
+        <module name="Ejercicio_3" />
+        <module name="Ejercicio_2" />
+        <module name="Datos_1" />
+        <module name="Ejercicio_5" />
+        <module name="ColoPicker" />
+        <module name="Ejercicio_1" />
+        <module name="Tapbane" />
+        <module name="Datos_entre_ventanas" />
+        <module name="Ejercicio_10" />
+        <module name="Varias_ventanas" />
+        <module name="Selector_Color" />
+        <module name="Explicacion_6_Octubre" />
+        <module name="Almacen_Imagenes" />
+        <module name="Explicacion3octubre" />
+        <module name="ToggleButton" />
+        <module name="Boton_Imagenes" />
+        <module name="ComboBox" />
+        <module name="Ej_12" />
+        <module name="Barra_Progreso" />
+        <module name="RadioButton" />
+        <module name="Ejercicio_2 (1)" />
+        <module name="Fondo_Slider" />
+        <module name="Ejercicio4Nuevo" />
+        <module name="Datos_1 (1)" />
+        <module name="Explicacion_1_Tema_2" />
+        <module name="Explicacion_29_Septiembre" />
+        <module name="Accion_Event" />
+        <module name="Datepicker" />
+        <module name="Validator" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

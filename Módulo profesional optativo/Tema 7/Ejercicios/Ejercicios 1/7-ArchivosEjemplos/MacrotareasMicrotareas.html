@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macrotareas y microtareas</title>
+</head>
+<body>
+    <script>
+        //capturo el evento de carga del DOM
+        document.addEventListener("DOMContentLoaded", () => {
+            var p=document.getElementById("parrafo");
+    
+            let i = 0;
+            function count() {
+            // Realiza una parte del trabajo pesado (*)
+            // recorro el bucle de 1000 en 1000
+            // cuando llego a 1000 salgo y dejo que el navegador pinte
+
+            do {
+                i++;
+                p.innerHTML = i;
+            } while (i % 1e3 != 0);
+
+            // recorro el 
+            if (i < 1e6) {
+                //Esto permite que el navegador renderice el cambio en el DOM, 
+                // evitando el bloqueo y ofreciendo una experiencia de usuario más fluida
+                //Volvemos a llamar a la función count 
+
+                setTimeout(count);
+            }
+        }
+        count();
+    });
+
+    </script>
+
+    <p id="parrafo"></p>
+</body>
+</html>

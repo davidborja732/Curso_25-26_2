@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Horario semanal</title>
+    <script>
+        const diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+        
+        // Asignaturas organizadas por día (cada array corresponde a un día)
+        const asignaturasPorDia = {
+            'Lunes': [
+                'Matemáticas', 'Lengua', 'Historia', 'Recreo','Inglés',
+                'Física', 'Química'
+            ],
+            'Martes': [
+                'Física', 'Química', 'Programación',  'Recreo','Lengua',
+                'Historia', 'Matemáticas'
+            ],
+            'Miércoles': [
+                'Historia', 'Matemáticas', 'Inglés','Recreo', 'Química',
+                'Programación', 'Física'
+            ],
+            'Jueves': [
+                'Programación', 'Física', 'Lengua', 'Recreo','Historia',
+                'Matemáticas', 'Química'
+            ],
+            'Viernes': [
+                'Matemáticas', 'Inglés', 'Química', 'Recreo','Programación',
+                'Historia', 'Lengua'
+            ]
+        };
+        function generarHorario() {
+            let tabla = "<table border='1'>";
+            // Cabecera: primera columna "Horario" + días
+            tabla += "<tr><th>Horario</th>";
+            for (let dia of diasSemana) {
+                tabla += `<th>${dia}</th>`;
+            }
+            tabla += "</tr>";
+            // Generar horarios
+            let horaInicio = new Date(0,0,0,15,45); // 15:45
+            let filas = [];
+            while (horaInicio.getHours() < 21 || (horaInicio.getHours() === 21 && horaInicio.getMinutes() <= 20)) {
+                let horaFin = new Date(horaInicio.getTime() + 50*60000); // +50 min
+                filas.push({
+                    texto: `${horaInicio.getHours().toString().padStart(2,'0')}:${horaInicio.getMinutes().toString().padStart(2,'0')} - ${horaFin.getHours().toString().padStart(2,'0')}:${horaFin.getMinutes().toString().padStart(2,'0')}`,
+                    recreo: false
+                });
+                
+                // Recreo después de la tercera clase
+                if (filas.length === 3) {
+                    filas.push({texto: "18:25 - 18:40", recreo: true});
+                    horaInicio = new Date(0,0,0,18,40);
+                } else {
+                    horaInicio = new Date(horaFin.getTime() + 5*60000);
+                }
+            }
+            // Pintar filas
+            for (let i = 0; i < filas.length; i++) {
+                tabla += "<tr>";
+                // Columna de horario
+                tabla += `<td>${filas[i].texto}</td>`;
+                // Columnas de días
+                for (let d of diasSemana) {
+                    if (filas[i].recreo) {
+                        tabla += "<td>Recreo</td>";
+                    } else {
+                        // Si hay asignatura definida para ese día y esa hora
+                        let asignatura = asignaturasPorDia[d][i] || "";
+                        tabla += `<td>${asignatura}</td>`;
+                    }
+                }
+                tabla += "</tr>";
+            }
+            tabla += "</table>";
+            return tabla;
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.innerHTML += generarHorario();
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
+
+
+
+

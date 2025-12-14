@@ -1,0 +1,26 @@
+meta {
+  name: Productos Post
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/producto/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name" : "cafe con aun mas extra de cafeina",
+    "price" : 8.35,
+    "descripcion" : "Es un simple cafe con mas cafeina",
+    "categoria" : "Cafe",
+    "stock" : 45
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,14 @@
+1) Filtrar números impares: Crea una lista de números enteros. Utiliza un “Predicate”
+para filtrar la lista y eliminar todos los números impares.
+2) Imprimir todos los elementos de una lista: Crea una lista de cadenas. Utiliza un
+“Consumer” para imprimir cada cadena en la lista.
+3) Transformar una lista de números: Crea una lista de números enteros. Utiliza una
+“Function” para transformar cada número en la lista a su cubo.
+4) Generar una secuencia de números aleatorios: Utiliza un “Supplier” para generar e
+imprimir una secuencia de diez números aleatorios.
+5) Filtrar nombres que comienzan con una letra específica: Crea una lista de
+nombres. Utiliza un “Predicate” para filtrar la lista y mantener solo los nombres
+que comienzan con una letra específica (por ejemplo, "A").
+6) Aplicar una operación a cada elemento de una lista: Crea una lista de números
+enteros. Utiliza un “Consumer” para aplicar una operación a cada número en la
+lista (por ejemplo, multiplicar cada número por 2).

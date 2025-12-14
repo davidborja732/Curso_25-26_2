@@ -1,0 +1,72 @@
+<!-- Realiza un programa que cree dinámicamente una tabla de 100x100. Cada elemento de
+la tabla tendrá un número único, que empezará en 1 y se irá incrementando de 1 en 1.
+Esta página además tendrá un botón que será “Calcular numero casi primos”. Este botón
+hará que todas las celdas de la tabla que tengan números “Casi primos” se pongan con un
+fondo amarillo.
+Numero casi primo: es un número que solo es divisible por sí mismo, la unidad y por un solo
+número que no sea ni la unidad ni si mismos.
+Ejemplo:
+• 2 no es un número casi primo, porque es divisible por 1 y por 2, pero no por otro número.
+• 4 es un número casi primo, porque es divisible por 1, por 4 y por 2.
+• 8 no es un número casi primo, porque es divisible por 1, por 8 y por 2, pero además
+también es divisible por 4. -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    function crearTabla(){ 
+        const tabla=document.createElement("table")
+        borde=1
+        tabla.setAttribute("border",borde)
+        let contador=1
+        for(let i=0;i<100;i++){
+            const fila=document.createElement("tr")
+            for(let j=0;j<100;j++){
+                const celda=document.createElement("td")
+                celda.textContent=contador
+                fila.appendChild(celda)
+                contador++
+            }
+            tabla.appendChild(fila)
+        }
+        document.body.appendChild(tabla)
+    }
+    crearTabla()
+    </script>
+</head>
+<body>
+
+    <button onclick="calcularCasiPrimos()">Calcular numero casi primos</button>
+    <script>
+        crearTabla()
+        function esCasiPrimo(num){
+            let contadorDivisores=0
+            for(let i=2;i<=Math.sqrt(num);i++){
+                if(num%i===0){
+                    contadorDivisores++
+                    if(i!==num/i){
+                        contadorDivisores++
+                    }
+                }
+                if(contadorDivisores>1){
+                    return false
+                }
+            }
+            return contadorDivisores===1
+        }
+
+        function calcularCasiPrimos(){
+            const celdas=document.getElementsByTagName("td")
+            for(let i=0;i<celdas.length;i++){
+                const valor=parseInt(celdas[i].textContent)
+                if(esCasiPrimo(valor)){
+                    celdas[i].style.backgroundColor="yellow"
+                }
+            }
+        }
+    </script>
+</body>
+</html>

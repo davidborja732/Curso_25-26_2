@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Explicacion estados",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

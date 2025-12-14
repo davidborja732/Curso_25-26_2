@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tablas de Multiplicar</title>
+    <script>
+        function creartabla(){
+            // Creo la tabla y establezco su borde
+            let tabla=document.createElement("table")
+            tabla.setAttribute("border","1")
+            // for que genera numeros del 1 al 10
+            for(i=1;i<10;i++){
+                // creo una fila que tendra el texto tabla del y el valor de i
+                let fila=document.createElement("tr")
+                let celdaTitulo=document.createElement("td")
+                celdaTitulo.textContent="Tabla del "+i
+                fila.appendChild(celdaTitulo)
+                tabla.appendChild(fila)
+                // for que genera numeros del 1 al 10
+                for(j=1;j<=10;j++){
+                    // creo la celda que contendra el valor de cada resultado de la multiplicacion
+                    let celda=document.createElement("td")
+                    // meto el texto que devuelve el resultado
+                    celda.textContent=i+"*"+j+"="+i*j
+                    fila.appendChild(celda)
+                }
+            }
+            document.body.appendChild(tabla)
+        }
+    </script>
+</head>
+<body>
+    <section>
+        <h1>Tablas de Multiplicar del 1 al 10</h1>
+        <script>
+            creartabla();
+        </script>
+    </section>
+</body>
+</html>

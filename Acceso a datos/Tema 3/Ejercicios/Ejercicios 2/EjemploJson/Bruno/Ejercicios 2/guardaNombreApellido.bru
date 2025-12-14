@@ -1,0 +1,23 @@
+meta {
+  name: guardaNombreApellido
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/persona
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nombre": "David",
+    "apellido": "Borja"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

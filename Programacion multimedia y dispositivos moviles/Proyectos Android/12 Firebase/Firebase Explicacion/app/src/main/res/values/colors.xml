@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gris_firebase">#CABFBF</color>
+    <color name="bg_1">#284FBA</color>
+    <color name="bg_2">#E20F0F</color>
+    <color name="bg_3">#BD25AF</color>
+</resources>

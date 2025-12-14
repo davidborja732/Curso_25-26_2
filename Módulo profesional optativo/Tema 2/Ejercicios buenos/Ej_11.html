@@ -1,0 +1,23 @@
+<!--
+Escribe un algoritmo en JavaScript que pregunte un numero entero, y nos
+diga el número de cifras que tiene. Si no es un número que siga pidiendo
+hasta que el usuario ponga un número.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var numero=Number(prompt("Dime un numero"))
+        while(Number.isInteger(numero)==false){
+            numero=Number(prompt("Dime un numero"))
+        }
+        alert(numero.toString().length)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

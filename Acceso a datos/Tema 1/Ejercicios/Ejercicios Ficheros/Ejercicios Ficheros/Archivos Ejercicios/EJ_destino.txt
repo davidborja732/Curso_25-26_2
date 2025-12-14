@@ -1,0 +1,5 @@
+Cifrado y descifrado de archivos: Escribir un programa en Java que permita cifrar y
+descifrar un archivo utilizando un algoritmo de cifrado. El programa debe tomar como
+entrada el nombre del archivo de origen, el nombre del archivo de destino, y una clave de
+cifrado. El cifrado debe ser reversible, es decir, el archivo cifrado debe poder ser
+descifrado con la misma clave. Puedes usar el algoritmo de cifrado AES

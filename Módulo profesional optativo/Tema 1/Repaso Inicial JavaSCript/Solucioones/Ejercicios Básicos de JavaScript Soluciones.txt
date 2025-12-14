@@ -1,0 +1,229 @@
+Ejercicios Básicos de JavaScript – Soluciones
+=============================================
+
+🔹 Variables y Tipos de Datos
+
+Ejercicio 1 – Suma de dos variables
+-----------------------------------
+let a = 5;
+let b = 10;
+console.log("Suma:", a + b);
+
+Ejercicio 2 – Longitud de un string
+-----------------------------------
+let nombre = "David";
+console.log("Longitud:", nombre.length);
+
+Ejercicio 3 – Conversión entre número y string
+----------------------------------------------
+let num = 42;
+let str = num.toString();
+let nuevoNum = Number(str);
+console.log(str, nuevoNum);
+
+🔹 Condicionales
+
+Ejercicio 4 – Par o impar
+-------------------------
+let n = 7;
+if (n % 2 === 0) {
+  console.log("Es par");
+} else {
+  console.log("Es impar");
+}
+
+Ejercicio 5 – Mayor de edad
+---------------------------
+let edad = 18;
+if (edad >= 18) {
+  console.log("Mayor de edad");
+} else {
+  console.log("Menor de edad");
+}
+
+Ejercicio 6 – Mayor de tres números
+-----------------------------------
+let x = 12, y = 25, z = 8;
+console.log("Mayor:", Math.max(x, y, z));
+
+🔹 Bucles
+
+Ejercicio 7 – Números del 1 al 10
+---------------------------------
+for (let i = 1; i <= 10; i++) {
+  console.log(i);
+}
+
+Ejercicio 8 – Suma del 1 al 100
+-------------------------------
+let suma = 0;
+for (let i = 1; i <= 100; i++) {
+  suma += i;
+}
+console.log("Suma:", suma);
+
+Ejercicio 9 – Recorrer array de frutas
+--------------------------------------
+let frutas = ["manzana", "banana", "uva"];
+for (let fruta of frutas) {
+  console.log(fruta);
+}
+
+🔹 Funciones
+
+Ejercicio 10 – Saludo personalizado
+-----------------------------------
+function saludar(nombre) {
+  console.log("Hola, " + nombre);
+}
+saludar("David");
+
+Ejercicio 11 – Cuadrado de un número
+------------------------------------
+function cuadrado(n) {
+  return n * n;
+}
+console.log(cuadrado(5));
+
+Ejercicio 12 – Verificar si es primo
+------------------------------------
+function esPrimo(n) {
+  if (n < 2) return false;
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
+console.log(esPrimo(7));
+
+🔹 Arrays
+
+Ejercicio 13 – Añadir color a array
+-----------------------------------
+let colores = ["rojo", "verde"];
+colores.push("azul");
+console.log(colores);
+
+Ejercicio 14 – Ordenar array numérico
+-------------------------------------
+let numeros = [5, 2, 9, 1];
+numeros.sort((a, b) => a - b);
+console.log(numeros);
+
+Ejercicio 15 – Filtrar mayores a 10
+-----------------------------------
+let lista = [4, 15, 8, 23];
+let filtrados = lista.filter(n => n > 10);
+console.log(filtrados);
+
+🔹 Objetos
+
+Ejercicio 16 – Crear objeto persona
+-----------------------------------
+let persona = {
+  nombre: "David",
+  edad: 30
+};
+console.log(persona.nombre);
+
+Ejercicio 17 – Añadir propiedad al objeto
+-----------------------------------------
+persona.profesion = "Programador";
+console.log(persona);
+
+Ejercicio 18 – Recorrer propiedades del objeto
+----------------------------------------------
+for (let clave in persona) {
+  console.log(clave + ": " + persona[clave]);
+}
+
+🔹 DOM y Eventos
+
+Ejercicio 19 – Cambiar texto de un elemento HTML
+------------------------------------------------
+<p id="mensaje">Texto original</p>
+<script>
+  document.getElementById("mensaje").innerText = "Texto cambiado";
+</script>
+
+Ejercicio 20 – Evento click en botón
+------------------------------------
+<button id="miBoton">Haz clic</button>
+<script>
+  document.getElementById("miBoton").addEventListener("click", () => {
+    alert("¡Botón clicado!");
+  });
+</script>
+
+Ejercicio 21 – Cambiar color de fondo
+-------------------------------------
+<button onclick="document.body.style.backgroundColor='lightblue'">Cambiar fondo</button>
+
+🔹 Fechas y Tiempo
+
+Ejercicio 22 – Fecha actual
+---------------------------
+let hoy = new Date();
+console.log(hoy.toLocaleDateString());
+
+Ejercicio 23 – Cuenta regresiva
+-------------------------------
+let contador = 5;
+let intervalo = setInterval(() => {
+  console.log(contador--);
+  if (contador < 0) clearInterval(intervalo);
+}, 1000);
+
+Ejercicio 24 – Acción retrasada
+-------------------------------
+setTimeout(() => {
+  console.log("Han pasado 3 segundos");
+}, 3000);
+
+🔹 Validaciones y Strings
+
+Ejercicio 25 – Verificar palabra en cadena
+------------------------------------------
+let frase = "Hola mundo";
+console.log(frase.includes("mundo"));
+
+Ejercicio 26 – Convertir a mayúsculas
+-------------------------------------
+let texto = "javascript";
+console.log(texto.toUpperCase());
+
+Ejercicio 27 – Validar email
+----------------------------
+let email = "usuario@mail.com";
+console.log(email.includes("@"));
+
+🔹 Misceláneos
+
+Ejercicio 28 – Número aleatorio entre 1 y 100
+---------------------------------------------
+let aleatorio = Math.floor(Math.random() * 100) + 1;
+console.log(aleatorio);
+
+Ejercicio 29 – Factorial de un número
+-------------------------------------
+function factorial(n) {
+  let resultado = 1;
+  for (let i = 2; i <= n; i++) {
+    resultado *= i;
+  }
+  return resultado;
+}
+console.log(factorial(5));
+
+Ejercicio 30 – Calculadora básica
+---------------------------------
+function calcular(a, b, operacion) {
+  switch (operacion) {
+    case "+": return a + b;
+    case "-": return a - b;
+    case "*": return a * b;
+    case "/": return a / b;
+    default: return "Operación inválida";
+  }
+}
+console.log(calcular(10, 5, "*"));

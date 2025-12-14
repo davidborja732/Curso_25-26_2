@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Estudiantes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table thead {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📚 Lista de Estudiantes</h1>
+
+    <button class="btn" onclick="cargarEstudiantes()">🔄 Recargar Estudiantes</button>
+
+    <div id="error-message"></div>
+    <div class="loading" id="loading" style="display: none;">Cargando estudiantes...</div>
+
+    <table id="tabla-estudiantes">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+
+        </tr>
+        </thead>
+        <tbody id="tbody-estudiantes">
+        <!-- Los datos se cargarán aquí con JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    //URL de la API
+    const API_URL  = "http://localhost:8080/api/estudiantes";
+
+    //Funcion para cargar los estudiantes
+    async function cargarEstudiantes() {
+        const loading = document.getElementById('loading');
+        const errorMessage = document.getElementById('error-message');
+        const tbody = document.getElementById('tbody-estudiantes');
+
+        //Limpiar mensajes anteriores
+        errorMessage.innerHTML='';
+        tbody.innerHTML='';
+        loading.style.display='block';
+
+        try{
+            //HAcer la petición get a la api
+            const response = await fetch(API_URL);
+
+            //VErificar si la respuesta es exitosa
+            if(!response.ok){
+                throw new Error (`Error HTTP: ${response.status}`)
+            }
+
+            //Convertir a JSON
+
+            const estudiantes = await response.json();
+
+            //Ocultar el loading
+            loading.style.display = 'none';
+
+            //Si no hay estudiantes
+            if(estudiantes.length === 0) {
+                tbody.innerHTML= '<tr><td colspan="3" class="no-data"> no hay estudiantes registrados </td></tr>'
+
+                return;
+            }
+            //HAy datos, creamos las filas;
+            estudiantes.forEach(estudiante => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                <td>${estudiante.id}</td>
+                <td>${estudiante.nombre}</td>
+                <td>${estudiante.apellidos}</td>`;
+                tbody.appendChild(fila);
+
+                });
+        }catch (error){
+            //OCulatar le loading
+               loading.style.display = 'none';
+
+               //Mostrar error:
+                  errorMessage.innerHTML=`<div class="error"> <strong> Error al cargar los datos </strong><br>
+                    ${error.message} <br>
+                    Asegurate que está corriendo el server.</div>`;
+                    console.error('Error: ', error);
+        }
+
+    }//ffuncion
+
+//Cargar los estudiantes
+    window.addEventListener('DOMContentLoaded', cargarEstudiantes);
+
+</script>
+
+</body>
+</html>

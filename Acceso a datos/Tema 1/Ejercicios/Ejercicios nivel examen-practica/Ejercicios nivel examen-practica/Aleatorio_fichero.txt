@@ -1,0 +1,7 @@
+
+Producto{id=1, nombre='Camiseta', precio=19.99, descuento=true, tipo=R}
+Producto{id=2, nombre='Portátil', precio=799.99, descuento=false, tipo=E}
+Producto{id=3, nombre='Libro', precio=12.5, descuento=true, tipo=C}
+Producto{id=4, nombre='Auriculares', precio=49.9, descuento=false, tipo=E}
+Producto{id=5, nombre='Zapatos', precio=89.0, descuento=true, tipo=R}
+Producto{id=6, nombre='Mochila', precio=35.75, descuento=false, tipo=A}

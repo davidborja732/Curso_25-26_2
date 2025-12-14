@@ -1,0 +1,16 @@
+meta {
+  name: Obtener por color y marca
+  type: http
+  seq: 7
+}
+
+get {
+  url: http://localhost:8080/api/coches/colorbuscado/Green/Dodge
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,8 @@
+2025-11-12 17:15:09.197725+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "COCHES" no encontrada
+Table "COCHES" not found; SQL statement:
+SELECT * FROM coches [42102-232]
+2025-11-13 16:07:54.903714+01:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]DESCRIBE"; se esperaba "DELETE, DROP"
+Syntax error in SQL statement "[*]DESCRIBE"; expected "DELETE, DROP"; SQL statement:
+DESCRIBE [42001-232]

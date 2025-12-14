@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Firebase</string>
+    <!--Auth con google-->
+    <string name="web_client">385386356311-svt4ut8d79se1os5at350cg7d79r21t5.apps.googleusercontent.com</string>
+</resources>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendario mensual</title>
+    <script>
+        // Función que solicita al usuario el mes a mostrar
+        function solicitarMes() {
+            // Abre un cuadro de diálogo pidiendo un mes (1-12), con el mes actual preseleccionado
+            const mes = prompt("¿Qué mes deseas ver? (1-12):", new Date().getMonth() + 1);
+            // Valida que el mes esté entre 1 y 12
+            if (mes && mes >= 1 && mes <= 12) {
+                // Obtiene el año actual
+                const año = new Date().getFullYear();
+                // Reemplaza todo el contenido del body con el calendario generado
+                document.body.innerHTML = generarCalendario(mes, año);
+            // Si el usuario ingresó algo pero no es válido
+            } else if (mes !== null) {
+                // Muestra un mensaje de error
+                alert("Por favor, ingresa un número entre 1 y 12");
+                // Vuelve a pedir el mes
+                solicitarMes();
+            }
+        }
+        
+        // Ejecuta solicitarMes cuando la página termina de cargar
+        window.addEventListener("DOMContentLoaded", solicitarMes);
+        
+        // Objeto que define los días festivos de cada mes en España
+        const festivosPorMes = {
+            1: [1, 6], // Enero: Año Nuevo, Reyes
+            2: [],
+            3: [],
+            4: [],
+            5: [1], // Mayo: Día del Trabajo
+            6: [],
+            7: [],
+            8: [15,16,28], // Agosto: Asunción
+            9: [],
+            10: [12], // Octubre: Hispanidad
+            11: [1], // Noviembre: Todos los Santos
+            12: [25] // Diciembre: Navidad
+        };
+
+        // Función que genera la tabla HTML del calendario
+        function generarCalendario(mes, año = new Date().getFullYear()) {
+            // Array con los nombres de los meses
+            const nombresMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                                 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+            // Array con los nombres de los días de la semana
+            const diasSemana = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+            
+            // Inicia la tabla HTML con el título (mes y año)
+            let tabla = `<h2>${nombresMeses[mes - 1]} ${año}</h2>`;
+            // Abre la tabla con bordes y estilos
+            tabla += "<table border='1' style='text-align:center; width:100%; border-collapse:collapse;'>";
+            
+            // Crea la fila de encabezado con los días de la semana
+            tabla += "<tr>";
+            // Recorre cada día de la semana
+            for (let dia of diasSemana) {
+                // Agrega una celda de encabezado para cada día
+                tabla += `<th style='padding:10px; background-color:#ddd;'>${dia}</th>`;
+            }
+            tabla += "</tr>";
+            
+            // Obtiene el día de la semana del primer día del mes (0=domingo, 1=lunes, etc.)
+            let primerDia = new Date(año, mes - 1, 1).getDay();
+            // Convierte a formato donde lunes=0 (restando 1 y ajustando si es domingo)
+            primerDia = (primerDia === 0) ? 6 : primerDia - 1;
+            
+            // Obtiene el número de días que tiene el mes
+            let ultimoDia = new Date(año, mes, 0).getDate();
+            // Obtiene los días festivos del mes actual
+            let festivos = festivosPorMes[mes] || [];
+            
+            // Inicializa el contador de días
+            let dia = 1;
+            // Mientras haya días del mes que mostrar
+            while (dia <= ultimoDia) {
+                // Abre una fila
+                tabla += "<tr>";
+                // Recorre 7 columnas (una por cada día de la semana)
+                for (let i = 0; i < 7; i++) {
+                    // Si es el primer día del mes y aún no hemos llegado al primer día de la semana
+                    if (dia === 1 && i < primerDia) {
+                        // Agrega una celda vacía
+                        tabla += "<td></td>";
+                    // Si aún hay días del mes por mostrar
+                    } else if (dia <= ultimoDia) {
+                        // Verifica si es Año Nuevo
+                        let esAñoNuevo = (mes === 1 && dia === 1);
+                        // Verifica si es Reyes
+                        let esReyes = (mes === 1 && dia === 6);
+                        // Verifica si el día es festivo
+                        let esFestivo = festivos.includes(dia);
+                        // Verifica si es fin de semana (sábado=5 o domingo=6)
+                        let esFinSemana = (i === 5 || i === 6);
+                        
+                        // Define el estilo: rojo si es festivo, gris claro si es fin de semana
+                        let estilo = esFestivo ? 'background-color:#ff9999; font-weight:bold;' : 
+                                    esFinSemana ? 'background-color:#f0f0f0;' : '';
+                        
+                        // Agrega la celda con el número del día y su estilo
+                        tabla += `<td style='padding:10px; ${estilo}'>${dia}</td>`;
+                        // Incrementa el contador de días
+                        dia++;
+                    // Si ya pasamos los días del mes
+                    } else {
+                        // Agrega una celda vacía
+                        tabla += "<td></td>";
+                    }
+                }
+                // Cierra la fila
+                tabla += "</tr>";
+            }
+            
+            // Cierra la tabla
+            tabla += "</table>";
+            // Retorna la tabla completa en HTML
+            return tabla;
+        }
+
+        // Ejecuta cuando el documento está completamente cargado
+        document.addEventListener("DOMContentLoaded", () => {
+            // Obtiene los parámetros de la URL (mes y año)
+            const params = new URLSearchParams(window.location.search);
+            // Obtiene el mes de los parámetros, o el mes actual si no existe
+            const mes = parseInt(params.get('mes')) || new Date().getMonth() + 1;
+            // Obtiene el año de los parámetros, o el año actual si no existe
+            const año = parseInt(params.get('año')) || new Date().getFullYear();
+            
+            // Agrega el calendario al body
+            document.body.innerHTML += generarCalendario(mes, año);
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
