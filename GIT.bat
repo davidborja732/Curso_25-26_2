@@ -2,7 +2,7 @@
 setlocal
 
 :: Cambia esta ruta a tu repositorio
-set REPO_PATH=D:\Grado Superior\Curso_25-26_2DO
+set REPO_PATH=D:\Grado Superior\Curso_25-26_2
 
 :: Cambia esta ruta a la ubicación de bash.exe en tu instalación de Git
 set GIT_BASH_PATH="C:\Program Files\Git\bin\bash.exe"
