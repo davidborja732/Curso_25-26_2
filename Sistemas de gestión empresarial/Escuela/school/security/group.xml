@@ -1,0 +1,9 @@
+<odoo>
+    <record id="secretaria" model="res.groups">
+        <field name="name">secretaria</field>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+    <record id="conserjeria" model="res.groups">
+        <field name="name">conserjeria</field>
+    </record>
+</odoo>
