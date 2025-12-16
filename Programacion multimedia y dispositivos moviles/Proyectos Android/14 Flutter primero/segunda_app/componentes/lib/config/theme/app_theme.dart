@@ -3,21 +3,28 @@ import 'package:flutter/material.dart';
 const listaDeColores = <Color>[
   Colors.blue,
   Colors.indigo,
+  Colors.deepPurple,
+  Colors.pink,
   Colors.yellow,
-  Colors.lightGreen,
-  Colors.pink
+  Colors.green
 ];
+
 class AppTheme {
-  final int colorseleccionado;
 
-  AppTheme({this.colorseleccionado = 0});
+  final int colorSeleccionado;
 
-  ThemeData obtenertema() => ThemeData(
+  AppTheme({this.colorSeleccionado = 0 });
+
+  ThemeData obtenerTema() => ThemeData(
     useMaterial3: true,
-    colorSchemeSeed: listaDeColores[colorseleccionado],
+    colorSchemeSeed: listaDeColores[colorSeleccionado],
+
     appBarTheme: AppBarTheme(
       centerTitle: true,
     ),
-    iconTheme: IconThemeData(color:listaDeColores[colorseleccionado],),
+
+    iconTheme: IconThemeData(color: listaDeColores[colorSeleccionado]),
+
   );
+
 }

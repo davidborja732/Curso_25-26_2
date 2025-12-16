@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class IndicadorScreen extends StatelessWidget {
+class ProgressScreen extends StatelessWidget {
    
-  const IndicadorScreen({Key? key}) : super(key: key);
+  const ProgressScreen({Key? key}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Progress & Snackbar'),), 
       body: Center(
-         child: Column(
+        child: Column(
           children: [
             SizedBox(height: 10,),
             CircularProgressIndicator(
@@ -25,9 +25,28 @@ class IndicadorScreen extends StatelessWidget {
             SizedBox(height: 10,),
             _CircularControlado()
           ],
-         )
+        )
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          mostrarSnackBar(context);
+        },
+        child: Icon(Icons.remove_red_eye_outlined),
+        )
     );
+  }
+  
+  void mostrarSnackBar(BuildContext context) {
+    ScaffoldMessenger.of(context).clearSnackBars();
+    final snackbar = SnackBar(
+      content: Text('Hola a DAM2'),
+      duration: Duration(seconds: 2),
+      action: SnackBarAction(
+        label: "OK", 
+        onPressed: (){}
+        ),
+      );
+    ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 }
 

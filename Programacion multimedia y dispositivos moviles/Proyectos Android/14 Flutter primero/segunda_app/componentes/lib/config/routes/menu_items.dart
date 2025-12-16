@@ -1,68 +1,73 @@
-// ignore: unnecessary_import
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 
 class MenuItem {
+
   final String titulo;
   final String subtitulo;
   final String link;
   final IconData icono;
-  MenuItem({
-    required this.titulo,
-    required this.subtitulo,
-    required this.link,
+
+  MenuItem({ 
+    required this.titulo, 
+    required this.subtitulo, 
+    required this.link, 
     required this.icono,
-  });
+    });
+
 }
 
-final MenuItems = <MenuItem>[
+
+final menuItems = <MenuItem>[
+
   MenuItem(
-    titulo: 'Listas',
-    subtitulo: 'Ejemplo de lista',
-    link: '/listas',
-    icono: Icons.list,
-  ),
-  MenuItem(
-    titulo: 'Tarjetas',
-    subtitulo: 'Ejemplo de tarjetas',
-    link: '/tarjetas',
-    icono: Icons.credit_card,
-  ),
-  MenuItem(
-    titulo: 'Botones',
-    subtitulo: 'Ejemplo de Botones',
-    link: '/boton',
+    titulo: 'Botones', 
+    subtitulo: 'Muchos botones que ofrece Flutter', 
+    link: '/botones', 
     icono: Icons.radio_button_checked,
   ),
+
   MenuItem(
-    titulo: 'Alertas',
-    subtitulo: 'Ejemplo de Alertas',
-    link: '/alertas',
-    icono: Icons.add_alert,
+    titulo: 'Listas', 
+    subtitulo: 'Un simple ejemplo de Lista', 
+    link: '/listas', 
+    icono: Icons.list,
+  ),
+
+  MenuItem(
+    titulo: 'Tarjetas', 
+    subtitulo: 'Un simple ejemplo de tarjetas', 
+    link: '/tarjetas', 
+    icono: Icons.credit_card,
+  ),
+
+  MenuItem(
+    titulo: 'Alertas', 
+    subtitulo: 'Un simple ejemplo de alertas en Flutter', 
+    link: '/alertas', 
+    icono: Icons.alarm_add_outlined,
   ),
   MenuItem(
-    titulo: 'Sliders & Checks',
-    subtitulo: 'Ejemplo de Sliders',
-    link: '/sliders',
+    titulo: 'Sliders & Checks', 
+    subtitulo: 'Un simple ejemplo de sliders y checks en Flutter', 
+    link: '/sliders', 
     icono: Icons.check_box,
   ),
   MenuItem(
-    titulo: 'GridView (Practica 8)',
-    subtitulo: 'Ejemplo de GridView Practica 8 David Borja Mateo',
-    link: '/gridview',
-    icono: Icons.grid_on,
-  ),
-  MenuItem(
-    titulo: 'Animaciones',
-    subtitulo: 'Ejemplo de animaciones',
-    link: '/animations',
+    titulo: 'Animaciones', 
+    subtitulo: 'Un simple ejemplo de animaciones en Flutter', 
+    link: '/animaciones', 
     icono: Icons.animation,
   ),
   MenuItem(
-    titulo: 'Progress Indicator & SnackBar',
-    subtitulo: 'Progress Indicator & SnackBar ejemplo',
-    link: '/progreso',
-    icono: Icons.refresh,
+    titulo: 'Progress Indicator & SnackBar', 
+    subtitulo: 'Un simple ejemplo de Indicators y SnackBar', 
+    link: '/snackbar', 
+    icono: Icons.refresh_rounded,
+  ),
+  MenuItem(
+    titulo: 'Formulario', 
+    subtitulo: 'Un simple ejemplo de formulario', 
+    link: '/formulario', 
+    icono: Icons.text_format,
   ),
 ];
