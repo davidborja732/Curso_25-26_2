@@ -32,9 +32,7 @@ class MenuActivity : AppCompatActivity() {
         binding.btnPreguntas2.setOnClickListener {
             irArConfiguracionActvity()
         }
-        binding.btnPreguntas.setOnClickListener {
-            irArPeliculasActvity();
-        }
+
 
     }
 
@@ -50,10 +48,7 @@ class MenuActivity : AppCompatActivity() {
         val irraza= Intent(this, SettingsActivity::class.java)
         startActivity(irraza)
     }
-    private fun irArPeliculasActvity() {
-        val irraza= Intent(this, PeliculasActivity::class.java)
-        startActivity(irraza)
-    }
+
 
 
 }
