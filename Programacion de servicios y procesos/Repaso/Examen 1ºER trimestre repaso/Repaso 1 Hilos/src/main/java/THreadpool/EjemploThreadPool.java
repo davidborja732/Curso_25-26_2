@@ -25,7 +25,7 @@ public class EjemploThreadPool {
                                 hilo + " suma=" + operaciones.sumar(a, b) + " | " +"\n"+
                                 hilo + " resta=" + operaciones.restar(a, b) + " | " +"\n"+
                                 hilo + " multiplicacion=" + operaciones.multiplicar(a, b) + " | " +"\n"+
-                                hilo + " division=" + (b != 0 ? operaciones.dividir(a, b) : "No se puede dividir entre cero");
+                                hilo + " division=" + operaciones.dividir(a, b);
 
                 // Bloque sincronizado: solo un hilo imprime a la vez
                 synchronized (System.out) {
