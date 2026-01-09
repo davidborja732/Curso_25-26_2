@@ -1,0 +1,86 @@
+Ejercicio 1=
+1 db.blog_posts.find()
+2 db.blog_posts.find().pretty()
+3 db.blog_posts.countDocuments()
+4 db.blog_posts.find({creador:'Ana García'})
+5 db.blog_posts.find({ "likes": { "$gt": 100 }})
+6 db.blog_posts.find({tags: /programacion/})
+7 db.blog_posts.find({},{"creador": 1, "contenido": 1, "_id": 0})
+Ejercicio 2= 
+8 db.blog_posts.find({"comments.0" : {$exists:true}}) // Elijo el elemento 0 y si existe significa que tiene un comentario al menos 
+9 db.blog_posts.find({"comments.0" : {$exists:false}}) // Elijo el elemento 0 y si no existe significa que no tiene ningun comentario 
+10 db.blog_posts.find({"comments.creador" : "Pedro Ruiz"})
+11 db.blog_posts.find({$expr:{$gt: [{$size:"comments"}, 3]}})
+12 db.blog_posts.find({"comments.like" : { "$gt": 5 }})
+13 db.blog_posts.find({},{"creador": 1, "comments": 1, "_id": 0})
+14 db.blog_posts.find({},{"creador": 1, "comments": 1, , "comments.creador": 1,"_id": 0}) // muestro creador contenido y el creador de cada comentario 
+Ejercicio 3= 
+15=  
+	db.blog_posts.aggregate([
+		{$project:{
+				numeroComentarios:
+					{
+						$size:"$comments"
+					}
+			}
+		},
+		{
+			$group: {
+				_id: null,numeroComentarios: {
+					$sum: "$numeroComentarios"
+				}
+			}
+		}
+	])
+16= 
+	// Solo muestro id;
+	db.blog_posts.aggregate([
+		{$project:
+			{
+			numeroComentarios:
+				{$size:"$comments"}
+			}
+		},
+		{
+			$sort: {numeroComentarios: -1}
+		},
+		{
+			$limit: 1
+		}
+	]) 
+	// Muestro mas cosas
+	db.blog_posts.aggregate([
+		{$project:
+			{
+			creador:1,
+			contenido:1,
+			numeroComentarios:
+				{$size:"$comments"}
+			}
+		},
+		{
+			$sort: {numeroComentarios: -1}
+		},
+		{
+			$limit: 1
+		}
+	])
+17= 
+	db.blog_posts.aggregate([
+		{
+			$group: {
+				_id: null,
+				promedioLikea: {
+					$avg: "$likes"
+				}
+			}
+		}
+	])
+18 
+19 
+20 
+21 
+22 
+23 
+24 
+25 

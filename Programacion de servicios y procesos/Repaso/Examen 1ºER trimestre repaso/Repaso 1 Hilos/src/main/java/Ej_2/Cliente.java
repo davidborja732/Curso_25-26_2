@@ -15,7 +15,6 @@ public class Cliente {
 
             String opcion;
             do {
-                System.out.println("\n--- MENÚ ---");
                 System.out.println("1. Listar contactos");
                 System.out.println("2. Buscar contacto");
                 System.out.println("3. Salir");
@@ -32,7 +31,7 @@ public class Cliente {
                         break;
                     case "2":
                         System.out.print("Nombre del contacto: ");
-                        String nombre = sc.nextLine();
+                        String nombre = sc.nextLine().toLowerCase();
                         salida.println("BUSCAR " + nombre);
                         System.out.println(entrada.readLine());
                         break;
@@ -41,7 +40,7 @@ public class Cliente {
                         System.out.println(entrada.readLine());
                         break;
                     default:
-                        System.out.println("Opción inválida");
+                        System.out.println("Opcion invalida");
                 }
             } while (!opcion.equals("3"));
 
