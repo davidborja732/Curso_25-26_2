@@ -1,0 +1,33 @@
+.Button {
+    -fx-border-color: white;
+    -fx-border-width: 3px;
+    -fx-background-radius: 2px;
+    -fx-border-radius: 1px;
+    -fx-background-color: dodgerblue;
+    -fx-font-size:20;
+    -fx-text-fill: white;
+}
+.GridPane {
+    -fx-background-color: blue;
+    -fx-text-alignment: center;
+}
+.VBox {
+    -fx-text-fill: white;
+    -fx-background-color: white;
+
+}
+.button:hover {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+.Label {
+    -fx-alignment: center;
+    -fx-text-fill: white;
+    -fx-font-size: 26;
+}
+.TextField{
+    -fx-background-radius:20;
+    -fx-start-margin: 10;
+
+}
