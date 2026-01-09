@@ -54,7 +54,6 @@ public class HelloController {
 
     @FXML
     protected void initialize() {
-
         // Limpia la lista para evitar duplicados al recargar
         empleados.clear();
 
@@ -298,7 +297,7 @@ public class HelloController {
 
     // Limpia los campos para crear un nuevo empleado
     public void SetNuevoEmpleado() {
-        Empleados empleados1 = empleados.get(empleados.size() - 1);
+        Empleados empleados1 = empleados.getLast();
 
         idtext.setText(String.valueOf(empleados1.getId() + 1));
         idtext.setEditable(false);
@@ -383,7 +382,6 @@ public class HelloController {
     public void setMenuListados(){
         Stage stage=new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view-tabla.fxml"));
-
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 683, 400);

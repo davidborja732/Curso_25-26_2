@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<TableView fx:id="tabla" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesch.examendi.HelloController1">
+  <columns>
+    <TableColumn fx:id="colId" prefWidth="48.0" text="Id" />
+    <TableColumn fx:id="colProducto" prefWidth="150.0" text="Producto" />
+      <TableColumn fx:id="colPrecio" minWidth="8.0" prefWidth="103.0" text="Precio" />
+      <TableColumn fx:id="colPrecioIva" prefWidth="104.0" text="Precio Iva" />
+      <TableColumn fx:id="colCategoria" prefWidth="192.0" text="Categoria" />
+      <TableColumn fx:id="colMarca" prefWidth="142.0" text="Marca" />
+      <TableColumn fx:id="colWifi" minWidth="0.0" prefWidth="58.0" text="Wifi" />
+      <TableColumn fx:id="colBluetooth" prefWidth="67.0" text="Bluetooth" />
+      <TableColumn fx:id="colNFC" prefWidth="46.0" text="NFC" />
+      <TableColumn fx:id="col5g" prefWidth="50.0" text="5G" />
+      <TableColumn fx:id="colEstado" prefWidth="98.0" text="Estado" />
+  </columns>
+</TableView>
