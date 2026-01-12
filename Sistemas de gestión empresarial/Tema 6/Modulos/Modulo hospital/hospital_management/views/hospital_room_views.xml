@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_hospital_room_list" model="ir.ui.view">
+        <field name="name">hospital.room.list</field>
+        <field name="model">hospital.room</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="current_occupancy"/>
+                <field name="is_full"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hospital_room_form" model="ir.ui.view">
+        <field name="name">hospital.room.form</field>
+        <field name="model">hospital.room</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                        <field name="current_occupancy" readonly="1"/>
+                        <field name="is_full" readonly="1"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Ingresos">
+                            <field name="admission_ids">
+                                <list>
+                                    <field name="patient_id"/>
+                                    <field name="doctor_id"/>
+                                    <field name="bed"/>
+                                    <field name="admission_date"/>
+                                    <field name="discharge_date"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hospital_room" model="ir.actions.act_window">
+        <field name="name">Habitaciones</field>
+        <field name="res_model">hospital.room</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_hospital_room_search" model="ir.ui.view">
+        <field name="name">hospital.room.search</field>
+        <field name="model">hospital.room</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="free_rooms"
+                        string="Habitaciones libres"
+                        domain="[('is_full','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

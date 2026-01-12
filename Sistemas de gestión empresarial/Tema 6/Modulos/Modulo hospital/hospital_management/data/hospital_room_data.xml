@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="room_101" model="hospital.room">
+        <field name="name">101</field>
+    </record>
+
+    <record id="room_102" model="hospital.room">
+        <field name="name">102</field>
+    </record>
+
+    <record id="room_103" model="hospital.room">
+        <field name="name">103</field>
+    </record>
+
+</odoo>
