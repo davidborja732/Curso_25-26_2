@@ -1,0 +1,147 @@
+<odoo>                                                     <!-- Nodo raíz obligatorio para cargar datos en Odoo. -->
+  <data>                                                  <!-- Contenedor de registros y definiciones del módulo. -->
+
+    <!-- explicit list view definition -->                 <!-- Comentario informativo sobre la vista lista. -->
+
+    <record model="ir.ui.view" id="school.student_list">  <!-- Crea una vista en ir.ui.view con ID único. -->
+      <field name="name">school student list</field>       <!-- Nombre interno de la vista. -->
+      <field name="model">school.student</field>           <!-- Modelo al que pertenece la vista. -->
+      <field name="arch" type="xml">
+      <!-- Marca en amarillo si la edad > 18. -->                      <!-- Contenido XML que define la vista. -->
+        <list decoration-warning="age&gt;18"               
+              decoration-success="age&lt;18">              <!-- Marca en verde si la edad < 18. -->
+          <field name="name"/>                            <!-- Columna: nombre del estudiante. -->
+          <field name="surname"/>                         <!-- Columna: apellidos. -->
+          <field name="age" avg="Media de edad"/>         <!-- Columna: edad, con media calculada. -->
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="school.student_form">  <!-- Vista formulario para school.student. -->
+      <field name="name">school student form</field>       <!-- Nombre interno de la vista. -->
+      <field name="model">school.student</field>           <!-- Modelo al que pertenece la vista. -->
+      <field name="arch" type="xml">                      <!-- Contenido XML del formulario. -->
+        <form>                                            <!-- Vista tipo formulario. -->
+
+        <header>                                          <!-- Cabecera del formulario. -->
+          <div class="oe_button_box"> 
+          <!-- Llama al método regenerar del modelo. -->                    <!-- Contenedor de botones tipo stat_button. -->
+            <button name="regenerar"                      
+                    class="oe_stat_button" 
+                    type="object" 
+                    icon="fa-address-book" 
+                    string="Regenerar password">
+            </button>
+          </div>
+          <field name="state" widget="statusbar"/>        <!-- Barra de estado del estudiante. -->
+        </header>
+
+        <group>                                           <!-- Grupo principal del formulario. -->
+          <group>                                         <!-- Subgrupo: datos personales. -->
+            <separator class="text-muted" 
+                        string="Datos personales"/>        <!-- Título de sección. -->
+
+            <field name="name" string="Nombre"/>          <!-- Nombre del estudiante. -->
+            <field name="surname"/>                       <!-- Apellidos. -->
+            <field name="birthday"/>                      <!-- Fecha de nacimiento. -->
+            <field name="country_id"/>                    <!-- País. -->
+            <field name="province"/>                      <!-- Provincia filtrada por país. -->
+            <field name="dni"/>                           <!-- DNI. -->
+            <field name="state"/>                         <!-- Estado del estudiante. -->
+          </group>
+
+          <!-- <group invisible = "state!='2'"> -->         <!-- Ejemplo comentado. -->
+          <group invisible="state&lt;'2'">                 <!-- Oculta el grupo si state < '2'. -->
+            <separator string="Otros datos personales"/>   <!-- Título de sección. -->
+
+            <field name="age"/>                           <!-- Edad calculada. -->
+            <field name="course_id"/>                     <!-- Curso asignado. -->
+            <field name="level"/>                         <!-- Nivel del curso (related). -->
+
+            <!-- <field name="subject_ids" widget='many2many_tags'/> -->  <!-- Ejemplo comentado. -->
+            <!-- Notas del estudiante. -->
+            <field name="note_ids"                        
+                   domain="[('subject_id.course_id','=',course_id)]"> <!-- Filtra notas del curso. -->
+              <list>                                      <!-- Vista lista embebida. -->
+                <field name="note"/>                      <!-- Nota numérica. -->
+                <field name="subject_id"/>                <!-- Asignatura. -->
+                <field name="course_subject_id"/>         <!-- Curso de la asignatura. -->
+              </list>
+            </field>
+
+            <field name="password"/>                      <!-- Contraseña generada. -->
+            <field name="image" widget="image"/>          <!-- Imagen del estudiante. -->
+          </group>
+        </group>
+
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="school.student_kanban"> <!-- Vista kanban para school.student. -->
+      <field name="name">school student kanban</field>      <!-- Nombre interno de la vista. -->
+      <field name="model">school.student</field>            <!-- Modelo al que pertenece la vista. -->
+      <field name="arch" type="xml">                       <!-- Contenido XML de la vista kanban. -->
+        <kanban>                                           <!-- Vista tipo kanban. -->
+          <template>                                       <!-- Plantilla de tarjeta. -->
+
+            <!-- <t t-name="kanban-box"> -->                <!-- Ejemplo comentado. -->
+
+            <t t-name="card" class="flex-row">             <!-- Tarjeta personalizada. -->
+
+              <a type="open">            
+              <!-- Imagen del estudiante. -->                  <!-- Enlace para abrir el registro. -->
+                <img class="o_image_64_contain"            
+                     t-att-alt="record.name.value"
+                     t-att-src="kanban_image('school.student', 'image',
+                     record.id.raw_value)" />
+              </a>
+
+              <div class="oe_product_vignette">            <!-- Contenedor de datos. -->
+                <h4>
+                  <a type="edit">                          <!-- Enlace para editar. -->
+                    <field name="name"/>                   <!-- Nombre. -->
+                    <field name="surname"/>                <!-- Apellidos. -->
+                  </a>
+                </h4>
+
+                <field name="dni"/>                        <!-- DNI. -->
+                <br/>
+                <field name="state"/>                      <!-- Estado. -->
+                <br/>
+                <field name="age"/>                        <!-- Edad. -->
+                <br/>
+                <field name="note_ids"/>                   <!-- Notas. -->
+              </div>
+
+            </t>
+          </template>
+        </kanban>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="school.student_search"> <!-- Vista de búsqueda. -->
+      <field name="name">school student search</field>      <!-- Nombre interno. -->
+      <field name="model">school.student</field>            <!-- Modelo. -->
+      <field name="arch" type="xml">                       <!-- Contenido XML. -->
+        <search>                                           <!-- Vista de búsqueda. -->
+          <field name="name"/>                             <!-- Búsqueda por nombre. -->
+          <field name="surname"/>                          <!-- Búsqueda por apellidos. -->
+          <field name="age"/>                              <!-- Búsqueda por edad. -->
+
+          <!-- Ejemplo comentado de filtro dinámico. -->
+          <!--<field name="age" string="Mayores de: " filter_domain="[('age','>=',self)]"/>-->
+          <!-- Filtro predefinido. -->
+          <filter name="age"                               
+                  string="Mayores de 18" 
+                  domain="[('age','>',17)]"/>              <!-- Condición: edad > 17. -->
+          <!-- Filtro por país. -->
+          <filter name="Por pais:"                         
+                  string="Por Pais" 
+                  context="{'group_by':'country_id'}"/>    <!-- Agrupa por país. -->
+        </search>
+      </field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,20 @@
+<odoo>                                                     <!-- Nodo raíz obligatorio para cargar datos en Odoo. -->
+  <data>                                                  <!-- Contenedor de registros y definiciones del módulo. -->
+
+    <!-- explicit list view definition -->                 <!-- Comentario informativo sobre la vista lista. -->
+
+    <record model="ir.ui.view" id="school.subject_list">  <!-- Crea una vista en ir.ui.view con ID único. -->
+      <field name="name">school subject</field>           <!-- Nombre interno de la vista. -->
+      <field name="model">school.subject</field>          <!-- Modelo al que pertenece la vista. -->
+      <field name="arch" type="xml">                      <!-- Contenido XML que define la vista. -->
+        <list>                                            <!-- Vista tipo lista (tree). -->
+          <field name="name"/>                            <!-- Columna: nombre de la asignatura. -->
+          <field name="description"/>                     <!-- Columna: descripción de la asignatura. -->
+          <field name="course_id"/>                       <!-- Columna: curso al que pertenece. -->
+          <field name="level_course"/>                    <!-- Columna: nivel del curso (related). -->
+        </list>
+      </field>
+    </record>
+
+  </data>
+</odoo>

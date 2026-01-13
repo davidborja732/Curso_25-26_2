@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="david.slibro_list">
+      <field name="name">Libros</field>
+      <field name="model">david.libros</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="titulo"/>
+          <field name="autor"/>
+          <field name="isbn"/>
+          <field name="paginas"/>
+          <field name="lanzamiento"/>
+          <field name="prestado"/>
+        </list>
+      </field>
+    </record>
+  </data>
+</odoo>

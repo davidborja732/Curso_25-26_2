@@ -1,0 +1,14 @@
+<odoo>
+    <!-- Define a group record with ID "secretaria" -->
+    <record id="secretaria" model="res.groups">
+        <!-- Set the group name to "secretaria" -->
+        <field name="name">secretaria</field>
+        <!-- Add the admin user to this group using relation (4, ...) -->
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+    <!-- Define a group record with ID "conserjeria" -->
+    <record id="conserjeria" model="res.groups">
+        <!-- Set the group name to "conserjeria" -->
+        <field name="name">conserjeria</field>
+    </record>
+</odoo>

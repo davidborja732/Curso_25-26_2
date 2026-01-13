@@ -1,0 +1,42 @@
+<odoo>
+  <data>
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="david.action_window_socios">
+      <field name="name">Socios </field>
+      <field name="res_model">david.socios</field>
+      <field name="view_mode">list</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="david.action_window_libros">
+      <field name="name">Libros </field>
+      <field name="res_model">david.libros</field>
+      <field name="view_mode">list</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="david.action_window_prestamos">
+      <field name="name">Prestamos </field>
+      <field name="res_model">david.prestamos</field>
+      <field name="view_mode">list,calendar,graph</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="David" id="david.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Administracion" id="david.menu_administracion" parent="david.menu_root"/>
+    
+
+    <!-- actions -->
+
+    <menuitem name="Listado de socios" id="david.menu_socio_list" parent="david.menu_administracion"
+              action="david.action_window_socios"/>
+    <menuitem name="Listado de libros" id="david.menu_libro_list" parent="david.menu_administracion"
+              action="david.action_window_libros"/>
+    <menuitem name="Listado de prestamos" id="david.menu_prestamos_list" parent="david.menu_root"
+              action="david.action_window_prestamos"/>
+  </data>
+</odoo>
+

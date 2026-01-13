@@ -1,0 +1,43 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="david.prestamos_list">
+      <field name="name">Prestamos</field>
+      <field name="model">david.prestamos</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="libro_titulo"/>
+          <field name="socio"/>
+          <field name="dni"/>
+          <field name="fecha_prestamo"/>
+          <field name="fecha_devolucion"/>
+          <field name="empleado"/>
+          <field name="prestamo_activo"/>
+        </list>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="david.calendar">
+      <field name="name">Prestamos</field>
+      <field name="model">david.prestamos</field>
+      <field name="arch" type="xml">
+        <calendar string="prestamos" date_start="fecha_prestamo" date_stop="fecha_devolucion" color="libro_titulo" mode="month">
+          <field name="libro_titulo"/>
+          <field name="fecha_prestamo"/>
+          <field name="fecha_devolucion"/>
+        </calendar>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="david_prestamos_graph">    
+      <field name="name">Prestamos</field>                    
+      <field name="model">david.prestamos</field>             
+      <field name="arch" type="xml">                      
+        <graph string="Prestamos" type="bar">                 
+          <field name="libro_titulo" type="measure"/>             
+          <field name="prestamo_activo" type="row"/>           
+          <field name="dni" type="col"/>           
+        </graph>
+      </field>
+    </record>
+  </data>
+</odoo>
