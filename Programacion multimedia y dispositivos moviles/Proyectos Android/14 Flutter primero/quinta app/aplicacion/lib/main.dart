@@ -1,5 +1,7 @@
 import 'package:aplicacion/screens/apijson_screen.dart';
+import 'package:aplicacion/screens/disenios_screen.dart';
 import 'package:aplicacion/screens/menu_screen.dart';
+import 'package:aplicacion/screens/simpsons_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -14,8 +16,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => MenuScreen(),
-        'api1': (context) => ApijsonScreen(),
-      }
-      );
+        'api1': (context) => ApiJsonPlaceUsersScreen(),
+        'simpsons': (context) => SimpsonsScreen(),
+        'estilos': (context) => DiseniosScreen(),
+      },
+    );
   }
 }

@@ -1,0 +1,955 @@
+[
+  {
+    "_id": 1,
+    "titulo": "Desarrollo Web Full Stack con MERN",
+    "instructor": "Carlos Martínez",
+    "categoria": "Programación",
+    "nivel": "Intermedio",
+    "precio": 89.99,
+    "duracion_horas": 45,
+    "fecha_creacion": ISODate("2023-06-15T00:00:00Z"),
+    "activo": true,
+    "idiomas": ["Español", "Inglés"],
+    "requisitos": ["HTML básico", "CSS básico", "JavaScript básico"],
+    "modulos": [
+      {
+        "num_modulo": 1,
+        "titulo": "Introducción a MongoDB",
+        "duracion_horas": 8,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "¿Qué es MongoDB?",
+            "tipo": "video",
+            "duracion_minutos": 25,
+            "completado_por": 145
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Instalación y configuración",
+            "tipo": "video",
+            "duracion_minutos": 35,
+            "completado_por": 132
+          },
+          {
+            "num_leccion": 3,
+            "titulo": "Primeras consultas",
+            "tipo": "practica",
+            "duracion_minutos": 45,
+            "completado_por": 118
+          }
+        ]
+      },
+      {
+        "num_modulo": 2,
+        "titulo": "Node.js y Express",
+        "duracion_horas": 12,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Introducción a Node.js",
+            "tipo": "video",
+            "duracion_minutos": 30,
+            "completado_por": 125
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Creando servidor con Express",
+            "tipo": "video",
+            "duracion_minutos": 40,
+            "completado_por": 110
+          }
+        ]
+      },
+      {
+        "num_modulo": 3,
+        "titulo": "React desde cero",
+        "duracion_horas": 15,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Componentes y Props",
+            "tipo": "video",
+            "duracion_minutos": 50,
+            "completado_por": 98
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Hooks: useState y useEffect",
+            "tipo": "video",
+            "duracion_minutos": 60,
+            "completado_por": 85
+          }
+        ]
+      }
+    ],
+    "estudiantes": [
+      {
+        "id_estudiante": 1001,
+        "nombre": "Ana López",
+        "email": "ana@example.com",
+        "fecha_inscripcion": ISODate("2024-01-10T00:00:00Z"),
+        "progreso_porcentaje": 75,
+        "ultima_actividad": ISODate("2024-12-15T10:30:00Z"),
+        "certificado_obtenido": false
+      },
+      {
+        "id_estudiante": 1002,
+        "nombre": "Pedro García",
+        "email": "pedro@example.com",
+        "fecha_inscripcion": ISODate("2024-02-05T00:00:00Z"),
+        "progreso_porcentaje": 100,
+        "ultima_actividad": ISODate("2024-11-20T14:20:00Z"),
+        "certificado_obtenido": true
+      },
+      {
+        "id_estudiante": 1003,
+        "nombre": "Laura Sánchez",
+        "email": "laura@example.com",
+        "fecha_inscripcion": ISODate("2024-03-12T00:00:00Z"),
+        "progreso_porcentaje": 45,
+        "ultima_actividad": ISODate("2024-12-18T09:15:00Z"),
+        "certificado_obtenido": false
+      }
+    ],
+    "valoraciones": [
+      {
+        "id_estudiante": 1002,
+        "nombre": "Pedro García",
+        "puntuacion": 5,
+        "comentario": "Excelente curso, muy completo y bien explicado",
+        "fecha": ISODate("2024-11-20T15:00:00Z"),
+        "util_votos": 12
+      },
+      {
+        "id_estudiante": 1001,
+        "nombre": "Ana López",
+        "puntuacion": 4,
+        "comentario": "Buen contenido, aunque algunos ejercicios son difíciles",
+        "fecha": ISODate("2024-12-10T11:00:00Z"),
+        "util_votos": 5
+      }
+    ],
+    "promedio_valoracion": 4.5,
+    "total_estudiantes": 156
+  },
+  {
+    "_id": 2,
+    "titulo": "Python para Data Science",
+    "instructor": "María Rodríguez",
+    "categoria": "Data Science",
+    "nivel": "Básico",
+    "precio": 79.99,
+    "duracion_horas": 35,
+    "fecha_creacion": ISODate("2023-08-20T00:00:00Z"),
+    "activo": true,
+    "idiomas": ["Español"],
+    "requisitos": ["Ninguno"],
+    "modulos": [
+      {
+        "num_modulo": 1,
+        "titulo": "Fundamentos de Python",
+        "duracion_horas": 10,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Variables y tipos de datos",
+            "tipo": "video",
+            "duracion_minutos": 30,
+            "completado_por": 234
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Estructuras de control",
+            "tipo": "video",
+            "duracion_minutos": 40,
+            "completado_por": 220
+          },
+          {
+            "num_leccion": 3,
+            "titulo": "Funciones",
+            "tipo": "practica",
+            "duracion_minutos": 50,
+            "completado_por": 205
+          }
+        ]
+      },
+      {
+        "num_modulo": 2,
+        "titulo": "NumPy y Pandas",
+        "duracion_horas": 12,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Introducción a NumPy",
+            "tipo": "video",
+            "duracion_minutos": 45,
+            "completado_por": 198
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "DataFrames con Pandas",
+            "tipo": "video",
+            "duracion_minutos": 55,
+            "completado_por": 180
+          }
+        ]
+      },
+      {
+        "num_modulo": 3,
+        "titulo": "Visualización de datos",
+        "duracion_horas": 13,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Matplotlib básico",
+            "tipo": "video",
+            "duracion_minutos": 35,
+            "completado_por": 165
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Seaborn avanzado",
+            "tipo": "video",
+            "duracion_minutos": 50,
+            "completado_por": 152
+          },
+          {
+            "num_leccion": 3,
+            "titulo": "Proyecto final",
+            "tipo": "proyecto",
+            "duracion_minutos": 120,
+            "completado_por": 89
+          }
+        ]
+      }
+    ],
+    "estudiantes": [
+      {
+        "id_estudiante": 1004,
+        "nombre": "Roberto Silva",
+        "email": "roberto@example.com",
+        "fecha_inscripcion": ISODate("2024-01-15T00:00:00Z"),
+        "progreso_porcentaje": 90,
+        "ultima_actividad": ISODate("2024-12-17T16:45:00Z"),
+        "certificado_obtenido": false
+      },
+      {
+        "id_estudiante": 1005,
+        "nombre": "Carmen Vega",
+        "email": "carmen@example.com",
+        "fecha_inscripcion": ISODate("2024-02-20T00:00:00Z"),
+        "progreso_porcentaje": 100,
+        "ultima_actividad": ISODate("2024-10-30T12:00:00Z"),
+        "certificado_obtenido": true
+      },
+      {
+        "id_estudiante": 1006,
+        "nombre": "Luis Moreno",
+        "email": "luis@example.com",
+        "fecha_inscripcion": ISODate("2024-11-05T00:00:00Z"),
+        "progreso_porcentaje": 25,
+        "ultima_actividad": ISODate("2024-12-16T18:30:00Z"),
+        "certificado_obtenido": false
+      },
+      {
+        "id_estudiante": 1001,
+        "nombre": "Ana López",
+        "email": "ana@example.com",
+        "fecha_inscripcion": ISODate("2024-09-01T00:00:00Z"),
+        "progreso_porcentaje": 60,
+        "ultima_actividad": ISODate("2024-12-18T08:20:00Z"),
+        "certificado_obtenido": false
+      }
+    ],
+    "valoraciones": [
+      {
+        "id_estudiante": 1005,
+        "nombre": "Carmen Vega",
+        "puntuacion": 5,
+        "comentario": "Increíble curso para comenzar en Data Science",
+        "fecha": ISODate("2024-10-30T13:00:00Z"),
+        "util_votos": 18
+      },
+      {
+        "id_estudiante": 1004,
+        "nombre": "Roberto Silva",
+        "puntuacion": 5,
+        "comentario": "María explica muy bien, super recomendado",
+        "fecha": ISODate("2024-12-15T10:00:00Z"),
+        "util_votos": 9
+      },
+      {
+        "id_estudiante": 1001,
+        "nombre": "Ana López",
+        "puntuacion": 4,
+        "comentario": "Muy buen curso, aprendí mucho",
+        "fecha": ISODate("2024-12-17T14:30:00Z"),
+        "util_votos": 6
+      }
+    ],
+    "promedio_valoracion": 4.7,
+    "total_estudiantes": 267
+  },
+  {
+    "_id": 3,
+    "titulo": "Diseño UX/UI con Figma",
+    "instructor": "Laura Jiménez",
+    "categoria": "Diseño",
+    "nivel": "Básico",
+    "precio": 59.99,
+    "duracion_horas": 25,
+    "fecha_creacion": ISODate("2024-01-10T00:00:00Z"),
+    "activo": true,
+    "idiomas": ["Español", "Portugués"],
+    "requisitos": ["Ninguno"],
+    "modulos": [
+      {
+        "num_modulo": 1,
+        "titulo": "Principios de diseño UX",
+        "duracion_horas": 8,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "¿Qué es UX?",
+            "tipo": "video",
+            "duracion_minutos": 20,
+            "completado_por": 189
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Investigación de usuarios",
+            "tipo": "video",
+            "duracion_minutos": 35,
+            "completado_por": 175
+          }
+        ]
+      },
+      {
+        "num_modulo": 2,
+        "titulo": "Diseño UI con Figma",
+        "duracion_horas": 10,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Interface de Figma",
+            "tipo": "video",
+            "duracion_minutos": 25,
+            "completado_por": 165
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Componentes y variantes",
+            "tipo": "practica",
+            "duracion_minutos": 45,
+            "completado_por": 148
+          }
+        ]
+      },
+      {
+        "num_modulo": 3,
+        "titulo": "Proyecto final",
+        "duracion_horas": 7,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Diseño de app móvil",
+            "tipo": "proyecto",
+            "duracion_minutos": 180,
+            "completado_por": 92
+          }
+        ]
+      }
+    ],
+    "estudiantes": [
+      {
+        "id_estudiante": 1007,
+        "nombre": "Diego Ruiz",
+        "email": "diego@example.com",
+        "fecha_inscripcion": ISODate("2024-05-10T00:00:00Z"),
+        "progreso_porcentaje": 100,
+        "ultima_actividad": ISODate("2024-09-15T11:00:00Z"),
+        "certificado_obtenido": true
+      },
+      {
+        "id_estudiante": 1008,
+        "nombre": "Elena Torres",
+        "email": "elena@example.com",
+        "fecha_inscripcion": ISODate("2024-10-01T00:00:00Z"),
+        "progreso_porcentaje": 55,
+        "ultima_actividad": ISODate("2024-12-18T15:45:00Z"),
+        "certificado_obtenido": false
+      }
+    ],
+    "valoraciones": [
+      {
+        "id_estudiante": 1007,
+        "nombre": "Diego Ruiz",
+        "puntuacion": 5,
+        "comentario": "Perfecto para comenzar en diseño UX/UI",
+        "fecha": ISODate("2024-09-15T12:00:00Z"),
+        "util_votos": 14
+      },
+      {
+        "id_estudiante": 1008,
+        "nombre": "Elena Torres",
+        "puntuacion": 4,
+        "comentario": "Muy bueno, aunque me gustaría más proyectos prácticos",
+        "fecha": ISODate("2024-12-10T16:00:00Z"),
+        "util_votos": 7
+      }
+    ],
+    "promedio_valoracion": 4.5,
+    "total_estudiantes": 203
+  },
+  {
+    "_id": 4,
+    "titulo": "Machine Learning con Python",
+    "instructor": "María Rodríguez",
+    "categoria": "Data Science",
+    "nivel": "Avanzado",
+    "precio": 119.99,
+    "duracion_horas": 60,
+    "fecha_creacion": ISODate("2023-10-05T00:00:00Z"),
+    "activo": true,
+    "idiomas": ["Español", "Inglés"],
+    "requisitos": ["Python intermedio", "Matemáticas básicas", "Estadística"],
+    "modulos": [
+      {
+        "num_modulo": 1,
+        "titulo": "Fundamentos de ML",
+        "duracion_horas": 15,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Introducción al Machine Learning",
+            "tipo": "video",
+            "duracion_minutos": 40,
+            "completado_por": 156
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Tipos de aprendizaje",
+            "tipo": "video",
+            "duracion_minutos": 35,
+            "completado_por": 142
+          },
+          {
+            "num_leccion": 3,
+            "titulo": "Preprocesamiento de datos",
+            "tipo": "practica",
+            "duracion_minutos": 60,
+            "completado_por": 128
+          }
+        ]
+      },
+      {
+        "num_modulo": 2,
+        "titulo": "Algoritmos supervisados",
+        "duracion_horas": 20,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Regresión lineal",
+            "tipo": "video",
+            "duracion_minutos": 50,
+            "completado_por": 118
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Árboles de decisión",
+            "tipo": "video",
+            "duracion_minutos": 55,
+            "completado_por": 105
+          },
+          {
+            "num_leccion": 3,
+            "titulo": "Random Forest",
+            "tipo": "practica",
+            "duracion_minutos": 70,
+            "completado_por": 95
+          }
+        ]
+      },
+      {
+        "num_modulo": 3,
+        "titulo": "Deep Learning",
+        "duracion_horas": 25,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Redes neuronales",
+            "tipo": "video",
+            "duracion_minutos": 60,
+            "completado_por": 82
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "TensorFlow y Keras",
+            "tipo": "video",
+            "duracion_minutos": 75,
+            "completado_por": 68
+          },
+          {
+            "num_leccion": 3,
+            "titulo": "CNN para imágenes",
+            "tipo": "practica",
+            "duracion_minutos": 90,
+            "completado_por": 54
+          }
+        ]
+      }
+    ],
+    "estudiantes": [
+      {
+        "id_estudiante": 1004,
+        "nombre": "Roberto Silva",
+        "email": "roberto@example.com",
+        "fecha_inscripcion": ISODate("2024-03-01T00:00:00Z"),
+        "progreso_porcentaje": 80,
+        "ultima_actividad": ISODate("2024-12-18T10:30:00Z"),
+        "certificado_obtenido": false
+      },
+      {
+        "id_estudiante": 1009,
+        "nombre": "Sofia Hernández",
+        "email": "sofia@example.com",
+        "fecha_inscripcion": ISODate("2024-04-15T00:00:00Z"),
+        "progreso_porcentaje": 100,
+        "ultima_actividad": ISODate("2024-11-28T14:00:00Z"),
+        "certificado_obtenido": true
+      }
+    ],
+    "valoraciones": [
+      {
+        "id_estudiante": 1009,
+        "nombre": "Sofia Hernández",
+        "puntuacion": 5,
+        "comentario": "El mejor curso de ML que he tomado, muy profesional",
+        "fecha": ISODate("2024-11-28T15:00:00Z"),
+        "util_votos": 23
+      },
+      {
+        "id_estudiante": 1004,
+        "nombre": "Roberto Silva",
+        "puntuacion": 5,
+        "comentario": "Contenido excelente, muy completo",
+        "fecha": ISODate("2024-12-16T09:00:00Z"),
+        "util_votos": 11
+      }
+    ],
+    "promedio_valoracion": 5.0,
+    "total_estudiantes": 178
+  },
+  {
+    "_id": 5,
+    "titulo": "Marketing Digital desde Cero",
+    "instructor": "Jorge Fernández",
+    "categoria": "Marketing",
+    "nivel": "Básico",
+    "precio": 49.99,
+    "duracion_horas": 20,
+    "fecha_creacion": ISODate("2024-03-01T00:00:00Z"),
+    "activo": true,
+    "idiomas": ["Español"],
+    "requisitos": ["Ninguno"],
+    "modulos": [
+      {
+        "num_modulo": 1,
+        "titulo": "Fundamentos de Marketing Digital",
+        "duracion_horas": 6,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Introducción al marketing digital",
+            "tipo": "video",
+            "duracion_minutos": 25,
+            "completado_por": 312
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Estrategias digitales",
+            "tipo": "video",
+            "duracion_minutos": 30,
+            "completado_por": 298
+          }
+        ]
+      },
+      {
+        "num_modulo": 2,
+        "titulo": "Redes Sociales",
+        "duracion_horas": 8,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Instagram para negocios",
+            "tipo": "video",
+            "duracion_minutos": 40,
+            "completado_por": 285
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Facebook Ads",
+            "tipo": "practica",
+            "duracion_minutos": 50,
+            "completado_por": 267
+          }
+        ]
+      },
+      {
+        "num_modulo": 3,
+        "titulo": "Google Ads",
+        "duracion_horas": 6,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Campaña de búsqueda",
+            "tipo": "video",
+            "duracion_minutos": 45,
+            "completado_por": 245
+          }
+        ]
+      }
+    ],
+    "estudiantes": [
+      {
+        "id_estudiante": 1010,
+        "nombre": "Patricia Morales",
+        "email": "patricia@example.com",
+        "fecha_inscripcion": ISODate("2024-06-10T00:00:00Z"),
+        "progreso_porcentaje": 100,
+        "ultima_actividad": ISODate("2024-08-22T16:00:00Z"),
+        "certificado_obtenido": true
+      },
+      {
+        "id_estudiante": 1011,
+        "nombre": "Miguel Castro",
+        "email": "miguel@example.com",
+        "fecha_inscripcion": ISODate("2024-11-15T00:00:00Z"),
+        "progreso_porcentaje": 40,
+        "ultima_actividad": ISODate("2024-12-17T19:00:00Z"),
+        "certificado_obtenido": false
+      },
+      {
+        "id_estudiante": 1012,
+        "nombre": "Isabel Navarro",
+        "email": "isabel@example.com",
+        "fecha_inscripcion": ISODate("2024-10-20T00:00:00Z"),
+        "progreso_porcentaje": 70,
+        "ultima_actividad": ISODate("2024-12-18T11:30:00Z"),
+        "certificado_obtenido": false
+      }
+    ],
+    "valoraciones": [
+      {
+        "id_estudiante": 1010,
+        "nombre": "Patricia Morales",
+        "puntuacion": 4,
+        "comentario": "Buen curso introductorio, faltaría más práctica",
+        "fecha": ISODate("2024-08-22T17:00:00Z"),
+        "util_votos": 8
+      },
+      {
+        "id_estudiante": 1012,
+        "nombre": "Isabel Navarro",
+        "puntuacion": 5,
+        "comentario": "Perfecto para empezar en marketing digital",
+        "fecha": ISODate("2024-12-15T12:00:00Z"),
+        "util_votos": 4
+      }
+    ],
+    "promedio_valoracion": 4.5,
+    "total_estudiantes": 345
+  },
+  {
+    "_id": 6,
+    "titulo": "Fotografía Profesional",
+    "instructor": "Antonio Gil",
+    "categoria": "Fotografía",
+    "nivel": "Intermedio",
+    "precio": 69.99,
+    "duracion_horas": 30,
+    "fecha_creacion": ISODate("2023-09-12T00:00:00Z"),
+    "activo": true,
+    "idiomas": ["Español", "Inglés", "Francés"],
+    "requisitos": ["Cámara fotográfica", "Conocimientos básicos de fotografía"],
+    "modulos": [
+      {
+        "num_modulo": 1,
+        "titulo": "Técnicas avanzadas",
+        "duracion_horas": 12,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Exposición perfecta",
+            "tipo": "video",
+            "duracion_minutos": 35,
+            "completado_por": 178
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Composición avanzada",
+            "tipo": "video",
+            "duracion_minutos": 40,
+            "completado_por": 165
+          },
+          {
+            "num_leccion": 3,
+            "titulo": "Iluminación artificial",
+            "tipo": "practica",
+            "duracion_minutos": 55,
+            "completado_por": 152
+          }
+        ]
+      },
+      {
+        "num_modulo": 2,
+        "titulo": "Edición con Lightroom",
+        "duracion_horas": 10,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Interface de Lightroom",
+            "tipo": "video",
+            "duracion_minutos": 30,
+            "completado_por": 145
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Revelado profesional",
+            "tipo": "practica",
+            "duracion_minutos": 60,
+            "completado_por": 128
+          }
+        ]
+      },
+      {
+        "num_modulo": 3,
+        "titulo": "Fotografía de retrato",
+        "duracion_horas": 8,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Retrato en estudio",
+            "tipo": "video",
+            "duracion_minutos": 50,
+            "completado_por": 112
+          }
+        ]
+      }
+    ],
+    "estudiantes": [
+      {
+        "id_estudiante": 1013,
+        "nombre": "Fernando Ortiz",
+        "email": "fernando@example.com",
+        "fecha_inscripcion": ISODate("2024-02-14T00:00:00Z"),
+        "progreso_porcentaje": 95,
+        "ultima_actividad": ISODate("2024-12-16T13:00:00Z"),
+        "certificado_obtenido": false
+      }
+    ],
+    "valoraciones": [
+      {
+        "id_estudiante": 1013,
+        "nombre": "Fernando Ortiz",
+        "puntuacion": 5,
+        "comentario": "Antonio es un gran profesor, aprendí muchísimo",
+        "fecha": ISODate("2024-12-10T14:00:00Z"),
+        "util_votos": 15
+      }
+    ],
+    "promedio_valoracion": 5.0,
+    "total_estudiantes": 189
+  },
+  {
+    "_id": 7,
+    "titulo": "Excel Avanzado para Negocios",
+    "instructor": "Raquel Domínguez",
+    "categoria": "Negocios",
+    "nivel": "Avanzado",
+    "precio": 54.99,
+    "duracion_horas": 18,
+    "fecha_creacion": ISODate("2024-02-20T00:00:00Z"),
+    "activo": false,
+    "idiomas": ["Español"],
+    "requisitos": ["Excel intermedio"],
+    "modulos": [
+      {
+        "num_modulo": 1,
+        "titulo": "Fórmulas avanzadas",
+        "duracion_horas": 8,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "BUSCARV y BUSCARH",
+            "tipo": "video",
+            "duracion_minutos": 35,
+            "completado_por": 98
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Fórmulas matriciales",
+            "tipo": "practica",
+            "duracion_minutos": 45,
+            "completado_por": 87
+          }
+        ]
+      },
+      {
+        "num_modulo": 2,
+        "titulo": "Tablas dinámicas",
+        "duracion_horas": 10,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Creación de tablas dinámicas",
+            "tipo": "video",
+            "duracion_minutos": 40,
+            "completado_por": 76
+          }
+        ]
+      }
+    ],
+    "estudiantes": [
+      {
+        "id_estudiante": 1014,
+        "nombre": "Beatriz Serrano",
+        "email": "beatriz@example.com",
+        "fecha_inscripcion": ISODate("2024-08-05T00:00:00Z"),
+        "progreso_porcentaje": 60,
+        "ultima_actividad": ISODate("2024-10-12T10:00:00Z"),
+        "certificado_obtenido": false
+      }
+    ],
+    "valoraciones": [
+      {
+        "id_estudiante": 1014,
+        "nombre": "Beatriz Serrano",
+        "puntuacion": 3,
+        "comentario": "Buen contenido pero el curso fue descontinuado",
+        "fecha": ISODate("2024-10-10T11:00:00Z"),
+        "util_votos": 2
+      }
+    ],
+    "promedio_valoracion": 3.0,
+    "total_estudiantes": 112
+  },
+  {
+    "_id": 8,
+    "titulo": "Desarrollo de Apps con Flutter",
+    "instructor": "Carlos Martínez",
+    "categoria": "Programación",
+    "nivel": "Intermedio",
+    "precio": 94.99,
+    "duracion_horas": 40,
+    "fecha_creacion": ISODate("2024-05-10T00:00:00Z"),
+    "activo": true,
+    "idiomas": ["Español", "Inglés"],
+    "requisitos": ["Programación básica", "Dart básico"],
+    "modulos": [
+      {
+        "num_modulo": 1,
+        "titulo": "Fundamentos de Flutter",
+        "duracion_horas": 12,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Instalación y configuración",
+            "tipo": "video",
+            "duracion_minutos": 30,
+            "completado_por": 134
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Widgets básicos",
+            "tipo": "video",
+            "duracion_minutos": 40,
+            "completado_por": 125
+          },
+          {
+            "num_leccion": 3,
+            "titulo": "Layouts y diseño",
+            "tipo": "practica",
+            "duracion_minutos": 50,
+            "completado_por": 112
+          }
+        ]
+      },
+      {
+        "num_modulo": 2,
+        "titulo": "Gestión de estado",
+        "duracion_horas": 14,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "Provider",
+            "tipo": "video",
+            "duracion_minutos": 45,
+            "completado_por": 98
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Bloc pattern",
+            "tipo": "video",
+            "duracion_minutos": 55,
+            "completado_por": 85
+          }
+        ]
+      },
+      {
+        "num_modulo": 3,
+        "titulo": "Conectando con APIs",
+        "duracion_horas": 14,
+        "lecciones": [
+          {
+            "num_leccion": 1,
+            "titulo": "HTTP requests",
+            "tipo": "video",
+            "duracion_minutos": 40,
+            "completado_por": 76
+          },
+          {
+            "num_leccion": 2,
+            "titulo": "Proyecto: App del clima",
+            "tipo": "proyecto",
+            "duracion_minutos": 120,
+            "completado_por": 52
+          }
+        ]
+      }
+    ],
+    "estudiantes": [
+      {
+        "id_estudiante": 1002,
+        "nombre": "Pedro García",
+        "email": "pedro@example.com",
+        "fecha_inscripcion": ISODate("2024-08-20T00:00:00Z"),
+        "progreso_porcentaje": 65,
+        "ultima_actividad": ISODate("2024-12-18T14:45:00Z"),
+        "certificado_obtenido": false
+      },
+      {
+        "id_estudiante": 1015,
+        "nombre": "Cristina Blanco",
+        "email": "cristina@example.com",
+        "fecha_inscripcion": ISODate("2024-09-01T00:00:00Z"),
+        "progreso_porcentaje": 85,
+        "ultima_actividad": ISODate("2024-12-17T20:00:00Z"),
+        "certificado_obtenido": false
+      }
+    ],
+    "valoraciones": [
+      {
+        "id_estudiante": 1015,
+        "nombre": "Cristina Blanco",
+        "puntuacion": 5,
+        "comentario": "Excelente para aprender Flutter desde cero",
+        "fecha": ISODate("2024-12-15T09:00:00Z"),
+        "util_votos": 10
+      }
+    ],
+    "promedio_valoracion": 5.0,
+    "total_estudiantes": 145
+  }
+]

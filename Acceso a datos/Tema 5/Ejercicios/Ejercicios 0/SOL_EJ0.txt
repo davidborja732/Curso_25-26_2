@@ -1,0 +1,322 @@
+Soluciones:
+
+EJ0:
+db.blog_posts.insertMany(<json>)
+
+Ej1:
+    1:
+        db.blog_posts.find()
+    2:
+        db.blog_posts.find().pretty()
+    3:
+         db.blog_posts.countDocuments()
+    4: 
+        db.blog_posts.find({"creador":"Ana García"})
+    5:
+        db.blog_posts.find({"likes": {$gt: 100}  })
+    6:
+        db.blog_posts.find({"tags": "programacion"  })
+    7:
+         db.blog_posts.find({}, {creador:1, contenido:1, _id:0})
+
+    8:
+         db.blog_posts.find({"comments.0" : {$exists:true}})
+
+    9:
+        db.blog_posts.find({"comments.0" : {$exists:false}})
+        db.blog_posts.find({"comments": {$size: 0}})
+
+    10:
+        db.blog_posts.find({"comments.creador":"Pedro Ruiz"})
+
+    11:
+        db.blog_posts.find({$expr:{ $gt: [{$size: "$comments"}, 3]}})
+    
+    12:
+        db.blog_posts.find({ "comments.likes" : {$gt: 5}})
+
+    13:
+         db.blog_posts.find({}, {creador:1, comments:1, _id:0})
+
+    14: Mostrar creador, contenido, y el creador de cada comentario
+        db.blog_posts.find({}, {creador:1,contenido:1, "comments.creador":1, _id:0})
+        
+
+    15:
+Agreación: agregación funciona como una tubería o "pipeline" de procesamiento secuencial
+
+$match: Filtra los documentos para procesar solo aquellos que cumplen ciertos criterios (similar a un WHERE en SQL).
+$group: Agrupa documentos por un campo específico y permite realizar cálculos como sumas, promedios o conteos.
+$sort: Ordena los documentos resultantes.
+$project: Remodela cada documento (añade, quita o renombra campos).
+$lookup: Permite unir datos de otras colecciones (similar a un JOIN).
+$unwind: Descompone un campo que contiene un array en múltiples documentos individuales.     
+
+         db.blog_posts.aggregate([
+            {$project:
+                {numeroComentarios: {$size: "$comments"}
+                }
+            },
+            {
+                $group: {_id: null, numeroComentarios: {$sum: "$numeroComentarios"}}
+            }
+
+         ])   
+
+
+        16: Simple, solo mostrando ID
+            db.blog_posts.aggregate([
+                {$project:
+                {numeroComentarios: {$size: "$comments"}
+                }
+            },
+            {$sort: {numeroComentarios : -1}
+            },
+            {$limit:1}
+            ])
+
+         16: Mostrando más cosas    
+            db.blog_posts.aggregate([
+                {$project:
+                {
+                    creador:1,
+                    contenido:1,
+                    numeroComentarios: {$size: "$comments"}
+                }
+            },
+            {$sort: {numeroComentarios : -1}
+            },
+            {$limit:1}
+            ])
+
+
+    17:
+        db.blog_posts.aggregate([
+            {$group: {
+                _id:null,
+                promedioLikes: {$avg: "$likes"}
+                }
+            }
+        ])
+
+
+    18:
+    db.blog_posts.aggregate([
+        {$group: {
+               _id:"$creador",
+               numeroPost: { $count: {}}
+                }
+            }
+    ])
+    18: Ademas ordenar por el numero de post:
+    db.blog_posts.aggregate([
+        {$group: {
+               _id:"$creador",
+               numeroPost: { $count: {}}
+                }
+            },
+            {$sort: {numeroPost: -1}}
+    ])
+
+    19:
+        db.blog_posts.aggregate([
+            {$unwind:"$comments"}
+        ])
+
+    19:  "Desenrollar" comentarios (uno por documento) el documento resultante debe contener: creador, contenido, comentario creador, comentario texto, fecha comentario
+
+        
+        db.blog_posts.aggregate([
+            {$unwind:"$comments"},
+            {$project:
+                {
+                    post_creador: "$creador",
+                    post_contenido: "$contenido",
+                    comentario_creador: "$comments.creador",
+                    comentario_texto: "$comments.comentario",
+                    comentario_fecha: "$comments.fecha"
+                }
+            }
+        ])
+
+        20:
+
+            db.blog_posts.aggregate([
+            {$unwind:"$comments"},
+            {$group: {
+                 _id: "$comments.creador",
+                 numeroComentarios: { $count: {}}   
+            }
+            },
+            {$sort: {numeroComentarios: -1}},
+            {$limit: 5}
+        ])
+            
+       21:
+
+         db.blog_posts.aggregate([
+             {$unwind:"$comments"},
+             {$sort: {"comments.likes": -1}},
+         ])
+
+         21: Más completo
+
+       db.blog_posts.aggregate([
+		  { $unwind: "$comments" },
+		  { $sort: { "comments.likes": -1 } },
+		  { $group: {
+			  _id: "$_id",
+			  creador: { $first: "$creador" },
+			  contenido: { $first: "$contenido" },
+			  comments: { $push: "$comments" }
+			}
+		  }
+		])
+
+
+       
+       22: 
+            db.blog_posts.aggregate([
+                 {$unwind:"$tags"},
+                 {$group: {
+                    _id: "$tags",
+                    total_likes: { $sum: "$likes"}
+                 }
+                 }
+            ])
+
+         22: Añadiendo el nº de POST con cada etiqueta y ordenar
+            db.blog_posts.aggregate([
+                 {$unwind:"$tags"},
+                 {$group: {
+                    _id: "$tags",
+                    total_likes: { $sum: "$likes"},
+                    numeroPost: { $count : {} }
+                 }
+                 },
+                 {$sort: {total_likes :-1 }}
+            ])  
+
+            -----------------------------------------------
+            Cuando usamos $:
+            Cuando te refieres al valor de un campo, usas $campo.
+            Cuando te refieres al nombre del campo (clave), NO usas $.  
+
+            Operadores de agregación ($sum, $avg, $max, etc.) Usan $ ya que operan sobre el valor
+            Operadores que reciben rutas de campo ($sort, $proyect, etc.) No usan $ ya que solo indican rutas.
+
+
+        23:
+             db.blog_posts.aggregate([
+                {$project:{
+                    mes: {$month: "$fecha"},
+                    año: {$year: "$fecha"},
+                }
+                },
+                {
+                    $group: {
+                       _id: {año: "$año", mes: "$mes"},
+                       cantidad: {$count: {} }
+                    }
+                },
+                {$sort: {"_id.año": 1, "_id.mes": 1 }}
+             
+             ])
+
+        24: No la preguntaría.
+
+             db.blog_posts.aggregate([
+                {
+                    $match:  {"comments.creador" : "Ana García"} 
+                },
+                {
+                    $project: {
+                        creador : 1,
+                        contenido: 1,
+                        comments : {
+                            $filter: {
+                                input: "$comments",
+                                as: "comment",
+                                cond: { $eq: ["$$comment.creador", "Ana García"] }
+                            }
+                        }
+                    }
+                }
+             ])
+
+
+        25: No la pregunta.
+        -- Que me piden, interacciones: Movimiento por parte de los usarios.
+        -- likes del post, el numero de comentario, y numero de likes de cada comentario.
+
+         db.blog_posts.aggregate([
+                {$project :{
+                    creador: 1,
+                    likes:1,
+                    numeroComentarios: { $size: "$comments"},
+                    likesEnComentarios: {$sum : "$comments.likes"},
+                }
+                },
+                {
+                    $addFields: {
+                        total_Iteraciones: {
+                            $add: ["$likes", "$numeroComentarios", "$likesEnComentarios"]
+                        }
+                    }
+                },
+                {$sort: {total_Iteraciones: -1}}
+
+
+         ])
+
+
+
+        26:
+            db.blog_posts.updateOne(
+                {_id:8},
+                { $push: {
+                    comments: {
+                        id_comment: 1111,
+                        creador: "Usuario",
+                        comentario: "Definición perfecta",
+                        fecha: new Date(),
+                        likes: 0
+                    }
+                }
+                
+                }
+            )
+
+
+       27:
+            db.blog_posts.updateOne(
+                    {_id: 1},
+                    {$inc: {likes: 1}}
+
+            )
+
+        28:
+
+                db.blog_posts.updateOne(
+                    {_id: 10, "comments.id_comment": 1},
+                    {$inc: {"comments.$.likes": 1}}
+
+            )   
+
+        29: Añadimos Japon, aventura ya está.
+
+        db.blog_posts.updateOne(
+            {_id:1},
+            {$addToSet: {tags: "Japon"}
+            }
+        )
+
+
+        30: post 3: comentario: 2
+            db.blog_posts.updateOne(
+                 {_id:3},
+                 {$pull: {comments: {id_comment:2}
+                        }
+                 }
+            )
+

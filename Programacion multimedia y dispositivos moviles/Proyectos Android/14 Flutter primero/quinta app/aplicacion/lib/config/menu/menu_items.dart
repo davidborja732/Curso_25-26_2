@@ -30,9 +30,9 @@ class MenuItems {
     ),
     OptionMenuItem(
       color: AppTheme.listaColores[4], 
-      icono: Icons.error, 
-      texto: 'Opcion 5', 
-      screenName: 'Opcion 5',
+      icono: Icons.design_services, 
+      texto: 'Diseño', 
+      screenName: 'estilos',
     ),
     OptionMenuItem(
       color: AppTheme.listaColores[5], 
