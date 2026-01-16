@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+    <script>
+        function comprIngrediente() {
+            textArCont = "";
+            if (document.getElementById("Tomate").checked) {
+                textArCont += "Tomate ";
+            }
+            if (document.getElementById("Atun").checked) {
+                textArCont += "Atún ";
+            }
+            if (document.getElementById("Champinon").checked) {
+                textArCont += "Champiñón ";
+            }
+            if (document.getElementById("Pimientorojo").checked) {
+                textArCont += "Pimiento Rojo ";
+            }
+            if (document.getElementById("Mozzarelladibuffala").checked) {
+                textArCont += "Mozzarella di Buffala ";
+            }
+            if (document.getElementById("Cebolla").checked) {
+                textArCont += "Cebolla ";
+            }
+            document.getElementById("muchoTexto").innerHTML = textArCont;
+        }
+    </script>
+</head>
+<body>
+    <form>
+        Tomate: <input type="checkbox" id="Tomate" onclick="comprIngrediente()"><br>
+        Atún: <input type="checkbox" id="Atun" onclick="comprIngrediente()"><br>
+        Champiñón: <input type="checkbox" id="Champinon" onclick="comprIngrediente()"><br>
+        Pimiento Rojo: <input type="checkbox" id="Pimientorojo" onclick="comprIngrediente()"><br>
+        Mozzarella di Buffala: <input type="checkbox" id="Mozzarelladibuffala" onclick="comprIngrediente()"><br>
+        Cebolla: <input type="checkbox" id="Cebolla" onclick="comprIngrediente()"><br><br>
+        <textarea id="muchoTexto" rows="8" cols="50" placeholder="Aquí aparecerá su pizza" onclick="comprIngrediente()"></textarea>
+    </form>
+</body>
+</html>

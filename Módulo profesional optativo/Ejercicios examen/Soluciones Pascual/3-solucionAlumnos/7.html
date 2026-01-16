@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function reverseString(str) {
+            return str.split("").reverse().join("");
+        }
+    </script>
+    <form>
+        <br/>
+        Cadena: <input type="text" id="cadena"/>  
+        <input type="submit" value="Enviar" onclick="comprobarPali(); return false;"/><br/><br/>
+        <p id="result"/>
+    </form>
+
+    <script>
+        function comprobarPali() {
+            var dir = document.getElementById("cadena").value;
+            dir = dir.replace(/\s/g,'');
+            dir = dir.toLowerCase();
+            dirRev = dir.toString();
+            dirRev = reverseString(dirRev);
+            if (dir == dirRev) {
+                document.getElementById("result").innerHTML = "Es palíndromo";
+            } else {
+                document.getElementById("result").innerHTML = "No es palíndromo";
+            }
+            
+        }
+    </script>
+</body>
+</html>

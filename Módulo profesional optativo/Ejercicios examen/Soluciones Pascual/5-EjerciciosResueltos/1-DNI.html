@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script >
+            // Calcular letraDNI
+            function calcularLetra(numeroDni){
+            var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+            return letras[numeroDni%23];
+            }
+
+            function comprobar(){
+                var t=document.getElementById("miTexto");
+                var texto=t.value.toUpperCase();
+                //i no diferencia entre mayusculas y minusculas
+                var exp = new RegExp(/^\d{8}[A-Z]$/,"i");
+
+                if(!(exp.test(texto))){
+                    console.log("formato incorrecto");
+                    return false;
+                }
+                else{
+                    console.log("Formato correcto");
+                    
+                    t.value=texto;
+                    var dni=texto.substring(0,8);
+                    var letra=texto[8];
+                
+               
+                    if(letra!=calcularLetra(dni)){
+                         console.log("Letra no coincide con DNI");
+                        return false;
+                    }
+                    else{
+                         console.log("letra correcta");
+                        // Se hace el evento
+
+                        return true;
+                        
+                    }
+                }
+            }
+
+            // Cuando se haya cargado la pagina
+            window.onload=function (){
+                console.log("inicio");
+                var f=document.getElementById("miForm");
+                var t=document.getElementById("miTexto");
+                f.onsubmit=comprobar;
+            //    t.onblur=comprobar;
+            }
+        </script>
+    </head>
+    <body>
+		
+        <form id="miForm" action="http://www.google.es/" >
+            <p id="Parrafo">NIF (dni+letra)</p>
+            <input type="text" id="miTexto" value="12345678Z"/>
+            <input type="submit" />
+        </form>
+        
+
+        
+	</body>
+</html>

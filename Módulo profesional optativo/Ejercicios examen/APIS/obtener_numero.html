@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Obtener número y calcular</title>
+</head>
+<body>
+
+    <h2>Resultados</h2>
+
+    <p><strong>Número recibido:</strong> <span id="num"></span></p>
+    <p><strong>Doble:</strong> <span id="doble"></span></p>
+    <p><strong>Triple:</strong> <span id="triple"></span></p>
+    <p><strong>Cuadrado:</strong> <span id="cuadrado"></span></p>
+    <p><strong>Mitad:</strong> <span id="mitad"></span></p>
+    <p><strong>¿Es primo?</strong> <span id="esPrimo"></span></p>
+    <p><strong>Primos hasta el número:</strong></p>
+    <pre id="listaPrimos"></pre>
+
+    <p id="error" style="color:red;"></p>
+
+    <script>
+        function esPrimo(n) {
+            if (n <= 1) return false;
+            if (n === 2) return true;
+            if (n % 2 === 0) return false;
+            for (let i = 3; i * i <= n; i += 2) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }
+
+        function primosHasta(n) {
+            const lista = [];
+            for (let i = 2; i <= n; i++) {
+                if (esPrimo(i)) lista.push(i);
+            }
+            return lista;
+        }
+
+        async function obtenerYCalcular() {
+            try {
+                const respuesta = await fetch("https://www.random.org/integers/?num=1&min=1&max=200&col=1&base=10&format=plain&rnd=new");
+                const texto = await respuesta.text();
+                const numero = parseInt(texto, 10);
+
+                if (isNaN(numero)) {
+                    document.getElementById("error").textContent =
+                        "El servidor no devolvió un número válido";
+                    return;
+                }
+
+                document.getElementById("num").textContent = numero;
+                document.getElementById("doble").textContent = numero * 2;
+                document.getElementById("triple").textContent = numero * 3;
+                document.getElementById("cuadrado").textContent = numero ** 2;
+                document.getElementById("mitad").textContent = numero / 2;
+
+                const primo = esPrimo(numero);
+                document.getElementById("esPrimo").textContent = primo ? "Sí" : "No";
+
+                const lista = primosHasta(numero);
+                document.getElementById("listaPrimos").textContent = lista.join(", ");
+
+            } catch (error) {
+                document.getElementById("error").textContent =
+                    "Error al obtener el número: " + error;
+            }
+        }
+
+        obtenerYCalcular();
+    </script>
+
+</body>
+</html>

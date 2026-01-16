@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var nombres = ["Julián", "Rodrigo", "Mateo", "Valdomero"];
+        nombres.sort();
+        var nombresinv = nombres.map((x) => x);
+        nombresinv.reverse();
+
+        document.write("Nombres ordenados: ")
+        for (var i=0;i<nombres.length;i++) {
+            document.write(nombres[i], " ");
+        }
+        document.write("<br><br>")
+        document.write("Números ordenados reversos: ")
+        for (var i=0;i<nombresinv.length;i++) {
+            document.write(nombresinv[i], " ");
+        }
+    </script>
+</body>
+</html>

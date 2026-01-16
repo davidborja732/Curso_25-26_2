@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="calculadora('1')" style="width: 100px; height: 80px;">1</button>
+    <button onclick="calculadora('2')" style="width: 100px; height: 80px;">2</button>
+    <button onclick="calculadora('3')" style="width: 100px; height: 80px;">3</button>
+    <button onclick="calculadora('+')" style="width: 100px; height: 80px;">+</button>
+    <br>
+    <button onclick="calculadora('4')" style="width: 100px; height: 80px;">4</button>
+    <button onclick="calculadora('5')" style="width: 100px; height: 80px;">5</button>
+    <button onclick="calculadora('6')" style="width: 100px; height: 80px;">6</button>
+    <button onclick="calculadora('-')" style="width: 100px; height: 80px;">-</button>
+    <br>
+    <button onclick="calculadora('7')" style="width: 100px; height: 80px;">7</button>
+    <button onclick="calculadora('8')" style="width: 100px; height: 80px;">8</button>
+    <button onclick="calculadora('9')" style="width: 100px; height: 80px;">9</button>
+    <button onclick="calculadora('*')" style="width: 100px; height: 80px;">*</button>
+    <br>
+    <button onclick="calculadora('0')" style="width: 100px; height: 80px;">0</button>
+    <button onclick="calculadora('=')" style="width: 205px; height: 80px;">=</button>
+    <button onclick="calculadora('/')" style="width: 100px; height: 80px;">/</button>
+    <br>
+    <button onclick="calculadora('C')" style="width: 100px; height: 80px;">C</button>
+    <div id="texto" style="border: solid 2px; width: 412px;"></div>
+
+    <script>
+        var operacion = "";
+
+        function calculadora(caracter) {
+            switch (caracter) {
+                case 'C':
+                    operacion = "";
+                    document.getElementById("texto").innerHTML = operacion;    
+                    break;
+                case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9':
+                    operacion += caracter;
+                    document.getElementById("texto").innerHTML = operacion;
+                    break;
+                case '+': case '-': case '*': case '/':
+                    if (operacion.charAt(operacion.length-1) != '+' && operacion.charAt(operacion.length-1) != '-' && operacion.charAt(operacion.length-1) != '*' && operacion.charAt(operacion.length-1) != '/' && operacion != '') {
+                        operacion += caracter;
+                        document.getElementById("texto").innerHTML = operacion;
+                    }
+                    break;
+                case '=':
+                    var operando1 = "";
+                    var operando2 = "";
+                    var calculo = "";
+                    var bandera = false;
+                    for (i = 0; i < operacion.length; i++) {
+                        switch (operacion.substring(i, i+1)) {
+                            case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9':
+                                if (!bandera) {
+                                    operando1 += operacion.substring(i, i+1);
+                                } else {
+                                    operando2 += operacion.substring(i, i+1);
+                                }
+                                break;
+                            case '+': case '-': case '*': case '/':
+                                calculo = operacion.substring(i, i+1);
+                                bandera = true;
+                        }
+                    }
+                    switch (calculo) {
+                        case '+':
+                            document.getElementById("texto").innerHTML = parseInt(operando1) + parseInt(operando2);
+                            operacion = document.getElementById("texto").innerHTML;
+                            break;
+                        case '-':
+                            document.getElementById("texto").innerHTML = parseInt(operando1) - parseInt(operando2);
+                            operacion = document.getElementById("texto").innerHTML;
+                            break;
+                        case '*':
+                            document.getElementById("texto").innerHTML = parseInt(operando1) * parseInt(operando2);
+                            operacion = document.getElementById("texto").innerHTML;
+                            break;
+                        case '/':
+                            document.getElementById("texto").innerHTML = parseInt(operando1) / parseInt(operando2);
+                            operacion = document.getElementById("texto").innerHTML;
+                    }        
+            }
+        }
+    </script>
+</body>
+</html>

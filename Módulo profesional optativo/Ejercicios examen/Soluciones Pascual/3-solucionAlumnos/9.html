@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function camelize(str) {
+            var arrStr = str.split("");
+            str = "";
+            for (var i=0;i<arrStr.length;i++) {
+                if (i==0) {
+                    str += arrStr[i].toUpperCase();
+                } else {
+                    str += arrStr[i].toLowerCase();
+                }
+            }
+            return str;
+        }
+    </script>
+    <form>
+        <br/>
+        Inserte la frase: <input type="text" id="frase"/>  
+        <input type="submit" value="Enviar" onclick="comprobarNomApe(); return false;"/><br/><br/>
+        <p id="result"/>
+    </form>
+
+    <script>
+        function comprobarNomApe() {
+            var frase = document.getElementById("frase").value;
+            var fraseArr = frase.split(' ');
+            var fraseRes = "";
+            for (var i=0;i<fraseArr.length;i++) {
+                fraseRes += camelize(fraseArr[i]);
+                if (i<fraseArr.length-1) {
+                    fraseRes += " ";
+                }
+            }
+            document.getElementById("result").innerHTML = fraseRes;
+            
+        }
+    </script>
+</body>
+</html>

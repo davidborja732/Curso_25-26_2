@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendario mensual</title>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        select { padding: 5px; font-size: 16px; margin-bottom: 20px; }
+    </style>
+
+    <script>
+
+        const festivosPorMes = {
+            1: [1, 6],
+            2: [],
+            3: [],
+            4: [],
+            5: [1],
+            6: [],
+            7: [],
+            8: [15,16,28],
+            9: [],
+            10: [12],
+            11: [1],
+            12: [25]
+        };
+
+        function generarCalendario(mes, año = new Date().getFullYear()) {
+            const nombresMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                                 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+            const diasSemana = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+
+            let tabla = `<h2>${nombresMeses[mes - 1]} ${año}</h2>`;
+            tabla += "<table border='1' style='text-align:center; width:100%; border-collapse:collapse;'>";
+
+            tabla += "<tr>";
+            for (let dia of diasSemana) {
+                tabla += `<th style='padding:10px; background-color:#ddd;'>${dia}</th>`;
+            }
+            tabla += "</tr>";
+
+            let primerDia = new Date(año, mes - 1, 1).getDay();
+            primerDia = (primerDia === 0) ? 6 : primerDia - 1;
+
+            let ultimoDia = new Date(año, mes, 0).getDate();
+            let festivos = festivosPorMes[mes] || [];
+
+            let dia = 1;
+
+            while (dia <= ultimoDia) {
+                tabla += "<tr>";
+
+                for (let i = 0; i < 7; i++) {
+                    if (dia === 1 && i < primerDia) {
+                        tabla += "<td></td>";
+                    } else if (dia <= ultimoDia) {
+
+                        let esFestivo = festivos.includes(dia);
+                        let esFinSemana = (i === 5 || i === 6);
+
+                        let estilo = esFestivo ? 'background-color:#ff9999; font-weight:bold;' :
+                                    esFinSemana ? 'background-color:#f0f0f0;' : '';
+
+                        tabla += `<td style='padding:10px; ${estilo}'>${dia}</td>`;
+                        dia++;
+                    } else {
+                        tabla += "<td></td>";
+                    }
+                }
+
+                tabla += "</tr>";
+            }
+
+            tabla += "</table>";
+            return tabla;
+        }
+
+        function cargarCalendario() {
+            const mes = parseInt(document.getElementById("selectorMes").value);
+            const año = new Date().getFullYear();
+
+            document.getElementById("contenedor").innerHTML = generarCalendario(mes, año);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            cargarCalendario();
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <label><strong>Selecciona un mes:</strong></label>
+    <select id="selectorMes" onchange="cargarCalendario()">
+        <option value="1">Enero</option>
+        <option value="2">Febrero</option>
+        <option value="3">Marzo</option>
+        <option value="4">Abril</option>
+        <option value="5">Mayo</option>
+        <option value="6">Junio</option>
+        <option value="7">Julio</option>
+        <option value="8">Agosto</option>
+        <option value="9">Septiembre</option>
+        <option value="10">Octubre</option>
+        <option value="11">Noviembre</option>
+        <option value="12">Diciembre</option>
+    </select>
+
+    <div id="contenedor"></div>
+
+</body>
+</html>

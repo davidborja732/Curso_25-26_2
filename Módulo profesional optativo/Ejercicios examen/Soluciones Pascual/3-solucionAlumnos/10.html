@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var anyo_max = 9999;
+        var anyo_min = 1000;
+        function esBis(year)  {
+            return (((year % 4 == 0) &&  
+            (year % 100 != 0)) || 
+            (year % 400 == 0)); 
+        } 
+        function comprValFec(d, m, y) {
+            if (y > anyo_max ||  
+            y < anyo_min) 
+            return false; 
+            if (m < 1 || m > 12) 
+                return false; 
+            if (d < 1 || d > 31) 
+                return false; 
+    
+
+            if (m == 2)  
+            { 
+                if (esBis(y)) 
+                    return (d <= 29); 
+                else
+                    return (d <= 28); 
+            } 
+
+            if (m == 4 || m == 6 ||  
+                m == 9 || m == 11) 
+                return (d <= 30); 
+    
+            return true; 
+        }
+    </script>
+    <form>
+        <br/>
+        Inserte la fecha: <input type="text" id="fecha"/>  
+        <input type="submit" value="Enviar" onclick="comprobarValFecha(); return false;"/><br/><br/>
+        <p id="result"/>
+    </form>
+
+    <script>
+        function comprobarValFecha() {
+            var fecha = document.getElementById("fecha").value;
+            var fechaArr = fecha.split('-');
+            if (comprValFec(parseInt(fechaArr[0]),parseInt(fechaArr[1]),parseInt(fechaArr[2]))) {
+                document.getElementById("result").innerHTML = "La fecha es válida";
+            } else {
+                document.getElementById("result").innerHTML = "La fecha no es válida";
+            }
+            
+        }
+    </script>
+</body>
+</html>

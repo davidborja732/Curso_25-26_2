@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numero1=3
+        let numero2=4
+        let forma=(prompt("Que operación quiere (if, switch)"))
+        let operacion=(prompt("Que operación quiere (suma, resta, multiplcacion o division)"))
+
+        if(forma=="if"){
+
+            if(operacion=="suma"){
+                document.write(numero1+" + "+numero2+" = "+(numero1+numero2))
+            }   
+            if(operacion=="resta"){
+                document.write(numero1+" - "+numero2+" = "+(numero1-numero2))
+            }
+            if(operacion=="multiplicacion"){
+                document.write(numero1+" * "+numero2+" = "+(numero1*numero2))
+            }
+            if(operacion=="division"){
+                document.write(numero1+" / "+numero2+" = "+(numero1/numero2))
+            }
+            document.write("  SE HA REALIZADO CON IF ")
+        }else{
+
+            switch(operacion){
+
+                case "suma":
+                    document.write(numero1+" + "+numero2+" = "+(numero1+numero2))  
+                    break
+                case "resta":
+                    document.write(numero1+" - "+numero2+" = "+(numero1-numero2))
+                    break
+                case "multiplicacion":
+                    document.write(numero1+" * "+numero2+" = "+(numero1*numero2))
+                    break
+                case "division":
+                    document.write(numero1+" / "+numero2+" = "+(numero1/numero2))
+                    break
+            }
+            
+            document.write("  SE HA REALIZADO CON SWITCH ")
+        }
+
+
+        
+
+            
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+        /**function maxLength(el) {    
+            if (!('maxLength' in el)) {
+                var max = el.attributes.maxLength.value;
+                el.onkeypress = function () {
+                    if (this.value.length >= max) return false;
+                };
+            }
+        }
+        maxLength(document.getElementById("opinion"));
+        maxLength(document.getElementById("sugerencia"));*/
+        function radioSelecionado() {
+            return ($('input[name=conocer]:checked').length > 0);
+        }
+        function comprobarForm() {
+            const text = /^[A-Za-z]+$/;
+            const edad = /^\d+$/;
+            const email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            var env = true;
+            txtEnv = "";
+            if (!text.test(document.getElementById("nombre").value)) {
+                txtEnv += "Error, compruebe que el nombre esté insertado correctamente";
+                env = false;
+            }
+            if (!text.test(document.getElementById("apellido").value)) {
+                txtEnv += "Error, compruebe que el apellido esté insertado correctamente";
+                env = false;
+            }
+            if (!email.test(document.getElementById("email").value)) {
+                txtEnv += "Error, compruebe que el email esté insertado correctamente";
+                env = false;
+            }
+            if (!text.test(document.getElementById("poblacion").value)) {
+                txtEnv += "Error, compruebe que la población esté insertada correctamente";
+                env = false;
+            }
+            if (!text.test(document.getElementById("provincia").value)) {
+                txtEnv += "Error, compruebe que la provincia esté insertada correctamente";
+                env = false;
+            }
+            if (!edad.test(document.getElementById("edad").value) && (document.getElementById("edad").value < 18 || (document.getElementById("edad").value > 100))) {
+                txtEnv += "Error, compruebe que la edad esté insertada correctamente";
+                env = false;
+            }
+            if (!text.test(document.getElementById("opinion").value)) {
+                txtEnv += "Error, compruebe que la opinión esté insertada correctamente";
+                env = false;
+            }
+            if (!text.test(document.getElementById("sugerencia").value)) {
+                txtEnv += "Error, compruebe que la sugerencia esté insertada correctamente";
+                env = false;
+            }
+            if (!radioSelecionado()) {
+                txtEnv += "Error, eliga una opción en 'Como nos conociste'";
+            }
+            if (env) {
+                document.getElementById("form").submit();
+            } else {
+                document.getElementById("txtRes").innerHTML = txtEnv;
+            }
+        }
+    </script>
+    <style>
+        .izq {
+            clear: both;
+            width: 29%;
+            float:left;
+            text-align: right;
+        }
+        .drch {
+            
+            width: 69%;
+            float:right;
+        }
+        input {
+            height: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form">
+        <fieldset>
+            <legend>Datos Personales</legend>
+            <div class="izq">
+                Nombre: <br><br>
+                Apellido: <br><br>
+                Correo Electrónico: <br><br>
+                Población: <br><br>
+                Provincia: <br><br>
+                Edad: <br><br>
+            </div>
+            <div class="drch">
+                <input type="text" id="nombre" name="nombre" placeholder="Indica tu nombre"><br><br>
+                <input type="text" id="apellido" name="apellido" placeholder="Indica tu apellido"><br><br>
+                <input type="email" id="email" name="email" placeholder="Indica tu email"><br><br>
+                <input type="text" id="poblacion" name="poblacion" placeholder="Indica tu poblacion"><br><br>
+                <input type="text" id="provincia" name="provincia" placeholder="Indica tu provincia"><br><br>
+                <input type="text" id="edad" name="edad" placeholder="Indica tu edad"><br><br>
+            </div>
+        </fieldset><br><br>
+        <div class="izq">
+            Cómo nos conociste?
+        </div>
+        <div class="drch"><br>
+            <input type="radio" id="amigo" name="conocer" value="amigo">A través de un amigo.<br><br>
+            <input type="radio" id="buscador" name="conocer" value="buscador">A través de un buscador.<br><br>
+            <input type="radio" id="red" name="conocer" value="red">Navegando por la red.<br><br>
+            <input type="radio" id="otros" name="conocer" value="otros">Otros.
+        </div>
+        <div class="izq"><br><br>
+            Opinión sobre nuestra página web
+        </div>
+        <div class="drch" style="clear:both;">
+            <textarea maxlength="150" id="opinion" rows="8" cols="50" placeholder="Inserte una opinión sobre nuestra página"></textarea>
+        </div>
+        <div class="izq"><br><br>
+            Tiene alguna sugerencia...
+        </div>
+        <div class="drch" style="clear:both;">
+            <textarea maxlength="150" id="sugerencia" rows="8" cols="50" placeholder="Inserte alguna sugerencia para nuestra página"></textarea>
+        </div>
+        <div class="izq"><br><br>
+            ¿Cuánto navegas por Internet?<br>
+            (Señala la opción que más se acerque)
+        </div>
+        <div class="drch" style="clear:both; top:-36px; position:relative;">
+            <select>
+                <option value="2h">2 horas al día.</option>
+                <option value="4h">4 horas al día.</option>
+                <option value="10h">10 horas a la semana.</option>
+                <option value="20h">20 horas a la semana.</option>
+            </select>
+        </div>
+
+        <div class="izq">
+            <input type="button" value="Enviar" style="height:100%" onclick="comprobarForm()"> <input type="reset" value="Borrar" style="height:100%">
+        </div>
+
+        <div class="izq">
+            <p style="color:red;" id="txtRes"></p>
+        </div>
+    </form>
+</body>
+</html>

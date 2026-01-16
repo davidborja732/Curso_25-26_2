@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <br/>
+        Número DNI: <input type="text" id="numdni"/>  
+        <input type="submit" value="Enviar" onclick="calcularNumeroDni(); return false;"/><br/><br/>
+        Letra: <input type="text" id="letraDni" size=1 readonly/>
+    </form>
+    <script>
+        function calcularNumeroDni() {
+            var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q',
+            'V', 'H', 'L', 'C', 'K', 'E', 'T']; 
+            var num = parseInt(document.getElementById("numdni").value);
+            if (num.toString().length!=8) {
+                alert("Error, inserte un número de 8 dígitos");
+            } else {
+                var resto = num % 23;
+                document.getElementById("letraDni").value = letras[resto];
+            }
+        }
+    </script>
+</body>
+</html>

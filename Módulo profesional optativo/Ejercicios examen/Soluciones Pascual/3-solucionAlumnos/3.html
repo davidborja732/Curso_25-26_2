@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var numeros = [4,0,3,4,7,3,5,8,1,8,8,0,2,3,1,2,5,7,3,2,5,1];
+        var numuniq = [...new Set(numeros)];
+        numuniq.sort();
+        document.write("Números sin sort: ")
+        for (var i=0;i<numeros.length;i++) {
+            document.write(numeros[i], " ");
+        }
+        document.write("<br><br>")
+        document.write("Números con sort: ")
+        for (var i=0;i<numuniq.length;i++) {
+            document.write(numuniq[i], " ");
+        }
+    </script>
+</body>
+</html>

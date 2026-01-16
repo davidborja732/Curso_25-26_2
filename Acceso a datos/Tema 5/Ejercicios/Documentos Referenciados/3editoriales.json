@@ -1,0 +1,26 @@
+[
+  {
+    "_id": 201,
+    "nombre": "Editorial Sudamericana",
+    "pais": "Argentina",
+    "fundacion": 1939
+  },
+  {
+    "_id": 202,
+    "nombre": "Plaza & Janés",
+    "pais": "España",
+    "fundacion": 1959
+  },
+  {
+    "_id": 203,
+    "nombre": "Seix Barral",
+    "pais": "España",
+    "fundacion": 1911
+  },
+  {
+    "_id": 204,
+    "nombre": "Emecé Editores",
+    "pais": "Argentina",
+    "fundacion": 1939
+  }
+]

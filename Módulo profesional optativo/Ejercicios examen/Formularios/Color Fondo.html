@@ -1,0 +1,43 @@
+<!--
+Genera un formulario con 4 inputs de tipo radio. Cada uno de estos controles, debe 
+llevar como valor un código en hexadecimal. Al presionar uno de estos controles, se 
+debe cambiar, automáticamente, el color de fondo de la página.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Selector de Color</title>
+</head>
+<body>
+  <h2>Selecciona un color de fondo:</h2>
+
+  <form id="formColores">
+    <!-- Cada input radio tiene como valor un código hexadecimal -->
+    <input type="radio" name="color" value="#FF0000" id="rojo">
+    <label for="rojo">Rojo</label><br>
+
+    <input type="radio" name="color" value="#00FF00" id="verde">
+    <label for="verde">Verde</label><br>
+
+    <input type="radio" name="color" value="#0000FF" id="azul">
+    <label for="azul">Azul</label><br>
+
+    <input type="radio" name="color" value="#FFFF00" id="amarillo">
+    <label for="amarillo">Amarillo</label><br>
+  </form>
+
+  <script>
+    // Obtiene referencia al formulario
+    const formulario = document.getElementById('formColores');
+
+    // Escucha cualquier cambio en los radios
+    formulario.addEventListener('change', (e) => {
+      // Obtiene el valor del radio seleccionado (código hexadecimal)
+      const colorSeleccionado = e.target.value;
+      // Cambia el color de fondo del body al valor seleccionado
+      document.body.style.backgroundColor = colorSeleccionado;
+    });
+  </script>
+</body>
+</html>

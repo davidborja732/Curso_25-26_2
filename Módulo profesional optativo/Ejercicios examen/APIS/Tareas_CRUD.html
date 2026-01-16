@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CRUD Tareas Simple</title>
+<style>
+    body { font-family: Arial; padding: 20px; }
+    table { border-collapse: collapse; width: 70%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+    th { background: #f0f0f0; }
+    #form { border: 1px solid #ccc; padding: 15px; width: 300px; margin-top: 20px; display: none; }
+</style>
+</head>
+<body>
+
+<h2>CRUD Tareas APIREST</h2>
+
+<button onclick="nuevo()">Nueva Tarea</button>
+<button onclick="listar()">Actualizar Lista</button>
+
+<div id="resultado"></div>
+
+<!-- FORMULARIO -->
+<div id="form">
+    <h3 id="titulo"></h3>
+
+    <input type="hidden" id="id">
+
+    <label>Tarea:</label><br>
+    <input id="tarea"><br><br>
+
+    <label>Prioridad:</label><br>
+    <input id="prioridad"><br><br>
+
+    <label>Urgente:</label><br>
+    <input id="urgente"><br><br>
+
+    <label>Realizada:</label><br>
+    <input id="realizada"><br><br>
+
+    <label>Responsable:</label><br>
+    <input id="responsable"><br><br>
+
+    <button onclick="guardar()">Guardar</button>
+    <button onclick="cerrar()">Cancelar</button>
+</div>
+
+<script>
+const URL = "http://192.168.1.120:8069";
+let datos = [];
+
+// ---------------- LISTAR ----------------
+function listar(){
+    fetch(URL + "/listartareas")
+        .then(r => r.json())
+        .then(json => {
+            datos = json;
+            let html = `
+                <table>
+                    <tr>
+                        <th>ID</th><th>Tarea</th><th>Prioridad</th><th>Urgente</th>
+                        <th>Realizada</th><th>Responsable</th><th>Acciones</th>
+                    </tr>
+            `;
+            json.forEach(t => {
+                html += `
+                    <tr>
+                        <td>${t[0]}</td>
+                        <td>${t[1]}</td>
+                        <td>${t[2]}</td>
+                        <td>${t[3]}</td>
+                        <td>${t[4]}</td>
+                        <td>${t[5]}</td>
+                        <td>
+                            <button onclick="editar(${t[0]})">Editar</button>
+                            <button onclick="borrar(${t[0]})">Borrar</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            html += "</table>";
+            document.getElementById("resultado").innerHTML = html;
+        });
+}
+
+listar();
+
+// ---------------- FORMULARIO ----------------
+function nuevo(){
+    document.getElementById("titulo").textContent = "Nueva Tarea";
+    document.getElementById("id").value = "";
+    limpiar();
+    mostrar();
+}
+
+function editar(id){
+    const t = datos.find(x => x[0] === id);
+    document.getElementById("titulo").textContent = "Editar Tarea";
+    document.getElementById("id").value = t[0];
+    document.getElementById("tarea").value = t[1];
+    document.getElementById("prioridad").value = t[2];
+    document.getElementById("urgente").value = t[3];
+    document.getElementById("realizada").value = t[4];
+    document.getElementById("responsable").value = t[5];
+    mostrar();
+}
+
+function mostrar(){ document.getElementById("form").style.display = "block"; }
+function cerrar(){ document.getElementById("form").style.display = "none"; }
+
+function limpiar(){
+    tarea.value = "";
+    prioridad.value = "";
+    urgente.value = "";
+    realizada.value = "";
+    responsable.value = "";
+}
+
+// ---------------- GUARDAR ----------------
+function guardar(){
+    // Validación estricta
+    const campos = [tarea, prioridad, urgente, realizada, responsable];
+
+    for (const c of campos) {
+        if (c.value.trim().length === 0) {
+            alert("Todos los campos son obligatorios.");
+            return;
+        }
+    }
+
+    const id = document.getElementById("id").value;
+
+    const data = {
+        tarea: tarea.value.trim(),
+        prioridad: prioridad.value.trim(),
+        urgente: urgente.value.trim(),
+        realizada: realizada.value.trim(),
+        responsable: responsable.value.trim()
+    };
+
+    const url = id ? URL + "/editarTarea?id=" + id : URL + "/crearTarea";
+    const metodo = id ? "PUT" : "POST";
+
+    fetch(url, {
+        method: metodo,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(() => { cerrar(); listar(); });
+}
+
+
+// ---------------- BORRAR ----------------
+function borrar(id){
+    if (!confirm("¿Eliminar tarea " + id + "?")) return;
+
+    fetch(URL + '/gestion/lista_tareas.lista_tareas?data={"id":"'+id+'"}', {
+        method: "DELETE"
+    })
+    .then(() => listar());
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Analizar palabra desde API</title>
+</head>
+<body>
+
+    <h2>Resultados</h2>
+
+    <p><strong>Palabra recibida:</strong> <span id="palabra"></span></p>
+    <p><strong>Longitud:</strong> <span id="longitud"></span></p>
+    <p><strong>Mayúsculas:</strong> <span id="mayus"></span></p>
+    <p><strong>Minúsculas:</strong> <span id="minus"></span></p>
+    <p><strong>Primera letra:</strong> <span id="primera"></span></p>
+    <p><strong>Última letra:</strong> <span id="ultima"></span></p>
+    <p><strong>Invertida:</strong> <span id="invertida"></span></p>
+    <p><strong>¿Contiene vocales?</strong> <span id="vocales"></span></p>
+    <p><strong>¿Contiene números?</strong> <span id="numeros"></span></p>
+    <p><strong>¿Es palíndroma?</strong> <span id="palindroma"></span></p>
+
+    <p id="error" style="color:red;"></p>
+
+    <script>
+        function invertirTexto(texto) {
+            return texto.split("").reverse().join("");
+        }
+
+        function contieneVocales(texto) {
+            return /[aeiouáéíóú]/i.test(texto);
+        }
+
+        function esPalindroma(texto) {
+            const limpio = texto.toLowerCase();
+            return limpio === invertirTexto(limpio);
+        }
+
+        async function obtenerYAnalizar() {
+            try {
+                const respuesta = await fetch("https://random-word-api.herokuapp.com/word?number=1");
+                const datos = await respuesta.json();
+
+                const palabra = datos[0];
+
+                if (!palabra || typeof palabra !== "string") {
+                    document.getElementById("error").textContent =
+                        "La API no devolvió una palabra válida";
+                    return;
+                }
+
+                document.getElementById("palabra").textContent = palabra;
+                document.getElementById("longitud").textContent = palabra.length;
+
+                document.getElementById("mayus").textContent = palabra.toUpperCase();
+                document.getElementById("minus").textContent = palabra.toLowerCase();
+
+                document.getElementById("primera").textContent = palabra.charAt(0);
+                document.getElementById("ultima").textContent = palabra.charAt(palabra.length - 1);
+
+                const invertida = invertirTexto(palabra);
+                document.getElementById("invertida").textContent = invertida;
+
+                document.getElementById("vocales").textContent =
+                    contieneVocales(palabra) ? "Sí" : "No";
+
+                const tieneNum = /\d/.test(palabra);
+                document.getElementById("numeros").textContent = tieneNum ? "Sí" : "No";
+
+                document.getElementById("palindroma").textContent =
+                    esPalindroma(palabra) ? "Sí" : "No";
+
+            } catch (error) {
+                document.getElementById("error").textContent =
+                    "Error al obtener la palabra: " + error;
+            }
+        }
+
+        obtenerYAnalizar();
+    </script>
+
+</body>
+</html>

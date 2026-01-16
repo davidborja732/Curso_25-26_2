@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var numero = parseInt(prompt('Inserte número:')), auxiliar = numero;
+        
+        for (i = 0; i < auxiliar; i++, numero--) {
+            for (j = 0; j < auxiliar; j++) {
+                if (j + numero < auxiliar) {
+                    document.write('*');
+                } else {
+                    document.write(numero); 
+                }                
+            }
+            document.write("<br>");
+        }
+    </script>
+</body>
+</html>

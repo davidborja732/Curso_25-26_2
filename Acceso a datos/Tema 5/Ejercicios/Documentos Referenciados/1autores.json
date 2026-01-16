@@ -1,0 +1,30 @@
+[
+  {
+    "_id": 1,
+    "nombre": "Gabriel García Márquez",
+    "nacionalidad": "Colombiano",
+    "fecha_nacimiento": "1927-03-06",
+    "premios": ["Nobel", "Neustadt"]
+  },
+  {
+    "_id": 2,
+    "nombre": "Isabel Allende",
+    "nacionalidad": "Chilena",
+    "fecha_nacimiento": "1942-08-02",
+    "premios": ["Nacional de Literatura"]
+  },
+  {
+    "_id": 3,
+    "nombre": "Mario Vargas Llosa",
+    "nacionalidad": "Peruano",
+    "fecha_nacimiento": "1936-03-28",
+    "premios": ["Nobel", "Cervantes"]
+  },
+  {
+    "_id": 4,
+    "nombre": "Jorge Luis Borges",
+    "nacionalidad": "Argentino",
+    "fecha_nacimiento": "1899-08-24",
+    "premios": ["Cervantes"]
+  }
+]

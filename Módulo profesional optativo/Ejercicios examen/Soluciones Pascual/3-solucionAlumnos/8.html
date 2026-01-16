@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <br/>
+        Inserte el nombre y Apellidos: <input type="text" id="nomape"/>  
+        <input type="submit" value="Enviar" onclick="comprobarNomApe(); return false;"/><br/><br/>
+        <p id="result"/>
+    </form>
+
+    <script>
+        function comprobarNomApe() {
+            var nomApe = document.getElementById("nomape").value;
+            var nomApeArr = nomApe.split(' ');
+            var nomApeRes = "";
+            var nom;
+            for (var i=0;i<nomApeArr.length;i++) {
+                if (i==0) {
+                    nom = nomApeArr[i];
+                } else {
+                    nomApeRes += nomApeArr[i];
+                    if (i==nomApeArr.length-1) {
+                        nomApeRes += ", " + nom;
+                    } else {
+                        nomApeRes += " ";
+                    }
+                }
+            }
+            document.getElementById("result").innerHTML = nomApeRes;
+            
+        }
+    </script>
+</body>
+</html>
