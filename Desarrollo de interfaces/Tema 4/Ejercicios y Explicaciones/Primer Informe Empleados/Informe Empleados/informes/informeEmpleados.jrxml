@@ -1,0 +1,219 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="informeEmpleados" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0e963131-dedb-4431-8441-07fb95cb63c6">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="con"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<dataset name="DatasetEmpleados" uuid="4d24057b-af2c-4fd8-9763-0fdf7b5cb37a">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="con"/>
+		<query language="SQL"><![CDATA[SELECT * FROM datos.empleados]]></query>
+		<field name="Nombre" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="Nombre"/>
+			<property name="com.jaspersoft.studio.field.label" value="Nombre"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+		</field>
+		<field name="Apellidos" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="Apellidos"/>
+			<property name="com.jaspersoft.studio.field.label" value="Apellidos"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+		</field>
+		<field name="Localidad" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="Localidad"/>
+			<property name="com.jaspersoft.studio.field.label" value="Localidad"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+		</field>
+		<field name="Salario" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="Salario"/>
+			<property name="com.jaspersoft.studio.field.label" value="Salario"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+		</field>
+	</dataset>
+	<parameter name="rutaImagen" class="java.lang.String"/>
+	<query language="SQL"><![CDATA[select * from datos.empleados;]]></query>
+	<field name="Nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+	</field>
+	<field name="Apellidos" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Apellidos"/>
+		<property name="com.jaspersoft.studio.field.label" value="Apellidos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+	</field>
+	<field name="Localidad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Localidad"/>
+		<property name="com.jaspersoft.studio.field.label" value="Localidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+	</field>
+	<field name="Salario" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Salario"/>
+		<property name="com.jaspersoft.studio.field.label" value="Salario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+	</field>
+	<sortField name="Localidad"/>
+	<group name="GrupoLocalidad">
+		<expression><![CDATA[$F{Localidad}]]></expression>
+		<groupHeader>
+			<band height="77">
+				<element kind="staticText" uuid="6525f9a8-5761-4e1f-add1-7cacb9b5b157" x="280" y="40" width="100" height="30">
+					<text><![CDATA[Salario]]></text>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15a5fc7e-941c-495f-a053-b526279cf904"/>
+				</element>
+				<element kind="staticText" uuid="f0406dd0-fd81-4a78-b8de-4a7bd4b81988" x="150" y="40" width="100" height="30">
+					<text><![CDATA[Apellidos]]></text>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8ee7a2e5-ea0d-443a-81a4-bd7010e0c6be"/>
+				</element>
+				<element kind="staticText" uuid="8cf4f473-eb28-4e3c-962d-9bc8d241acd2" x="20" y="40" width="100" height="30">
+					<text><![CDATA[Nombre]]></text>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9c25d74d-7907-481b-a6bb-138d8959b372"/>
+				</element>
+				<element kind="textField" uuid="9a179968-5829-4639-98b6-fb512dd91f84" x="210" y="0" width="100" height="30">
+					<expression><![CDATA[$F{Localidad}]]></expression>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="37df9b30-5ac5-4ae6-a8cc-694f6caeaa3e"/>
+				</element>
+				<element kind="staticText" uuid="b2d4b056-adb8-4fc6-9836-e5ff28ee6e40" x="400" y="40" width="100" height="30">
+					<text><![CDATA[Salario]]></text>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dfdb924f-1978-49f1-b24c-a18cc171759c"/>
+				</element>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<background splitType="Stretch"/>
+	<title height="76" splitType="Stretch">
+		<element kind="staticText" uuid="1898ecac-6c88-4e51-b26e-32697c44f8b9" x="167" y="6" width="223" height="50" forecolor="#F5D327" fontName="Berlin Sans FB" fontSize="37.0" hTextAlign="Center">
+			<text><![CDATA[Empleados]]></text>
+		</element>
+		<element kind="image" uuid="d1bfe834-4603-486d-9d2c-c9abf519b1a1" x="490" y="13" width="50" height="50" linkType="None" linkTarget="Self">
+			<expression><![CDATA[$P{rutaImagen}]]></expression>
+		</element>
+	</title>
+	<columnHeader height="20" splitType="Stretch"/>
+	<detail>
+		<band height="59" splitType="Stretch">
+			<element kind="textField" uuid="59ea5c9f-6675-448b-b284-a4e63dc6117e" x="20" y="8" width="100" height="30">
+				<expression><![CDATA[$F{Nombre}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9c25d74d-7907-481b-a6bb-138d8959b372"/>
+			</element>
+			<element kind="textField" uuid="13fe6429-9d83-4cea-84a5-7015d15b359b" x="150" y="10" width="100" height="30">
+				<expression><![CDATA[$F{Apellidos}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8ee7a2e5-ea0d-443a-81a4-bd7010e0c6be"/>
+			</element>
+			<element kind="textField" uuid="c69a9d5e-9f29-4bd8-8947-5615f39b69b6" x="280" y="10" width="100" height="30">
+				<expression><![CDATA[$F{Salario}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15a5fc7e-941c-495f-a053-b526279cf904"/>
+			</element>
+			<element kind="textField" uuid="c11e3f0e-ba26-43f4-8c43-07ea6c7e3455" x="410" y="10" width="100" height="30">
+				<expression><![CDATA[$F{Salario}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dfdb924f-1978-49f1-b24c-a18cc171759c"/>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="226" splitType="Stretch">
+		<element kind="component" uuid="370d7d54-d646-419f-9f4e-d7b18355cb97" x="-11" y="60" width="570" height="154">
+			<component kind="table">
+				<datasetRun uuid="fd5b89e4-b399-494b-b3f7-0e9fae41e277" subDataset="DatasetEmpleados">
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				</datasetRun>
+				<column kind="single" uuid="120c93d7-54f5-4b55-a218-a75cc14e30eb" width="140">
+					<tableHeader height="30" style="Table_TH"/>
+					<tableFooter height="30" style="Table_TH"/>
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="3dde9abd-5771-4b69-974d-58691940a806" x="0" y="0" width="140" height="30" hTextAlign="Center">
+							<text><![CDATA[Nombre]]></text>
+						</element>
+					</columnHeader>
+					<columnFooter height="30" style="Table_CH"/>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="de07e924-95a2-46b9-a6a0-bdc5b1d36e8a" x="0" y="0" width="140" height="30" hTextAlign="Center">
+							<expression><![CDATA[$F{Nombre}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+				</column>
+				<column kind="single" uuid="5129a961-e94c-4475-8ad8-0faf08e9b2a1" width="190">
+					<tableHeader height="30" style="Table_TH"/>
+					<tableFooter height="30" style="Table_TH"/>
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="cf17faff-1cfc-4d2e-8641-5316f8fc5ce1" x="0" y="0" width="190" height="30">
+							<text><![CDATA[Apellidos]]></text>
+						</element>
+					</columnHeader>
+					<columnFooter height="30" style="Table_CH"/>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="287b6436-d167-4164-86bf-af393664e1cc" x="0" y="0" width="190" height="30">
+							<expression><![CDATA[$F{Apellidos}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+				</column>
+				<column kind="single" uuid="95ec1031-8398-4eaf-bc2f-fd32fc428df7" width="140">
+					<tableHeader height="30" style="Table_TH"/>
+					<tableFooter height="30" style="Table_TH"/>
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="ecb6c1bd-3cb8-4599-b9cb-cdc0b3440ef5" x="0" y="0" width="140" height="30">
+							<text><![CDATA[Localidad]]></text>
+						</element>
+					</columnHeader>
+					<columnFooter height="30" style="Table_CH"/>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="79fadb3f-a6c0-4ef6-b81f-05fc89e802e8" x="0" y="0" width="140" height="30">
+							<expression><![CDATA[$F{Localidad}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+				</column>
+				<column kind="single" uuid="b10ae489-716d-401a-ba1f-5f3fcb7d9cb8" width="130">
+					<tableHeader height="30" style="Table_TH"/>
+					<tableFooter height="30" style="Table_TH"/>
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="20c22508-7c2c-4e70-80e3-1f0b846d22ba" x="0" y="0" width="130" height="30">
+							<text><![CDATA[Salario]]></text>
+						</element>
+					</columnHeader>
+					<columnFooter height="30" style="Table_CH"/>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="f9f582b9-dd86-4113-9a79-08927481628b" x="0" y="0" width="130" height="30">
+							<expression><![CDATA[$F{Salario}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+				</column>
+			</component>
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+			<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+			<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+			<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+		</element>
+	</summary>
+</jasperReport>

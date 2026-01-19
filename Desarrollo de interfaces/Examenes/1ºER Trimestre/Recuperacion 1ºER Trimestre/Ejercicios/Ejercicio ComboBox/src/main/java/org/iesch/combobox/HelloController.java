@@ -21,7 +21,6 @@ public class HelloController {
 
         //resultado.setText(provincia.getValue()+" "+instituto.getValue());
         botonconfirmar();
-
     }
     @FXML
     protected void institutoadd(){
