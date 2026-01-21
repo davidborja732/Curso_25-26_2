@@ -67,7 +67,10 @@ class _ListaPersonajesWidgetState extends State<ListaPersonajesWidget> {
                     BoxShadow(color: color,blurRadius: 10,offset: Offset(0,5))
                   ]
                 ),
-                child: Image.asset("assets/$imagen.png"),
+                child: Hero(
+                    tag: imagen,
+                    child: Image.asset("assets/${imagen}.png"),
+                  )
               ),
               SizedBox(height: 15,),
               Text(nombre,style: TextStyle(color: Colors.white70,fontSize: 16,),),

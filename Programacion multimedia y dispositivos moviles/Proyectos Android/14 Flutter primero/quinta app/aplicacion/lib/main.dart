@@ -1,5 +1,6 @@
 import 'package:aplicacion/screens/apijson_screen.dart';
 import 'package:aplicacion/screens/disenios_screen.dart';
+import 'package:aplicacion/screens/lector_qr_screen.dart';
 import 'package:aplicacion/screens/menu_screen.dart';
 import 'package:aplicacion/screens/simpsons_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         'api1': (context) => ApiJsonPlaceUsersScreen(),
         'simpsons': (context) => SimpsonsScreen(),
         'estilos': (context) => DiseniosScreen(),
+        'lector_qr' : (context) => LectorQrScreen(),
       },
     );
   }

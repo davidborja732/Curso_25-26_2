@@ -1,4 +1,5 @@
 import 'package:aplicacion/widgets/blur_container.dart';
+import 'package:aplicacion/widgets/fade_animation_widget.dart';
 import 'package:aplicacion/widgets/info_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -37,28 +38,29 @@ class _PersonajeDetalleScreenState extends State<PersonajeDetalleScreen> {
           children: [
             Stack(
               children: [
-                Container(
-                  child: SizedBox(
-                    height: _alturaPantalla*0.6,
-                    child: Hero(
-                      tag: widget.imagen,
-                      child: Image.asset("assets/${widget.imagen}.png"),
-                    )
-                  ),
+                SizedBox(
+                  height: _alturaPantalla*0.6,
+                  child: Hero(
+                    tag: widget.imagen,
+                    child: Image.asset("assets/${widget.imagen}.png"),
+                  )
                 ),
                 Positioned(
                   bottom: 20,
                   left: 12,
-                  child: BlurContainer(
-                    child: Container(
-                      width: 160,
-                      height: 50,
-                      alignment: .center,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.05),
-                        borderRadius: .circular(10)
+                  child: FadeAnimation(
+                    intervalStart: 1.0,
+                    child: BlurContainer(
+                      child: Container(
+                        width: 160,
+                        height: 50,
+                        alignment: .center,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.05),
+                          borderRadius: .circular(10)
+                        ),
+                        child: Text(widget.nombre,style: TextStyle(fontWeight: .bold,color: Colors.white),),
                       ),
-                      child: Text(widget.nombre,style: TextStyle(fontWeight: .bold,color: Colors.white),),
                     ),
                   )
                 )
@@ -66,22 +68,27 @@ class _PersonajeDetalleScreenState extends State<PersonajeDetalleScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: Text('Personaje: ${widget.nombre}',style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: .bold),),
+              child: FadeAnimation(
+                intervalStart: 0.6,
+                child: Text('Personaje: ${widget.nombre}',style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: .bold),)),
             ),
             SizedBox(height: 5,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Text("One Piece",style: TextStyle(color: Colors.white70,fontSize: 12),),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [
-                  InfoWidget(titulo: 'Eiichiro Oda', subtitulo: 'Creador'),
-                  InfoWidget(titulo: 'Japon', subtitulo: 'Pais')
-                ],
-              )
+            FadeAnimation(
+              intervalStart: .5,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Row(
+                  mainAxisAlignment: .spaceBetween,
+                  children: [
+                    InfoWidget(titulo: 'Eiichiro Oda', subtitulo: 'Creador'),
+                    InfoWidget(titulo: 'Japon', subtitulo: 'Pais')
+                  ],
+                )
+              ),
             ),
             SizedBox(height: 50,),
             GestureDetector(
