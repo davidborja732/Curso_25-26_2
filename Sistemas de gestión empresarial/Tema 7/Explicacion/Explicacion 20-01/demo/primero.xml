@@ -1,0 +1,74 @@
+<odoo>
+  <data>
+      <record id='asignatura0' model='school.subject'>
+          <field name='name'>Planificación y administración de redes.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+      <record id='asignatura1' model='school.subject'>
+          <field name='name'>Gestión de bases de datos.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+      <record id='asignatura2' model='school.subject'>
+          <field name='name'>Lenguajes de marcas y sistemas de gestión de información.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+      <record id='asignatura3' model='school.subject'>
+          <field name='name'>Formación y orientación laboral.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+      <record id='asignatura4' model='school.subject'>
+          <field name='name'>Implantación de sistemas operativos.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+      <record id='asignatura5' model='school.subject'>
+          <field name='name'>Fundamentos de hardware.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+      <record id='asignatura6' model='school.subject'>
+          <field name='name'>Entornos de desarrollo.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+      <record id='asignatura7' model='school.subject'>
+          <field name='name'>Programación.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+      <record id='asignatura8' model='school.subject'>
+          <field name='name'>Bases de Datos.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+      <record id='asignatura9' model='school.subject'>
+          <field name='name'>Sistemas informáticos.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+      <record id='asignatura10' model='school.subject'>
+          <field name='name'>Lengua extranjera profesional: inglés 1.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+      <record id='asignatura11' model='school.subject'>
+          <field name='name'>Montaje y mantenimiento de equipos.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+      <record id='asignatura12' model='school.subject'>
+          <field name='name'>Sistemas operativos mono puesto.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+      <record id='asignatura13' model='school.subject'>
+          <field name='name'>Aplicaciones ofimáticas.</field>
+          <field name='level_course'>1</field>
+      </record>
+ 
+  </data>
+</odoo>

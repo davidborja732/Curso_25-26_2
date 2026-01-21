@@ -1,0 +1,4 @@
+1- chmod 777 archivo.sh
+2- ./archivo.sh > archivo.xml
+Pasamos los datos que hemos leido a un archivo .xml que luego subiremos al modulo
+y definermos que obtenemos datos de ese archivo en el manifest 
