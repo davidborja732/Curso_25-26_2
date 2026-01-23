@@ -1,0 +1,21 @@
+meta {
+  name: Obtener Por precio y AÑO
+  type: http
+  seq: 8
+}
+
+get {
+  url: http://localhost:8080/api/books/search/precio?max=.....&anio=...
+  body: none
+  auth: inherit
+}
+
+params:query {
+  max: .....
+  anio: ...
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

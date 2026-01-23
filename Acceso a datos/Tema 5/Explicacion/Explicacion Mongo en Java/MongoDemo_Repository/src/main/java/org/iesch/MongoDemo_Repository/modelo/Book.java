@@ -9,7 +9,7 @@ import java.util.List;
 @ToString
 @Getter
 @Setter
-@Document
+@Document(collection = "libros")
 public class Book {
     private String _id;
     private String titulo;
@@ -21,7 +21,6 @@ public class Book {
     // Documentos embebidos
     private List<Autor> autores;
     private List<String> categorias;
-
     public Book(String titulo, String isbn, Integer anioPublicacion, List<String> categorias, List<Autor> autores, String editorial, Integer numeroPaginas, Double precio) {
         this.titulo = titulo;
         this.isbn = isbn;

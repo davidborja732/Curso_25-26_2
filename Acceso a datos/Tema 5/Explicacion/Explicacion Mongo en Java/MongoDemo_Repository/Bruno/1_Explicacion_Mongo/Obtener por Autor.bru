@@ -1,0 +1,20 @@
+meta {
+  name: Obtener por Autor
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:8080/api/books/search/categoria?cat=clásicos
+  body: none
+  auth: inherit
+}
+
+params:query {
+  cat: clásicos
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,20 @@
+meta {
+  name: Obtener por categoria
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:8080/api/books/search/titulo?q=Cien años de soledad
+  body: none
+  auth: inherit
+}
+
+params:query {
+  q: Cien años de soledad
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
