@@ -31,6 +31,8 @@ public class HelloController {
     private RadioButton InformeTabla;
     @FXML
     private Button boton;
+    @FXML
+    private Button boton2;
 
     public HelloController() throws SQLException {
     }
@@ -52,7 +54,7 @@ public class HelloController {
     }
     @FXML
     public void botonaccion() throws JRException {
-        HashMap<String, Object> param=new HashMap<>();
+        System.out.println(Localidadusuario.getValue());
         JasperDesign d = JRXmlLoader.load("informes/Informe_19_01_Capitales_Tabla.jrxml");
         JRDesignQuery jq = new JRDesignQuery();
         jq.setText("SELECT * from poblacion.capitales");
@@ -60,5 +62,16 @@ public class HelloController {
         JasperReport jr = JasperCompileManager.compileReport(d);
         JasperPrint jp = JasperFillManager.fillReport(jr,null,con);
         JasperViewer.viewReport(jp,false);
+    }@FXML
+    public void botonaccion2() throws JRException {
+        HashMap<String, Object> param=new HashMap<>();
+        param.put("provin",Localidadusuario.getValue());
+        System.out.println(Localidadusuario.getValue());
+        String fileRepo = "informes/Informe_19_01_Capitales_Tabla.jasper";
+        JasperPrint jpRepo = JasperFillManager.fillReport(fileRepo, param, con);
+        JasperViewer viewer = new JasperViewer(jpRepo,false);
+        viewer.setTitle("TITULO INFORME");
+        viewer.setVisible(true);
     }
+
 }

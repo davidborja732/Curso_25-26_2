@@ -5,12 +5,15 @@ import javafx.scene.control.*;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.fill.*;
+
 
 import java.sql.*;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class HelloController {
     Connection con = DriverManager.getConnection(url, user, clave);
@@ -26,6 +29,8 @@ public class HelloController {
     @FXML
     private RadioButton agrupado;
     @FXML
+    private RadioButton calculado;
+    @FXML
     private Button boton;
     @FXML
     private TextField minimo;
@@ -37,6 +42,7 @@ public class HelloController {
 
     @FXML
     public void initialize(){
+        System.setProperty("jasper.reports.compile.class.path", System.getProperty("java.class.path"));
         try {
             Statement stat = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
@@ -53,7 +59,7 @@ public class HelloController {
     }
     @FXML
     public void botonaccion() throws JRException {
-        if (!normal.isSelected() && !agrupado.isSelected()){
+        if (!normal.isSelected() && !agrupado.isSelected() && !calculado.isSelected()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Ver Informes");
             alert.setContentText("Selecciona alguno de los RadioButton");
@@ -71,9 +77,12 @@ public class HelloController {
         } else if (normal.isSelected()){
             System.out.println("Normal mostrando");
             informenormal();
-        }else {
+        }else if (agrupado.isSelected()){
             System.out.println("Grupal mostrando");
             informegrupal();
+        }else if (calculado.isSelected()){
+            System.out.println("Calculado mostrando");
+            informeCalculado();
         }
     }
     @FXML
@@ -103,6 +112,20 @@ public class HelloController {
         JasperPrint jp = JasperFillManager.fillReport(jr,param,con);
         JasperViewer.viewReport(jp,false);
     }
+    public void informeCalculado() throws JRException {
+
+        System.setProperty("jasper.reports.compile.class.path", System.getProperty("java.class.path"));
+
+        JasperDesign d = JRXmlLoader.load("informes/Calculado.jrxml");
+        JRDesignQuery jq = new JRDesignQuery();
+        jq.setText("SELECT Nombre,Apellidos,Localidad,Salario,Salario*0.85 as SalNeto FROM datos.empleados");
+        d.setQuery(jq);
+        JasperReport jr = JasperCompileManager.compileReport(d);
+        JasperPrint jp = JasperFillManager.fillReport(jr,null,con);
+        JasperViewer.viewReport(jp,false);
+    }
+
+
 
 
 

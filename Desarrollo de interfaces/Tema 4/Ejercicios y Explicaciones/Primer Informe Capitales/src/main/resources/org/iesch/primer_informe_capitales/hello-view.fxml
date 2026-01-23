@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -31,13 +32,16 @@
                <VBox.margin>
                   <Insets bottom="20.0" left="150.0" />
                </VBox.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="hols" />
+               </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="agrupado" mnemonicParsing="false" text="Informe agrupado">
+            <RadioButton fx:id="agrupado" mnemonicParsing="false" text="Informe agrupado" toggleGroup="$hols">
                <VBox.margin>
                   <Insets bottom="20.0" left="150.0" />
                </VBox.margin>
             </RadioButton>
-            <RadioButton fx:id="InformeTabla" mnemonicParsing="false" text="Informe tabla">
+            <RadioButton fx:id="InformeTabla" mnemonicParsing="false" text="Informe tabla" toggleGroup="$hols">
                <VBox.margin>
                   <Insets bottom="20.0" left="150.0" />
                </VBox.margin>
@@ -47,6 +51,7 @@
                   <Insets left="150.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="boton2" mnemonicParsing="false" onAction="#botonaccion2" text="Mostrar Informe 2" />
          </children>
       </VBox>
    </children>
