@@ -116,7 +116,7 @@ public class HelloController {
 
         System.setProperty("jasper.reports.compile.class.path", System.getProperty("java.class.path"));
 
-        JasperDesign d = JRXmlLoader.load("informes/Calculado.jrxml");
+        JasperDesign d = JRXmlLoader.load("informes/Calculado.jasper");
         JRDesignQuery jq = new JRDesignQuery();
         jq.setText("SELECT Nombre,Apellidos,Localidad,Salario,Salario*0.85 as SalNeto FROM datos.empleados");
         d.setQuery(jq);
