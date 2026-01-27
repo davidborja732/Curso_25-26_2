@@ -1,0 +1,219 @@
+===========================================
+ CONFIGURACIÓN DE FIREBASE EN FLUTTER
+===========================================
+
+
+-------------------------------------------
+1. CREAR O ABRIR PROYECTO FLUTTER
+-------------------------------------------
+
+# Crear un proyecto nuevo
+flutter create nombre_proyecto
+cd nombre_proyecto
+
+# Si el proyecto ya existe
+cd ruta/del/proyecto
+
+
+
+-------------------------------------------
+2. INSTALAR FIREBASE CLI
+-------------------------------------------
+
+# Instalar Firebase CLI
+npm install -g firebase-tools
+
+# Iniciar sesión en Firebase
+firebase login
+
+
+
+-------------------------------------------
+3. INSTALAR FLUTTERFIRE CLI
+-------------------------------------------
+
+# Instalar la herramienta oficial
+dart pub global activate flutterfire_cli
+
+# Si flutterfire no funciona, añadir al PATH:
+# C:\Users\<TU_USUARIO>\AppData\Roaming\Pub\Cache\bin
+
+
+
+-------------------------------------------
+4. CREAR PROYECTO EN FIREBASE (OPCIONAL)
+-------------------------------------------
+
+firebase projects:create nombre-proyecto
+
+
+
+-------------------------------------------
+5. CONFIGURAR FIREBASE EN EL PROYECTO FLUTTER
+-------------------------------------------
+
+flutterfire configure
+
+# Este comando:
+# - Detecta tu proyecto Firebase
+# - Configura Android, iOS, Web, Windows, macOS
+# - Genera lib/firebase_options.dart
+# - Copia google-services.json y GoogleService-Info.plist
+
+
+
+-------------------------------------------
+6. AÑADIR DEPENDENCIAS DE FIREBASE
+-------------------------------------------
+
+flutter pub add firebase_core
+flutter pub add firebase_auth
+flutter pub add cloud_firestore
+flutter pub add firebase_storage
+flutter pub add firebase_messaging
+flutter pub add firebase_analytics
+
+
+
+-------------------------------------------
+7. INICIALIZAR FIREBASE EN main.dart
+-------------------------------------------
+
+# Añadir este código en lib/main.dart:
+
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
+}
+
+
+
+-------------------------------------------
+8. EJECUTAR LA APLICACIÓN
+-------------------------------------------
+
+flutter run
+
+
+
+===========================================
+ CÓMO QUITAR FIREBASE DE UN PROYECTO FLUTTER
+===========================================
+
+
+-------------------------------------------
+1. ELIMINAR DEPENDENCIAS DE FIREBASE
+-------------------------------------------
+
+flutter pub remove firebase_core
+flutter pub remove firebase_auth
+flutter pub remove cloud_firestore
+flutter pub remove firebase_storage
+flutter pub remove firebase_messaging
+flutter pub remove firebase_analytics
+
+# Eliminar cualquier otra dependencia Firebase:
+# flutter pub remove nombre_paquete
+
+
+
+-------------------------------------------
+2. LIMPIAR main.dart
+-------------------------------------------
+
+# Eliminar:
+# import 'package:firebase_core/firebase_core.dart';
+# import 'firebase_options.dart';
+
+# Eliminar la inicialización:
+# WidgetsFlutterBinding.ensureInitialized();
+# await Firebase.initializeApp(...);
+
+# Dejar main() así:
+void main() {
+  runApp(const MyApp());
+}
+
+
+
+-------------------------------------------
+3. BORRAR ARCHIVOS GENERADOS
+-------------------------------------------
+
+# Archivo de configuración:
+lib/firebase_options.dart
+
+
+
+-------------------------------------------
+4. LIMPIAR ANDROID
+-------------------------------------------
+
+# Borrar:
+android/app/google-services.json
+
+# En android/build.gradle eliminar:
+# classpath 'com.google.gms:google-services:...'
+
+# En android/app/build.gradle eliminar:
+# apply plugin: 'com.google.gms.google-services'
+
+# Eliminar dependencias Firebase:
+# implementation 'com.google.firebase:...'
+
+
+
+-------------------------------------------
+5. LIMPIAR iOS
+-------------------------------------------
+
+# Borrar:
+ios/Runner/GoogleService-Info.plist
+
+# En ios/Podfile eliminar referencias a Firebase
+
+cd ios
+pod install
+cd ..
+
+
+
+-------------------------------------------
+6. LIMPIAR WEB
+-------------------------------------------
+
+# Borrar:
+web/firebase-config.js
+
+# Quitar referencias en:
+web/index.html
+
+
+
+-------------------------------------------
+7. LIMPIAR CACHÉS
+-------------------------------------------
+
+flutter clean
+flutter pub get
+
+
+
+-------------------------------------------
+8. (OPCIONAL) BORRAR PROYECTO DE FIREBASE
+-------------------------------------------
+
+firebase projects:delete ID_DEL_PROYECTO
+
+
+
+===========================================
+ FIN DEL ARCHIVO
+===========================================
