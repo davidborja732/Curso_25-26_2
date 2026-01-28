@@ -1,10 +1,13 @@
 import 'package:firebase_app/screens/home_screen.dart';
 import 'package:firebase_app/screens/login_screen.dart';
 import 'package:firebase_app/screens/register_screen.dart';
+// ignore: unused_import
 import 'package:firebase_app/screens/seleccionar_screen.dart';
+// ignore: unused_import
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+// ignore: unused_import
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'firebase_options.dart';
 
@@ -31,7 +34,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => LoginScreen(),
+        '/': (context) => SeleccionarScreen(),
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
         '/home': (context) => HomeScreen(),

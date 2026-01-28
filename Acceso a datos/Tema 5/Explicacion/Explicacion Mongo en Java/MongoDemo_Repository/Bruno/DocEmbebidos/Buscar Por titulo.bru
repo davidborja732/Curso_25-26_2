@@ -1,0 +1,19 @@
+meta {
+  name: Buscar Por titulo
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://127.0.0.1:8080/api/books/search/titulo?q=
+  body: none
+  auth: inherit
+}
+
+params:query {
+  q: 
+}
+
+settings {
+  encodeUrl: true
+}
