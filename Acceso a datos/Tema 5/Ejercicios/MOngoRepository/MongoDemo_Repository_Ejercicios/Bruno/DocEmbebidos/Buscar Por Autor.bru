@@ -1,0 +1,20 @@
+meta {
+  name: Buscar Por Autor
+  type: http
+  seq: 9
+}
+
+get {
+  url: http://127.0.0.1:8080/api/books/search/categoria?cat=java
+  body: none
+  auth: inherit
+}
+
+params:query {
+  cat: java
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

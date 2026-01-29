@@ -1,0 +1,21 @@
+meta {
+  name: TEMPLATE Obtener por año y precio
+  type: http
+  seq: 18
+}
+
+get {
+  url: http://127.0.0.1:8080/api/book/template/search/infeanio?infe=20&anio=2002
+  body: none
+  auth: inherit
+}
+
+params:query {
+  infe: 20
+  anio: 2002
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

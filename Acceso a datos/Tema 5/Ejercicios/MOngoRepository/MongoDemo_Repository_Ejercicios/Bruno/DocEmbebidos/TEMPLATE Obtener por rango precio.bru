@@ -1,0 +1,21 @@
+meta {
+  name: TEMPLATE Obtener por rango precio
+  type: http
+  seq: 16
+}
+
+get {
+  url: http://127.0.0.1:8080/api/book/template/search/precio?min=2&max=15
+  body: none
+  auth: inherit
+}
+
+params:query {
+  min: 2
+  max: 15
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

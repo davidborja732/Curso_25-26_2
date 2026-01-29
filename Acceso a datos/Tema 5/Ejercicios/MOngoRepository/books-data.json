@@ -1,0 +1,194 @@
+[
+  {
+    "titulo": "Cien años de soledad",
+    "isbn": "978-0307474728",
+    "anioPublicacion": 1967,
+    "precio": 18.50,
+    "numeroPaginas": 417,
+    "editorial": "Editorial Sudamericana",
+    "autores": [
+      {
+        "nombre": "Gabriel García Márquez",
+        "nacionalidad": "Colombia"
+      }
+    ],
+    "categorias": ["Ficción", "Realismo mágico", "Literatura latinoamericana"]
+  },
+  {
+    "titulo": "Don Quijote de la Mancha",
+    "isbn": "978-8491050858",
+    "anioPublicacion": 1605,
+    "precio": 25.00,
+    "numeroPaginas": 863,
+    "editorial": "Real Academia Española",
+    "autores": [
+      {
+        "nombre": "Miguel de Cervantes",
+        "nacionalidad": "España"
+      }
+    ],
+    "categorias": ["Clásicos", "Ficción", "Aventura"]
+  },
+  {
+    "titulo": "1984",
+    "isbn": "978-0451524935",
+    "anioPublicacion": 1949,
+    "precio": 15.99,
+    "numeroPaginas": 328,
+    "editorial": "Signet Classics",
+    "autores": [
+      {
+        "nombre": "George Orwell",
+        "nacionalidad": "Reino Unido"
+      }
+    ],
+    "categorias": ["Distopía", "Ficción", "Ciencia ficción"]
+  },
+  {
+    "titulo": "El principito",
+    "isbn": "978-0156012195",
+    "anioPublicacion": 1943,
+    "precio": 12.50,
+    "numeroPaginas": 96,
+    "editorial": "Harcourt",
+    "autores": [
+      {
+        "nombre": "Antoine de Saint-Exupéry",
+        "nacionalidad": "Francia"
+      }
+    ],
+    "categorias": ["Infantil", "Filosofía", "Clásicos"]
+  },
+  {
+    "titulo": "Clean Code",
+    "isbn": "978-0132350884",
+    "anioPublicacion": 2008,
+    "precio": 42.00,
+    "numeroPaginas": 464,
+    "editorial": "Prentice Hall",
+    "autores": [
+      {
+        "nombre": "Robert C. Martin",
+        "nacionalidad": "Estados Unidos"
+      }
+    ],
+    "categorias": ["Programación", "Tecnología", "Desarrollo de software"]
+  },
+  {
+    "titulo": "Design Patterns",
+    "isbn": "978-0201633610",
+    "anioPublicacion": 1994,
+    "precio": 54.99,
+    "numeroPaginas": 395,
+    "editorial": "Addison-Wesley",
+    "autores": [
+      {
+        "nombre": "Erich Gamma",
+        "nacionalidad": "Suiza"
+      },
+      {
+        "nombre": "Richard Helm",
+        "nacionalidad": "Estados Unidos"
+      },
+      {
+        "nombre": "Ralph Johnson",
+        "nacionalidad": "Estados Unidos"
+      },
+      {
+        "nombre": "John Vlissides",
+        "nacionalidad": "Estados Unidos"
+      }
+    ],
+    "categorias": ["Programación", "Tecnología", "Arquitectura de software"]
+  },
+  {
+    "titulo": "El código Da Vinci",
+    "isbn": "978-0307474278",
+    "anioPublicacion": 2003,
+    "precio": 16.95,
+    "numeroPaginas": 454,
+    "editorial": "Doubleday",
+    "autores": [
+      {
+        "nombre": "Dan Brown",
+        "nacionalidad": "Estados Unidos"
+      }
+    ],
+    "categorias": ["Thriller", "Misterio", "Ficción"]
+  },
+  {
+    "titulo": "La sombra del viento",
+    "isbn": "978-8408163374",
+    "anioPublicacion": 2001,
+    "precio": 19.90,
+    "numeroPaginas": 576,
+    "editorial": "Planeta",
+    "autores": [
+      {
+        "nombre": "Carlos Ruiz Zafón",
+        "nacionalidad": "España"
+      }
+    ],
+    "categorias": ["Ficción", "Misterio", "Literatura española"]
+  },
+  {
+    "titulo": "Sapiens: De animales a dioses",
+    "isbn": "978-8499926223",
+    "anioPublicacion": 2011,
+    "precio": 22.90,
+    "numeroPaginas": 496,
+    "editorial": "Debate",
+    "autores": [
+      {
+        "nombre": "Yuval Noah Harari",
+        "nacionalidad": "Israel"
+      }
+    ],
+    "categorias": ["Historia", "Antropología", "No ficción"]
+  },
+  {
+    "titulo": "Effective Java",
+    "isbn": "978-0134685991",
+    "anioPublicacion": 2017,
+    "precio": 49.99,
+    "numeroPaginas": 416,
+    "editorial": "Addison-Wesley",
+    "autores": [
+      {
+        "nombre": "Joshua Bloch",
+        "nacionalidad": "Estados Unidos"
+      }
+    ],
+    "categorias": ["Programación", "Java", "Tecnología"]
+  },
+  {
+    "titulo": "El alquimista",
+    "isbn": "978-0062315007",
+    "anioPublicacion": 1988,
+    "precio": 14.95,
+    "numeroPaginas": 208,
+    "editorial": "HarperOne",
+    "autores": [
+      {
+        "nombre": "Paulo Coelho",
+        "nacionalidad": "Brasil"
+      }
+    ],
+    "categorias": ["Ficción", "Filosofía", "Autoayuda"]
+  },
+  {
+    "titulo": "Spring Boot in Action",
+    "isbn": "978-1617292545",
+    "anioPublicacion": 2016,
+    "precio": 44.99,
+    "numeroPaginas": 264,
+    "editorial": "Manning",
+    "autores": [
+      {
+        "nombre": "Craig Walls",
+        "nacionalidad": "Estados Unidos"
+      }
+    ],
+    "categorias": ["Programación", "Java", "Spring", "Tecnología"]
+  }
+]

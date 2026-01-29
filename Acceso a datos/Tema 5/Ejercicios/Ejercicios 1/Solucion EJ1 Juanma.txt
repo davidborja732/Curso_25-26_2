@@ -1,0 +1,404 @@
+
+### 1. Mostrar todos los cursos
+
+db.cursos.find()
+
+
+### 2. Contar cuántos cursos hay en total
+
+db.cursos.countDocuments()
+
+
+### 3. Buscar cursos de la categoría "Programación"
+
+db.cursos.find({ categoria: "Programación" })
+
+
+### 4. Buscar cursos de nivel "Básico"
+
+db.cursos.find({ nivel: "Básico" })
+
+
+### 5. Buscar cursos con precio menor a 70 euros
+
+db.cursos.find({ precio: { $lt: 70 } })
+
+
+### 6. Buscar cursos activos
+
+db.cursos.find({ activo: true })
+
+
+### 7. Buscar cursos del instructor "Carlos Martínez"
+
+db.cursos.find({ instructor: "Carlos Martínez" })
+
+
+### 8. Buscar cursos que estén en español
+
+db.cursos.find({ idiomas: "Español" })
+
+
+### 9. Proyección: Mostrar solo título y precio
+
+db.cursos.find({}, { titulo: 1, precio: 1, _id: 0 })
+
+
+### 10. Buscar cursos con duración mayor a 30 horas
+
+db.cursos.find({ duracion_horas: { $gt: 30 } })
+
+
+---
+
+
+### 11. Buscar cursos que tengan más de 2 módulos
+
+db.cursos.find({
+  $expr: { $gt: [{ $size: "$modulos" }, 2] }
+})
+
+
+### 12. Buscar cursos donde algún módulo dure más de 10 horas
+
+db.cursos.find({ "modulos.duracion_horas": { $gt: 10 } })
+
+
+### 13. Buscar cursos que tengan lecciones de tipo "proyecto"
+
+db.cursos.find({ "modulos.lecciones.tipo": "proyecto" })
+
+
+### 14. Buscar cursos donde alguna lección dure más de 60 minutos
+
+db.cursos.find({ "modulos.lecciones.duracion_minutos": { $gt: 60 } })
+
+
+### 15. Buscar cursos donde alguna lección haya sido completada por más de 200 personas
+
+db.cursos.find({ "modulos.lecciones.completado_por": { $gt: 200 } })
+
+
+### 16. Proyección: Mostrar título del curso y títulos de módulos
+
+db.cursos.find(
+  {},
+  {
+    titulo: 1,
+    "modulos.titulo": 1,
+    _id: 0
+  }
+)
+
+
+### 17. Buscar cursos que tengan al menos una lección de tipo "video"
+
+db.cursos.find({ "modulos.lecciones.tipo": "video" })
+
+
+### 18. Buscar cursos donde el primer módulo se llame "Fundamentos de Python"
+
+db.cursos.find({ "modulos.0.titulo": "Fundamentos de Python" })
+
+
+### 19. Proyección: Mostrar curso y solo las primeras lecciones de cada módulo
+
+db.cursos.find(
+  {},
+  {
+    titulo: 1,
+    "modulos.titulo": 1,
+    "modulos.lecciones.0.titulo": 1,
+    _id: 0
+  }
+)
+
+
+### 20. Buscar cursos que NO tengan requisitos (array vacío)
+
+db.cursos.find({ requisitos: { $size: 0 } })
+// O también:
+db.cursos.find({ requisitos: ["Ninguno"] })
+
+
+---
+
+
+### 21. Buscar cursos donde estudie "Ana López"
+
+db.cursos.find({ "estudiantes.nombre": "Ana López" })
+
+
+### 22. Buscar cursos con al menos un estudiante que haya obtenido certificado
+
+db.cursos.find({ "estudiantes.certificado_obtenido": true })
+
+
+### 23. Buscar cursos donde algún estudiante tenga 100% de progreso
+
+db.cursos.find({ "estudiantes.progreso_porcentaje": 100 })
+
+
+### 24. Buscar cursos con más de 200 estudiantes totales
+
+db.cursos.find({ total_estudiantes: { $gt: 200 } })
+
+
+### 25. Buscar cursos donde algún estudiante se inscribió en 2024
+
+db.cursos.find({
+  "estudiantes.fecha_inscripcion": {
+    $gte: ISODate("2024-01-01T00:00:00Z"),
+    $lt: ISODate("2025-01-01T00:00:00Z")
+  }
+})
+
+
+### 26. Buscar cursos donde algún estudiante tenga menos del 50% de progreso
+
+db.cursos.find({ "estudiantes.progreso_porcentaje": { $lt: 50 } })
+
+
+### 27. Proyección: Mostrar curso y solo nombres de estudiantes
+
+db.cursos.find(
+  {},
+  {
+    titulo: 1,
+    "estudiantes.nombre": 1,
+    _id: 0
+  }
+)
+
+
+### 28. Buscar cursos donde "Roberto Silva" sea estudiante
+
+db.cursos.find({ "estudiantes.nombre": "Roberto Silva" })
+
+
+### 29. Contar cuántos estudiantes están inscritos en cada curso (proyección)
+
+db.cursos.find(
+  {},
+  {
+    titulo: 1,
+    num_inscritos: { $size: "$estudiantes" },
+    _id: 0
+  }
+)
+
+
+### 30. Buscar cursos con al menos 3 estudiantes inscritos
+
+db.cursos.find({
+  $expr: { $gte: [{ $size: "$estudiantes" }, 3] }
+})
+
+
+---
+
+### 31. Buscar cursos con promedio de valoración mayor o igual a 4.5
+
+db.cursos.find({ promedio_valoracion: { $gte: 4.5 } })
+
+
+### 32. Buscar cursos con valoración perfecta (5.0)
+
+db.cursos.find({ promedio_valoracion: 5.0 })
+
+
+### 33. Buscar cursos donde "Ana López" haya dejado una valoración
+
+db.cursos.find({ "valoraciones.nombre": "Ana López" })
+
+
+### 34. Buscar cursos con al menos una valoración de 5 estrellas
+
+db.cursos.find({ "valoraciones.puntuacion": 5 })
+
+
+### 35. Buscar cursos donde alguna valoración tenga más de 10 votos útiles
+
+db.cursos.find({ "valoraciones.util_votos": { $gt: 10 } })
+
+
+### 36. Buscar cursos SIN valoraciones
+
+db.cursos.find({ valoraciones: { $size: 0 } })
+// O también:
+db.cursos.find({ "valoraciones.0": { $exists: false } })
+
+
+### 37. Proyección: Mostrar título y comentarios de valoraciones
+
+db.cursos.find(
+  {},
+  {
+    titulo: 1,
+    "valoraciones.comentario": 1,
+    _id: 0
+  }
+)
+
+
+### 38. Buscar cursos con más de 2 valoraciones
+
+db.cursos.find({
+  $expr: { $gt: [{ $size: "$valoraciones" }, 2] }
+})
+
+
+### 39. Buscar cursos donde alguna valoración sea menor a 4 estrellas
+
+db.cursos.find({ "valoraciones.puntuacion": { $lt: 4 } })
+
+
+### 40. Buscar cursos creados en 2024
+
+db.cursos.find({
+  fecha_creacion: {
+    $gte: ISODate("2024-01-01T00:00:00Z"),
+    $lt: ISODate("2025-01-01T00:00:00Z")
+  }
+})
+
+
+---
+
+
+
+### 41. Contar cursos por categoría
+
+db.cursos.aggregate([
+  { $group: {
+      _id: "$categoria",
+      cantidad: { $count: {} }
+    }
+  },
+  { $sort: { cantidad: -1 } }
+])
+
+
+### 42. Calcular el precio promedio de los cursos
+
+db.cursos.aggregate([
+  { $group: {
+      _id: null,
+      precio_promedio: { $avg: "$precio" }
+    }
+  }
+])
+
+
+### 43. Encontrar el curso más caro
+
+db.cursos.aggregate([
+  { $sort: { precio: -1 } },
+  { $limit: 1 },
+  { $project: { titulo: 1, precio: 1, _id: 0 } }
+])
+
+
+### 44. Listar instructores y cuántos cursos imparten
+
+db.cursos.aggregate([
+  { $group: {
+      _id: "$instructor",
+      num_cursos: { $count: {} },
+      cursos: { $push: "$titulo" }
+    }
+  },
+  { $sort: { num_cursos: -1 } }
+])
+
+
+### 45. Calcular el total de estudiantes de todos los cursos (suma)
+
+db.cursos.aggregate([
+  { $group: {
+      _id: null,
+      total_estudiantes: { $sum: "$total_estudiantes" }
+    }
+  }
+])
+
+
+### 46. Desenrollar módulos y contar total de lecciones por curso
+
+db.cursos.aggregate([
+  { $unwind: "$modulos" },
+  { $unwind: "$modulos.lecciones" },
+  { $group: {
+      _id: "$titulo",
+      total_lecciones: { $count: {} }
+    }
+  },
+  { $sort: { total_lecciones: -1 } }
+])
+
+
+### 47. Encontrar los 3 estudiantes más activos (más cursos inscritos)
+
+db.cursos.aggregate([
+  { $unwind: "$estudiantes" },
+  { $group: {
+      _id: "$estudiantes.nombre",
+      cursos_inscritos: { $count: {} },
+      email: { $first: "$estudiantes.email" }
+    }
+  },
+  { $sort: { cursos_inscritos: -1 } },
+  { $limit: 3 }
+])
+
+
+### 48. Calcular el progreso promedio de estudiantes por curso
+
+db.cursos.aggregate([
+  { $unwind: "$estudiantes" },
+  { $group: {
+      _id: "$titulo",
+      progreso_promedio: { $avg: "$estudiantes.progreso_porcentaje" }
+    }
+  },
+  { $sort: { progreso_promedio: -1 } }
+])
+
+
+### 49. Contar lecciones por tipo (video, practica, proyecto)
+
+db.cursos.aggregate([
+  { $unwind: "$modulos" },
+  { $unwind: "$modulos.lecciones" },
+  { $group: {
+      _id: "$modulos.lecciones.tipo",
+      cantidad: { $count: {} },
+      duracion_total_minutos: { $sum: "$modulos.lecciones.duracion_minutos" }
+    }
+  },
+  { $sort: { cantidad: -1 } }
+])
+
+
+### 50. Curso con mejor "engagement" (fórmula: total_estudiantes * promedio_valoracion)
+
+db.cursos.aggregate([
+  { $addFields: {
+      engagement: {
+        $multiply: ["$total_estudiantes", "$promedio_valoracion"]
+      }
+    }
+  },
+  { $sort: { engagement: -1 } },
+  { $limit: 1 },
+  { $project: {
+      titulo: 1,
+      instructor: 1,
+      total_estudiantes: 1,
+      promedio_valoracion: 1,
+      engagement: 1,
+      _id: 0
+    }
+  }
+])
+
