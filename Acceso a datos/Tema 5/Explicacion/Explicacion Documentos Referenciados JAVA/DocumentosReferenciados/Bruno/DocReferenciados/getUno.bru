@@ -1,0 +1,39 @@
+meta {
+  name: getUno
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://127.0.0.1:8080/api/autores
+  body: none
+  auth: inherit
+}
+
+body:json {
+  {
+      "titulo": "Piensa en Java",
+      "isbn": "978-8499926150",
+      "anioPublicacion": 2001,
+      "precio": 30.2,
+      "numeroPaginas": 500,
+      "editorial": "Anaya",
+      "autores": [
+        {
+          "nombre": "Yomismo",
+          "nacionalidad": "Americano"
+        }
+      ],
+      "categorias": [
+        "Programación",
+        "Java",
+        "No ficción"
+      ]
+     
+    }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

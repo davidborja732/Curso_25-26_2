@@ -1,0 +1,7 @@
+SELECT empleados.Id,Nombre,FechaNac,Sexo,departamentos.Departamento as Departamento,Salario FROM empleados
+INNER JOIN departamentos ON empleados.Departamento = departamentos.Id;
+
+
+
+SELECT empresa.empleados.Id,Nombre,FechaNac,Sexo,empresa.departamentos.Departamento as Departamento,Salario FROM empresa.empleados INNER JOIN empresa.departamentos ON empresa.empleados.Departamento = empresa.departamentos.Id;
+SELECT empresa.empleados.Id,Nombre,FechaNac,Sexo,empresa.departamentos.Departamento as Departamento,Salario FROM empresa.empleados INNER JOIN empresa.departamentos ON empresa.empleados.Departamento = empresa.departamentos.Id WHERE empresa.empleados.Departamento=(SELECT Id FROM empresa.departamentos where Departamento=);

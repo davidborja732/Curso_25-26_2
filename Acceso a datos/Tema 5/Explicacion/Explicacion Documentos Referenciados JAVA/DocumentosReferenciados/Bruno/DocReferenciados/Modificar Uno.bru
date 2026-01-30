@@ -1,0 +1,23 @@
+meta {
+  name: Modificar Uno
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://127.0.0.1:8080/api/autores/697b921d2e4c3bcc4cb24eb8
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nacionalidad": "Americano",
+    "nombre": "Stephen King"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

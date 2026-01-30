@@ -1,0 +1,23 @@
+meta {
+  name: TEMPLATE Obtener por categorias
+  type: http
+  seq: 20
+}
+
+post {
+  url: http://127.0.0.1:8080/api/book/template/search/categoriasmultiples
+  body: json
+  auth: inherit
+}
+
+body:json {
+  [
+    "Programación",
+    "Java"
+  ]
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

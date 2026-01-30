@@ -4,10 +4,7 @@ import org.iesch.MongoDemo_Repository.modelo.Book;
 import org.iesch.MongoDemo_Repository.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -54,4 +51,35 @@ public class BookTemplateController {
     public ResponseEntity<List<Book>> buscarPorinfeanio(@RequestParam Double infe,int anio){
         return ResponseEntity.ok(bookService.findByInfeanio(infe,anio));
     }
+    //Buscar libros por un titulo y categoria
+    // GET /api/book/template/search/titucat?titu= &cat=
+    @GetMapping("search/titucat")
+    public ResponseEntity<List<Book>> buscarPortitucat(@RequestParam String titu,String cat){
+        return ResponseEntity.ok(bookService.findByTituCat(titu,cat));
+    }
+    //Buscar libros a traves de multiples categorias
+    // POST /api/book/template/search/categoriasmultiples
+    @PostMapping("search/categoriasmultiples")
+    public ResponseEntity<List<Book>> buscarPorcategoriasmultiples(@RequestBody List<String> lista){
+        return ResponseEntity.ok(bookService.findByCategoriasMultiples(lista));
+    }
+    //Buscar por precio maximo ordenado por año descendiente
+    // GET /api/book/template/search/precioorden?precio=
+    @GetMapping("search/precioorden")
+    public ResponseEntity<List<Book>> buscarPorprecioorden(@RequestParam Double precio){
+        return ResponseEntity.ok(bookService.findByPrecioOrden(precio));
+    }
+    //Buscar libros con mas de un autor
+    // GET /api/book/template/search/multiplesautores
+    @GetMapping("search/multiplesautores")
+    public ResponseEntity<List<Book>> buscarPormultiplesautores(){
+        return ResponseEntity.ok(bookService.findByMultiplesAutores());
+    }
+    // Contar libros por categoria
+    // GET /api/book/template/search/libroscategoria?cat=
+    @GetMapping("search/libroscategoria")
+    public ResponseEntity<Long> buscarPorLibrosCategoria(@RequestParam String cat){
+        return ResponseEntity.ok(bookService.findByLibrosCategoria(cat));
+    }
+
 }
