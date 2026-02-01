@@ -33,6 +33,8 @@ public class HelloController {
     private Button boton;
     @FXML
     private Button boton2;
+    @FXML
+    private Button boton3;
 
     public HelloController() throws SQLException {
     }
@@ -68,6 +70,16 @@ public class HelloController {
         param.put("provin",Localidadusuario.getValue());
         System.out.println(Localidadusuario.getValue());
         String fileRepo = "informes/Informe_19_01_Capitales_Tabla.jasper";
+        JasperPrint jpRepo = JasperFillManager.fillReport(fileRepo, param, con);
+        JasperViewer viewer = new JasperViewer(jpRepo,false);
+        viewer.setTitle("TITULO INFORME");
+        viewer.setVisible(true);
+    }
+    public void botonaccion3() throws JRException {
+        HashMap<String, Object> param=new HashMap<>();
+        param.put("provin",Localidadusuario.getValue());
+        System.out.println(Localidadusuario.getValue());
+        String fileRepo = "informes/CapitalesGrafico.jasper";
         JasperPrint jpRepo = JasperFillManager.fillReport(fileRepo, param, con);
         JasperViewer viewer = new JasperViewer(jpRepo,false);
         viewer.setTitle("TITULO INFORME");

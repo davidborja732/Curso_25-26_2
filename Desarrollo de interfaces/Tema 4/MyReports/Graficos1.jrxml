@@ -1,0 +1,60 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Graficos1" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="abe5a7ca-0b65-4171-a41d-5bb079579825">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="con"/>
+	<query language="SQL"><![CDATA[SELECT * FROM empresa.empleados]]></query>
+	<field name="Id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Id"/>
+		<property name="com.jaspersoft.studio.field.label" value="Id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+	</field>
+	<field name="Nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+	</field>
+	<field name="FechaNac" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="FechaNac"/>
+		<property name="com.jaspersoft.studio.field.label" value="FechaNac"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+	</field>
+	<field name="Sexo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Sexo"/>
+		<property name="com.jaspersoft.studio.field.label" value="Sexo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+	</field>
+	<field name="Departamento" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Departamento"/>
+		<property name="com.jaspersoft.studio.field.label" value="Departamento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+	</field>
+	<field name="Salario" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="Salario"/>
+		<property name="com.jaspersoft.studio.field.label" value="Salario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch"/>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="61" splitType="Stretch"/>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="209" splitType="Stretch">
+		<element kind="chart" chartType="bar" uuid="736fa9c5-18a2-456c-8626-89202c28dde1" x="-20" y="9" width="595" height="200" showLegend="false" evaluationTime="Report" linkType="None" linkTarget="Self">
+			<titleExpression><![CDATA[Empleados]]></titleExpression>
+			<dataset kind="category">
+				<series>
+					<seriesExpression><![CDATA["SERIES 1"]]></seriesExpression>
+					<categoryExpression><![CDATA[$F{Nombre}]]></categoryExpression>
+					<valueExpression><![CDATA[$F{Salario}]]></valueExpression>
+				</series>
+			</dataset>
+			<plot categoryAxisLabelColor="#000000" categoryAxisTickLabelColor="#000000" categoryAxisLineColor="#000000" valueAxisLabelColor="#000000" valueAxisTickLabelColor="#000000" valueAxisLineColor="#000000">
+				<itemLabel/>
+			</plot>
+		</element>
+	</summary>
+</jasperReport>

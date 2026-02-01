@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="256.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesch.primer_informe_capitales.HelloController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesch.primer_informe_capitales.HelloController">
    <children>
-      <VBox layoutX="52.0" layoutY="30.0" prefHeight="197.0" prefWidth="390.0">
+      <VBox layoutX="52.0" layoutY="30.0" prefHeight="270.0" prefWidth="390.0">
          <children>
             <HBox prefHeight="75.0" prefWidth="493.0">
                <children>
@@ -51,6 +51,7 @@
                   <Insets left="150.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="boton3" mnemonicParsing="false" onAction="#botonaccion3" text="Mostrar Informe 3" />
             <Button fx:id="boton2" mnemonicParsing="false" onAction="#botonaccion2" text="Mostrar Informe 2" />
          </children>
       </VBox>
