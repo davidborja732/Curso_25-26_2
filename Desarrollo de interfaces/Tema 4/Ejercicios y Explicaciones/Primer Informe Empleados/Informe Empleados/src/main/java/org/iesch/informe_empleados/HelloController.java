@@ -5,11 +5,8 @@ import javafx.scene.control.*;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.fill.*;
 
 
 import java.sql.*;
@@ -89,7 +86,7 @@ public class HelloController {
     public void informenormal() throws JRException {
         localidad=combolocalidades.getValue();
         HashMap<String, Object> param=new HashMap<>();
-        param.put("rutaImagen","file:imagenes/gatito.jpg");
+        param.put("rutaImagen", "imagenes/gatito.jpg");
         JasperDesign d = JRXmlLoader.load("informes/InfromeEmpleadosNoGrupo.jrxml");
         JRDesignQuery jq = new JRDesignQuery();
         jq.setText("SELECT * FROM datos.empleados WHERE Localidad='"+localidad+"' AND Salario >"+minimo.getText()+" AND Salario <"+maximo.getText());
@@ -101,7 +98,7 @@ public class HelloController {
     @FXML
     public void informegrupal() throws JRException {
         HashMap<String, Object> param=new HashMap<>();
-        param.put("rutaImagen","file:imagenes/gatito.jpg");
+        param.put("rutaImagen", "imagenes/gatito.jpg");
         localidad=combolocalidades.getValue();
         JasperDesign d = JRXmlLoader.load("informes/informeEmpleados.jrxml");
 
@@ -113,16 +110,17 @@ public class HelloController {
         JasperViewer.viewReport(jp,false);
     }
     public void informeCalculado() throws JRException {
+        String fileRepo = "informes/Calculado.jasper";
 
-        System.setProperty("jasper.reports.compile.class.path", System.getProperty("java.class.path"));
+        JasperPrint jpRepo = JasperFillManager.fillReport(
+                fileRepo,
+                null,
+                con
+        );
+        JasperViewer viewer = new JasperViewer(jpRepo, false);
+        viewer.setTitle("Informe Calculado");
+        viewer.setVisible(true);
 
-        JasperDesign d = JRXmlLoader.load("informes/Calculado.jasper");
-        JRDesignQuery jq = new JRDesignQuery();
-        jq.setText("SELECT Nombre,Apellidos,Localidad,Salario,Salario*0.85 as SalNeto FROM datos.empleados");
-        d.setQuery(jq);
-        JasperReport jr = JasperCompileManager.compileReport(d);
-        JasperPrint jp = JasperFillManager.fillReport(jr,null,con);
-        JasperViewer.viewReport(jp,false);
     }
 
 

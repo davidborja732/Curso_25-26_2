@@ -24,43 +24,47 @@
 		<property name="com.jaspersoft.studio.field.tree.path" value="empleados"/>
 	</field>
 	<background splitType="Stretch"/>
-	<title height="79" splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="aa473bcd-dd0d-418a-9286-16caac7d8ef2" x="-11" y="0" width="571" height="78" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Informe Normal]]></text>
+		</element>
+	</title>
 	<pageHeader height="52" splitType="Stretch"/>
 	<columnHeader height="56" splitType="Stretch">
-		<element kind="staticText" uuid="db160f39-5314-4dc0-88cb-d531223c7a18" x="10" y="20" width="100" height="30">
+		<element kind="staticText" uuid="db160f39-5314-4dc0-88cb-d531223c7a18" x="60" y="20" width="100" height="30">
 			<text><![CDATA[Nombre]]></text>
 			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2c9c9c94-c198-4314-a26b-22359823cf28"/>
 		</element>
-		<element kind="staticText" uuid="235f86d7-5d40-427b-9021-c0a773105464" x="140" y="20" width="100" height="30">
+		<element kind="staticText" uuid="235f86d7-5d40-427b-9021-c0a773105464" x="200" y="20" width="100" height="30">
 			<text><![CDATA[Apellidos]]></text>
 			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3a9e63ae-8b7e-4f69-b72d-3bc6ed959c9a"/>
 		</element>
-		<element kind="staticText" uuid="0fcadbc8-42f9-43b9-a4b8-e784a7789dfa" x="390" y="20" width="100" height="30">
-			<text><![CDATA[Localidad]]></text>
-			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fbf83db8-2a63-4360-8924-d0432bbf6d81"/>
-		</element>
-		<element kind="staticText" uuid="55613395-b0ea-4f0c-9a0c-231f592e7838" x="260" y="20" width="100" height="30">
+		<element kind="staticText" uuid="55613395-b0ea-4f0c-9a0c-231f592e7838" x="340" y="20" width="100" height="30">
 			<text><![CDATA[Localidad]]></text>
 			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2866f186-53c8-451f-85cf-c05e0d8c0e9d"/>
 		</element>
+		<element kind="staticText" uuid="95c7753f-3ad8-4ba3-a553-c2647549d456" x="430" y="20" width="100" height="30">
+			<text><![CDATA[Salario]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f79358d6-7701-4f18-89ba-c5530faf2d64"/>
+		</element>
 	</columnHeader>
 	<detail>
-		<band height="44" splitType="Stretch">
-			<element kind="textField" uuid="2e1e686f-d852-4dae-a574-2517c52ca070" x="10" y="7" width="100" height="30">
+		<band height="55" splitType="Stretch">
+			<element kind="textField" uuid="2e1e686f-d852-4dae-a574-2517c52ca070" x="60" y="7" width="100" height="30">
 				<expression><![CDATA[$F{Nombre}]]></expression>
 				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2c9c9c94-c198-4314-a26b-22359823cf28"/>
 			</element>
-			<element kind="textField" uuid="544a21ee-e2b8-4a8c-8d2c-a0ca63f3ecd9" x="140" y="7" width="100" height="30">
+			<element kind="textField" uuid="544a21ee-e2b8-4a8c-8d2c-a0ca63f3ecd9" x="200" y="7" width="100" height="30">
 				<expression><![CDATA[$F{Apellidos}]]></expression>
 				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3a9e63ae-8b7e-4f69-b72d-3bc6ed959c9a"/>
 			</element>
-			<element kind="textField" uuid="8236d80a-5c24-45dc-84db-e3f9ca4b3d68" x="390" y="7" width="100" height="30">
-				<expression><![CDATA[$F{Localidad}]]></expression>
-				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fbf83db8-2a63-4360-8924-d0432bbf6d81"/>
-			</element>
-			<element kind="textField" uuid="c6fd765f-daa8-4de6-84c6-43de35c78265" x="260" y="7" width="100" height="30">
+			<element kind="textField" uuid="c6fd765f-daa8-4de6-84c6-43de35c78265" x="340" y="7" width="100" height="30">
 				<expression><![CDATA[$F{Localidad}]]></expression>
 				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2866f186-53c8-451f-85cf-c05e0d8c0e9d"/>
+			</element>
+			<element kind="textField" uuid="ace83e34-1050-4b23-99ca-b69ca57ed616" x="430" y="10" width="100" height="30">
+				<expression><![CDATA[$F{Salario}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f79358d6-7701-4f18-89ba-c5530faf2d64"/>
 			</element>
 		</band>
 	</detail>
