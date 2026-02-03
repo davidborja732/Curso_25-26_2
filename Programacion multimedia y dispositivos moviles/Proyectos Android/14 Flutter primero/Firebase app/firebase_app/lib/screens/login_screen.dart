@@ -1,4 +1,5 @@
 import 'package:firebase_app/services/auth_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -49,7 +50,19 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     }
   }
-
+  Future <void> _loguoConGoogle() async {
+    setState(()=>_isLoading= false);
+    try {
+      final UserCredential = await _authService.loginConGoogle();
+      if (UserCredential !=null){
+        print('Logueo correcto');
+      }
+    }catch (e){
+      throw FirebaseAuthException(code: 'Error al log');
+    }finally{
+      setState(()=>_isLoading= true);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -181,7 +194,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: .center,
                       children: [
                         GestureDetector(
-                          onTap: () {},
+                          onTap: _isLoading ? null : _loguoConGoogle,
                           child: Image.asset(
                             'assets/google.png',
                             height: 45,
