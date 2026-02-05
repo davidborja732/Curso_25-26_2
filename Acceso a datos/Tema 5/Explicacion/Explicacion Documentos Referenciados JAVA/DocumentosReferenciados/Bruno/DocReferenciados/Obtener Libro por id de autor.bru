@@ -1,0 +1,16 @@
+meta {
+  name: Obtener Libro por id de autor
+  type: http
+  seq: 13
+}
+
+get {
+  url: http://127.0.0.1:8080/api/libros/search/60a1b1c1e4b0a1c1e4b0a1c1
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

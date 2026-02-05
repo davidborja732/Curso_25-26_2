@@ -4,6 +4,7 @@ import 'package:firebase_app/screens/login_screen.dart';
 import 'package:firebase_app/screens/register_screen.dart';
 // ignore: unused_import
 import 'package:firebase_app/screens/seleccionar_screen.dart';
+import 'package:firebase_app/screens/storage_screen.dart';
 import 'package:firebase_app/screens/tareas_screen.dart';
 // ignore: unused_import
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomeScreen(),
         '/lista_tareas': (context) => TareasScreen(),
         '/add_tareas': (context) => AddTareaScreen(),
+        '/storage': (context) =>StorageScreen(),
       },
     );
   }

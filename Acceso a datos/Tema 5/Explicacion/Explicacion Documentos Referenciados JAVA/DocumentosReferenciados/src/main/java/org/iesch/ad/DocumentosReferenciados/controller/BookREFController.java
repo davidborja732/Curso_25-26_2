@@ -14,37 +14,58 @@ import java.util.Optional;
 @RequestMapping("api/libros")
 public class BookREFController {
     @Autowired
-    BookRefRepository autoresRefRepository;
+    BookRefRepository bookRefRepository;
     // CRUD
     // Obtener todos
-    // GET /api/autores
+    // GET /api/libros
     @GetMapping
     public ResponseEntity<List<BookRef>> ObtenerTodos(){
-        return ResponseEntity.ok(autoresRefRepository.findAll());
+        return ResponseEntity.ok(bookRefRepository.findAll());
     }
     // Obtener uno
-    // GET /api/autores/{id}
+    // GET /api/libros/{id}
     @GetMapping("/{id}")
     public ResponseEntity<Optional<BookRef>> ObtenerUno(@PathVariable String id){
-        return ResponseEntity.ok(autoresRefRepository.findById(id));
+        return ResponseEntity.ok(bookRefRepository.findById(id));
     }
     // Añadir uno
-    // POST /api/autores/
+    // POST /api/libros/
     @PostMapping()
-    public ResponseEntity<Optional<BookRef>> CrearAutor(@RequestBody BookRef autor){
-        BookRef bookRef=autoresRefRepository.save(autor);
+    public ResponseEntity<Optional<BookRef>> CrearLibro(@RequestBody BookRef autor){
+        BookRef bookRef= bookRefRepository.save(autor);
         return ResponseEntity.status(HttpStatus.CREATED).body(Optional.of(bookRef));
     }
     // Modificar uno
     // PUT /api/autores/
     @PutMapping("/{id}")
-    public ResponseEntity<Optional<BookRef>> ModiAutor(@PathVariable String id, @RequestBody BookRef libro){
-        if (autoresRefRepository.existsById(id)){
+    public ResponseEntity<Optional<BookRef>> ModiLibro(@PathVariable String id, @RequestBody BookRef libro){
+        if (bookRefRepository.existsById(id)){
             return ResponseEntity.notFound().build();
         }
         libro.setId(id);
-        BookRef bookREFsave=autoresRefRepository.save(libro);
+        BookRef bookREFsave= bookRefRepository.save(libro);
         return ResponseEntity.status(HttpStatus.CREATED).body(Optional.of(bookREFsave));
     }
-
+    // Eliminar uno
+    // Delete /api/libros/{id}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> EliLibro(@PathVariable String id){
+        if (!bookRefRepository.existsById(id)){
+            return ResponseEntity.notFound().build();
+        }
+        bookRefRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+    // Obtener por IdAutor
+    // GET /api/libros/id
+    @GetMapping("/search/{id}")
+    public ResponseEntity<List<BookRef>> ObtenerIdAutor(@PathVariable String id){
+        return ResponseEntity.ok(bookRefRepository.findByAutoresId(id));
+    }
+    // Obtener por Año y Precio
+    // GET /api/libros/search
+    @GetMapping("/search/precio-anio")
+    public ResponseEntity<List<BookRef>> ObtenerAnioPrecio(@RequestParam Double precio,@RequestParam Integer anio){
+        return ResponseEntity.ok(bookRefRepository.buscarPorPrecioInferiorYAnioSuperior(precio,anio));
+    }
 }

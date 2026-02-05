@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@Document(collection = "libros_REF")
+@Document(collection = "libros_ref")
 public class BookRef {
 
     @Id
@@ -25,7 +26,8 @@ public class BookRef {
     private String editorial;
 
     //Documentos embebidos
-    @DBRef
+    //@DBRef No usar
+    @DocumentReference
     private List<AutoresREF> autores;
     private List<String> categorias;
 

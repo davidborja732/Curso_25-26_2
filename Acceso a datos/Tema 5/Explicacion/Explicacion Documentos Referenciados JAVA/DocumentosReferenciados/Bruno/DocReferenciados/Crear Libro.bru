@@ -1,0 +1,40 @@
+meta {
+  name: Crear Libro
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://127.0.0.1:8080/api/libros
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "anioPublicacion": 1967,
+    "autores": [
+      {
+        "id": "60a1b1c1e4b0a1c1e4b0a1c1",
+        "nacionalidad": "Colombia",
+        "nombre": "Gabriel García Márquez"
+      }
+    ],
+    "categorias": [
+      "Ficción",
+      "Realismo mágico",
+      "Literatura latinoamericana"
+    ],
+    "editorial": "Editorial Sudamericana",
+    "id": "697b86f2d5d9902ef8748a5f",
+    "isbn": "978-0307474728",
+    "numeroPaginas": 417,
+    "precio": 18.5,
+    "titulo": "Cien años de soledad"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

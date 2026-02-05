@@ -36,7 +36,7 @@ public class AutorREFController {
         return ResponseEntity.status(HttpStatus.CREATED).body(Optional.of(autoresREF));
     }
     // Modificar uno
-    // PUT /api/autores/
+    // PUT /api/autores/{id}
     @PutMapping("/{id}")
     public ResponseEntity<Optional<AutoresREF>> ModiAutor(@PathVariable String id,@RequestBody AutoresREF autor){
         if (autoresRefRepository.existsById(id)){
@@ -46,5 +46,42 @@ public class AutorREFController {
         AutoresREF autoresREFsave=autoresRefRepository.save(autor);
         return ResponseEntity.status(HttpStatus.CREATED).body(Optional.of(autoresREFsave));
     }
+    // Eliminar uno
+    // Delete /api/autores/{id}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> EliAutor(@PathVariable String id){
+        if (!autoresRefRepository.existsById(id)){
+            return ResponseEntity.notFound().build();
+        }
+        autoresRefRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+    // Obtener por nombre
+    // GET /api/autores/search/nombre?nombreusu=?
+    @GetMapping("/search/nombre")
+    public ResponseEntity<List<AutoresREF>> ObtenerNombre(@PathVariable String nombreusu){
+        return ResponseEntity.ok(autoresRefRepository.findByNombreContainingIgnoreCase(nombreusu));
+    }
+    // Obtener por nacionalidad
+    // GET /api/autores/nacionalidad?pais=?
+    @GetMapping("/search/nacionalidad")
+    public ResponseEntity<List<AutoresREF>> ObtenerNacio(@PathVariable String pais){
+        return ResponseEntity.ok(autoresRefRepository.findByNacionalidadContainingIgnoreCase(pais));
+    }
+    // Obtener por nacionalidades
+    // POST /api/autores/search/{nacio}
+    @PostMapping("/search/nacionalidad/{nacio}")
+    public ResponseEntity<List<AutoresREF>> ObtenerNaciones(@RequestBody List<String> nacionalidades){
+        return ResponseEntity.ok(autoresRefRepository.findByNacionalidadIn(nacionalidades));
+    }
+    // Obtener por IdAutor
+    // GET /api/autores/id
+    @GetMapping("/search/{id}")
+    public ResponseEntity<List<AutoresREF>> ObtenerIdAutor(@PathVariable String id){
+        return ResponseEntity.ok(autoresRefRepository.findByNacionalidadContainingIgnoreCase(id));
+    }
+
+
+
 
 }

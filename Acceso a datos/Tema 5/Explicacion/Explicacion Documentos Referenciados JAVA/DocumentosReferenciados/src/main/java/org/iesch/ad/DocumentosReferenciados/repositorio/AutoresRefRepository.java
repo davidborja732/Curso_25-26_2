@@ -10,4 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface AutoresRefRepository extends MongoRepository<AutoresREF,String> {
+    List<AutoresREF> findByNombreContainingIgnoreCase(String nombre);
+    List<AutoresREF> findByNacionalidadContainingIgnoreCase(String nacionalidad);
+    List<AutoresREF> findByNacionalidadIn(List<String> nacionalidad);
 }
