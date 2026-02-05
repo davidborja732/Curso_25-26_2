@@ -1,13 +1,17 @@
 meta {
-  name: Obtener Autor Por Nacionalidad
+  name: Obtener Autor Por Nombre
   type: http
-  seq: 12
+  seq: 2
 }
 
 get {
-  url: http://127.0.0.1:8080/api/autores/search/nacionalidad/c
+  url: http://127.0.0.1:8080/api/autores/search/nombre?nombreusu=ro
   body: none
   auth: inherit
+}
+
+params:query {
+  nombreusu: ro
 }
 
 body:json {

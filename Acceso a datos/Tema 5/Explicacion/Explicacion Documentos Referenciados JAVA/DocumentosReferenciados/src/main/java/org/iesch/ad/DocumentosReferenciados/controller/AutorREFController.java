@@ -1,5 +1,10 @@
 package org.iesch.ad.DocumentosReferenciados.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.iesch.ad.DocumentosReferenciados.modelo.AutoresREF;
 import org.iesch.ad.DocumentosReferenciados.repositorio.AutoresRefRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@Tag(name = "Autores",description = "Api de Autores referenciados")
 @RestController
 @RequestMapping("api/autores")
 public class AutorREFController {
@@ -18,12 +24,20 @@ public class AutorREFController {
     // CRUD
     // Obtener todos
     // GET /api/autores
+    @Operation(description = "Devuelve todos los autores")
+    @ApiResponses()
+    @ApiResponse(responseCode = "200",description = "Ha devuelto todos bien")
     @GetMapping
     public ResponseEntity<List<AutoresREF>> ObtenerTodos(){
         return ResponseEntity.ok(autoresRefRepository.findAll());
     }
     // Obtener uno
     // GET /api/autores/{id}
+    @Operation(description = "Devuelve un libro recibiendo un id como parametro")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Ha devuelto uno bien"),
+            @ApiResponse(responseCode = "404", description = "No se ha encontrado")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<Optional<AutoresREF>> ObtenerUno(@PathVariable String id){
         return ResponseEntity.ok(autoresRefRepository.findById(id));
@@ -64,13 +78,13 @@ public class AutorREFController {
     }
     // Obtener por nacionalidad
     // GET /api/autores/nacionalidad?pais=?
-    @GetMapping("/search/nacionalidad")
+    @GetMapping("/search/nacionalidad/{pais}")
     public ResponseEntity<List<AutoresREF>> ObtenerNacio(@PathVariable String pais){
         return ResponseEntity.ok(autoresRefRepository.findByNacionalidadContainingIgnoreCase(pais));
     }
     // Obtener por nacionalidades
     // POST /api/autores/search/{nacio}
-    @PostMapping("/search/nacionalidad/{nacio}")
+    @PostMapping("/search/nacionalidad")
     public ResponseEntity<List<AutoresREF>> ObtenerNaciones(@RequestBody List<String> nacionalidades){
         return ResponseEntity.ok(autoresRefRepository.findByNacionalidadIn(nacionalidades));
     }

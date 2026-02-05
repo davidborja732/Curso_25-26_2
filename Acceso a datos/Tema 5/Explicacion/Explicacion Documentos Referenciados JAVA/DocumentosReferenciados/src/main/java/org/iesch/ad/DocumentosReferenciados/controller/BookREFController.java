@@ -56,7 +56,7 @@ public class BookREFController {
         bookRefRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
-    // Obtener por IdAutor
+    // Obtener por IdLibro
     // GET /api/libros/id
     @GetMapping("/search/{id}")
     public ResponseEntity<List<BookRef>> ObtenerIdAutor(@PathVariable String id){
@@ -67,5 +67,11 @@ public class BookREFController {
     @GetMapping("/search/precio-anio")
     public ResponseEntity<List<BookRef>> ObtenerAnioPrecio(@RequestParam Double precio,@RequestParam Integer anio){
         return ResponseEntity.ok(bookRefRepository.buscarPorPrecioInferiorYAnioSuperior(precio,anio));
+    }
+    // Buscar libros mas baratos que x o mas antiguos a x año
+    //
+    @GetMapping("/search/precio-anioanti")
+    public ResponseEntity<List<BookRef>> ObtenerAnioPrecioAnti(@RequestParam Double precio,@RequestParam Integer anio){
+        return ResponseEntity.ok(bookRefRepository.buscarPorPrecioInferiorYAnioInferior(precio,anio));
     }
 }

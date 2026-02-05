@@ -1,0 +1,20 @@
+meta {
+  name: Obtener Libros Titulo
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://127.0.0.1:8080/api/books-ref/template/search/titulo?titulo=do
+  body: none
+  auth: inherit
+}
+
+params:query {
+  titulo: do
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
