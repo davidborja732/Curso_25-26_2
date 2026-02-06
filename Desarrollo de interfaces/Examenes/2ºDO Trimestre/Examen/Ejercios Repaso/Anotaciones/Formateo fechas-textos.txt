@@ -1,0 +1,5 @@
+pattern="#,000.00€"
+pattern="dd/MM/yyyy"
+
+$F{sexo}==1?"Texto"?"Mujer":"Hombre"
+SI sexo es igual a 1 el informe muestra mujer ysi no es igual muestra hombre

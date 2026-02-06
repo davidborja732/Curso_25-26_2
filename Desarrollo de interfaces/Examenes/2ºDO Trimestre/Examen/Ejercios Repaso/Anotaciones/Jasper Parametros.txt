@@ -1,0 +1,10 @@
+String fileRepo = "informes/Calculado.jasper";
+
+        JasperPrint jpRepo = JasperFillManager.fillReport(
+                fileRepo,
+                null,
+                con
+        );
+        JasperViewer viewer = new JasperViewer(jpRepo, false);
+        viewer.setTitle("Informe Calculado");
+        viewer.setVisible(true);

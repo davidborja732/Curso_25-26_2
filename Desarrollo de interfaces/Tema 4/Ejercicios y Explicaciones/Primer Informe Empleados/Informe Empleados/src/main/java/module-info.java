@@ -1,13 +1,10 @@
 module org.iesch.informe_empleados {
-    requires javafx.controls;
-    requires javafx.fxml;
-    requires java.sql;
+        requires javafx.controls;
+        requires javafx.fxml;
+        requires java.sql;
+        requires net.sf.jasperreports.core;
 
-    // JasperReports 7.x
-    requires net.sf.jasperreports.core;
 
-    // Abrir tu paquete a JavaFX y JasperReports
-    opens org.iesch.informe_empleados to javafx.fxml, net.sf.jasperreports.core;
-
-    exports org.iesch.informe_empleados;
-}
+        opens org.iesch.informe_empleados to javafx.fxml;
+        exports org.iesch.informe_empleados;
+        }

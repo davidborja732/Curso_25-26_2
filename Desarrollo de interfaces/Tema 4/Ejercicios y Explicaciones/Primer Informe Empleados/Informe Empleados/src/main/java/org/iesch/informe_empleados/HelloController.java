@@ -9,14 +9,15 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 
+import java.io.InputStream;
 import java.sql.*;
 import java.util.HashMap;
 
 public class HelloController {
     Connection con = DriverManager.getConnection(url, user, clave);
     ResultSet rs;
-    String localidad= "";
-    static String url = "jdbc:mysql://localhost:3306/datos";
+    String categoria = "";
+    static String url = "jdbc:mysql://localhost:3306/ventas";
     static String user = "root";
     static String clave = "1234";
     @FXML
@@ -39,16 +40,15 @@ public class HelloController {
 
     @FXML
     public void initialize(){
-        System.setProperty("jasper.reports.compile.class.path", System.getProperty("java.class.path"));
         try {
             Statement stat = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
-            String sql = "SELECT DISTINCT Localidad FROM datos.empleados";
+            String sql = "SELECT DISTINCT `Categor?a` FROM ventas.ventas";
             rs = stat.executeQuery(sql);
             while (rs.next()) {
-                localidad=(rs.getString("Localidad"));
-                System.out.println(localidad);
-                combolocalidades.getItems().add(localidad);
+                categoria=(rs.getString("Categor?a"));
+                System.out.println(categoria);
+                combolocalidades.getItems().add(categoria);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -74,58 +74,29 @@ public class HelloController {
         } else if (normal.isSelected()){
             System.out.println("Normal mostrando");
             informenormal();
-        }else if (agrupado.isSelected()){
+        }/*else if (agrupado.isSelected()){
             System.out.println("Grupal mostrando");
             informegrupal();
         }else if (calculado.isSelected()){
             System.out.println("Calculado mostrando");
             informeCalculado();
-        }
+        }*/
     }
     @FXML
     public void informenormal() throws JRException {
-        localidad=combolocalidades.getValue();
+        categoria=combolocalidades.getValue();
         HashMap<String, Object> param=new HashMap<>();
-        param.put("rutaImagen", "imagenes/gatito.jpg");
-        JasperDesign d = JRXmlLoader.load("informes/InfromeEmpleadosNoGrupo.jrxml");
+        param.put("imagen", "imagenes/gatito.jpg");
+        InputStream input = getClass().getResourceAsStream("/informes/Ventas_Producto.jrxml");
+        JasperDesign d = JRXmlLoader.load(input);
+        //JasperDesign d = JRXmlLoader.load("informes/Ventas_Producto.jrxml");
         JRDesignQuery jq = new JRDesignQuery();
-        jq.setText("SELECT * FROM datos.empleados WHERE Localidad='"+localidad+"' AND Salario >"+minimo.getText()+" AND Salario <"+maximo.getText());
+        jq.setText("SELECT  *,(PrecioUnidad*CantidadVendida) as Precio_total FROM ventas.ventas;");
         d.setQuery(jq);
         JasperReport jr = JasperCompileManager.compileReport(d);
         JasperPrint jp = JasperFillManager.fillReport(jr,param,con);
         JasperViewer.viewReport(jp,false);
     }
-    @FXML
-    public void informegrupal() throws JRException {
-        HashMap<String, Object> param=new HashMap<>();
-        param.put("rutaImagen", "imagenes/gatito.jpg");
-        localidad=combolocalidades.getValue();
-        JasperDesign d = JRXmlLoader.load("informes/informeEmpleados.jrxml");
-
-        JRDesignQuery jq = new JRDesignQuery();
-        jq.setText("SELECT * FROM datos.empleados WHERE Localidad='"+localidad+"' AND Salario >"+Double.parseDouble(minimo.getText())+" AND Salario <"+Double.parseDouble(maximo.getText()));
-        d.setQuery(jq);
-        JasperReport jr = JasperCompileManager.compileReport(d);
-        JasperPrint jp = JasperFillManager.fillReport(jr,param,con);
-        JasperViewer.viewReport(jp,false);
-    }
-    public void informeCalculado() throws JRException {
-        String fileRepo = "informes/Calculado.jasper";
-
-        JasperPrint jpRepo = JasperFillManager.fillReport(
-                fileRepo,
-                null,
-                con
-        );
-        JasperViewer viewer = new JasperViewer(jpRepo, false);
-        viewer.setTitle("Informe Calculado");
-        viewer.setVisible(true);
-
-    }
-
-
-
-
 
 
 }

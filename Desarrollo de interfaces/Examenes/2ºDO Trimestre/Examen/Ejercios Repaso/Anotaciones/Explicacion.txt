@@ -1,0 +1,461 @@
+PASO A PASO JASPERSOFT STUDIO + JAVAFX + JASPERREPORTS + MYSQL
+==============================================================
+
+0. REQUISITOS
+--------------
+- Java (JDK 17 o superior)
+- IntelliJ IDEA (o similar)
+- MySQL en local
+- Jaspersoft Studio 7.x
+- Maven (si usas proyecto Maven)
+
+
+1. INSTALAR JASPERSOFT STUDIO
+------------------------------
+1.1. Descargar desde:
+     https://community.jaspersoft.com/download-jaspersoft/download-jaspersoft/
+
+1.2. Instalar Jaspersoft Studio 7.x (Windows / Mac / Linux).
+
+1.3. Abrir Jaspersoft Studio.
+
+
+2. CREAR DATA ADAPTER (CONEXIÓN A MYSQL)
+----------------------------------------
+2.1. En Jaspersoft Studio:
+     - Menú: Window → Show View → Repository Explorer (si no está visible).
+     - En "Data Adapters" → botón derecho → "Create Data Adapter".
+
+2.2. Seleccionar:
+     - "Database JDBC Connection".
+
+2.3. Rellenar:
+     - Name: con
+     - JDBC Driver: MySQL (com.mysql.cj.jdbc.Driver) o similar.
+     - JDBC Url: jdbc:mysql://localhost:3306/ventas
+       (ajusta nombre de BD: ventas, datos, etc.)
+     - Username: root
+     - Password: (tu contraseña)
+
+2.4. Añadir driver MySQL si lo pide:
+     - Botón "Driver Classpath" o "Jar Files Path".
+     - Seleccionar mysql-connector-j-9.x.x.jar.
+
+2.5. Pulsar "Test" para comprobar que la conexión funciona.
+     - Si OK → Finish.
+
+
+3. CREAR INFORME .JRXML EN JASPERSOFT STUDIO
+--------------------------------------------
+3.1. Menú: File → New → Jasper Report.
+
+3.2. Elegir plantilla:
+     - Por ejemplo: "Blank A4" → Next.
+
+3.3. Nombre del fichero:
+     - File name: Ventas_Producto.jrxml
+     - Carpeta: MyReports (o la que quieras) → Finish.
+
+3.4. Seleccionar Data Source:
+     - Data Adapter: con - Database JDBC Connection.
+     - Next.
+
+3.5. Diseñar la consulta:
+     - Query (ejemplo):
+       SELECT *, (PrecioUnidad * CantidadVendida) AS Precio_total
+       FROM ventas.ventas;
+
+3.6. Seleccionar campos:
+     - Nombre
+     - Categoría (o Categoría con acento si la BD lo tiene así)
+     - PrecioUnidad
+     - CantidadVendida
+     - Precio_total
+
+3.7. Arrastrar los campos a la banda "Detail 1" y los títulos a "Column Header".
+
+3.8. Añadir título:
+     - En "Title" arrastrar "Static Text".
+     - Texto: "Total Ventas Producto".
+     - Cambiar tamaño de fuente, color, etc.
+
+3.9. (Opcional) Insertar tabla en "Summary" o "Page Footer" usando Table Wizard.
+
+3.10. Guardar el informe:
+      - Ventas_Producto.jrxml.
+
+
+4. LOCALIZAR EL FICHERO .JRXML / .JASPER
+----------------------------------------
+4.1. En Jaspersoft Studio, el proyecto suele estar en:
+     C:\Users\USUARIO\JaspersoftWorkspace\MyReports\
+
+4.2. Dentro verás:
+     - Ventas_Producto.jrxml
+     - (si lo compilas) Ventas_Producto.jasper
+
+4.3. Copia el fichero .jrxml (y si quieres también el .jasper) a tu proyecto Java.
+
+
+5. CREAR PROYECTO JAVAFX + MAVEN EN INTELLIJ
+--------------------------------------------
+5.1. En IntelliJ:
+     - File → New Project → Maven.
+     - GroupId: org.iesch
+     - ArtifactId: Informe_Empleados
+     - Finish.
+
+5.2. Añadir JavaFX:
+     - Puedes usar el plugin javafx-maven-plugin o ejecutar desde IntelliJ con configuración propia.
+     - Lo más cómodo: usar Maven + javafx-maven-plugin.
+
+
+6. ESTRUCTURA DE CARPETAS DEL PROYECTO
+--------------------------------------
+6.1. Asegúrate de tener:
+
+     src/
+       main/
+         java/
+           org/
+             iesch/
+               informe_empleados/
+                 HelloApplication.java
+                 HelloController.java
+         resources/
+           informes/
+             Ventas_Producto.jrxml
+           imagenes/
+             gatito.jpg (si usas imagen)
+           fxml/
+             hello-view.fxml (por ejemplo)
+
+6.2. IMPORTANTE:
+     - El .jrxml debe estar EXACTAMENTE en:
+       src/main/resources/informes/Ventas_Producto.jrxml
+
+
+7. POM.XML (DEPENDENCIAS NECESARIAS)
+------------------------------------
+Ejemplo de pom.xml mínimo para JavaFX + JasperReports + MySQL:
+
+    <project ...>
+      <modelVersion>4.0.0</modelVersion>
+
+      <groupId>org.iesch</groupId>
+      <artifactId>Informe_Empleados</artifactId>
+      <version>1.0-SNAPSHOT</version>
+
+      <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <junit.version>5.10.2</junit.version>
+      </properties>
+
+      <dependencies>
+
+        <!-- JavaFX -->
+        <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-controls</artifactId>
+          <version>17.0.6</version>
+        </dependency>
+
+        <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-fxml</artifactId>
+          <version>17.0.6</version>
+        </dependency>
+
+        <!-- JasperReports núcleo -->
+        <dependency>
+          <groupId>net.sf.jasperreports</groupId>
+          <artifactId>jasperreports</artifactId>
+          <version>7.0.3</version>
+        </dependency>
+
+        <!-- Extensiones recomendadas JasperReports -->
+        <dependency>
+          <groupId>net.sf.jasperreports</groupId>
+          <artifactId>jasperreports-charts</artifactId>
+          <version>7.0.3</version>
+        </dependency>
+
+        <dependency>
+          <groupId>net.sf.jasperreports</groupId>
+          <artifactId>jasperreports-excel-poi</artifactId>
+          <version>7.0.3</version>
+        </dependency>
+
+        <dependency>
+          <groupId>net.sf.jasperreports</groupId>
+          <artifactId>jasperreports-fonts</artifactId>
+          <version>7.0.3</version>
+        </dependency>
+
+        <!-- Jackson (necesario para JasperReports 7) -->
+        <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-core</artifactId>
+          <version>2.17.0</version>
+        </dependency>
+
+        <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>2.17.0</version>
+        </dependency>
+
+        <dependency>
+          <groupId>com.fasterxml.jackson.dataformat</groupId>
+          <artifactId>jackson-dataformat-xml</artifactId>
+          <version>2.17.0</version>
+        </dependency>
+
+        <!-- Commons necesarios -->
+        <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-collections4</artifactId>
+          <version>4.4</version>
+        </dependency>
+
+        <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-digester3</artifactId>
+          <version>3.2</version>
+        </dependency>
+
+        <!-- MySQL -->
+        <dependency>
+          <groupId>com.mysql</groupId>
+          <artifactId>mysql-connector-j</artifactId>
+          <version>9.3.0</version>
+        </dependency>
+
+        <!-- JUnit (opcional) -->
+        <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter-api</artifactId>
+          <version>${junit.version}</version>
+          <scope>test</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter-engine</artifactId>
+          <version>${junit.version}</version>
+          <scope>test</scope>
+        </dependency>
+
+      </dependencies>
+
+      <build>
+        <plugins>
+
+          <!-- Compilador -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.13.0</version>
+            <configuration>
+              <source>17</source>
+              <target>17</target>
+            </configuration>
+          </plugin>
+
+          <!-- JavaFX plugin -->
+          <plugin>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-maven-plugin</artifactId>
+            <version>0.0.8</version>
+            <executions>
+              <execution>
+                <id>default-cli</id>
+                <configuration>
+                  <mainClass>org.iesch.informe_empleados/org.iesch.informe_empleados.HelloApplication</mainClass>
+                  <classpathScope>compile</classpathScope>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+        </plugins>
+      </build>
+
+    </project>
+
+
+8. IMPORTS NECESARIOS EN EL CONTROLADOR
+---------------------------------------
+En tu clase HelloController.java, al principio:
+
+    import javafx.fxml.FXML;
+    import javafx.scene.control.*;
+    import net.sf.jasperreports.engine.JasperCompileManager;
+    import net.sf.jasperreports.engine.JasperFillManager;
+    import net.sf.jasperreports.engine.JasperPrint;
+    import net.sf.jasperreports.engine.JasperReport;
+    import net.sf.jasperreports.engine.design.JRDesignQuery;
+    import net.sf.jasperreports.engine.design.JasperDesign;
+    import net.sf.jasperreports.engine.xml.JRXmlLoader;
+    import net.sf.jasperreports.view.JasperViewer;
+
+    import java.io.InputStream;
+    import java.sql.Connection;
+    import java.sql.DriverManager;
+    import java.sql.ResultSet;
+    import java.sql.SQLException;
+    import java.sql.Statement;
+    import java.util.HashMap;
+
+
+9. CONEXIÓN A MYSQL EN EL CONTROLADOR
+-------------------------------------
+Ejemplo:
+
+    public class HelloController {
+
+        static String url   = "jdbc:mysql://localhost:3306/ventas?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
+        static String user  = "root";
+        static String clave = "1234";
+
+        Connection con = DriverManager.getConnection(url, user, clave);
+        ResultSet rs;
+        String categoria = "";
+
+        @FXML
+        private ComboBox<String> combolocalidades;
+        @FXML
+        private RadioButton normal;
+        @FXML
+        private RadioButton agrupado;
+        @FXML
+        private RadioButton calculado;
+        @FXML
+        private Button boton;
+        @FXML
+        private TextField minimo;
+        @FXML
+        private TextField maximo;
+
+        public HelloController() throws SQLException {
+        }
+
+        @FXML
+        public void initialize() {
+            try {
+                Statement stat = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                                                     ResultSet.CONCUR_READ_ONLY);
+                String sql = "SELECT DISTINCT Categoria FROM ventas.ventas";
+                rs = stat.executeQuery(sql);
+                while (rs.next()) {
+                    categoria = rs.getString("Categoria");
+                    System.out.println(categoria);
+                    combolocalidades.getItems().add(categoria);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        @FXML
+        public void botonaccion() throws net.sf.jasperreports.engine.JRException {
+            if (!normal.isSelected() && !agrupado.isSelected() && !calculado.isSelected()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Ver Informes");
+                alert.setContentText("Selecciona alguno de los RadioButton");
+                alert.show();
+            } else if (combolocalidades.getValue() == null) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Ver Informes");
+                alert.setContentText("Selecciona alguna opción en el ComboBox");
+                alert.show();
+            } else if (maximo.getText().isEmpty() || minimo.getText().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Ver Informes");
+                alert.setContentText("Pon un valor mínimo y máximo");
+                alert.show();
+            } else if (normal.isSelected()) {
+                System.out.println("Normal mostrando");
+                informenormal();
+            }
+        }
+
+
+10. CARGAR Y MOSTRAR EL INFORME .JRXML
+--------------------------------------
+    @FXML
+    public void informenormal() throws net.sf.jasperreports.engine.JRException {
+        categoria = combolocalidades.getValue();
+
+        // Parámetros (ejemplo con imagen)
+        HashMap<String, Object> param = new HashMap<>();
+        // Si la imagen está en src/main/resources/imagenes/gatito.jpg:
+        param.put("imagen", getClass().getResourceAsStream("/imagenes/gatito.jpg"));
+
+        // Cargar el .jrxml desde resources
+        InputStream input = getClass().getResourceAsStream("/informes/Ventas_Producto.jrxml");
+        if (input == null) {
+            System.out.println("NO SE ENCUENTRA /informes/Ventas_Producto.jrxml");
+            return;
+        }
+
+        JasperDesign d = JRXmlLoader.load(input);
+
+        // Opcional: cambiar la query desde código
+        JRDesignQuery jq = new JRDesignQuery();
+        jq.setText("SELECT *, (PrecioUnidad * CantidadVendida) AS Precio_total FROM ventas.ventas;");
+        d.setQuery(jq);
+
+        JasperReport jr = JasperCompileManager.compileReport(d);
+        JasperPrint jp = JasperFillManager.fillReport(jr, param, con);
+        JasperViewer.viewReport(jp, false);
+    }
+
+
+11. EJECUTAR EL PROYECTO
+------------------------
+11.1. En consola:
+      - mvn clean
+      - mvn install
+
+11.2. Ejecutar:
+      - mvn javafx:run
+
+11.3. En la ventana JavaFX:
+      - Seleccionar categoría en el ComboBox.
+      - Rellenar mínimo y máximo (si lo usas).
+      - Pulsar el botón → se abre la ventana de JasperViewer con el informe.
+
+
+12. RESUMEN DE LIBRERÍAS A IMPORTAR
+-----------------------------------
+- En Maven (pom.xml):
+  - org.openjfx:javafx-controls
+  - org.openjfx:javafx-fxml
+  - net.sf.jasperreports:jasperreports
+  - net.sf.jasperreports:jasperreports-charts
+  - net.sf.jasperreports:jasperreports-excel-poi
+  - net.sf.jasperreports:jasperreports-fonts
+  - com.fasterxml.jackson.core:jackson-core
+  - com.fasterxml.jackson.core:jackson-databind
+  - com.fasterxml.jackson.dataformat:jackson-dataformat-xml
+  - org.apache.commons:commons-collections4
+  - org.apache.commons:commons-digester3
+  - com.mysql:mysql-connector-j
+  - (opcional) junit-jupiter-api, junit-jupiter-engine
+
+- En código Java:
+  - javafx.fxml.FXML
+  - javafx.scene.control.*
+  - net.sf.jasperreports.engine.*
+  - net.sf.jasperreports.engine.design.JRDesignQuery
+  - net.sf.jasperreports.engine.design.JasperDesign
+  - net.sf.jasperreports.engine.xml.JRXmlLoader
+  - net.sf.jasperreports.view.JasperViewer
+  - java.io.InputStream
+  - java.sql.*
+  - java.util.HashMap
+
+FIN

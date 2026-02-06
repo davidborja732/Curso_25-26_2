@@ -1,0 +1,16 @@
+@FXML
+    public void informenormal() throws JRException {
+        localidad=combolocalidades.getValue();
+        HashMap<String, Object> param=new HashMap<>(); // lista para pasar parametros 
+        param.put("rutaImagen", "imagenes/gatito.jpg"); // parámetro que paso
+        JasperDesign d = JRXmlLoader.load("informes/InfromeEmpleadosNoGrupo.jrxml");
+        JRDesignQuery jq = new JRDesignQuery();
+        jq.setText("SELECT * FROM datos.empleados WHERE Localidad='"+localidad+"' AND Salario >"+minimo.getText()+" AND Salario <"+maximo.getText());
+        d.setQuery(jq);
+        JasperReport jr = JasperCompileManager.compileReport(d);
+        JasperPrint jp = JasperFillManager.fillReport(jr,param,con);
+        JasperViewer.viewReport(jp,false);
+    }
+
+HashMap<String,Object> param = new HashMap<>();
+param.put("nombre_parametro","archivo o texto pasado");
