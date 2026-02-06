@@ -1,0 +1,117 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Informe3Examen" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="857a3f40-9a3f-4621-8880-f552117038b0">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="con"/>
+	<parameter name="imagen" class="java.lang.String"/>
+	<query language="SQL"><![CDATA[SELECT  Nombre,(precio*Unidades) AS Ventas,caducidad,Disponible,tipobase.Tipo,provebase.Proveedor FROM examen.productos as produc
+INNER JOIN examen.proveedores as provebase ON produc.Proveedor=provebase.Id
+INNER JOIN examen.tipos as tipobase ON produc.Tipo=tipobase.Id;]]></query>
+	<field name="Nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+	</field>
+	<field name="Ventas" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="Ventas"/>
+		<property name="com.jaspersoft.studio.field.label" value="Ventas"/>
+	</field>
+	<field name="caducidad" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="Caducidad"/>
+		<property name="com.jaspersoft.studio.field.label" value="caducidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+	</field>
+	<field name="Disponible" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Disponible"/>
+		<property name="com.jaspersoft.studio.field.label" value="Disponible"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+	</field>
+	<field name="Tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Tipo"/>
+		<property name="com.jaspersoft.studio.field.label" value="Tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tipos"/>
+	</field>
+	<field name="Proveedor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Proveedor"/>
+		<property name="com.jaspersoft.studio.field.label" value="Proveedor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="proveedores"/>
+	</field>
+	<sortField name="Tipo"/>
+	<sortField name="Ventas"/>
+	<variable name="Ventas1" resetType="Group" calculation="Sum" resetGroup="GrupoTipo" class="java.lang.Double">
+		<expression><![CDATA[$F{Ventas}]]></expression>
+	</variable>
+	<variable name="Ventas2" resetType="Group" calculation="Sum" resetGroup="GrupoTipo" class="java.lang.Double">
+		<expression><![CDATA[$F{Ventas}]]></expression>
+	</variable>
+	<group name="Tipo">
+		<expression><![CDATA[$F{Tipo}]]></expression>
+	</group>
+	<group name="GrupoTipo">
+		<expression><![CDATA[$F{Tipo}]]></expression>
+		<groupHeader>
+			<band height="50">
+				<element kind="staticText" uuid="54980c0b-b71d-4128-ba02-eaa9d141ed89" x="10" y="9" width="100" height="30">
+					<text><![CDATA[Nombre]]></text>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9f408e43-e777-4a7f-a42d-c5a2cbb48532"/>
+				</element>
+				<element kind="staticText" uuid="ec13c8a9-b073-4332-ae2b-bcd46083a2e3" x="130" y="9" width="100" height="30">
+					<text><![CDATA[Ventas con IVA]]></text>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5a077e34-5885-4cc8-8f5f-2dc674909c96"/>
+				</element>
+				<element kind="staticText" uuid="cd741b13-5e0a-4692-8291-0b031ad62f8b" x="250" y="9" width="100" height="30">
+					<text><![CDATA[caducidad]]></text>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1e5f8a12-b9dd-4a60-9bc0-1d1944cb188e"/>
+				</element>
+				<element kind="staticText" uuid="eec476b7-3561-467d-a7e7-b42e7bdd098e" x="380" y="9" width="100" height="30">
+					<text><![CDATA[Disponible]]></text>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7c0d725e-3e8e-48b3-a04b-ff1b47260f4a"/>
+				</element>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="70">
+				<element kind="staticText" uuid="3e3eaee4-6ad8-4502-8bd3-d9a9c68c9ccf" x="90" y="10" width="120" height="30" fontSize="14.0" vTextAlign="Middle">
+					<text><![CDATA[Total ventas por ]]></text>
+				</element>
+				<element kind="textField" uuid="492b3e2d-ba78-40fd-a9c9-8ba4a6338543" x="200" y="10" width="100" height="30" fontSize="13.0" hTextAlign="Left" vTextAlign="Middle">
+					<expression><![CDATA[$F{Tipo}]]></expression>
+				</element>
+				<element kind="textField" uuid="0764c708-9b49-4083-bb5c-271b918ab001" x="260" y="10" width="100" height="30" fontSize="15.0" pattern=".00€">
+					<expression><![CDATA[$V{Ventas2}*1.21]]></expression>
+				</element>
+			</band>
+		</groupFooter>
+	</group>
+	<background splitType="Stretch"/>
+	<title height="87" splitType="Stretch">
+		<element kind="staticText" uuid="a6eb6231-c8b1-454f-b259-4037fdc8a4fd" x="70" y="10" width="450" height="69" fontSize="42.0">
+			<text><![CDATA[Listado ventas con IVA]]></text>
+		</element>
+		<element kind="image" uuid="dd6918a3-2ad7-4dad-82d7-8e3d2a5cc620" x="-10" y="10" width="50" height="50">
+			<expression><![CDATA[$P{imagen}]]></expression>
+		</element>
+	</title>
+	<detail>
+		<band height="53" splitType="Stretch">
+			<element kind="textField" uuid="e3c79388-e2a4-4640-924a-62ce9b3993af" x="10" y="10" width="100" height="30">
+				<expression><![CDATA[$F{Nombre}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9f408e43-e777-4a7f-a42d-c5a2cbb48532"/>
+			</element>
+			<element kind="textField" uuid="ce8c6ebd-ad75-4803-8bbc-8b2ea9704d9e" x="130" y="10" width="100" height="30" pattern=".00€">
+				<expression><![CDATA[$F{Ventas}*1.21]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5a077e34-5885-4cc8-8f5f-2dc674909c96"/>
+			</element>
+			<element kind="textField" uuid="0ecf6539-a557-4ee0-b9c3-f6482ffce83e" x="250" y="10" width="100" height="30" pattern="dd/MM/yyyy">
+				<expression><![CDATA[$F{caducidad}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1e5f8a12-b9dd-4a60-9bc0-1d1944cb188e"/>
+			</element>
+			<element kind="textField" uuid="b9302303-a78c-4dde-b7bf-c3431d9fa1e6" x="380" y="11" width="100" height="30">
+				<expression><![CDATA[$F{Disponible}==0?"Agotado":"En stock"]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7c0d725e-3e8e-48b3-a04b-ff1b47260f4a"/>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="49" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

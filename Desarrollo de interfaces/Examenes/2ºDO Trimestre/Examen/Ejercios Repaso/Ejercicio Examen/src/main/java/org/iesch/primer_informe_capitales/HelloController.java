@@ -90,7 +90,7 @@ public class HelloController {
         param.put("imagen","imagenes/gatito.jpg");
         System.out.println(Localidadusuario.getValue());
         String fileRepo = "informes/Ventas_Producto.jasper";
-        JasperPrint jpRepo = JasperFillManager.fillReport(fileRepo, param, con);
+        JasperPrint jpRepo = JasperFillManager.fillReport(fileRepo,param, con);
         JasperViewer viewer = new JasperViewer(jpRepo,false);
         viewer.setTitle("TITULO INFORME");
         viewer.setVisible(true);

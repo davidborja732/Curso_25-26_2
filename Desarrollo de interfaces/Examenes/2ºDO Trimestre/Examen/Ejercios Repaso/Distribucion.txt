@@ -1,0 +1,222 @@
+===========================================================
+UD 6 – DISTRIBUCIÓN DE APLICACIONES (RESUMEN COMPLETO)
+===========================================================
+
+CONTENIDO:
+1. Crear clase principal (Launcher)
+2. Generar .jar en IntelliJ
+3. Añadir recursos externos al .jar
+4. Crear .exe con Launch4j
+5. Crear instalador con Inno Setup
+6. Modificar scripts y recompilar
+===========================================================
+
+
+-----------------------------------------------------------
+1. CREAR LA CLASE PRINCIPAL (LAUNCHER)
+-----------------------------------------------------------
+JavaFX necesita una clase “Launcher” para ejecutar el .jar.
+
+Ejemplo:
+
+package com.example.proyecto;
+
+import javafx.application.Application;
+
+public class Launcher {
+    public static void main(String[] args) {
+        Application.launch(HelloApplication.class, args);
+    }
+}
+
+HelloApplication es tu clase que extiende Application.
+
+
+-----------------------------------------------------------
+2. GENERAR EL ARCHIVO .JAR EN INTELLIJ
+-----------------------------------------------------------
+Pasos:
+
+1. Abrir IntelliJ → File → Project Structure.
+2. Ir a “Artifacts”.
+3. Pulsar “+” → “JAR” → “From modules with dependencies”.
+4. Seleccionar:
+   - Module: tu módulo principal.
+   - Main Class: com.example.proyecto.Launcher
+5. Marcar:
+   [x] Extract to the target JAR
+6. Elegir carpeta para META-INF/MANIFEST.MF (puede ser resources).
+7. Aceptar.
+
+Para generar el .jar:
+- Build → Build Artifacts → Build.
+
+El .jar aparecerá en:
+out/artifacts/NombreProyecto_jar/
+
+
+-----------------------------------------------------------
+3. AÑADIR RECURSOS EXTERNOS AL .JAR
+-----------------------------------------------------------
+Si tu aplicación usa:
+- imágenes
+- sonidos
+- informes .jasper
+- PDFs
+- etc.
+
+Debes copiarlos en la carpeta del .jar:
+
+Ejemplo:
+out/artifacts/Proyecto_jar/
+    Proyecto.jar
+    imagen1.png
+    musica.mp3
+    informes/
+        Informe1.jasper
+
+IMPORTANTE:
+El .jar debe poder acceder a esos ficheros mediante rutas relativas.
+
+
+-----------------------------------------------------------
+4. CREAR UN .EXE A PARTIR DEL .JAR (LAUNCH4J)
+-----------------------------------------------------------
+1. Descargar Launch4j:
+   https://sourceforge.net/projects/launch4j/files/
+
+2. Crear una carpeta nueva:
+   /MiAplicacionEXE/
+
+3. Copiar dentro:
+   - Proyecto.jar
+   - icono.ico (icono del ejecutable)
+   - splash.bmp (opcional)
+
+4. Abrir Launch4j y rellenar:
+
+BASIC:
+- Output file: ruta donde se generará el .exe
+- Jar: tu Proyecto.jar
+- Icon: icono.ico
+
+CLASSPATH:
+- No tocar (Launch4j lo detecta solo)
+
+HEADER:
+- No tocar
+
+JRE:
+- Min JRE version: 17 (o la que uses)
+- Bundled JRE: vacío (si no incluyes JRE)
+
+SPLASH (opcional):
+- Imagen .bmp
+
+VERSION INFO:
+- Nombre de la app
+- Versión
+- Descripción
+
+Pulsar: “Build Wrapper”.
+
+Se generará un .exe listo para ejecutar.
+
+
+-----------------------------------------------------------
+5. CREAR INSTALADOR (.EXE) CON INNO SETUP
+-----------------------------------------------------------
+1. Descargar Inno Setup:
+   https://jrsoftware.org/isinfo.php
+
+2. Abrir Inno Setup → File → New → Script Wizard.
+
+3. Rellenar:
+
+APPLICATION INFORMATION:
+- Nombre de la aplicación
+- Versión
+- Autor
+- Web (opcional)
+
+APPLICATION FOLDER:
+- Program Files folder
+- Nombre de carpeta: MiAplicacion
+
+APPLICATION FILES:
+- Seleccionar el .exe generado con Launch4j
+- Añadir otros ficheros:
+  - icono.ico
+  - manual.pdf
+  - readme.txt
+  - informes
+  - imágenes
+
+APPLICATION SHORTCUTS:
+- Crear acceso directo en menú inicio
+- Crear acceso directo en escritorio
+
+DOCUMENTATION:
+- Puedes añadir:
+  - Licencia
+  - Información previa
+  - Información posterior
+
+LANGUAGES:
+- Seleccionar Spanish
+
+COMPILER SETTINGS:
+- Output folder: carpeta donde se guardará el instalador
+- Output base file name: nombre del instalador
+- Custom Setup icon file: icono del instalador
+
+Pulsar “Finish”.
+
+4. Para generar el instalador:
+   - Build → Compile
+
+En la carpeta “Output” aparecerá:
+   MiAplicacionSetup.exe
+
+
+-----------------------------------------------------------
+6. MODIFICAR EL SCRIPT .ISS
+-----------------------------------------------------------
+El script generado se puede editar manualmente.
+
+Ejemplo de líneas importantes:
+
+[Setup]
+AppName=MiAplicacion
+AppVersion=1.0
+DefaultDirName={autopf}\MiAplicacion
+OutputDir=C:\Users\USUARIO\Desktop
+OutputBaseFilename=MiAplicacionSetup
+SetupIconFile=C:\ruta\icono.ico
+
+[Files]
+Source: "MiAplicacion.exe"; DestDir: "{app}"
+
+[Icons]
+Name: "{autoprograms}\MiAplicacion"; Filename: "{app}\MiAplicacion.exe"; IconFilename: "{app}\icono.ico"
+Name: "{autodesktop}\MiAplicacion"; Filename: "{app}\MiAplicacion.exe"; Tasks: desktopicon; IconFilename: "{app}\icono.ico"
+
+Para recompilar:
+- Build → Compile
+
+
+-----------------------------------------------------------
+RESUMEN FINAL
+-----------------------------------------------------------
+1. Crear clase Launcher para JavaFX.
+2. Generar .jar desde IntelliJ.
+3. Copiar recursos externos junto al .jar.
+4. Crear .exe con Launch4j.
+5. Crear instalador con Inno Setup.
+6. Añadir iconos, splash, documentación.
+7. Compilar instalador.
+8. Distribuir la aplicación.
+
+===========================================================
+FIN DEL DOCUMENTO
+===========================================================

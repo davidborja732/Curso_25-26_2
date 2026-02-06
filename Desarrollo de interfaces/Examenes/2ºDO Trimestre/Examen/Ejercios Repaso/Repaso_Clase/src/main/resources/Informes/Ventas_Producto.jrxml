@@ -1,0 +1,256 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Ventas_Producto" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87c30d7e-460c-4ac9-88ba-6f523d5b81a2">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="con"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<dataset name="Dataset1" uuid="b489da6f-fef7-45f9-ad37-b28ab73612bd">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="con"/>
+		<query language="SQL"><![CDATA[SELECT  *,(PrecioUnidad*CantidadVendida) as Precio_total FROM ventas.ventas;]]></query>
+		<field name="Nombre" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="Nombre"/>
+			<property name="com.jaspersoft.studio.field.label" value="Nombre"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="ventas"/>
+		</field>
+		<field name="Categor?a" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="Categor?a"/>
+			<property name="com.jaspersoft.studio.field.label" value="Categor?a"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="ventas"/>
+		</field>
+		<field name="PrecioUnidad" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="PrecioUnidad"/>
+			<property name="com.jaspersoft.studio.field.label" value="PrecioUnidad"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="ventas"/>
+		</field>
+		<field name="CantidadVendida" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="CantidadVendida"/>
+			<property name="com.jaspersoft.studio.field.label" value="CantidadVendida"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="ventas"/>
+		</field>
+		<field name="Precio_total" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="Precio_total"/>
+			<property name="com.jaspersoft.studio.field.label" value="Precio_total"/>
+		</field>
+		<group name="Categor?a">
+			<expression><![CDATA[$F{Categor?a}]]></expression>
+		</group>
+	</dataset>
+	<parameter name="imagen" class="java.lang.String"/>
+	<query language="SQL"><![CDATA[SELECT  *,(PrecioUnidad*CantidadVendida) as Precio_total FROM ventas.ventas;]]></query>
+	<field name="Nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ventas"/>
+	</field>
+	<field name="Categor?a" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Categor?a"/>
+		<property name="com.jaspersoft.studio.field.label" value="Categor?a"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ventas"/>
+	</field>
+	<field name="PrecioUnidad" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="PrecioUnidad"/>
+		<property name="com.jaspersoft.studio.field.label" value="PrecioUnidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ventas"/>
+	</field>
+	<field name="CantidadVendida" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="CantidadVendida"/>
+		<property name="com.jaspersoft.studio.field.label" value="CantidadVendida"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ventas"/>
+	</field>
+	<field name="Precio_total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="Precio_total"/>
+		<property name="com.jaspersoft.studio.field.label" value="Precio_total"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="103" splitType="Stretch">
+		<element kind="image" uuid="e938e0e0-cd43-4c96-871d-f3b94e542919" x="460" y="10" width="80" height="80">
+			<expression><![CDATA[$P{imagen}]]></expression>
+		</element>
+		<element kind="staticText" uuid="4f731a89-669a-43c3-be0c-9b871d891039" x="0" y="10" width="440" height="80" fontSize="42.0">
+			<text><![CDATA[Total Ventas Producto]]></text>
+		</element>
+	</title>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="56" splitType="Stretch">
+		<element kind="staticText" uuid="4bfdb481-e1c2-4ded-a0d4-dde71bb8b37b" x="40" y="10" width="100" height="30">
+			<text><![CDATA[Nombre]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1286f21d-622a-4702-8e5d-24bbbe36a1d3"/>
+		</element>
+		<element kind="staticText" uuid="e327daf9-4610-45b4-8f9b-39cc5779a216" x="170" y="15" width="100" height="30">
+			<text><![CDATA[PrecioUnidad]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="901e233a-7119-4ece-96d2-a64872ffd985"/>
+		</element>
+		<element kind="staticText" uuid="dd7c583b-bcb2-4dd3-b1ee-44044880fee0" x="300" y="15" width="100" height="30">
+			<text><![CDATA[CantidadVendida]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="211d0ada-995e-46e3-9832-6379f85a63ed"/>
+		</element>
+		<element kind="staticText" uuid="a66e3169-3021-41a5-ac40-a8932ff22dd0" x="440" y="15" width="100" height="30">
+			<text><![CDATA[Precio_total]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2905c0fd-1db3-4d5e-8ecf-6ee7e17dea61"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="68" splitType="Stretch">
+			<element kind="textField" uuid="05d16977-d646-4b62-a253-23a59d4aace8" x="40" y="27" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Nombre}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1286f21d-622a-4702-8e5d-24bbbe36a1d3"/>
+			</element>
+			<element kind="textField" uuid="677d4fb1-19fc-4f43-880b-d71f7711f441" x="170" y="27" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{PrecioUnidad}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="901e233a-7119-4ece-96d2-a64872ffd985"/>
+			</element>
+			<element kind="textField" uuid="ed368587-608e-4ff0-a1d1-1b2360b3b9ea" x="300" y="30" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{CantidadVendida}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="211d0ada-995e-46e3-9832-6379f85a63ed"/>
+			</element>
+			<element kind="textField" uuid="444d8337-92e5-41c8-920c-02c2118f937e" x="440" y="30" width="100" height="30" hTextAlign="Center">
+				<expression><![CDATA[$F{Precio_total}]]></expression>
+				<patternExpression><![CDATA["#,000.00€"]]></patternExpression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2905c0fd-1db3-4d5e-8ecf-6ee7e17dea61"/>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="80" splitType="Stretch"/>
+	<pageFooter height="51" splitType="Stretch"/>
+	<summary height="223" splitType="Stretch">
+		<element kind="component" uuid="34c19095-73bd-4629-87d8-5c6ff2ff321d" x="0" y="40" width="550" height="120">
+			<component kind="table">
+				<datasetRun uuid="2d2a00b4-c11a-4bff-8ef1-96a1ad66e5a2" subDataset="Dataset1">
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				</datasetRun>
+				<column kind="single" uuid="7ba137d0-3792-40c1-833c-147a077368f3" width="80">
+					<tableHeader height="30" rowSpan="1" style="Table 1_TH"/>
+					<tableFooter height="30" rowSpan="1" style="Table 1_TH"/>
+					<columnHeader height="30" rowSpan="1" style="Table 1_CH">
+						<element kind="staticText" uuid="d2902284-6b66-464b-9468-ca6ceba35399" x="0" y="0" width="80" height="30">
+							<text><![CDATA[Nombre]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="30" style="Table 1_TD">
+						<element kind="textField" uuid="3be18c89-3eb6-4b01-91a4-e0a5fb9eb41c" x="0" y="0" width="80" height="30">
+							<expression><![CDATA[$F{Nombre}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+				</column>
+				<column kind="single" uuid="2a624fe8-949e-4efb-8214-29707ee3a6da" width="90">
+					<tableHeader height="30" rowSpan="1" style="Table 1_TH"/>
+					<tableFooter height="30" rowSpan="1" style="Table 1_TH"/>
+					<columnHeader height="30" rowSpan="1" style="Table 1_CH">
+						<element kind="staticText" uuid="4f0084ae-13b7-49d0-b564-70cbc1d14762" x="0" y="0" width="90" height="30">
+							<text><![CDATA[Categor?a]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="30" style="Table 1_TD">
+						<element kind="textField" uuid="b89048d3-160d-4930-b5f3-5029462a9615" x="0" y="0" width="90" height="30">
+							<expression><![CDATA[$F{Categor?a}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+				</column>
+				<column kind="single" uuid="fcf6ed45-1393-488e-bf59-12532b48cfce" width="120">
+					<tableHeader height="30" rowSpan="1" style="Table 1_TH"/>
+					<tableFooter height="30" rowSpan="1" style="Table 1_TH"/>
+					<columnHeader height="30" rowSpan="1" style="Table 1_CH">
+						<element kind="staticText" uuid="a3b31731-0e44-49db-bd05-4273a17c9430" x="0" y="0" width="120" height="30">
+							<text><![CDATA[PrecioUnidad]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="30" style="Table 1_TD">
+						<element kind="textField" uuid="47a39c6b-4f05-46db-8470-2376eb128ef1" x="0" y="0" width="120" height="30">
+							<expression><![CDATA[$F{PrecioUnidad}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+				</column>
+				<column kind="single" uuid="89075300-ff41-4826-ac24-a4b84b2858be" width="140">
+					<tableHeader height="30" rowSpan="1" style="Table 1_TH"/>
+					<tableFooter height="30" rowSpan="1" style="Table 1_TH"/>
+					<columnHeader height="30" rowSpan="1" style="Table 1_CH">
+						<element kind="staticText" uuid="b40c5456-705d-465d-9468-7b3b4ca67ef9" x="0" y="0" width="140" height="30">
+							<text><![CDATA[CantidadVendida]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="30" style="Table 1_TD">
+						<element kind="textField" uuid="e8a8fc89-c2e4-4299-83fa-4db5fe874b35" x="0" y="0" width="140" height="30">
+							<expression><![CDATA[$F{CantidadVendida}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+				</column>
+				<column kind="single" uuid="0da00fb7-e469-40ad-9b13-a07e9ecd90e0" width="120">
+					<tableHeader height="30" rowSpan="1" style="Table 1_TH"/>
+					<tableFooter height="30" rowSpan="1" style="Table 1_TH"/>
+					<columnHeader height="30" rowSpan="1" style="Table 1_CH">
+						<element kind="staticText" uuid="0bfb2591-2831-43d1-8c4a-d1c2c79433db" x="0" y="0" width="120" height="30">
+							<text><![CDATA[Precio_total]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="30" style="Table 1_TD">
+						<element kind="textField" uuid="49de05fc-35a1-4658-ad05-04b0f77daa64" x="0" y="0" width="120" height="30">
+							<expression><![CDATA[$F{Precio_total}]]></expression>
+						</element>
+					</detailCell>
+					<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+				</column>
+			</component>
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+			<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
+			<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
+			<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+		</element>
+	</summary>
+</jasperReport>
