@@ -1,0 +1,33 @@
+SELECT  Nombre,Unidades,tipobase.Tipo,provebase.Proveedor FROM examen.productos as produc
+INNER JOIN examen.tipos as tipobase ON produc.Tipo=tipobase.Id
+INNER JOIN examen.proveedores as provebase ON produc.Proveedor=provebase.Id
+WHERE tipobase.Tipo="Quesos";
+
+
+
+SELECT provebase.Proveedor,SUM(Precio*Unidades) AS Total FROM examen.productos as produc
+INNER JOIN examen.proveedores as provebase ON produc.Proveedor=provebase.Id
+GROUP BY provebase.Proveedor;
+
+
+SELECT tipobase.Tipo,SUM(Precio*Unidades) AS Total FROM examen.productos as produc
+INNER JOIN examen.tipos as tipobase ON produc.Tipo=tipobase.Id
+GROUP BY tipobase.Id;
+
+SELECT  Nombre,Precio,tipobase.Tipo,provebase.Proveedor,Unidades FROM examen.productos as produc
+INNER JOIN examen.tipos as tipobase ON produc.Tipo=tipobase.Id
+INNER JOIN examen.proveedores as provebase ON produc.Proveedor=provebase.Id
+WHERE provebase.Proveedor="Servite, S.A.";
+
+
+SELECT  provebase.Proveedor,SUM(Unidades) as Total FROM examen.productos as produc
+INNER JOIN examen.proveedores as provebase ON produc.Proveedor=provebase.Id
+GROUP BY provebase.Id;
+
+SELECT  Nombre,(precio*Unidades) AS Ventas,caducidad,Disponible,tipobase.Tipo,provebase.Proveedor FROM examen.productos as produc
+INNER JOIN examen.proveedores as provebase ON produc.Proveedor=provebase.Id
+INNER JOIN examen.tipos as tipobase ON produc.Tipo=tipobase.Id
+ORDER BY produc.Proveedor;
+
+
+

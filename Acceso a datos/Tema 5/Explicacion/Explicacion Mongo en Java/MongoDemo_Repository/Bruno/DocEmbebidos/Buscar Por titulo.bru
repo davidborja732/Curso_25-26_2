@@ -5,15 +5,16 @@ meta {
 }
 
 get {
-  url: http://127.0.0.1:8080/api/books/search/titulo?q=
+  url: http://127.0.0.1:8080/api/books/search/titulo?q=el
   body: none
   auth: inherit
 }
 
 params:query {
-  q: 
+  q: el
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

@@ -129,6 +129,14 @@ public class BookController {
     public ResponseEntity<List<Book>> buscarprecioMenorAnioMayor (@RequestParam Double precio, @RequestParam Integer anio){
         return ResponseEntity.ok(bookRepository.buscarPorPrecioInferiorYanioMayor(precio, anio));
     }
+    /*
+     * /api/books/search/nativo/autor?nombre=....
+     * El nombre del autor está en un documento embebido. y hacemos uso de @Query
+     */
+    @GetMapping("/search/nativo/autorcat")
+    public ResponseEntity<List<Book>> buscarTituloCategoria (@RequestParam String titulo, @RequestParam String categoria){
+        return ResponseEntity.ok(bookRepository.findByTituloAndCategoriasIgnoreCase(titulo,categoria));
+    }
 
 
 

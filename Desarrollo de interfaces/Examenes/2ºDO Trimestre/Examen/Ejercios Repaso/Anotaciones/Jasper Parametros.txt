@@ -8,3 +8,4 @@ String fileRepo = "informes/Calculado.jasper";
         JasperViewer viewer = new JasperViewer(jpRepo, false);
         viewer.setTitle("Informe Calculado");
         viewer.setVisible(true);
+

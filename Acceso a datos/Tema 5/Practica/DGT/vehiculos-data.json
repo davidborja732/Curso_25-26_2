@@ -1,0 +1,1115 @@
+[
+  {
+    "matricula": "1234ABC",
+    "bastidor": "VF1KMZF0H58123456",
+    "marca": "Seat",
+    "modelo": "León",
+    "color": "Gris",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2018,
+    "fechaPrimeraMatriculacion": {"$date": "2018-06-15T10:00:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 1598,
+      "potencia": 115,
+      "numeroBastidores": "VF1KMZF0H58123456",
+      "combustible": "GASOLINA",
+      "emisiones": "EURO6",
+      "plazas": 5,
+      "pesoMaximo": 1850,
+      "tipoMotor": "Atmosférico"
+    },
+    "titular": {
+      "dni": "12345678A",
+      "nombre": "Juan",
+      "apellidos": "García Pérez",
+      "fechaNacimiento": {"$date": "1985-03-20T00:00:00Z"},
+      "email": "juan.garcia@email.com",
+      "telefono": "600123456",
+      "domicilioFiscal": {
+        "calle": "Calle Mayor",
+        "numero": "15",
+        "piso": "3º",
+        "puerta": "B",
+        "codigoPostal": "28001",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "ACTIVO",
+      "fechaEstado": {"$date": "2024-01-15T00:00:00Z"},
+      "motivoBaja": null,
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": true,
+      "fechaUltimaInspeccion": {"$date": "2024-01-10T00:00:00Z"},
+      "fechaCaducidad": {"$date": "2026-01-10T00:00:00Z"},
+      "resultado": "FAVORABLE",
+      "numeroInforme": "ITV-2024-001234",
+      "estacionITV": "Madrid Sur"
+    },
+    "multas": [
+      {
+        "id": "M001",
+        "concepto": "Exceso de velocidad en vía urbana",
+        "importe": 200.00,
+        "puntos": 2,
+        "fecha": {"$date": "2024-02-01T15:30:00Z"},
+        "lugarInfraccion": "Calle Alcalá, Madrid",
+        "agente": "Policía Municipal Madrid",
+        "estado": "PENDIENTE_PAGO",
+        "fechaPago": null,
+        "metodoPago": null
+      }
+    ],
+    "impuestos": {
+      "itmvPagado": false,
+      "fechaUltimoPagoITMV": {"$date": "2023-01-05T00:00:00Z"},
+      "importeITMV": 85.00,
+      "anioITMV": 2023
+    },
+    "historialTitulares": [
+      {
+        "dni": "87654321B",
+        "nombre": "María",
+        "apellidos": "López Martínez",
+        "fechaInicio": {"$date": "2018-06-15T00:00:00Z"},
+        "fechaFin": {"$date": "2020-03-10T00:00:00Z"},
+        "motivoTransferencia": "Venta particular"
+      }
+    ],
+    "fechaCreacion": {"$date": "2018-06-15T10:30:00Z"},
+    "fechaActualizacion": {"$date": "2024-02-15T12:00:00Z"}
+  },
+  {
+    "matricula": "5678DEF",
+    "bastidor": "WVWZZZ1KZAW123789",
+    "marca": "Volkswagen",
+    "modelo": "Golf",
+    "color": "Blanco",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2022,
+    "fechaPrimeraMatriculacion": {"$date": "2022-03-10T09:00:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 1498,
+      "potencia": 150,
+      "numeroBastidores": "WVWZZZ1KZAW123789",
+      "combustible": "HIBRIDO",
+      "emisiones": "EURO6",
+      "plazas": 5,
+      "pesoMaximo": 1750,
+      "tipoMotor": "Híbrido enchufable"
+    },
+    "titular": {
+      "dni": "23456789B",
+      "nombre": "Ana",
+      "apellidos": "Martínez Sánchez",
+      "fechaNacimiento": {"$date": "1990-07-15T00:00:00Z"},
+      "email": "ana.martinez@email.com",
+      "telefono": "611234567",
+      "domicilioFiscal": {
+        "calle": "Avenida de América",
+        "numero": "25",
+        "piso": "1º",
+        "puerta": "A",
+        "codigoPostal": "28002",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "ACTIVO",
+      "fechaEstado": {"$date": "2022-03-10T00:00:00Z"},
+      "motivoBaja": null,
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": true,
+      "fechaUltimaInspeccion": null,
+      "fechaCaducidad": {"$date": "2026-03-10T00:00:00Z"},
+      "resultado": null,
+      "numeroInforme": "e-ITV-2022-NEW-005678",
+      "estacionITV": null
+    },
+    "multas": [],
+    "impuestos": {
+      "itmvPagado": true,
+      "fechaUltimoPagoITMV": {"$date": "2024-01-20T00:00:00Z"},
+      "importeITMV": 45.00,
+      "anioITMV": 2024
+    },
+    "historialTitulares": [],
+    "fechaCreacion": {"$date": "2022-03-10T09:00:00Z"},
+    "fechaActualizacion": {"$date": "2024-01-20T10:00:00Z"}
+  },
+  {
+    "matricula": "9012GHI",
+    "bastidor": "VF7LCYHFPFS987654",
+    "marca": "Peugeot",
+    "modelo": "208",
+    "color": "Rojo",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2012,
+    "fechaPrimeraMatriculacion": {"$date": "2012-09-20T11:00:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 1398,
+      "potencia": 95,
+      "numeroBastidores": "VF7LCYHFPFS987654",
+      "combustible": "DIESEL",
+      "emisiones": "EURO5",
+      "plazas": 5,
+      "pesoMaximo": 1600,
+      "tipoMotor": "Turbo"
+    },
+    "titular": {
+      "dni": "34567890C",
+      "nombre": "Carlos",
+      "apellidos": "Rodríguez Fernández",
+      "fechaNacimiento": {"$date": "1978-11-25T00:00:00Z"},
+      "email": "carlos.rodriguez@email.com",
+      "telefono": "622345678",
+      "domicilioFiscal": {
+        "calle": "Calle Serrano",
+        "numero": "89",
+        "piso": "5º",
+        "puerta": "D",
+        "codigoPostal": "28006",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "ACTIVO",
+      "fechaEstado": {"$date": "2023-06-01T00:00:00Z"},
+      "motivoBaja": null,
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": false,
+      "fechaUltimaInspeccion": {"$date": "2023-08-15T00:00:00Z"},
+      "fechaCaducidad": {"$date": "2024-08-15T00:00:00Z"},
+      "resultado": "FAVORABLE",
+      "numeroInforme": "ITV-2023-456789",
+      "estacionITV": "Barcelona Este"
+    },
+    "multas": [
+      {
+        "id": "M002",
+        "concepto": "Estacionamiento en zona prohibida",
+        "importe": 80.00,
+        "puntos": 0,
+        "fecha": {"$date": "2024-01-10T12:00:00Z"},
+        "lugarInfraccion": "Paseo de la Castellana, Madrid",
+        "agente": "Policía Municipal Madrid",
+        "estado": "PENDIENTE_PAGO",
+        "fechaPago": null,
+        "metodoPago": null
+      }
+    ],
+    "impuestos": {
+      "itmvPagado": true,
+      "fechaUltimoPagoITMV": {"$date": "2024-01-15T00:00:00Z"},
+      "importeITMV": 65.00,
+      "anioITMV": 2024
+    },
+    "historialTitulares": [],
+    "fechaCreacion": {"$date": "2012-09-20T11:00:00Z"},
+    "fechaActualizacion": {"$date": "2024-01-15T14:30:00Z"}
+  },
+  {
+    "matricula": "3456JKL",
+    "bastidor": "KMHSH81XDEU456123",
+    "marca": "Hyundai",
+    "modelo": "Tucson",
+    "color": "Negro",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2020,
+    "fechaPrimeraMatriculacion": {"$date": "2020-05-12T10:30:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 1591,
+      "potencia": 132,
+      "numeroBastidores": "KMHSH81XDEU456123",
+      "combustible": "GASOLINA",
+      "emisiones": "EURO6",
+      "plazas": 5,
+      "pesoMaximo": 2100,
+      "tipoMotor": "Turbo"
+    },
+    "titular": {
+      "dni": "45678901D",
+      "nombre": "Laura",
+      "apellidos": "González Jiménez",
+      "fechaNacimiento": {"$date": "1987-04-08T00:00:00Z"},
+      "email": "laura.gonzalez@email.com",
+      "telefono": "633456789",
+      "domicilioFiscal": {
+        "calle": "Calle Goya",
+        "numero": "45",
+        "piso": "2º",
+        "puerta": "C",
+        "codigoPostal": "28001",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "BAJA_TEMPORAL",
+      "fechaEstado": {"$date": "2024-01-01T00:00:00Z"},
+      "motivoBaja": "NO_USO",
+      "fechaBajaTemporal": {"$date": "2024-01-01T00:00:00Z"},
+      "fechaFinBajaTemporal": {"$date": "2025-01-01T00:00:00Z"},
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": true,
+      "fechaUltimaInspeccion": {"$date": "2023-12-20T00:00:00Z"},
+      "fechaCaducidad": {"$date": "2025-12-20T00:00:00Z"},
+      "resultado": "FAVORABLE",
+      "numeroInforme": "ITV-2023-789012",
+      "estacionITV": "Madrid Norte"
+    },
+    "multas": [],
+    "impuestos": {
+      "itmvPagado": true,
+      "fechaUltimoPagoITMV": {"$date": "2023-12-30T00:00:00Z"},
+      "importeITMV": 75.00,
+      "anioITMV": 2023
+    },
+    "historialTitulares": [],
+    "fechaCreacion": {"$date": "2020-05-12T10:30:00Z"},
+    "fechaActualizacion": {"$date": "2024-01-01T09:00:00Z"}
+  },
+  {
+    "matricula": "7890MNO",
+    "bastidor": "JN1TANT31U0123456",
+    "marca": "Nissan",
+    "modelo": "Qashqai",
+    "color": "Azul",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2015,
+    "fechaPrimeraMatriculacion": {"$date": "2015-07-22T12:00:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 1461,
+      "potencia": 110,
+      "numeroBastidores": "JN1TANT31U0123456",
+      "combustible": "DIESEL",
+      "emisiones": "EURO6",
+      "plazas": 5,
+      "pesoMaximo": 1900,
+      "tipoMotor": "Turbo"
+    },
+    "titular": {
+      "dni": "56789012E",
+      "nombre": "Miguel",
+      "apellidos": "Hernández Ruiz",
+      "fechaNacimiento": {"$date": "1982-09-30T00:00:00Z"},
+      "email": "miguel.hernandez@email.com",
+      "telefono": "644567890",
+      "domicilioFiscal": {
+        "calle": "Plaza de España",
+        "numero": "12",
+        "piso": "4º",
+        "puerta": "A",
+        "codigoPostal": "28008",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "BAJA_DEFINITIVA",
+      "fechaEstado": {"$date": "2024-01-25T00:00:00Z"},
+      "motivoBaja": "DESGUACE",
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": true,
+      "fechaUltimaInspeccion": {"$date": "2023-06-10T00:00:00Z"},
+      "fechaCaducidad": {"$date": "2024-06-10T00:00:00Z"},
+      "resultado": "FAVORABLE",
+      "numeroInforme": "ITV-2023-234567",
+      "estacionITV": "Valencia Sur"
+    },
+    "multas": [],
+    "impuestos": {
+      "itmvPagado": true,
+      "fechaUltimoPagoITMV": {"$date": "2024-01-10T00:00:00Z"},
+      "importeITMV": 70.00,
+      "anioITMV": 2024
+    },
+    "historialTitulares": [],
+    "fechaCreacion": {"$date": "2015-07-22T12:00:00Z"},
+    "fechaActualizacion": {"$date": "2024-01-25T11:00:00Z"}
+  },
+  {
+    "matricula": "2345PQR",
+    "bastidor": "WBA1234567K123456",
+    "marca": "BMW",
+    "modelo": "Serie 3",
+    "color": "Gris metalizado",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2019,
+    "fechaPrimeraMatriculacion": {"$date": "2019-11-05T14:00:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 1995,
+      "potencia": 190,
+      "numeroBastidores": "WBA1234567K123456",
+      "combustible": "DIESEL",
+      "emisiones": "EURO6",
+      "plazas": 5,
+      "pesoMaximo": 2050,
+      "tipoMotor": "Turbo"
+    },
+    "titular": {
+      "dni": "67890123F",
+      "nombre": "Elena",
+      "apellidos": "Díaz Moreno",
+      "fechaNacimiento": {"$date": "1992-02-14T00:00:00Z"},
+      "email": "elena.diaz@email.com",
+      "telefono": "655678901",
+      "domicilioFiscal": {
+        "calle": "Calle Velázquez",
+        "numero": "78",
+        "piso": "6º",
+        "puerta": "B",
+        "codigoPostal": "28001",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "ACTIVO",
+      "fechaEstado": {"$date": "2019-11-05T00:00:00Z"},
+      "motivoBaja": null,
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": true,
+      "fechaUltimaInspeccion": {"$date": "2023-11-01T00:00:00Z"},
+      "fechaCaducidad": {"$date": "2025-11-01T00:00:00Z"},
+      "resultado": "FAVORABLE",
+      "numeroInforme": "ITV-2023-345678",
+      "estacionITV": "Madrid Centro"
+    },
+    "multas": [
+      {
+        "id": "M003",
+        "concepto": "Exceso de velocidad en autovía",
+        "importe": 300.00,
+        "puntos": 4,
+        "fecha": {"$date": "2023-12-20T16:45:00Z"},
+        "lugarInfraccion": "A-6, km 15",
+        "agente": "Guardia Civil Tráfico",
+        "estado": "PAGADA",
+        "fechaPago": {"$date": "2024-01-05T10:30:00Z"},
+        "metodoPago": "TARJETA"
+      },
+      {
+        "id": "M004",
+        "concepto": "No respetar señal de STOP",
+        "importe": 200.00,
+        "puntos": 4,
+        "fecha": {"$date": "2024-01-28T11:20:00Z"},
+        "lugarInfraccion": "Calle Princesa, Madrid",
+        "agente": "Policía Municipal Madrid",
+        "estado": "PENDIENTE_PAGO",
+        "fechaPago": null,
+        "metodoPago": null
+      }
+    ],
+    "impuestos": {
+      "itmvPagado": true,
+      "fechaUltimoPagoITMV": {"$date": "2024-01-18T00:00:00Z"},
+      "importeITMV": 125.00,
+      "anioITMV": 2024
+    },
+    "historialTitulares": [],
+    "fechaCreacion": {"$date": "2019-11-05T14:00:00Z"},
+    "fechaActualizacion": {"$date": "2024-01-28T15:00:00Z"}
+  },
+  {
+    "matricula": "6789STU",
+    "bastidor": "WF0WXXGCDWPR12345",
+    "marca": "Ford",
+    "modelo": "Focus",
+    "color": "Plata",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2016,
+    "fechaPrimeraMatriculacion": {"$date": "2016-04-18T09:30:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 1498,
+      "potencia": 120,
+      "numeroBastidores": "WF0WXXGCDWPR12345",
+      "combustible": "GASOLINA",
+      "emisiones": "EURO6",
+      "plazas": 5,
+      "pesoMaximo": 1700,
+      "tipoMotor": "Turbo"
+    },
+    "titular": {
+      "dni": "78901234G",
+      "nombre": "Roberto",
+      "apellidos": "Jiménez Castro",
+      "fechaNacimiento": {"$date": "1980-06-22T00:00:00Z"},
+      "email": "roberto.jimenez@email.com",
+      "telefono": "666789012",
+      "domicilioFiscal": {
+        "calle": "Calle Bravo Murillo",
+        "numero": "234",
+        "piso": "1º",
+        "puerta": "D",
+        "codigoPostal": "28020",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "ACTIVO",
+      "fechaEstado": {"$date": "2016-04-18T00:00:00Z"},
+      "motivoBaja": null,
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": true,
+      "fechaUltimaInspeccion": {"$date": "2024-03-15T00:00:00Z"},
+      "fechaCaducidad": {"$date": "2025-03-15T00:00:00Z"},
+      "resultado": "FAVORABLE",
+      "numeroInforme": "ITV-2024-112233",
+      "estacionITV": "Sevilla Norte"
+    },
+    "multas": [],
+    "impuestos": {
+      "itmvPagado": true,
+      "fechaUltimoPagoITMV": {"$date": "2024-02-01T00:00:00Z"},
+      "importeITMV": 68.00,
+      "anioITMV": 2024
+    },
+    "historialTitulares": [
+      {
+        "dni": "11122233H",
+        "nombre": "Patricia",
+        "apellidos": "Sánchez Vega",
+        "fechaInicio": {"$date": "2016-04-18T00:00:00Z"},
+        "fechaFin": {"$date": "2019-08-10T00:00:00Z"},
+        "motivoTransferencia": "Venta particular"
+      }
+    ],
+    "fechaCreacion": {"$date": "2016-04-18T09:30:00Z"},
+    "fechaActualizacion": {"$date": "2024-02-01T11:00:00Z"}
+  },
+  {
+    "matricula": "1122VWX",
+    "bastidor": "WAUZZZ8V8FA123456",
+    "marca": "Audi",
+    "modelo": "A4",
+    "color": "Negro",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2021,
+    "fechaPrimeraMatriculacion": {"$date": "2021-02-28T11:00:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 1984,
+      "potencia": 150,
+      "numeroBastidores": "WAUZZZ8V8FA123456",
+      "combustible": "DIESEL",
+      "emisiones": "EURO6",
+      "plazas": 5,
+      "pesoMaximo": 2000,
+      "tipoMotor": "Turbo"
+    },
+    "titular": {
+      "dni": "89012345H",
+      "nombre": "Sofía",
+      "apellidos": "Romero Navarro",
+      "fechaNacimiento": {"$date": "1988-12-05T00:00:00Z"},
+      "email": "sofia.romero@email.com",
+      "telefono": "677890123",
+      "domicilioFiscal": {
+        "calle": "Paseo de la Habana",
+        "numero": "56",
+        "piso": "3º",
+        "puerta": "A",
+        "codigoPostal": "28036",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "ACTIVO",
+      "fechaEstado": {"$date": "2021-02-28T00:00:00Z"},
+      "motivoBaja": null,
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": true,
+      "fechaUltimaInspeccion": null,
+      "fechaCaducidad": {"$date": "2025-02-28T00:00:00Z"},
+      "resultado": null,
+      "numeroInforme": "e-ITV-2021-NEW-112233",
+      "estacionITV": null
+    },
+    "multas": [],
+    "impuestos": {
+      "itmvPagado": true,
+      "fechaUltimoPagoITMV": {"$date": "2024-01-25T00:00:00Z"},
+      "importeITMV": 115.00,
+      "anioITMV": 2024
+    },
+    "historialTitulares": [],
+    "fechaCreacion": {"$date": "2021-02-28T11:00:00Z"},
+    "fechaActualizacion": {"$date": "2024-01-25T10:00:00Z"}
+  },
+  {
+    "matricula": "4455YZA",
+    "bastidor": "VF7XXXXXXXX654321",
+    "marca": "Renault",
+    "modelo": "Clio",
+    "color": "Blanco",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2010,
+    "fechaPrimeraMatriculacion": {"$date": "2010-10-12T10:00:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 1149,
+      "potencia": 75,
+      "numeroBastidores": "VF7XXXXXXXX654321",
+      "combustible": "GASOLINA",
+      "emisiones": "EURO5",
+      "plazas": 5,
+      "pesoMaximo": 1450,
+      "tipoMotor": "Atmosférico"
+    },
+    "titular": {
+      "dni": "90123456I",
+      "nombre": "David",
+      "apellidos": "Torres Muñoz",
+      "fechaNacimiento": {"$date": "1995-08-17T00:00:00Z"},
+      "email": "david.torres@email.com",
+      "telefono": "688901234",
+      "domicilioFiscal": {
+        "calle": "Calle Arturo Soria",
+        "numero": "145",
+        "piso": "2º",
+        "puerta": "B",
+        "codigoPostal": "28043",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "ACTIVO",
+      "fechaEstado": {"$date": "2023-09-10T00:00:00Z"},
+      "motivoBaja": null,
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": true,
+      "fechaUltimaInspeccion": {"$date": "2024-08-22T00:00:00Z"},
+      "fechaCaducidad": {"$date": "2025-08-22T00:00:00Z"},
+      "resultado": "FAVORABLE",
+      "numeroInforme": "ITV-2024-998877",
+      "estacionITV": "Bilbao Centro"
+    },
+    "multas": [
+      {
+        "id": "M005",
+        "concepto": "Uso del móvil conduciendo",
+        "importe": 200.00,
+        "puntos": 3,
+        "fecha": {"$date": "2024-01-15T14:00:00Z"},
+        "lugarInfraccion": "M-30, salida 12",
+        "agente": "Guardia Civil Tráfico",
+        "estado": "PENDIENTE_PAGO",
+        "fechaPago": null,
+        "metodoPago": null
+      },
+      {
+        "id": "M006",
+        "concepto": "No llevar puesto el cinturón",
+        "importe": 200.00,
+        "puntos": 3,
+        "fecha": {"$date": "2024-01-20T09:30:00Z"},
+        "lugarInfraccion": "Calle Orense, Madrid",
+        "agente": "Policía Municipal Madrid",
+        "estado": "PENDIENTE_PAGO",
+        "fechaPago": null,
+        "metodoPago": null
+      }
+    ],
+    "impuestos": {
+      "itmvPagado": true,
+      "fechaUltimoPagoITMV": {"$date": "2024-01-12T00:00:00Z"},
+      "importeITMV": 55.00,
+      "anioITMV": 2024
+    },
+    "historialTitulares": [],
+    "fechaCreacion": {"$date": "2010-10-12T10:00:00Z"},
+    "fechaActualizacion": {"$date": "2024-08-22T16:00:00Z"}
+  },
+  {
+    "matricula": "7788BCD",
+    "bastidor": "TMBXXXXXXXX789012",
+    "marca": "Skoda",
+    "modelo": "Octavia",
+    "color": "Verde",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2017,
+    "fechaPrimeraMatriculacion": {"$date": "2017-06-30T13:00:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 1598,
+      "potencia": 115,
+      "numeroBastidores": "TMBXXXXXXXX789012",
+      "combustible": "DIESEL",
+      "emisiones": "EURO6",
+      "plazas": 5,
+      "pesoMaximo": 1850,
+      "tipoMotor": "Turbo"
+    },
+    "titular": {
+      "dni": "01234567J",
+      "nombre": "Isabel",
+      "apellidos": "Vargas Ortiz",
+      "fechaNacimiento": {"$date": "1983-01-28T00:00:00Z"},
+      "email": "isabel.vargas@email.com",
+      "telefono": "699012345",
+      "domicilioFiscal": {
+        "calle": "Avenida de la Paz",
+        "numero": "67",
+        "piso": "4º",
+        "puerta": "C",
+        "codigoPostal": "28042",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "PRECINTADO",
+      "fechaEstado": {"$date": "2024-01-30T00:00:00Z"},
+      "motivoBaja": null,
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": true,
+      "fechaPrecinto": {"$date": "2024-01-30T00:00:00Z"},
+      "motivoPrecinto": "Conducción temeraria reiterada"
+    },
+    "itv": {
+      "enVigor": true,
+      "fechaUltimaInspeccion": {"$date": "2023-05-20T00:00:00Z"},
+      "fechaCaducidad": {"$date": "2025-05-20T00:00:00Z"},
+      "resultado": "FAVORABLE",
+      "numeroInforme": "ITV-2023-556677",
+      "estacionITV": "Zaragoza Sur"
+    },
+    "multas": [
+      {
+        "id": "M007",
+        "concepto": "Conducción temeraria",
+        "importe": 500.00,
+        "puntos": 6,
+        "fecha": {"$date": "2024-01-25T18:00:00Z"},
+        "lugarInfraccion": "A-2, km 45",
+        "agente": "Guardia Civil Tráfico",
+        "estado": "PENDIENTE_PAGO",
+        "fechaPago": null,
+        "metodoPago": null
+      }
+    ],
+    "impuestos": {
+      "itmvPagado": true,
+      "fechaUltimoPagoITMV": {"$date": "2024-01-08T00:00:00Z"},
+      "importeITMV": 72.00,
+      "anioITMV": 2024
+    },
+    "historialTitulares": [],
+    "fechaCreacion": {"$date": "2017-06-30T13:00:00Z"},
+    "fechaActualizacion": {"$date": "2024-01-30T17:00:00Z"}
+  },
+  {
+    "matricula": "3344EFG",
+    "bastidor": "YV1XXXXXXXX345678",
+    "marca": "Volvo",
+    "modelo": "XC60",
+    "color": "Gris oscuro",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2023,
+    "fechaPrimeraMatriculacion": {"$date": "2023-09-15T12:00:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 1969,
+      "potencia": 250,
+      "numeroBastidores": "YV1XXXXXXXX345678",
+      "combustible": "HIBRIDO",
+      "emisiones": "EURO6",
+      "plazas": 5,
+      "pesoMaximo": 2400,
+      "tipoMotor": "Híbrido enchufable"
+    },
+    "titular": {
+      "dni": "12121212K",
+      "nombre": "Fernando",
+      "apellidos": "Ramírez Silva",
+      "fechaNacimiento": {"$date": "1975-05-10T00:00:00Z"},
+      "email": "fernando.ramirez@email.com",
+      "telefono": "600111222",
+      "domicilioFiscal": {
+        "calle": "Calle Hermosilla",
+        "numero": "92",
+        "piso": "7º",
+        "puerta": "A",
+        "codigoPostal": "28001",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "ACTIVO",
+      "fechaEstado": {"$date": "2023-09-15T00:00:00Z"},
+      "motivoBaja": null,
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": true,
+      "fechaUltimaInspeccion": null,
+      "fechaCaducidad": {"$date": "2027-09-15T00:00:00Z"},
+      "resultado": null,
+      "numeroInforme": "e-ITV-2023-NEW-334455",
+      "estacionITV": null
+    },
+    "multas": [],
+    "impuestos": {
+      "itmvPagado": true,
+      "fechaUltimoPagoITMV": {"$date": "2024-01-30T00:00:00Z"},
+      "importeITMV": 150.00,
+      "anioITMV": 2024
+    },
+    "historialTitulares": [],
+    "fechaCreacion": {"$date": "2023-09-15T12:00:00Z"},
+    "fechaActualizacion": {"$date": "2024-01-30T09:00:00Z"}
+  },
+  {
+    "matricula": "9988HIJ",
+    "bastidor": "JTDXXXXXXXX901234",
+    "marca": "Toyota",
+    "modelo": "Corolla",
+    "color": "Plata",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2014,
+    "fechaPrimeraMatriculacion": {"$date": "2014-12-10T10:00:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 1798,
+      "potencia": 140,
+      "numeroBastidores": "JTDXXXXXXXX901234",
+      "combustible": "HIBRIDO",
+      "emisiones": "EURO6",
+      "plazas": 5,
+      "pesoMaximo": 1650,
+      "tipoMotor": "Híbrido"
+    },
+    "titular": {
+      "dni": "23232323L",
+      "nombre": "Cristina",
+      "apellidos": "Molina Ramos",
+      "fechaNacimiento": {"$date": "1991-10-03T00:00:00Z"},
+      "email": "cristina.molina@email.com",
+      "telefono": "611222333",
+      "domicilioFiscal": {
+        "calle": "Calle Núñez de Balboa",
+        "numero": "103",
+        "piso": "5º",
+        "puerta": "D",
+        "codigoPostal": "28006",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "ACTIVO",
+      "fechaEstado": {"$date": "2022-07-15T00:00:00Z"},
+      "motivoBaja": null,
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": true,
+      "fechaUltimaInspeccion": {"$date": "2023-11-25T00:00:00Z"},
+      "fechaCaducidad": {"$date": "2024-11-25T00:00:00Z"},
+      "resultado": "FAVORABLE",
+      "numeroInforme": "ITV-2023-667788",
+      "estacionITV": "Barcelona Centro"
+    },
+    "multas": [],
+    "impuestos": {
+      "itmvPagado": true,
+      "fechaUltimoPagoITMV": {"$date": "2024-01-22T00:00:00Z"},
+      "importeITMV": 62.00,
+      "anioITMV": 2024
+    },
+    "historialTitulares": [
+      {
+        "dni": "44455566M",
+        "nombre": "José",
+        "apellidos": "Ruiz Peña",
+        "fechaInicio": {"$date": "2014-12-10T00:00:00Z"},
+        "fechaFin": {"$date": "2022-07-15T00:00:00Z"},
+        "motivoTransferencia": "Venta particular"
+      }
+    ],
+    "fechaCreacion": {"$date": "2014-12-10T10:00:00Z"},
+    "fechaActualizacion": {"$date": "2024-01-22T14:00:00Z"}
+  },
+  {
+    "matricula": "5566KLM",
+    "bastidor": "ZFA312XXXXXXX5678",
+    "marca": "Fiat",
+    "modelo": "500",
+    "color": "Rojo",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2024,
+    "fechaPrimeraMatriculacion": {"$date": "2024-01-20T11:30:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 0,
+      "potencia": 87,
+      "numeroBastidores": "ZFA312XXXXXXX5678",
+      "combustible": "ELECTRICO",
+      "emisiones": "EURO6",
+      "plazas": 4,
+      "pesoMaximo": 1320,
+      "tipoMotor": "Eléctrico"
+    },
+    "titular": {
+      "dni": "34343434M",
+      "nombre": "Andrea",
+      "apellidos": "Serrano Gil",
+      "fechaNacimiento": {"$date": "1996-03-25T00:00:00Z"},
+      "email": "andrea.serrano@email.com",
+      "telefono": "622333444",
+      "domicilioFiscal": {
+        "calle": "Calle Fuencarral",
+        "numero": "123",
+        "piso": "1º",
+        "puerta": "A",
+        "codigoPostal": "28010",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "ACTIVO",
+      "fechaEstado": {"$date": "2024-01-20T00:00:00Z"},
+      "motivoBaja": null,
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": true,
+      "fechaUltimaInspeccion": null,
+      "fechaCaducidad": {"$date": "2028-01-20T00:00:00Z"},
+      "resultado": null,
+      "numeroInforme": "e-ITV-2024-NEW-556677",
+      "estacionITV": null
+    },
+    "multas": [],
+    "impuestos": {
+      "itmvPagado": true,
+      "fechaUltimoPagoITMV": {"$date": "2024-01-28T00:00:00Z"},
+      "importeITMV": 25.00,
+      "anioITMV": 2024
+    },
+    "historialTitulares": [],
+    "fechaCreacion": {"$date": "2024-01-20T11:30:00Z"},
+    "fechaActualizacion": {"$date": "2024-01-28T10:00:00Z"}
+  },
+  {
+    "matricula": "2211NOP",
+    "bastidor": "WMEXXXXXXXX234567",
+    "marca": "Smart",
+    "modelo": "ForTwo",
+    "color": "Amarillo",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2013,
+    "fechaPrimeraMatriculacion": {"$date": "2013-05-08T12:00:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 999,
+      "potencia": 71,
+      "numeroBastidores": "WMEXXXXXXXX234567",
+      "combustible": "GASOLINA",
+      "emisiones": "EURO5",
+      "plazas": 2,
+      "pesoMaximo": 950,
+      "tipoMotor": "Atmosférico"
+    },
+    "titular": {
+      "dni": "45454545N",
+      "nombre": "Pablo",
+      "apellidos": "Castro Medina",
+      "fechaNacimiento": {"$date": "1989-07-12T00:00:00Z"},
+      "email": "pablo.castro@email.com",
+      "telefono": "633444555",
+      "domicilioFiscal": {
+        "calle": "Calle Atocha",
+        "numero": "56",
+        "piso": "3º",
+        "puerta": "B",
+        "codigoPostal": "28012",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "ACTIVO",
+      "fechaEstado": {"$date": "2020-11-20T00:00:00Z"},
+      "motivoBaja": null,
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": false,
+      "fechaUltimaInspeccion": {"$date": "2023-04-10T00:00:00Z"},
+      "fechaCaducidad": {"$date": "2024-04-10T00:00:00Z"},
+      "resultado": "FAVORABLE",
+      "numeroInforme": "ITV-2023-778899",
+      "estacionITV": "Valencia Centro"
+    },
+    "multas": [],
+    "impuestos": {
+      "itmvPagado": false,
+      "fechaUltimoPagoITMV": {"$date": "2023-01-10T00:00:00Z"},
+      "importeITMV": 35.00,
+      "anioITMV": 2023
+    },
+    "historialTitulares": [
+      {
+        "dni": "55566677O",
+        "nombre": "Raquel",
+        "apellidos": "Blanco Iglesias",
+        "fechaInicio": {"$date": "2013-05-08T00:00:00Z"},
+        "fechaFin": {"$date": "2020-11-20T00:00:00Z"},
+        "motivoTransferencia": "Venta particular"
+      }
+    ],
+    "fechaCreacion": {"$date": "2013-05-08T12:00:00Z"},
+    "fechaActualizacion": {"$date": "2023-04-10T15:00:00Z"}
+  },
+  {
+    "matricula": "8877QRS",
+    "bastidor": "SALXXXXXXXX890123",
+    "marca": "Land Rover",
+    "modelo": "Discovery Sport",
+    "color": "Verde militar",
+    "tipoVehiculo": "TURISMO",
+    "anioFabricacion": 2018,
+    "fechaPrimeraMatriculacion": {"$date": "2018-08-22T14:30:00Z"},
+    "caracteristicasTecnicas": {
+      "cilindrada": 1999,
+      "potencia": 180,
+      "numeroBastidores": "SALXXXXXXXX890123",
+      "combustible": "DIESEL",
+      "emisiones": "EURO6",
+      "plazas": 7,
+      "pesoMaximo": 2650,
+      "tipoMotor": "Turbo"
+    },
+    "titular": {
+      "dni": "56565656O",
+      "nombre": "Javier",
+      "apellidos": "Prieto Campos",
+      "fechaNacimiento": {"$date": "1979-11-18T00:00:00Z"},
+      "email": "javier.prieto@email.com",
+      "telefono": "644555666",
+      "domicilioFiscal": {
+        "calle": "Calle Príncipe de Vergara",
+        "numero": "201",
+        "piso": "8º",
+        "puerta": "C",
+        "codigoPostal": "28002",
+        "localidad": "Madrid",
+        "provincia": "Madrid"
+      }
+    },
+    "situacionAdministrativa": {
+      "estado": "ACTIVO",
+      "fechaEstado": {"$date": "2018-08-22T00:00:00Z"},
+      "motivoBaja": null,
+      "fechaBajaTemporal": null,
+      "fechaFinBajaTemporal": null,
+      "precintado": false,
+      "fechaPrecinto": null,
+      "motivoPrecinto": null
+    },
+    "itv": {
+      "enVigor": true,
+      "fechaUltimaInspeccion": {"$date": "2024-07-15T00:00:00Z"},
+      "fechaCaducidad": {"$date": "2026-07-15T00:00:00Z"},
+      "resultado": "FAVORABLE",
+      "numeroInforme": "ITV-2024-889900",
+      "estacionITV": "Málaga Norte"
+    },
+    "multas": [
+      {
+        "id": "M008",
+        "concepto": "Estacionamiento en zona reservada",
+        "importe": 200.00,
+        "puntos": 0,
+        "fecha": {"$date": "2024-01-18T10:15:00Z"},
+        "lugarInfraccion": "Plaza de Cibeles, Madrid",
+        "agente": "Policía Municipal Madrid",
+        "estado": "PAGADA",
+        "fechaPago": {"$date": "2024-01-22T12:00:00Z"},
+        "metodoPago": "TRANSFERENCIA"
+      }
+    ],
+    "impuestos": {
+      "itmvPagado": true,
+      "fechaUltimoPagoITMV": {"$date": "2024-01-15T00:00:00Z"},
+      "importeITMV": 145.00,
+      "anioITMV": 2024
+    },
+    "historialTitulares": [],
+    "fechaCreacion": {"$date": "2018-08-22T14:30:00Z"},
+    "fechaActualizacion": {"$date": "2024-07-15T16:00:00Z"}
+  }
+]

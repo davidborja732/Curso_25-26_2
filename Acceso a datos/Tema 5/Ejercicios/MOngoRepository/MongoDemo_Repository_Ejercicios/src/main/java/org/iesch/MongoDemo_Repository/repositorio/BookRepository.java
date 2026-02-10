@@ -42,6 +42,11 @@ public interface BookRepository extends MongoRepository<Book, String> {
      */
     List<Book> findByAnioPublicacionGreaterThan(Integer anio);
 
+
+    /**
+     * Buscar libros que contengan una palabra en el título Y sean de una categoría
+    específica*/
+    List<Book> findByTituloAndCategoriasIgnoreCase(String titulo, String categoria);
     //==================== Query Personalizadas. ==========
 
     /**
