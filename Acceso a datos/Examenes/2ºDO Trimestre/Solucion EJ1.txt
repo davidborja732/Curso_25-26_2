@@ -1,0 +1,56 @@
+Solución Ej1 AD=
+1=
+db.videojuegos.aggregate([
+    {
+        $lookup:{
+            from:"desarrolladores"
+            localfield: "desarrollador_id",
+            foreignField:"_id",
+            as:"desarrollador"
+        },
+    },
+    {    
+        $lookup:{
+            from:"plataformas"
+            localfield: "plataforma_id",
+            foreignField:"_id",
+            as:"plataforma"
+        },
+    },
+    {
+        $unwind:"desarrollador"
+    },
+    {
+        $unwind:"plataforma"
+    }
+])
+2=
+db.ventas.aggregate([
+    {
+        $lookup:{
+            from:"videojuegos"
+            localfield: "videojuegos_id",
+            foreignField:"_id",
+            as:"videojuegos"
+        },
+    },
+    {    
+        $lookup:{
+            from:"desarrollador"
+            localfield: "videojuego.desarrollador_id",
+            foreignField:"_id",
+            as:"desarrollador"
+        },
+    },
+    {
+        $unwind:"videojuegos"
+    },
+    {
+        $unwind:"cliente"
+    }
+])
+3=
+4=
+5=
+6=
+7=
