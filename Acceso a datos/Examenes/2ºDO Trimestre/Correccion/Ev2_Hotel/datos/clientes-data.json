@@ -1,0 +1,213 @@
+db.clientes.insertMany([
+  {
+    "dni": "12345678A",
+    "nombre": "Ana",
+    "apellidos": "García Martínez",
+    "email": "ana.garcia@email.com",
+    "telefono": "600111222",
+    "fechaNacimiento":  new Date("1985-05-15T00:00:00Z"),
+    "direccion": {
+      "calle": "Calle Mayor",
+      "numero": "25",
+      "codigoPostal": "28001",
+      "ciudad": "Madrid",
+      "pais": "España"
+    },
+    "esVIP": true,
+    "puntosFidelidad": 350,
+    "totalReservas": 8,
+    "gastoTotal": 3250.00,
+    "deudaPendiente": 0.0,
+    "fechaRegistro":  new Date("2024-03-10T00:00:00Z")
+  },
+  {
+    "dni": "23456789B",
+    "nombre": "Carlos",
+    "apellidos": "López Fernández",
+    "email": "carlos.lopez@email.com",
+    "telefono": "600222333",
+    "fechaNacimiento":  new Date("1978-11-22T00:00:00Z"),
+    "direccion": {
+      "calle": "Avenida de la Paz",
+      "numero": "10",
+      "codigoPostal": "08001",
+      "ciudad": "Barcelona",
+      "pais": "España"
+    },
+    "esVIP": false,
+    "puntosFidelidad": 120,
+    "totalReservas": 3,
+    "gastoTotal": 1200.00,
+    "deudaPendiente": 0.0,
+    "fechaRegistro":  new Date("2025-06-15T00:00:00Z")
+  },
+  {
+    "dni": "34567890C",
+    "nombre": "María",
+    "apellidos": "Rodríguez Sánchez",
+    "email": "maria.rodriguez@email.com",
+    "telefono": "600333444",
+    "fechaNacimiento":  new Date("1992-03-08T00:00:00Z"),
+    "direccion": {
+      "calle": "Plaza España",
+      "numero": "5",
+      "codigoPostal": "41001",
+      "ciudad": "Sevilla",
+      "pais": "España"
+    },
+    "esVIP": true,
+    "puntosFidelidad": 580,
+    "totalReservas": 12,
+    "gastoTotal": 5800.00,
+    "deudaPendiente": 0.0,
+    "fechaRegistro":  new Date("2023-01-20T00:00:00Z")
+  },
+  {
+    "dni": "45678901D",
+    "nombre": "Juan",
+    "apellidos": "Martín Pérez",
+    "email": "juan.martin@email.com",
+    "telefono": "600444555",
+    "fechaNacimiento":  new Date("1988-07-30T00:00:00Z"),
+    "direccion": {
+      "calle": "Calle Real",
+      "numero": "45",
+      "codigoPostal": "46001",
+      "ciudad": "Valencia",
+      "pais": "España"
+    },
+    "esVIP": false,
+    "puntosFidelidad": 45,
+    "totalReservas": 1,
+    "gastoTotal": 450.00,
+    "deudaPendiente": 0.0,
+    "fechaRegistro":  new Date("2025-12-01T00:00:00Z")
+  },
+  {
+    "dni": "56789012E",
+    "nombre": "Laura",
+    "apellidos": "González Ruiz",
+    "email": "laura.gonzalez@email.com",
+    "telefono": "600555666",
+    "fechaNacimiento":  new Date("1995-09-12T00:00:00Z"),
+    "direccion": {
+      "calle": "Paseo Marítimo",
+      "numero": "88",
+      "codigoPostal": "29001",
+      "ciudad": "Málaga",
+      "pais": "España"
+    },
+    "esVIP": true,
+    "puntosFidelidad": 420,
+    "totalReservas": 9,
+    "gastoTotal": 4200.00,
+    "deudaPendiente": 0.0,
+    "fechaRegistro":  new Date("2024-05-18T00:00:00Z")
+  },
+  {
+    "dni": "67890123F",
+    "nombre": "David",
+    "apellidos": "Hernández Torres",
+    "email": "david.hernandez@email.com",
+    "telefono": "600666777",
+    "fechaNacimiento":  new Date("1982-01-25T00:00:00Z"),
+    "direccion": {
+      "calle": "Gran Vía",
+      "numero": "120",
+      "codigoPostal": "18001",
+      "ciudad": "Granada",
+      "pais": "España"
+    },
+    "esVIP": false,
+    "puntosFidelidad": 95,
+    "totalReservas": 2,
+    "gastoTotal": 950.00,
+    "deudaPendiente": 0.0,
+    "fechaRegistro":  new Date("2025-08-22T00:00:00Z")
+  },
+  {
+    "dni": "78901234G",
+    "nombre": "Elena",
+    "apellidos": "Jiménez Moreno",
+    "email": "elena.jimenez@email.com",
+    "telefono": "600777888",
+    "fechaNacimiento":  new Date("1990-04-18T00:00:00Z"),
+    "direccion": {
+      "calle": "Avenida Libertad",
+      "numero": "33",
+      "codigoPostal": "15001",
+      "ciudad": "A Coruña",
+      "pais": "España"
+    },
+    "esVIP": false,
+    "puntosFidelidad": 180,
+    "totalReservas": 4,
+    "gastoTotal": 1800.00,
+    "deudaPendiente": 0.0,
+    "fechaRegistro":  new Date("2025-02-10T00:00:00Z")
+  },
+  {
+    "dni": "89012345H",
+    "nombre": "Francisco",
+    "apellidos": "Navarro Díaz",
+    "email": "francisco.navarro@email.com",
+    "telefono": "600888999",
+    "fechaNacimiento":  new Date("1975-12-05T00:00:00Z"),
+    "direccion": {
+      "calle": "Calle Colón",
+      "numero": "67",
+      "codigoPostal": "03001",
+      "ciudad": "Alicante",
+      "pais": "España"
+    },
+    "esVIP": true,
+    "puntosFidelidad": 740,
+    "totalReservas": 15,
+    "gastoTotal": 7400.00,
+    "deudaPendiente": 0.0,
+    "fechaRegistro":  new Date("2022-09-15T00:00:00Z")
+  },
+  {
+    "dni": "90123456I",
+    "nombre": "Patricia",
+    "apellidos": "Romero Castro",
+    "email": "patricia.romero@email.com",
+    "telefono": "600999000",
+    "fechaNacimiento":  new Date("1987-06-28T00:00:00Z"),
+    "direccion": {
+      "calle": "Ronda Norte",
+      "numero": "12",
+      "codigoPostal": "30001",
+      "ciudad": "Murcia",
+      "pais": "España"
+    },
+    "esVIP": false,
+    "puntosFidelidad": 65,
+    "totalReservas": 2,
+    "gastoTotal": 650.00,
+    "deudaPendiente": 0.0,
+    "fechaRegistro":  new Date("2025-11-03T00:00:00Z")
+  },
+  {
+    "dni": "01234567J",
+    "nombre": "Roberto",
+    "apellidos": "Vega Serrano",
+    "email": "roberto.vega@email.com",
+    "telefono": "601000111",
+    "fechaNacimiento":  new Date("1993-10-14T00:00:00Z"),
+    "direccion": {
+      "calle": "Paseo Central",
+      "numero": "8",
+      "codigoPostal": "50001",
+      "ciudad": "Zaragoza",
+      "pais": "España"
+    },
+    "esVIP": false,
+    "puntosFidelidad": 30,
+    "totalReservas": 1,
+    "gastoTotal": 300.00,
+    "deudaPendiente": 0.0,
+    "fechaRegistro":  new Date("2026-01-12T00:00:00Z")
+  }
+])
+

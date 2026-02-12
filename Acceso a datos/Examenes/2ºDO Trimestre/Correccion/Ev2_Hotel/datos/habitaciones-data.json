@@ -1,0 +1,123 @@
+db.habitaciones.insertMany([
+  {
+    "numero": "101",
+    "tipoHabitacion": "INDIVIDUAL",
+    "precioBaseNoche": 65.00,
+    "estado": "DISPONIBLE",
+    "planta": 1,
+    "capacidadMaxima": 1,
+    "metrosCuadrados": 18,
+    "caracteristicas": ["WIFI", "TV", "AIRE_ACONDICIONADO", "MINIBAR"],
+    "ultimaLimpieza": new Date("2026-02-10T10:30:00Z"),
+    "fechaUltimoMantenimiento": new Date("2026-01-15T00:00:00Z")
+  },
+  {
+    "numero": "102",
+    "tipoHabitacion": "INDIVIDUAL",
+    "precioBaseNoche": 65.00,
+    "estado": "OCUPADA",
+    "planta": 1,
+    "capacidadMaxima": 1,
+    "metrosCuadrados": 18,
+    "caracteristicas": ["WIFI", "TV", "AIRE_ACONDICIONADO", "MINIBAR"],
+    "ultimaLimpieza": new Date("2026-02-09T11:00:00Z"),
+    "fechaUltimoMantenimiento": new Date("2026-01-15T00:00:00Z")
+  },
+  {
+    "numero": "103",
+    "tipoHabitacion": "INDIVIDUAL",
+    "precioBaseNoche": 65.00,
+    "estado": "DISPONIBLE",
+    "planta": 1,
+    "capacidadMaxima": 1,
+    "metrosCuadrados": 18,
+    "caracteristicas": ["WIFI", "TV", "AIRE_ACONDICIONADO"],
+    "ultimaLimpieza": new Date("2026-02-10T09:45:00Z"),
+    "fechaUltimoMantenimiento": new Date("2026-01-15T00:00:00Z")
+  },
+  {
+    "numero": "201",
+    "tipoHabitacion": "DOBLE",
+    "precioBaseNoche": 95.00,
+    "estado": "DISPONIBLE",
+    "planta": 2,
+    "capacidadMaxima": 2,
+    "metrosCuadrados": 25,
+    "caracteristicas": ["WIFI", "TV", "AIRE_ACONDICIONADO", "MINIBAR", "BALCON"],
+    "ultimaLimpieza": new Date("2026-02-10T10:00:00Z"),
+    "fechaUltimoMantenimiento": new Date("2025-12-20T00:00:00Z")
+  },
+  {
+    "numero": "202",
+    "tipoHabitacion": "DOBLE",
+    "precioBaseNoche": 95.00,
+    "estado": "EN_LIMPIEZA",
+    "planta": 2,
+    "capacidadMaxima": 2,
+    "metrosCuadrados": 25,
+    "caracteristicas": ["WIFI", "TV", "AIRE_ACONDICIONADO", "MINIBAR", "BALCON"],
+    "ultimaLimpieza": new Date("2026-02-10T12:00:00Z"),
+    "fechaUltimoMantenimiento": new Date("2025-12-20T00:00:00Z")
+  },
+  {
+    "numero": "203",
+    "tipoHabitacion": "DOBLE",
+    "precioBaseNoche": 95.00,
+    "estado": "OCUPADA",
+    "planta": 2,
+    "capacidadMaxima": 2,
+    "metrosCuadrados": 25,
+    "caracteristicas": ["WIFI", "TV", "AIRE_ACONDICIONADO", "MINIBAR", "VISTAS_MAR"],
+    "ultimaLimpieza": new Date("2026-02-08T10:30:00Z"),
+    "fechaUltimoMantenimiento": new Date("2025-12-20T00:00:00Z")
+  },
+  {
+    "numero": "204",
+    "tipoHabitacion": "DOBLE",
+    "precioBaseNoche": 95.00,
+    "estado": "DISPONIBLE",
+    "planta": 2,
+    "capacidadMaxima": 2,
+    "metrosCuadrados": 25,
+    "caracteristicas": ["WIFI", "TV", "AIRE_ACONDICIONADO", "MINIBAR"],
+    "ultimaLimpieza": new Date("2026-02-10T11:15:00Z"),
+    "fechaUltimoMantenimiento": new Date("2025-12-20T00:00:00Z")
+  },
+  {
+    "numero": "205",
+    "tipoHabitacion": "DOBLE",
+    "precioBaseNoche": 95.00,
+    "estado": "DISPONIBLE",
+    "planta": 2,
+    "capacidadMaxima": 2,
+    "metrosCuadrados": 25,
+    "caracteristicas": ["WIFI", "TV", "AIRE_ACONDICIONADO", "MINIBAR", "BALCON"],
+    "ultimaLimpieza": new Date("2026-02-10T09:30:00Z"),
+    "fechaUltimoMantenimiento": new Date("2025-12-20T00:00:00Z")
+  },
+  {
+    "numero": "301",
+    "tipoHabitacion": "SUITE",
+    "precioBaseNoche": 180.00,
+    "estado": "DISPONIBLE",
+    "planta": 3,
+    "capacidadMaxima": 4,
+    "metrosCuadrados": 45,
+    "caracteristicas": ["WIFI", "TV", "AIRE_ACONDICIONADO", "MINIBAR", "BALCON", "JACUZZI", "VISTAS_MAR", "SALON_SEPARADO"],
+    "ultimaLimpieza": new Date("2026-02-10T10:00:00Z"),
+    "fechaUltimoMantenimiento": new Date("2026-01-05T00:00:00Z")
+  },
+  {
+    "numero": "302",
+    "tipoHabitacion": "SUITE",
+    "precioBaseNoche": 180.00,
+    "estado": "EN_MANTENIMIENTO",
+    "planta": 3,
+    "capacidadMaxima": 4,
+    "metrosCuadrados": 45,
+    "caracteristicas": ["WIFI", "TV", "AIRE_ACONDICIONADO", "MINIBAR", "BALCON", "JACUZZI", "VISTAS_MAR", "SALON_SEPARADO"],
+    "ultimaLimpieza": new Date("2026-02-05T10:00:00Z"),
+    "fechaUltimoMantenimiento": new Date("2026-02-08T00:00:00Z"),
+    "motivoMantenimiento": "Reparación aire acondicionado"
+  }
+])
