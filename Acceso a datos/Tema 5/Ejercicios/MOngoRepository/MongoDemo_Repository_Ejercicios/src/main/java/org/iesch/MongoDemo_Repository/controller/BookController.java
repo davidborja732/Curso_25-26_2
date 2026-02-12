@@ -3,11 +3,14 @@ package org.iesch.MongoDemo_Repository.controller;
 import org.iesch.MongoDemo_Repository.modelo.Book;
 import org.iesch.MongoDemo_Repository.repositorio.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @RestController
@@ -130,12 +133,37 @@ public class BookController {
         return ResponseEntity.ok(bookRepository.buscarPorPrecioInferiorYanioMayor(precio, anio));
     }
     /*
-     * /api/books/search/nativo/autor?nombre=....
+     * /api/books/search/nativo/titulocat?titulo=xxxx&categoria=xxxxx
      * El nombre del autor está en un documento embebido. y hacemos uso de @Query
      */
-    @GetMapping("/search/nativo/autorcat")
+    @GetMapping("/search/nativo/titulocat")
     public ResponseEntity<List<Book>> buscarTituloCategoria (@RequestParam String titulo, @RequestParam String categoria){
-        return ResponseEntity.ok(bookRepository.findByTituloAndCategoriasIgnoreCase(titulo,categoria));
+        return ResponseEntity.ok(bookRepository.findByTituloContainingIgnoreCaseAndCategorias(titulo,categoria));
+    }
+    /*
+     * /api/books/search/nativo/listacategorias
+     * El nombre del autor está en un documento embebido. y hacemos uso de @Query
+     */
+
+    @PostMapping("/search/nativo/listacategorias")
+    public ResponseEntity<List<Book>> buscarListaCategorias (@RequestBody List<String> categorias){
+        return ResponseEntity.ok(bookRepository.findByCategoriasContaining(categorias));
+    }
+    /*
+     * /api/books/search/nativo/contarcat/
+     * El nombre del autor está en un documento embebido. y hacemos uso de @Query
+     */
+    @GetMapping("/search/nativo/contarcat/{categoria}")
+    public ResponseEntity<Long> buscartotalcat (@PathVariable String categoria){
+        return ResponseEntity.ok(bookRepository.countByCategorias(categoria));
+    }
+    /*
+     * /api/books/search/nativo/contarcat/
+     * El nombre del autor está en un documento embebido. y hacemos uso de @Query
+     */
+    @GetMapping("/search/nativo/masdeunautor")
+    public ResponseEntity<List<Book>> buscarautores (){
+        return ResponseEntity.ok(bookRepository.findByAutoresGreaterThan(1));
     }
 
 

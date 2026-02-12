@@ -42,15 +42,15 @@ class MenuItems {
     ),
     OptionMenuItem(
       color: AppTheme.listaColores[6],
-      icono: Icons.error,
-      texto: 'Opcion 7',
-      screenName: 'Opcion 7',
+      icono: Icons.settings,
+      texto: 'Ajustes',
+      screenName: 'ajustes',
     ),
     OptionMenuItem(
       color: AppTheme.listaColores[7],
-      icono: Icons.error,
-      texto: 'Opcion 8',
-      screenName: 'Opcion 8',
+      icono: Icons.map,
+      texto: 'Mapas',
+      screenName: 'mapas',
     ),
   ];
 }

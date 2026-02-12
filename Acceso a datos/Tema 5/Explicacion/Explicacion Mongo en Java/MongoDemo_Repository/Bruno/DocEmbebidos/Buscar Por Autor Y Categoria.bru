@@ -5,13 +5,14 @@ meta {
 }
 
 get {
-  url: http://127.0.0.1:8080/api/books/search/categoria?cat=java
+  url: http://127.0.0.1:8080/api/books/search/nativo/titulocat?titulo=El&categoria=Ficción
   body: none
   auth: inherit
 }
 
 params:query {
-  cat: java
+  titulo: El
+  categoria: Ficción
 }
 
 settings {

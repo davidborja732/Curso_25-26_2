@@ -1,0 +1,23 @@
+meta {
+  name: Buscar Por categorias
+  type: http
+  seq: 25
+}
+
+post {
+  url: http://127.0.0.1:8080/api/books/search/nativo/listacategorias
+  body: json
+  auth: inherit
+}
+
+body:json {
+  [
+    "Java",
+    "Realismo mágico"
+  ]
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

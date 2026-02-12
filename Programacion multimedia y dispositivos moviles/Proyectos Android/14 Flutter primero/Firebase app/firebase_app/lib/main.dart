@@ -1,3 +1,4 @@
+import 'package:firebase_app/config/app_theme.dart';
 import 'package:firebase_app/screens/add_tarea.dart';
 import 'package:firebase_app/screens/home_screen.dart';
 import 'package:firebase_app/screens/login_screen.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: AppTheme().getTheme(),
       routes: {
         '/': (context) => SeleccionarScreen(),
         '/login': (context) => LoginScreen(),

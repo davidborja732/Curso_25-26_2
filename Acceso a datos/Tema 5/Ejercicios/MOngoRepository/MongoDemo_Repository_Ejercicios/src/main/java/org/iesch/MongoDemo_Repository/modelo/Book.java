@@ -4,7 +4,9 @@ package org.iesch.MongoDemo_Repository.modelo;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
@@ -26,6 +28,7 @@ public class Book {
     private String editorial;
 
     //Documentos embebidos
+
     private List<Autor> autores;
     private List<String> categorias;
 

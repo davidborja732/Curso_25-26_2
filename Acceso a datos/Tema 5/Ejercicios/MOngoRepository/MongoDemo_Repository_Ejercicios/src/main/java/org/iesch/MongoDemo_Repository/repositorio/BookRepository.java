@@ -42,12 +42,23 @@ public interface BookRepository extends MongoRepository<Book, String> {
      */
     List<Book> findByAnioPublicacionGreaterThan(Integer anio);
 
-
     /**
      * Buscar libros que contengan una palabra en el título Y sean de una categoría
-    específica*/
-    List<Book> findByTituloAndCategoriasIgnoreCase(String titulo, String categoria);
-    //==================== Query Personalizadas. ==========
+     específica
+     */
+    List<Book> findByTituloContainingIgnoreCaseAndCategorias(String titulo, String categoria);
+    /*
+    * Buscar libros de múltiples categorías
+     * */
+    List<Book> findByCategoriasContaining(List<String> titulos);
+
+    /*
+    * Contar libros por categoría
+    */
+    Long countByCategorias(String categoria);
+    List<Book> findByAutoresGreaterThan(int numero);
+
+    //==================== Query Personalizadas. ======================//
 
     /**
      * Buscar por nombre de autor usando query mongo.
@@ -60,5 +71,4 @@ public interface BookRepository extends MongoRepository<Book, String> {
      */
     @Query("{'precio': {$lt: ?0 }, 'anioPublicacion': {$gte: ?1}}")
     List<Book> buscarPorPrecioInferiorYanioMayor(Double precio, Integer anio);
-
 }
