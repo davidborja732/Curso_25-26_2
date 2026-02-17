@@ -1,0 +1,22 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="school.course_aux_form">
+      <field name="name">school course temporal form</field>
+      <field name="model">school.course_aux</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+              <button name="previous" class ="btn btn-secondary" type="object" 
+                string="Anterior">
+              </button>
+              <button name="next" class ="btn btn-secondary" type="object" 
+                string="Siguiente">
+              </button>
+            <field name="state_wizard" widget="statusbar"/> 
+          </header>         
+        </form>
+      </field>
+    </record>
+  </data>
+</odoo>

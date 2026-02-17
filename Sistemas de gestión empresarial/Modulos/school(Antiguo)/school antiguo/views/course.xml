@@ -1,0 +1,32 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="school.course_list">
+      <field name="name">cursos</field>
+      <field name="model">school.course</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="level"/>
+          <field name="date_start"/>
+          <field name="date_end"/>
+        </list>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="school.course_calendar">
+      <field name="name">cursos</field>
+      <field name="model">school.course</field>
+      <field name="arch" type="xml">
+        <calendar string="courses" date_start="date_start" date_stop="date_end" color="name" mode="month">
+          <field name="name"/>
+          <field name="level"/>
+          <field name="date_start"/>
+          <field name="date_end"/>
+        </calendar>
+      </field>
+    </record>
+
+
+  </data>
+</odoo>

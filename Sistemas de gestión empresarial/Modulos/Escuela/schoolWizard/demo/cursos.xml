@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+
+      <record id="curso1" model="school.course">
+        <field name="name">1º DAM</field>
+        <field name="level">1</field>
+        <field name="date_start">2025-09-15</field> 
+        <field name="date_end">2026-06-8</field>
+        <field name="subject_id" eval="[(6,0,[ref('asignatura1'),
+                      ref('asignatura2'),ref('asignatura5')])]"></field>                  
+      </record>
+
+        
+      <record id="curso2" model="school.course">
+        <field name="name">2º DAM</field>
+        <field name="level">2</field>
+        <field name="date_start">2025-09-15</field> 
+        <field name="date_end">2026-02-9</field> 
+                 
+      </record>
+
+      <record id="curso3" model="school.course">
+        <field name="name">2º SMR</field>
+        <field name="level">2</field>
+        <field name="date_start">2025-09-15</field> 
+        <field name="date_end">2026-02-9</field>        
+      </record>
+      <record id="curso4" model="school.course">
+        <field name="name">1º ASIR</field>
+        <field name="level">1</field>
+        <field name="date_start">2025-09-15</field> 
+        <field name="date_end">2026-02-9</field>        
+      </record>
+
+    </data>
+</odoo>

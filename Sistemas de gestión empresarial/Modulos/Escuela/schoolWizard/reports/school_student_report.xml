@@ -1,0 +1,30 @@
+
+<odoo>
+<!--definición del informe-->
+    <record id='school.student_report' model='ir.actions.report'>
+        <field name='name'>Datos del alumno</field>
+        <field name='model'>school.student</field>
+        <field name='report_type'>qweb-pdf</field>
+        <field name='report_name'>school.report_session_view</field>
+        <field name="report_file">school.report_student_report</field>
+        <field name="print_report_name">'%s' % (object.name)</field>        
+        <field name='binding_model_id' ref="model_school_student"/>
+        <field name='binding_type'>report</field>
+    </record>
+    <!-- Plantilla -->
+    <template id="report_session_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="alumno"> <!--Los datos los obtenemos del objeto doc -->
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-field="alumno.name"/>
+                            <p>Apellido: <span t-field="alumno.surname"/> </p>
+                            <p>Edad: <span t-field="alumno.age"/> </p>  
+                            <p><span t-att-src="alumno.image"/> </p> 
+                            <img t-attf-src="data:image/*;base64,{{alumno.image}}" style="max-height: 100px"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
