@@ -1,0 +1,95 @@
+-- ============================
+-- TABLA: instalacion (10)
+-- ============================
+INSERT INTO instalacion (IDInstalacion, Tipo, Nombre, FechaUltimoMantenimiento) VALUES
+(1, 'Pista de tenis', 'Pista Central', '2026-02-10'),
+(2, 'Piscina', 'Piscina Olímpica', '2026-01-20'),
+(3, 'Gimnasio', 'Sala Fitness', '2026-03-01'),
+(4, 'Campo de fútbol', 'Campo Norte', '2026-02-15'),
+(5, 'Sala de yoga', 'Sala Zen', '2026-03-05'),
+(6, 'Pista de pádel', 'Pista 1', '2026-02-28'),
+(7, 'Pista de pádel', 'Pista 2', '2026-02-28'),
+(8, 'Sala de boxeo', 'Ring Central', '2026-01-30'),
+(9, 'Sala de spinning', 'Spin Room', '2026-03-02'),
+(10, 'Sala de musculación', 'Power Room', '2026-02-18');
+
+-- ============================
+-- TABLA: material_deportivo (10)
+-- ============================
+INSERT INTO material_deportivo (IDMaterial, Nombre, Descripcion) VALUES
+(1, 'Raqueta de tenis', 'Raqueta profesional de grafito'),
+(2, 'Balón de baloncesto', 'Balón oficial tamaño 7'),
+(3, 'Esterilla', 'Esterilla antideslizante'),
+(4, 'Balón de fútbol', 'Balón FIFA Quality'),
+(5, 'Guantes de boxeo', 'Guantes de cuero 12 oz'),
+(6, 'Bicicleta de spinning', 'Modelo Pro Indoor'),
+(7, 'Pesas', 'Juego de mancuernas 5-20kg'),
+(8, 'Pala de pádel', 'Pala de fibra de carbono'),
+(9, 'Casco de boxeo', 'Casco acolchado profesional'),
+(10, 'Cuerda de saltar', 'Cuerda ajustable de velocidad');
+
+-- ============================
+-- TABLA: socio (10)
+-- ============================
+INSERT INTO socio (DNI, Contraseña, NombreCompleto, Dirección, Email, CuentaBancaria) VALUES
+('12345678A', 'pass1234', 'Carlos Pérez', 'Calle Mayor 12', 'carlos1@example.com', 'ES9820385778983000760234'),
+('87654321B', 'clave5678', 'Laura Gómez', 'Av. Aragón 45', 'laura2@example.com', 'ES1121002345678901234567'),
+('11223344C', 'segura999', 'Miguel Torres', 'Calle Sol 8', 'miguel3@example.com', NULL),
+('22334455D', 'abc12345', 'Ana Martínez', 'Calle Luna 10', 'ana4@example.com', 'ES7621002345678901234567'),
+('33445566E', 'qwerty88', 'Jorge Ruiz', 'Av. Libertad 22', 'jorge5@example.com', NULL),
+('44556677F', 'pass2026', 'Lucía Sánchez', 'Calle Río 14', 'lucia6@example.com', 'ES5520385778983000760234'),
+('55667788G', 'clave2026', 'Pedro López', 'Calle Mar 3', 'pedro7@example.com', NULL),
+('66778899H', 'secure123', 'Elena Navarro', 'Av. Pilar 19', 'elena8@example.com', 'ES9021002345678901234567'),
+('77889900I', 'contra456', 'David Romero', 'Calle Norte 6', 'david9@example.com', NULL),
+('88990011J', 'passpass', 'Sara Molina', 'Calle Sur 11', 'sara10@example.com', 'ES1120385778983000760234');
+
+-- ============================
+-- TABLA: reserva (10)
+-- ============================
+INSERT INTO reserva (IdReserva, NumeroParticipantes, FechaCreacion, FechaHoraInicio, FechaHoraFin, DNI, IDInstalacion) VALUES
+(1, 2, '2026-03-20 10:00:00', '2026-03-25 17:00:00', '2026-03-25 18:00:00', '12345678A', 1),
+(2, 1, '2026-03-22 09:30:00', '2026-03-26 09:00:00', '2026-03-26 10:30:00', '87654321B', 3),
+(3, 4, '2026-03-23 15:00:00', '2026-03-28 11:00:00', '2026-03-28 13:00:00', '11223344C', 2),
+(4, 3, '2026-03-10 12:00:00', '2026-03-29 16:00:00', '2026-03-29 17:00:00', '22334455D', 4),
+(5, 1, '2026-03-11 14:00:00', '2026-03-30 08:00:00', '2026-03-30 09:00:00', '33445566E', 5),
+(6, 2, '2026-03-12 09:00:00', '2026-03-31 19:00:00', '2026-03-31 20:00:00', '44556677F', 6),
+(7, 5, '2026-03-13 10:00:00', '2026-04-01 10:00:00', '2026-04-01 12:00:00', '55667788G', 7),
+(8, 1, '2026-03-14 11:00:00', '2026-04-02 18:00:00', '2026-04-02 19:00:00', '66778899H', 8),
+(9, 3, '2026-03-15 13:00:00', '2026-04-03 09:00:00', '2026-04-03 10:30:00', '77889900I', 9),
+(10, 2, '2026-03-16 16:00:00', '2026-04-04 15:00:00', '2026-04-04 16:00:00', '88990011J', 10);
+
+-- ============================
+-- TABLA: material_reservado (10)
+-- ============================
+INSERT INTO material_reservado (IdReserva, IDMaterial, Cantidad, Observaciones) VALUES
+(1, 1, 2, 'Raquetas para partido'),
+(2, 3, 1, 'Esterilla para estiramientos'),
+(3, 2, 2, 'Balones para entrenamiento'),
+(4, 4, 3, 'Balones para sesión'),
+(5, 5, 1, 'Guantes para clase'),
+(6, 8, 2, 'Palas para partido'),
+(7, 7, 4, 'Pesas para circuito'),
+(8, 9, 1, 'Casco para sparring'),
+(9, 6, 1, 'Bici asignada'),
+(10, 10, 2, 'Cuerdas para calentamiento');
+
+-- ============================
+-- TABLA: pago (10)
+-- ============================
+INSERT INTO pago (ReferenciaPago, Fecha, Concepto, MetodoPago, DNI) VALUES
+('PAG001', '2026-03-10', 'Cuota mensual', 'Tarjeta', '12345678A'),
+('PAG002', '2026-03-12', 'Reserva instalación', 'Transferencia', '87654321B'),
+('PAG003', '2026-03-15', 'Material deportivo', 'Efectivo', '11223344C'),
+('PAG004', '2026-03-16', 'Cuota mensual', 'Tarjeta', '22334455D'),
+('PAG005', '2026-03-17', 'Reserva instalación', 'Bizum', '33445566E'),
+('PAG006', '2026-03-18', 'Cuota mensual', 'Transferencia', '44556677F'),
+('PAG007', '2026-03-19', 'Material deportivo', 'Tarjeta', '55667788G'),
+('PAG008', '2026-03-20', 'Reserva instalación', 'Efectivo', '66778899H'),
+('PAG009', '2026-03-21', 'Cuota mensual', 'Tarjeta', '77889900I'),
+('PAG010', '2026-03-22', 'Material deportivo', 'Bizum', '88990011J');
+
+-- ============================
+-- TABLA: Administrador (1)
+-- ============================
+INSERT INTO Administrador (ID, Contraseña, Nombre) VALUES
+(1, 'admin123', 'Administrador General');
