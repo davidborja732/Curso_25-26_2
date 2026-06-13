@@ -1,0 +1,15 @@
+meta {
+  name: 08 Get Mascotas por Email Propietario
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}/api/mascotas/propietario
+  body: none
+  auth: none
+}
+
+params:query {
+  email: carlos.garcia@email.com
+}

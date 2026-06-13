@@ -1,0 +1,32 @@
+meta {
+  name: 03 Post Crear Mascota
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/mascotas
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "nombre": "Max",
+    "especie": "PERRO",
+    "raza": "Labrador",
+    "fechaNacimiento": "2021-05-10",
+    "peso": 25.0,
+    "veterinario": "Dra. Ana Martínez",
+    "propietario": {
+      "nombre": "Juan",
+      "apellidos": "Pérez García",
+      "telefono": "600111222",
+      "email": "juan.perez@email.com"
+    }
+  }
+}

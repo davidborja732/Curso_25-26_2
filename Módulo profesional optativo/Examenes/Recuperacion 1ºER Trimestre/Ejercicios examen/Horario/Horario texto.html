@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Horario 2º DAM</title>
+</head>
+<body>
+
+  <h2>Horario 2º DAM</h2>
+
+  <label>Hora de inicio (HH:MM):</label>
+  <input type="text" id="horaInicio" placeholder="15:45"><br><br>
+
+  <label>Duración de cada clase (min):</label>
+  <input type="number" id="durClase" placeholder="50"><br><br>
+
+  <label>Duración del descanso (min):</label>
+  <input type="number" id="durDescanso" placeholder="5"><br><br>
+
+  <label>Duración del recreo (min):</label>
+  <input type="number" id="durRecreo" placeholder="15"><br><br>
+
+  <button onclick="generar()">Generar horario</button>
+
+  <br><br>
+
+  <table border="1" id="tablaHorario"></table>
+
+  <script>
+    const dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+
+    const asignaturas = [
+      ["IPPE", "PROY", "IPPE", "AD", "SGE"],
+      ["DI", "SGE", "AD", "AD", "SGE"],
+      ["DI", "SGE", "AD", "AD", "SASP"],
+      ["RECREO","RECREO","RECREO","RECREO","RECREO"],
+      ["DWC", "PMDM", "PMDM", "PROY", "DI"],
+      ["DWC", "PMDM", "PMDM", "PSP", "DI"],
+      ["DWC", "PMDM", "PMDM", "PSP", "DI"]
+    ];
+
+    // -------------------------
+    // NORMALIZAR HORA (NUEVO)
+    // -------------------------
+    function normalizarHora(hora) {
+      if (!hora || !hora.includes(":")) return "15:45";
+
+      let [h, m] = hora.split(":");
+
+      h = parseInt(h);
+      m = parseInt(m);
+
+      if (isNaN(h) || isNaN(m)) return "15:45";
+
+      if (h < 10) h = "0" + h;
+      if (m < 10) m = "0" + m;
+
+      return `${h}:${m}`;
+    }
+
+    function generarHoras(horaInicio, bloques, durClase, durDescanso, durRecreo) {
+  const horas = [];
+  let actual = new Date(`1970-01-01T${horaInicio}:00`);
+
+  for (let i = 0; i < bloques; i++) {
+
+    // Recreo en la fila 3 (índice 3)
+    if (i === 3) {
+      const inicioRec = actual.toTimeString().substring(0, 5);
+      actual.setMinutes(actual.getMinutes() + durRecreo); // SOLO recreo
+      const finRec = actual.toTimeString().substring(0, 5);
+
+      horas.push(`${inicioRec} - ${finRec}`);
+      continue; // Pasamos a la siguiente hora SIN descanso
+    }
+
+    // Inicio de clase
+    const inicioStr = actual.toTimeString().substring(0, 5);
+
+    // Duración de la clase
+    actual.setMinutes(actual.getMinutes() + durClase);
+    const finStr = actual.toTimeString().substring(0, 5);
+
+    horas.push(`${inicioStr} - ${finStr}`);
+
+    // Descanso SOLO si NO es recreo
+    if (i !== 2) {  
+      // i=2 es la clase ANTES del recreo → NO sumar descanso
+      actual.setMinutes(actual.getMinutes() + durDescanso);
+    }
+  }
+
+  return horas;
+}
+
+
+    function generar() {
+      const tabla = document.getElementById("tablaHorario");
+      tabla.innerHTML = "";
+
+      const horaInicioRaw = document.getElementById("horaInicio").value;
+      const horaInicio = normalizarHora(horaInicioRaw);
+
+      const durClase = parseInt(document.getElementById("durClase").value) || 50;
+      const durDescanso = parseInt(document.getElementById("durDescanso").value) || 5;
+      const durRecreo = parseInt(document.getElementById("durRecreo").value) || 15;
+
+      const franjas = generarHoras(horaInicio, asignaturas.length, durClase, durDescanso, durRecreo);
+
+      const encabezado = document.createElement("tr");
+      const celdaHora = document.createElement("th");
+      celdaHora.textContent = "Hora";
+      encabezado.appendChild(celdaHora);
+
+      dias.forEach(dia => {
+        const th = document.createElement("th");
+        th.textContent = dia;
+        encabezado.appendChild(th);
+      });
+
+      tabla.appendChild(encabezado);
+
+      for (let i = 0; i < franjas.length; i++) {
+        const fila = document.createElement("tr");
+
+        const celdaHora = document.createElement("td");
+        celdaHora.textContent = franjas[i];
+        fila.appendChild(celdaHora);
+
+        for (let j = 0; j < dias.length; j++) {
+          const celda = document.createElement("td");
+          celda.textContent = asignaturas[i][j];
+          fila.appendChild(celda);
+        }
+
+        tabla.appendChild(fila);
+      }
+    }
+  </script>
+
+</body>
+</html>

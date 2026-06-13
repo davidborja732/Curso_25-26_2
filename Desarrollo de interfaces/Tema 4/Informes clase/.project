@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>MyReports</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>net.sf.jasperreports.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>net.sf.jasperreports.nature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>CapitalesAgrupacion_1.jasper</name>
+			<type>1</type>
+			<location>E:/Grado Superior/Curso_25-26_2/Desarrollo de interfaces/Tema 4/Ejercicios y Explicaciones/Primer Informe Capitales/informes/CapitalesAgrupacion.jasper</location>
+		</link>
+		<link>
+			<name>CapitalesAgrupacion_1.jrxml</name>
+			<type>1</type>
+			<location>E:/Grado Superior/Curso_25-26_2/Desarrollo de interfaces/Tema 4/Ejercicios y Explicaciones/Primer Informe Capitales/informes/CapitalesAgrupacion.jrxml</location>
+		</link>
+		<link>
+			<name>CapitalesSinOrden_1.jrxml</name>
+			<type>1</type>
+			<location>E:/Grado Superior/Curso_25-26_2/Desarrollo de interfaces/Tema 4/Ejercicios y Explicaciones/Primer Informe Capitales/informes/CapitalesSinOrden.jrxml</location>
+		</link>
+		<link>
+			<name>InfromeEmpleadosNoGrupo_1.jrxml</name>
+			<type>1</type>
+			<location>C:/Users/dam2/Desktop/Tema 4/Primer Informe Empleados/Informe Empleados/informes/InfromeEmpleadosNoGrupo.jrxml</location>
+		</link>
+		<link>
+			<name>InfromeEmpleadosNoGrupo_2.jrxml</name>
+			<type>1</type>
+			<location>C:/Users/dam2/Desktop/Tema 4/Primer Informe Empleados/Informe Empleados/informes/InfromeEmpleadosNoGrupo.jrxml</location>
+		</link>
+		<link>
+			<name>InfromeEmpleadosNoGrupo_3.jasper</name>
+			<type>1</type>
+			<location>E:/Grado Superior/Curso_25-26_2/Desarrollo de interfaces/Tema 4/Ejercicios y Explicaciones/Primer Informe Empleados/Informe Empleados/informes/InfromeEmpleadosNoGrupo.jasper</location>
+		</link>
+		<link>
+			<name>InfromeEmpleadosNoGrupo_3.jrxml</name>
+			<type>1</type>
+			<location>E:/Grado Superior/Curso_25-26_2/Desarrollo de interfaces/Tema 4/Ejercicios y Explicaciones/Primer Informe Empleados/Informe Empleados/informes/InfromeEmpleadosNoGrupo.jrxml</location>
+		</link>
+		<link>
+			<name>informeEmpleados_1.jasper</name>
+			<type>1</type>
+			<location>C:/Users/dam2/Desktop/Tema 4/Primer Informe Empleados/Informe Empleados/informes/informeEmpleados.jasper</location>
+		</link>
+		<link>
+			<name>informeEmpleados_1.jrxml</name>
+			<type>1</type>
+			<location>C:/Users/dam2/Desktop/Tema 4/Primer Informe Empleados/Informe Empleados/informes/informeEmpleados.jrxml</location>
+		</link>
+		<link>
+			<name>informeEmpleados_2.jasper</name>
+			<type>1</type>
+			<location>C:/Users/dam2/Desktop/Tema 4/Primer Informe Empleados/Informe Empleados/informes/informeEmpleados.jasper</location>
+		</link>
+		<link>
+			<name>informeEmpleados_2.jrxml</name>
+			<type>1</type>
+			<location>C:/Users/dam2/Desktop/Tema 4/Primer Informe Empleados/Informe Empleados/informes/informeEmpleados.jrxml</location>
+		</link>
+	</linkedResources>
+</projectDescription>

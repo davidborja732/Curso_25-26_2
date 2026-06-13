@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--Realiza un formulario donde se pueda introducir y enviar un DNI con letra. El formulario
+deberá validar si la letra es correcta al:
+Ejer 1-a) Perder el foco del campo de texto donde se introduce el DNI.
+Ejer 1-b) Enviar el formulario, cancelando el envío si el formato no es correcto.-->
+
+<html>
+    <head>
+        <script>
+            // Función que calcula la letra correcta del DNI según el número
+            // Parámetro: numeroDni - el número del DNI (sin letra)
+            // Retorna: la letra correspondiente según el algoritmo oficial
+            function calcularLetra(numeroDni){
+                // Array con las 23 letras válidas del DNI en orden
+                // La posición de cada letra corresponde al resto de dividir el número entre 23
+                var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+                
+                // Calcular el resto de dividir el número del DNI entre 23
+                // Ese resto es el índice de la letra correcta en el array
+                return letras[numeroDni % 23];
+            }
+
+
+            // Función que valida el formato y la letra del DNI
+            // Retorna: true si el DNI es válido, false en caso contrario
+            function comprobar(){
+                // Obtener el elemento input de texto con id "miTexto"
+                var t = document.getElementById("miTexto");
+                
+                // Obtener el valor del input y convertirlo a mayúsculas
+                var texto = t.value.toUpperCase();
+                
+                // Crear una expresión regular para validar el formato del DNI
+                // ^\d{8}[A-Z]$ significa: inicio, 8 dígitos, 1 letra mayúscula, fin
+                // "i" hace que no distinga entre mayúsculas y minúsculas
+                var exp = new RegExp(/^\d{8}[A-Z]$/, "i");
+
+
+                // Comprobar si el texto NO cumple con el formato esperado
+                if(!(exp.test(texto))){
+                    console.log("formato incorrecto");
+                    // Retornar false para cancelar el envío del formulario
+                    return false;
+                }
+                else{
+                    console.log("Formato correcto");
+                    
+                    // Actualizar el valor del input con el texto en mayúsculas
+                    t.value = texto;
+                    
+                    // Extraer los primeros 8 caracteres (el número del DNI)
+                    var dni = texto.substring(0, 8);
+                    
+                    // Extraer el carácter en la posición 8 (la letra del DNI)
+                    var letra = texto[8];
+                
+               
+                    // Comprobar si la letra introducida NO coincide con la calculada
+                    if(letra != calcularLetra(dni)){
+                        console.log("Letra no coincide con DNI");
+                        // Retornar false para cancelar el envío del formulario
+                        return false;
+                    }
+                    else{
+                        console.log("letra correcta");
+                        // El DNI es correcto, permitir el envío del formulario
+                        return true;
+                    }
+                }
+            }
+
+
+            // Evento que se ejecuta cuando se ha cargado completamente la página
+            window.onload = function(){
+                console.log("inicio");
+                
+                // Obtener el elemento formulario con id "miForm"
+                var f = document.getElementById("miForm");
+                
+                // Obtener el elemento input con id "miTexto"
+                var t = document.getElementById("miTexto");
+                
+                // Asignar la función comprobar al evento onsubmit del formulario
+                // Se ejecutará cuando se intente enviar el formulario
+                f.onsubmit = comprobar;
+                
+                // (Comentado) Asignar la función comprobar al evento onblur del input
+                // Se ejecutaría cuando el campo de texto pierda el foco
+                // t.onblur = comprobar;
+            }
+        </script>
+    </head>
+    <body>
+        
+        <!-- Formulario que se enviará a Google si la validación es correcta -->
+        <form id="miForm" action="http://www.google.es/">
+            <!-- Etiqueta que indica qué debe introducir el usuario -->
+            <p id="Parrafo">NIF (dni+letra)</p>
+            
+            <!-- Campo de texto donde se introduce el DNI -->
+            <!-- Tiene un valor por defecto "12345678Z" para pruebas -->
+            <input type="text" id="miTexto" value="12345678Z"/>
+            
+            <!-- Botón para enviar el formulario -->
+            <input type="submit" />
+        </form>
+    </body>
+</html>

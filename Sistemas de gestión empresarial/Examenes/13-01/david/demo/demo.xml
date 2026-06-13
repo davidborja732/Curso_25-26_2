@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+          <record id="socio_1" model="david.socios">
+            <field name="nombre">Luisa</field>
+            <field name="apellidos">perez</field>
+            <field name="dni">1</field>
+          </record>
+
+          <record id="socio_2" model="david.socios">
+            <field name="nombre">Luis</field>
+            <field name="apellidos">lopez</field>
+            <field name="dni">2</field>
+          </record>
+
+          <record id="libro_1" model="david.libros">
+            <field name="titulo">añadidido1</field>
+            <field name="autor">autor1</field>
+            <field name="isbn">isbn1</field>
+            <field name="paginas">100</field>
+            <field name="lanzamiento">2007</field>
+          </record>
+
+          <record id="libro_2" model="david.libros">
+            <field name="titulo">añadidido2</field>
+            <field name="autor">autor2</field>
+            <field name="isbn">isbn2</field>
+            <field name="paginas">130</field>
+            <field name="lanzamiento">2009</field>
+          </record>
+
+    </data>
+</odoo>

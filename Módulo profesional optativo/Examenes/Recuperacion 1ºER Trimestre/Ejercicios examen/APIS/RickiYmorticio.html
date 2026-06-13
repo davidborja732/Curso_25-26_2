@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        fetch('https://rickandmortyapi.com/api/character')//Obtengo los personajes desde la API
+        .then(response => {//Proceso la respuesta
+            if (!response.ok) {//Si la respuesta no es correcta
+                throw new Error('Peticion fallida');//Lanzo un error
+            }
+            return response.json();//Devuelvo la respuesta en formato JSON
+        }).then(data=>{//Proceso los datos que he obtenido de la API
+            const personajes=data.results;//Obtengo el array de personajes 
+            const contenedor=document.getElementById('characters');//Obtengo el contenedor donde voy a mostrar los personajes
+            personajes.forEach(personajetarjeta => {
+                const tarjeta=document.createElement('div');//Creo un div para cada personaje
+                tarjeta.classList.add('card');//Le añado la clase card 
+                tarjeta.textContent=personajetarjeta.name;//Le añado el nombre del personaje
+                tarjeta.addEventListener('click', ()=> mostrarDetalles(personajetarjeta));//Cuando haga click en la tarjeta
+                contenedor.appendChild(tarjeta);//Añado la tarjeta al contenedor
+            });
+        })
+        /*
+        • Estado 
+        • Especie 
+        • Género 
+        • Origen 
+        */
+        function mostrarDetalles(personajeelegido){
+            const details = document.getElementById("details");
+            details.innerHTML = ""; // Limpiar contenido previo
+
+            const title = document.createElement("h2");
+            title.textContent = personajeelegido.name;
+            details.appendChild(title);//Añado el nombre del personaje como título
+
+            const p1 = document.createElement("p");//Creo un párrafo para el estado
+            p1.innerHTML = "<status>Estado:</status> " + personajeelegido.status;//Añado el estado del personaje
+            details.appendChild(p1);
+
+            const p2 = document.createElement("p");//Creo un párrafo para la especie
+            p2.innerHTML = "<species>Especie:</species> " + personajeelegido.species;//Añado la especie del personaje
+            details.appendChild(p2);
+
+            const p3 = document.createElement("p");//Creo un párrafo para el genero
+            p3.innerHTML = "<gender>Genero</gender> " + personajeelegido.gender;//Añado el genero del personaje
+            details.appendChild(p3);
+
+            const p4 = document.createElement("p");//Creo un párrafo para el origen
+            p4.innerHTML = "<origin>Origen</origin> " + personajeelegido.origin.name;//Añado el origen del personaje
+            details.appendChild(p4);
+        }
+    </script>
+</head>
+<body>
+    <h1>Personajes de Rick and Morty</h1>
+    <div id="characters"></div>
+    <div id="details"></div>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horario 2º DAM</title>
+    <style>
+        /* Estilo para la tabla - colapsar bordes */
+        table {
+            border-collapse: collapse;
+            margin: 20px;
+        }
+        
+        /* Estilo para celdas de la tabla */
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        /* Estilo para las cabeceras de la tabla */
+        th {
+            background-color: black;
+            color: white;
+        }
+        
+        /* Clase para resaltar la asignatura SGE en rojo */
+        .sge {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Horario 2º DAM</h2>
+    
+    <!-- Input tipo time para que el usuario introduzca la hora de inicio -->
+    <label>Hora de inicio:</label>
+    <input type="time" id="horaInicio" value="15:45">
+    <button onclick="generarHorario()">Generar</button>
+    
+    <!-- Contenedor donde se mostrará el horario generado -->
+    <div id="horario"></div>
+
+    <script>
+        // Array bidimensional que guarda las asignaturas
+        // Cada fila representa un periodo de clase
+        // Cada columna representa un día (Lunes, Martes, Miércoles, Jueves, Viernes)
+        let horarios = [
+            ["IPPE", "IPPE", "IPPE", "AD", "SGE"],
+            ["DI", "SGE", "AD", "AD", "SGE"],
+            ["DI", "SGE", "AD", "AD", "SASP"],
+            ["RECREO", "RECREO", "RECREO", "RECREO", "RECREO"],
+            ["DWC", "PMDM", "PMDM", "PROY", "DI"],
+            ["DWC", "PMDM", "PMDM", "PSP", "DI"],
+            ["DWC", "PMDM", "PMDM", "PSP", "DI"]
+        ];
+
+        // Función que genera el horario calculando las horas
+        function generarHorario() {
+            // Obtener el valor del input tipo time
+            const horaInput = document.getElementById('horaInicio').value;
+            
+            // Separar horas y minutos y convertirlos a números
+            const [hora, minuto] = horaInput.split(':').map(Number);
+            
+            // Convertir la hora inicial a minutos totales para facilitar cálculos
+            let minutosTotales = hora * 60 + minuto;
+            
+            // Array para guardar las franjas horarias calculadas
+            let horas = [];
+            
+            // Calcular las 7 franjas horarias (6 clases + 1 recreo)
+            for (let i = 0; i < 7; i++) {
+                // Hora de inicio de este periodo
+                let inicio = minutosTotales;
+                
+                // Calcular hora de fin según si es recreo (30 min) o clase (55 min)
+                let fin = minutosTotales + (i === 3 ? 30 : 55);
+                
+                // Convertir minutos totales a formato hora:minuto
+                let hIni = Math.floor(inicio / 60);      // Obtener las horas
+                let mIni = inicio % 60;                   // Obtener los minutos
+                let hFin = Math.floor(fin / 60);          // Obtener las horas de fin
+                let mFin = fin % 60;                      // Obtener los minutos de fin
+                
+                // Formatear la hora con formato HH:MM-HH:MM
+                // padStart añade un 0 a la izquierda si es necesario
+                horas.push(`${String(hIni).padStart(2, '0')}:${String(mIni).padStart(2, '0')}-${String(hFin).padStart(2, '0')}:${String(mFin).padStart(2, '0')}`);
+                
+                // Actualizar minutos totales para la siguiente iteración
+                minutosTotales = fin;
+            }
+            
+            // Generar la tabla HTML
+            // Crear la cabecera con los días de la semana
+            let tabla = '<table><tr><th></th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th></tr>';
+            
+            // Recorrer las filas del array horarios
+            for (let i = 0; i < horarios.length; i++) {
+                tabla += '<tr>';
+                
+                // Primera columna: franja horaria calculada
+                tabla += '<td><b>' + horas[i] + '</b></td>';
+                
+                // Recorrer las columnas (días de la semana)
+                for (let j = 0; j < horarios[i].length; j++) {
+                    let asignatura = horarios[i][j];
+                    
+                    // Si la asignatura es SGE, aplicar la clase CSS para color rojo
+                    if (asignatura === 'SGE') {
+                        tabla += '<td class="sge">' + asignatura + '</td>';
+                    } else {
+                        // Si no es SGE, celda normal
+                        tabla += '<td>' + asignatura + '</td>';
+                    }
+                }
+                
+                tabla += '</tr>';
+            }
+            
+            // Cerrar la tabla
+            tabla += '</table>';
+            
+            // Insertar la tabla generada en el div con id "horario"
+            document.getElementById('horario').innerHTML = tabla;
+        }
+        
+        // Ejecutar la función generarHorario cuando se cargue la página
+        window.onload = generarHorario;
+    </script>
+</body>
+</html>

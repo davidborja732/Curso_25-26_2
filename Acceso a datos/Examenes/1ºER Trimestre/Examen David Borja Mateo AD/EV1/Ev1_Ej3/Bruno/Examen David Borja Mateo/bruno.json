@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Examen David Borja Mateo",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

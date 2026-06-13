@@ -1,0 +1,37 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="school.teacher_list">
+      <field name="name">Profesores</field>
+      <field name="model">hr.employee</field>
+      <field name="inherit_id" ref="hr.view_employee_tree"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='activity_ids']" position="attributes">
+          <attribute name='invisible'>1</attribute>
+          <attribute name='nolabel'>1</attribute>
+        </xpath>
+
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="school.teacher_form">
+      <field name="name">Formulario profesores </field>
+      <field name="model">hr.employee</field>
+      <field name="inherit_id" ref="hr.view_employee_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='job_id']" position="attributes">
+          <attribute name='invisible'>1</attribute>
+          <attribute name='nolabel'>1</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='department_id']" position="after">
+          <field name="subject_ids" string="Asignaturas que imparte"/>
+        </xpath>
+
+      </field>
+    </record>
+
+
+  </data>
+</odoo>

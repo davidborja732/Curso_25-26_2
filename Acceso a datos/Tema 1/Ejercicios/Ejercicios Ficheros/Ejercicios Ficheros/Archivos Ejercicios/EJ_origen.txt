@@ -1,0 +1,3 @@
+Contar el número de líneas en un archivo: Escribir un programa en Java que lea un
+archivo de texto y cuente el número de líneas que contiene. El programa debe imprimir el
+número de líneas en la consola.

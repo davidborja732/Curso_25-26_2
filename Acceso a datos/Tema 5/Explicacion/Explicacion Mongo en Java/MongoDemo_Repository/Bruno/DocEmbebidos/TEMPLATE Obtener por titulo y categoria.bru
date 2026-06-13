@@ -1,0 +1,21 @@
+meta {
+  name: TEMPLATE Obtener por titulo y categoria
+  type: http
+  seq: 19
+}
+
+get {
+  url: http://127.0.0.1:8080/api/book/template/search/titucat?titu=de&cat=Ficción
+  body: none
+  auth: inherit
+}
+
+params:query {
+  titu: de
+  cat: Ficción
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

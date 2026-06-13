@@ -1,0 +1,22 @@
+.Button {
+    -fx-border-color: white;
+    -fx-border-width: 3px;
+    -fx-background-radius: 2px;
+    -fx-border-radius: 1px;
+    -fx-background-color: green;
+    -fx-font-size:20;
+    -fx-font-style=oblique;
+    -fx-text-fill: yellow;
+}
+.Pane {
+    -fx-background-color: purple;
+    -fx-text-fill: white;
+}
+.Label {
+    -fx-text-fill: white;
+    -fx-font-weight: lighter;
+    -fx-font-size: 26;
+}
+.button:hover {
+    -fx-background-color: orange;
+}

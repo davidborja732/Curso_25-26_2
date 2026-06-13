@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio02</title>
+</head>
+<!--El cálculo de la letra del Documento Nacional de Identidad (DNI) es un proceso matemático
+sencillo que se basa en obtener el resto de la división entera del número de DNI y el número 23. 
+Si el resto es 0 será la letra ‘T’, si es 1 la letra ‘R’, etc. Se adjunta el array con las letras 
+correspondientes a los restos.
+var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E',
+'T'];
+Pídele un DNI al usuario e indícale si el DNI introducido es válido o no.-->
+<body>
+    <h1>Ejercicio02</h1>
+    <script>
+        
+        var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+            
+        //Pido el dni al usuario
+        var dni = prompt("Introduce tu numero de DNI compleco con letra:").toUpperCase();
+
+        //Valido que no sea null o este vacio
+        if(dni === null || dni === "" || dni.trim() === ""){
+
+            alert("No has introducido ningun dni");
+
+        }else{
+
+            //Verifico que tenga añ menos 2 caracteres numero + letra
+            if(dni.length < 2){
+
+                alert("DNI demasiado corto");
+
+            }else{
+
+                //separo el numero y la letra
+                var num = parseInt(dni.substring(0, dni.length - 1));
+                var letra = dni.charAt(dni.length -1);
+
+                //verifico que el numero sea valido
+                if(isNaN(num)){
+
+                    alert("El formato del DNI no es valido");
+
+                }else{
+
+                    //Calcular el resto de dividir el num entre 23
+                    var resto = num % 23;
+
+                    //Obtengo la letra correcta del array
+                    var letCorrecta = letras[resto];
+
+                    //valido
+                    if(letra === letCorrecta){
+                        alert("dni valido");
+                    }else{
+                        alert("Dni invalido. La letra correcta deberia ser: " + letCorrecta);
+                    }
+
+                }
+
+            }
+            
+        }
+
+    </script>
+    
+
+</body>
+</html>

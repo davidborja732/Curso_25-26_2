@@ -1,0 +1,111 @@
+<odoo>
+    <data>
+        <!-- VISTA TREE PARA VENTA -->
+        <record id="view_concesionario_venta_tree" model="ir.ui.view">
+            <field name="name">concesionario.venta.tree</field>
+            <field name="model">concesionario.venta</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="cliente_id"/>
+                    <field name="empleado_id"/>
+                    <field name="fecha_venta"/>
+                    <field name="total_venta" sum="Total"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- VISTA FORM COMPLEJA PARA VENTA (Punto 11) -->
+        <record id="view_concesionario_venta_form" model="ir.ui.view">
+            <field name="name">concesionario.venta.form</field>
+            <field name="model">concesionario.venta</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <!-- Botones (Punto 11.c) y Formulario dinámico por estados (Punto 11.a) -->
+                        <button name="action_confirmar" type="object" string="Confirmar Venta" class="oe_highlight" states="borrador"/>
+                        <button name="action_cancelar" type="object" string="Cancelar Venta" states="borrador,confirmado"/>
+                        <!-- Statusbar (Punto 11.b) -->
+                        <field name="state" widget="statusbar" statusbar_visible="borrador,confirmado,cancelado"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <!-- Dominio específico (Punto 11.e) ya aplicado en el modelo, y campo readonly según estado -->
+                                <field name="cliente_id" attrs="{'readonly': [('state', '!=', 'borrador')]}"/>
+                                <field name="empleado_id" attrs="{'readonly': [('state', '!=', 'borrador')]}"/>
+                            </group>
+                            <group>
+                                <field name="fecha_venta" attrs="{'readonly': [('state', '!=', 'borrador')]}"/>
+                                <field name="total_venta"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Vehículos (Líneas)">
+                                <!-- Valores por defecto en One2many pasando context (Punto 11.d) -->
+                                <field name="lineas_ids" context="{'default_venta_id': active_id}" attrs="{'readonly': [('state', '!=', 'borrador')]}">
+                                    <tree editable="bottom">
+                                        <!-- El Many2one vehiculo_id ya tiene el domain en el modelo -->
+                                        <field name="vehiculo_id"/>
+                                        <field name="precio_linea"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- VISTA CALENDAR PARA VENTA (Punto 14) -->
+        <record id="view_concesionario_venta_calendar" model="ir.ui.view">
+            <field name="name">concesionario.venta.calendar</field>
+            <field name="model">concesionario.venta</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendario de Ventas" date_start="fecha_venta" color="empleado_id">
+                    <field name="name"/>
+                    <field name="cliente_id"/>
+                    <field name="total_venta"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- VISTA GRAPH PARA VENTA (Punto 14) -->
+        <record id="view_concesionario_venta_graph" model="ir.ui.view">
+            <field name="name">concesionario.venta.graph</field>
+            <field name="model">concesionario.venta</field>
+            <field name="arch" type="xml">
+                <graph string="Ventas por Empleado">
+                    <field name="empleado_id"/>
+                    <field name="total_venta" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- VISTA PIVOT PARA VENTA (No vista en clase - Punto 15) -->
+        <record id="view_concesionario_venta_pivot" model="ir.ui.view">
+            <field name="name">concesionario.venta.pivot</field>
+            <field name="model">concesionario.venta</field>
+            <field name="arch" type="xml">
+                <pivot string="Análisis de Ventas">
+                    <field name="empleado_id" type="row"/>
+                    <field name="fecha_venta" type="col" interval="month"/>
+                    <field name="total_venta" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <!-- ACTION VENTA -->
+        <record id="action_concesionario_venta" model="ir.actions.act_window">
+            <field name="name">Ventas</field>
+            <field name="res_model">concesionario.venta</field>
+            <field name="view_mode">tree,form,calendar,graph,pivot</field>
+        </record>
+    </data>
+</odoo>

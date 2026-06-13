@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio09</title>
+</head>
+
+<!--Crear un script que solicite una frase y convierta a mayúsculas la primera letra de cada
+palabra y a minúsculas el resto. -->
+
+<body>
+    <h1>Ejercicio 9</h1>
+
+    <script>
+
+        function convertirATitulo(frase){
+            return frase
+                .toLowerCase()
+                .split(" ")
+                .map(palabra => palabra.charAt(0).toUpperCase()+palabra.slice(1))
+                .join(" ");
+        }
+
+        //Solicito la frase al suario
+        const frse = prompt("Introduce una frase: ");
+        if(frse !== null && frse.trim() !==  ""){
+            const res = convertirATitulo(frse);
+            alert(`Resultado: ${res}`);
+            console.log(res);
+            document.writeln(res);
+        }else{
+            alert("No se ha introducido ninguna frase")
+        }
+
+    </script>
+
+</body>
+</html>

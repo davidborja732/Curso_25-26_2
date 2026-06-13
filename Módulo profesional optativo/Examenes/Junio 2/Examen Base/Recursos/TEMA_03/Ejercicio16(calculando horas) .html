@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio16</title>
+</head>
+<!--Usa un array bidimensional para guardar los datos que vas a mostrar. Sin horas ni días.
+ Usa objetos Date para mostrar las fechas.
+ Las horas de la primera columna, se deben de calcular.-->
+<!--CALCULANDO LAS HORAS-->
+<body>
+    <h1>Ejercicio 16</h1>
+
+    <script>
+
+        // Array bidimensional con los datos del horario
+        // Sin horas ni días - solo las asignaturas como pide el ejercicio
+        let horario = [
+            ["IPPE", "PROY", "IPPE", "AD", "SGE"],
+            ["DI", "SGE", "AD", "AD", "SGE"],
+            ["DI", "SGE", "AD", "AD", "SASP"],
+            ["RECREO", "RECREO", "RECREO", "RECREO", "RECREO"],
+            ["DWC", "PMDM", "PMDM", "PROY", "DI"],
+            ["DWC", "PMDM", "PMDM", "PSP", "DI"],
+            ["DWC", "PMDM", "PMDM", "PSP", "DI"]
+        ];
+
+        //Funcio que calcula las franjas horarias dinamicamente usando Date
+        function calcularHOras(){
+            //creo un array para almacenar las franjas horarias
+            let frnajas = [];
+
+            //hora de inicil de la primera clase
+            let horaIni = new Date();
+            horaIni.setHours(15);
+            horaIni.setMinutes(45);
+            horaIni.setSeconds(0);
+            horaIni.setMilliseconds(0);
+
+            //duracion de cada clase en minutos
+            let duracionClase = 50;//50 min por clase
+            //Duracion del descanso entre clases
+            let duracionDescanso = 5; //5mins entre clases
+            //Duracion del recreo
+            let duracionRecreo = 15; //15 min de recreo
+
+            //Calculo cada franja horaria
+            for (let i = 0; i < horario.length; i++) {
+                //creo una copia de la hora de inicio para la hora de fin
+                let horaFin = new Date(horaIni.getTime());
+                //Si es el recreo *posicion 3* usar la duracion del recreo
+                if(i === 3){
+                    //sumo los minutos del recreo usando setMinutes
+                    horaFin.setMinutes(horaFin.getMinutes() + duracionRecreo);
+                }else{
+                    //sumo los minutos de clase normal usando setMinutes
+                    horaFin.setMinutes(horaFin.getMinutes() + duracionClase);
+                }
+
+                //Formateo las coras como HH:MM
+                let ini = formatearHora(horaIni); //funcion de abajo
+                let fin = formatearHora(horaFin);
+
+                //Añado la franja al array
+                frnajas.push(ini + " - " + fin);
+
+                //Preparo la hora de inicio para la siguiente clase
+                //Añado el descaso ni no es el recreo
+                if (i === 3) {
+                    //DEspues del recreo, la siguiente clase empieza inmediatamente
+                    hora = new Date(horaFin.getTime());
+                }else{
+                    //DEspues de una clase normal, añadir el descanso
+                    horaIni = new Date(horaFin.getTime());
+                    horaIni.setMinutes(horaIni.getMinutes() + duracionDescanso);
+                }
+            }
+
+            return frnajas;
+        }
+
+        // Función auxiliar para formatear una hora en formato HH:MM
+        function formatearHora(fecha) {
+            // Verificar que fecha sea un objeto Date válido
+            if (!(fecha instanceof Date) || isNaN(fecha.getTime())) {
+                console.error("Error: el parámetro no es un objeto Date válido", fecha);
+                return "00:00";
+            }
+            
+            // Obtener horas y minutos del objeto Date
+            let horas = fecha.getHours();
+            let minutos = fecha.getMinutes();
+            
+            // Añadir cero a la izquierda si es necesario
+            let horasStr = String(horas).padStart(2, '0');
+            let minutosStr = String(minutos).padStart(2, '0');
+            
+            return horasStr + ":" + minutosStr;
+        }
+
+        // Función que genera la tabla HTML del horario
+        function generarHorario() {
+            // Array con los nombres de los días (para el encabezado)
+            let diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+            
+            // Array con las franjas horarias (para la primera columna)
+            // Las horas se deben calcular a partir de la primera columna
+            let horas = calcularHOras();
+            
+            // Crear el elemento <table>
+            let tabla = document.createElement("table");
+            tabla.setAttribute("border", "1");
+            tabla.setAttribute("cellpadding", "10");
+            tabla.setAttribute("cellspacing", "0");
+            
+            // ===== CREAR FILA DE ENCABEZADOS =====
+            let filaEncabezado = document.createElement("tr");
+            
+            // Primera celda vacía (esquina superior izquierda)
+            let thVacio = document.createElement("th");
+            thVacio.textContent = "";
+            filaEncabezado.appendChild(thVacio);
+            
+            // Crear celdas <th> para cada día de la semana
+            for (let i = 0; i < diasSemana.length; i++) {
+                let th = document.createElement("th"); // Crea un elemento <th> (celda de encabezado de tabla)
+                th.textContent = diasSemana[i]; // Asigna el texto del día de la semana al elemento
+                filaEncabezado.appendChild(th);// Añade el elemento <th> a la fila de encabezados
+                                               // Construye la estructura: <tr><th>Lunes</th><th>Martes</th>...</tr>
+            }
+            
+            // Añadir la fila de encabezados a la tabla
+            tabla.appendChild(filaEncabezado);
+            
+            // ===== CREAR FILAS DE DATOS =====
+            // Recorrer cada franja horaria del array bidimensional
+            for (let i = 0; i < horario.length; i++) {
+                // Crear una nueva fila <tr>
+                let fila = document.createElement("tr");
+                
+                // Primera celda: mostrar la hora (se debe calcular)
+                let tdHora = document.createElement("td");
+                tdHora.textContent = horas[i]; // Usar las horas calculadas con Date
+                tdHora.style.fontWeight = "bold";
+                tdHora.style.backgroundColor = "#f0f0f0";
+                fila.appendChild(tdHora);
+                
+                // Crear celdas <td> para cada día de la semana
+                // Bucle que recorre todos los días de la semana en la fila actual
+                // horario[i].length devuelve 5 (los 5 días: Lunes a Viernes)
+                for (let j = 0; j < horario[i].length; j++) {
+                    let td = document.createElement("td"); // Crea un elemento <td> (celda de datos de tabla)
+                    td.textContent = horario[i][j]; // Asigna la asignatura correspondiente como texto de la celda
+                                                    // horario[i][j] accede al elemento en fila i, columna j
+                                                    // Ejemplo: horario[0][0] = "IPPE" (Lunes, primera hora)
+                    td.style.textAlign = "center";// Centra el texto dentro de la celda
+                    fila.appendChild(td);// Añade la celda <td> a la fila <tr>
+                                        // Construye: <tr><td>IPPE</td><td>PROY</td><td>IPPE</td>...</tr>
+                }
+                
+                // Añadir la fila completa a la tabla
+                tabla.appendChild(fila);
+            }
+            
+            // Insertar la tabla en el body del documento
+            document.body.appendChild(tabla);
+        }
+
+        // Ejecutar la función cuando se carga la página
+        // Usa objetos Date para mostrar las fechas (requisito del ejercicio)
+        window.onload = function() {
+            // Mostrar título con fecha actual usando Date
+            let fechaActual = new Date();
+            let titulo = document.createElement("h1");
+            titulo.textContent = "Horario 2º DAM";
+            titulo.style.textAlign = "center";
+            document.body.appendChild(titulo);
+            
+            // Mostrar fecha actual
+            let parrafoFecha = document.createElement("p");
+            parrafoFecha.textContent = "Generado el: " + fechaActual.toLocaleDateString('es-ES');
+            parrafoFecha.style.textAlign = "center";
+            document.body.appendChild(parrafoFecha);
+            
+            // Generar el horario
+            generarHorario();
+        };
+
+    </script>
+
+</body>
+</html>

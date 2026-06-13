@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="org.iesch.a03_menu_principal.calculadora.MainActivityCalculadora">
+
+    <TextView
+        android:id="@+id/barraTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple"
+        android:gravity="start"
+        android:padding="12dp"
+        android:text="@string/titulo_app"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textViewBienvenidos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16sp"
+        android:paddingTop="16sp"
+        android:text="@string/bienvenida"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/textViewCalculadora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16sp"
+        android:text="@string/seccion_calculadora"
+        android:textSize="24dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="241dp"
+        app:srcCompat="@drawable/calculadoraapp" />
+
+    <TextView
+        android:id="@+id/n1enun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:text="@string/enunciado_num1" />
+
+    <EditText
+        android:id="@+id/numero1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:ems="10"
+        android:hint="@string/hint_num1"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+id/n2enun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16sp"
+        android:text="@string/enunciado_num2" />
+
+    <EditText
+        android:id="@+id/numero2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:hint="@string/hint_num2"
+        android:inputType="numberDecimal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/btnSumar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:text="@string/btn_sumar"
+            android:textSize="10dp" />
+
+        <Button
+            android:id="@+id/btnRestar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:text="@string/btn_restar"
+            android:textSize="10dp" />
+
+        <Button
+            android:id="@+id/btnMultiplicar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:text="@string/btn_multiplicar"
+            android:textSize="10dp" />
+
+        <Button
+            android:id="@+id/btnDividir"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:text="@string/btn_dividir"
+            android:textSize="10dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textoresultadoanuncio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:text="@string/resultado_texto" />
+
+    <TextView
+        android:id="@+id/textoresultadoanuncio2"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="20dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="48" />
+
+</LinearLayout>

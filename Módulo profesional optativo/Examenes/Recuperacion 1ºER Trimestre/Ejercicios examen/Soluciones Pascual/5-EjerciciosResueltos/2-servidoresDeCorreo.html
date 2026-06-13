@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+        function comprobar(){
+            // Lista de servidores
+            var servidores=["terra.es","google.com","marca.es","yahoo.es"];
+            
+            var t=document.getElementById("miTexto");
+            
+            var texto=t.value;
+            var soloServidor=texto.substring(texto.indexOf("@")+1);
+            
+            // Generamos expresion regular de cualquier cosa, @, cualquier cosa, . , cualquier cosa
+            var expresionRegular=new RegExp(".+[@].+[.].+");
+            
+            if(!expresionRegular.test(texto)){
+                alert("Formato email incorrecto");
+                return false;
+            }
+            
+            
+            // Buscamos en la lista de servidores
+            for(i=0;i<servidores.length;i++){
+                if(soloServidor==servidores[i]){
+                    // Encontrado un servidor bueno
+                    return true;
+                }
+            }
+            
+            alert("Formato correcto, pero servidor no en la lista");
+            // no esta en la lista
+            return false;
+        }
+
+
+        // Cuando se haya cargado la pagina
+        window.onload=function (){
+            
+            var f=document.getElementById("miForm");
+            f.onsubmit=comprobar;
+        }
+
+        </script>
+    </head>
+    <body>
+                
+        <form id="miForm" action="http://google.es" >
+            <p>Introduzca email</p>
+            <input type="text" id="miTexto" value="miemail@servidor.com"/>
+            <input type="submit" />
+        </form>
+        
+	</body>
+</html>

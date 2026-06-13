@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+
+    <script>
+ 
+    /* ejercicio 9 */
+
+    let  swnombre = prompt("Dime un personaje de Star Wars");
+    var sw = ["C3PO", "R2", "Vader", "luck"];
+
+    for (let index = 0; index < sw.length; index++) {
+        if (swnombre.toUpperCase()==sw[index].toString().toUpperCase()) {
+            document.write("Es un personaje de Star Wars");
+        }else{
+            document.write("No es un personaje de Star Wars");
+        break;
+        }
+            
+    }
+       
+    </script>
+</body>
+
+</html>

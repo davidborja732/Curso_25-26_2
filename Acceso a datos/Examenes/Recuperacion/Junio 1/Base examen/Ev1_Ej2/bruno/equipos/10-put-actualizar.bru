@@ -1,0 +1,26 @@
+meta {
+  name: 10 Put Actualizar Equipo
+  type: http
+  seq: 10
+}
+
+put {
+  url: {{baseUrl}}/api/equipos/{{equipoId}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "nombre": "Manchester City",
+    "ciudad": "Manchester",
+    "estadio": "Etihad Stadium",
+    "presupuesto": 700.0,
+    "fechaFundacion": "1880-05-16",
+    "entrenador": { "id": 1 }
+  }
+}

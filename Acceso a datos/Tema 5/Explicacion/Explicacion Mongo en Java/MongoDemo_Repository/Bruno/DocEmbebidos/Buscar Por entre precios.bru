@@ -1,0 +1,20 @@
+meta {
+  name: Buscar Por entre precios
+  type: http
+  seq: 10
+}
+
+get {
+  url: http://127.0.0.1:8080/api/books/search/autor?nombre=Joshua Bloch
+  body: none
+  auth: inherit
+}
+
+params:query {
+  nombre: Joshua Bloch
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

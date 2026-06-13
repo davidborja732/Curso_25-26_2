@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Posts</title>
+</head>
+<!--Requisitos:
+ Botón GET para listar los primeros 10 posts (ID, Título, Usuario ID)
+ Botón POST para crear un nuevo post (pedir título y contenido)
+ Botón PUT para actualizar el título de un post (pedir ID y nuevo título)
+ Botón DELETE para borrar un post por ID
+ Después de cada operación, actualizar la tabla-->
+<body>
+  <h1>Gestión de Posts del Blog</h1>
+  
+  <button onclick="listarPosts()">GET - Listar Posts</button>
+  <button onclick="crearPost()">POST - Crear Post</button>
+  <button onclick="actualizarPost()">PUT - Actualizar Título</button>
+  <button onclick="borrarPost()">DELETE - Borrar Post</button>
+  
+  <hr>
+  <div id="resultado"></div>
+
+  <script>
+    const URL = "https://jsonplaceholder.typicode.com/posts";
+    let posts = [];
+
+    // GET - Listar posts
+    function listarPosts() {
+      fetch(URL + "?_limit=10")
+        .then(res => res.json())
+        .then(data => {
+          posts = data;
+          mostrarTabla();
+        })
+        .catch(err => alert("Error: " + err));
+    }
+
+    // Mostrar tabla
+    function mostrarTabla() {
+      let html = "<table border='1'><tr><th>ID</th><th>Usuario ID</th><th>Título</th></tr>";
+      
+      posts.forEach(post => {
+        html += `<tr>
+          <td>${post.id}</td>
+          <td>${post.userId}</td>
+          <td>${post.title}</td>
+        </tr>`;
+      });
+      
+      html += "</table>";
+      document.getElementById("resultado").innerHTML = html;
+    }
+
+    // POST - Crear post
+    function crearPost() {
+      const titulo = prompt("Título del post:");
+      const contenido = prompt("Contenido del post:");
+      
+      if (!titulo || !contenido) {
+        alert("Debes completar todos los campos");
+        return;
+      }
+
+      const nuevoPost = {
+        userId: 1,
+        title: titulo,
+        body: contenido
+      };
+
+      fetch(URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nuevoPost)
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("Post creado con ID: " + data.id);
+        posts.unshift(data);
+        mostrarTabla();
+      })
+      .catch(err => alert("Error: " + err));
+    }
+
+    // PUT - Actualizar título
+    function actualizarPost() {
+      const id = prompt("ID del post a actualizar:");
+      const nuevoTitulo = prompt("Nuevo título:");
+      
+      if (!id || !nuevoTitulo) {
+        alert("Debes completar todos los campos");
+        return;
+      }
+
+      fetch(URL + "/" + id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: nuevoTitulo })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("Título actualizado correctamente");
+        const index = posts.findIndex(p => p.id == id);
+        if (index !== -1) {
+          posts[index].title = nuevoTitulo;
+          mostrarTabla();
+        }
+      })
+      .catch(err => alert("Error: " + err));
+    }
+
+    // DELETE - Borrar post
+    function borrarPost() {
+      const id = prompt("ID del post a borrar:");
+      
+      if (!id) {
+        alert("Debes introducir un ID");
+        return;
+      }
+
+      fetch(URL + "/" + id, {
+        method: 'DELETE'
+      })
+      .then(res => {
+        alert("Post borrado correctamente");
+        posts = posts.filter(p => p.id != id);
+        mostrarTabla();
+      })
+      .catch(err => alert("Error: " + err));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+meta {
+  name: 14 Get Equipos Fundados Antes de Fecha
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{baseUrl}}/api/equipos/fundacion
+  body: none
+  auth: none
+}
+
+params:query {
+  fecha: 1902-01-01
+}

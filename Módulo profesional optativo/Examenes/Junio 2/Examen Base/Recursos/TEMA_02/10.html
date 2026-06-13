@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+
+    <script>
+    
+    /* ejercicio 10 */
+        let nombre = prompt("Dime tu nombre");
+        let edad = prompt("Dime tu edad");
+        let diasemana = prompt("Día de la semana");
+        let descuento = 0;
+        let bus = 12.5;
+
+
+        if ((parseInt(edad) >= 16 && parseInt(edad) <= 26) || parseInt(edad) >= 60) {
+            descuento = 0.15;
+        } else if ((parseInt(diasemana) == 3) || (parseInt(diasemana) == 5)) {
+            descuento=descuento + 0.5;
+        } else {
+            descuento = 0;
+        }
+        let coniva = ((parseInt(bus) * descuento) * 1.21);
+        let siniva = (parseInt(bus) * descuento);
+        document.write("billete simple");
+        document.write("<br>");
+        document.write("--------------");
+        document.write("<br>");
+        document.write("Precio con iva " + coniva + "€");
+        document.write("<br>");
+        document.write("Precio sin iva " + siniva + "€");
+        document.write("<br>");
+        document.write("--------------");
+     
+    </script>
+</body>
+
+</html>

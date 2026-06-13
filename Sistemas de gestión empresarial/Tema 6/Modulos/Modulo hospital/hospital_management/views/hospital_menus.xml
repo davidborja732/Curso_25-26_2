@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem id="menu_hospital_root"
+              name="Hospital"
+              sequence="10"/>
+
+    <menuitem id="menu_hospital_patients"
+              name="Pacientes"
+              parent="menu_hospital_root"
+              sequence="10"
+              action="action_hospital_patient"/>
+
+    <menuitem id="menu_hospital_doctors"
+              name="Médicos"
+              parent="menu_hospital_root"
+              sequence="20"
+              action="action_hospital_doctor"/>
+
+    <menuitem id="menu_hospital_rooms"
+              name="Habitaciones"
+              parent="menu_hospital_root"
+              sequence="30"
+              action="action_hospital_room"/>
+
+    <menuitem id="menu_hospital_admissions"
+              name="Ingresos"
+              parent="menu_hospital_root"
+              sequence="40"
+              action="action_hospital_admission"/>
+
+    <menuitem id="menu_hospital_diagnosis"
+              name="Diagnósticos"
+              parent="menu_hospital_root"
+              sequence="50"
+              action="action_hospital_diagnosis"/>
+
+</odoo>

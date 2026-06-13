@@ -1,0 +1,33 @@
+.label {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+    -fx-text-fill:white;
+    -fx-background-color:orange;
+}
+
+.label-titulo {
+    -fx-text-fill:blue;
+    -fx-font-size: 28;
+    -fx-font-family: "Arial";
+    -fx-background-color:white;
+}
+.toggle-button {
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-background-color:blue;
+    -fx-text-fill: green;
+    -fx-background-radius: 4;
+}
+.toggle-button:hover {
+    -fx-text-fill: red;
+}
+.slider .track {
+    -fx-background-color:blue;
+}
+.slider .thumb {
+    -fx-background-color:green;
+}
+.progress-indicator {
+    -fx-accent: red;
+}

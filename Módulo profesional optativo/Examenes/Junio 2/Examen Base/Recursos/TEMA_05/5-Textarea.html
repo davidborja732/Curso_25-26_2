@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Crea un formulario con un textarea donde limites el número de caracteres a 200. Debes
+gestionarlo de tal manera, que cuando se alcance el límite, se acepten las pulsaciones
+de las teclas Suprimir, Borrado y flechas de teclado.
+• Puedes hacer un script adicional para comprobar el código de las teclas que
+debes permitir en caso de llegar al tope de caracteres.-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+    <script>
+        function maxLength(el) {    
+            if (!('maxLength' in el)) {
+                var max = el.attributes.maxLength.value;
+                el.onkeypress = function () {
+                    if (this.value.length >= max) return false;
+                };
+            }
+        }
+        maxLength(document.getElementById("text"));
+    </script>
+</head>
+<body>
+    <textarea maxlength="20" id="text">Este textarea tiene un limite de 20 carácteres</textarea>
+</body>
+</html>

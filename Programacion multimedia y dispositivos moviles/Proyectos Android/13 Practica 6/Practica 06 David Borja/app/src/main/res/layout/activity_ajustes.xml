@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:windowBackground"
+    android:padding="16dp"
+    tools:context="org.iesch.a03_menu_principal.ajustes.AjustesActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:text="@string/usuario_appAjustes"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/blue_700"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/dato_nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre:" />
+
+            <TextView
+                android:id="@+id/dato_metodo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Metodo Sesion: " />
+
+            <TextView
+                android:id="@+id/dato_modo_oscuro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modo_oscuro_desactivadoAjustes" />
+
+            <TextView
+                android:id="@+id/dato_notificaciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notificaciones_activadasAjustes" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="24dp"
+            android:orientation="vertical">
+
+            <Switch
+                android:id="@+id/interruptor_modo_oscuro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/modo_oscuroAjustes" />
+
+            <Switch
+                android:id="@+id/interruptor_notificaciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/notificacionesAjustes" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/boton_volver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#D32F2F"
+            android:text="@string/volverAjustes"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</ScrollView>

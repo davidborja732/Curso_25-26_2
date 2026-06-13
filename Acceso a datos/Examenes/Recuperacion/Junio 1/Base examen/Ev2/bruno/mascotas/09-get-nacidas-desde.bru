@@ -1,0 +1,15 @@
+meta {
+  name: 09 Get Mascotas Nacidas Desde Fecha
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/api/mascotas/nacidas
+  body: none
+  auth: none
+}
+
+params:query {
+  desde: 2019-01-01
+}

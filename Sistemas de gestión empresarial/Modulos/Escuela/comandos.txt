@@ -1,0 +1,2 @@
+ odoo scaffold school ./modules/
+ odoo -u lista_tareas -d prueba

@@ -1,0 +1,26 @@
+meta {
+  name: Añadir
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/api/estudiantes/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nombre": "Pepe",
+    "apellidos": "Lopez",
+    "email": "pepe@gmail.com",
+    "edad": 24,
+    "ciclo": "DAM"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

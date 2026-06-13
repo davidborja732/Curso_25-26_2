@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        var empz;
+        var fin;
+        function empezCont() {
+            empz = new Date();
+            document.getElementById("finalizar").disabled = false;
+        }
+        function finalizarCont() {
+            fin = new Date();
+            var dif = fin.getTime() - empz.getTime();
+            var segDif  = dif / 1000;
+            var segDifD = Math.abs(segDif);
+            document.getElementById("result").innerHTML = segDifD.toString() + "s";
+            document.getElementById("finalizar").disabled = true;
+        }
+    </script>
+    <form>
+        <br/>
+        <input type="submit" value="Empezar a Contar" onclick="empezCont(); return false;"/><br/><br/>
+        <input type="submit" value="Finalizar" id="finalizar" onclick="finalizarCont(); return false;"/><br/><br/>
+        <p id="result"/>
+    </form>
+    <script>
+        document.getElementById("finalizar").disabled = true;
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<odoo>                                                     <!-- Nodo raíz obligatorio para cargar datos en Odoo. -->
+  <data>                                                  <!-- Contenedor de registros y definiciones. -->
+
+    <!-- explicit list view definition -->                 <!-- Comentario informativo. -->
+
+    <record model="ir.ui.view" id="school.course_list">   <!-- Crea una vista en el modelo ir.ui.view con ID único. -->
+      <field name="name">cursos</field>                   <!-- Nombre interno de la vista. -->
+      <field name="model">school.course</field>           <!-- Modelo al que pertenece la vista. -->
+      <field name="arch" type="xml">                      <!-- Estructura XML de la vista. -->
+        <list>                                            <!-- Define una vista tipo lista (tree). -->
+          <field name="name"/>                            <!-- Muestra el nombre del curso. -->
+          <field name="level"/>                           <!-- Muestra el nivel del curso. -->
+          <field name="date_start"/>                      <!-- Muestra la fecha de inicio. -->
+          <field name="date_end"/>                        <!-- Muestra la fecha de fin. -->
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="school.course_calendar"> <!-- Define una vista calendario. -->
+      <field name="name">cursos</field>                     <!-- Nombre interno de la vista. -->
+      <field name="model">school.course</field>             <!-- Modelo al que pertenece la vista. -->
+      <field name="arch" type="xml">                        <!-- Estructura XML de la vista. -->
+        <!--
+          Esta vista define un calendario donde los registros del modelo
+          se muestran como eventos. El título visible será "courses".
+          El campo 'date_start' indica la fecha de inicio de cada evento
+          y 'date_end' marca su fecha de finalización, permitiendo mostrar
+          actividades de uno o varios días. El atributo 'color' usa el valor
+          del campo 'name' para asignar un color distinto a cada evento,
+          facilitando la diferenciación visual. La vista se abrirá
+          inicialmente en modo mensual.
+        -->
+        <calendar
+          string="courses"
+          date_start="date_start"
+          date_stop="date_end"
+          color="name"
+          mode="month">
+        </calendar>
+
+      </field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var alto = parseInt(prompt("Inserte alto:"));
+        var ancho = parseInt(prompt("Inserte ancho:"));
+        var borde = prompt("Inserte carácter para delimitar el borde:");
+        var relleno = prompt("Inserte carácter para delimitar el relleno:");
+
+        document.write("<pre>");
+        for (i = 0; i < alto; i++) {
+            for (j = 0; j < ancho; j++) {
+                if (i != 0 && j != 0 && i < (alto - 1) && j < (ancho - 1)) {
+                    document.write(relleno);
+                } else {
+                    document.write(borde);
+                }
+            }
+            document.write("<br>");
+        }
+        document.write("</pre>");
+    </script>
+</body>
+</html>

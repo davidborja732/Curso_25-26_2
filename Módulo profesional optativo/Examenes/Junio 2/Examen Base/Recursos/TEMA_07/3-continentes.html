@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Práctica: Select dependientes desde paises</title>
+<style>
+    /* Estilos generales de la página */
+    body { 
+        font-family: Arial; 
+        padding: 20px; 
+    }
+    /* Estilos de los elementos select (menús desplegables) */
+    select { 
+        padding: 8px; 
+        margin: 10px 0; 
+        width: 300px; 
+    }
+</style>
+</head>
+<body>
+
+
+<h2>Práctica: Select dependientes desde paises</h2>
+
+
+<label>Continente:</label>
+<!-- Select para seleccionar el continente -->
+<select id="continente">
+    <option value="">Seleccione un continente</option>
+</select>
+
+
+<label>País:</label>
+<!-- Select para seleccionar el país (inicialmente deshabilitado) -->
+<select id="pais" disabled>
+    <option value="">Seleccione un país</option>
+</select>
+
+<!-- Contenedor para mostrar el resultado final -->
+<div id="resultado"></div>
+
+
+<script>
+    // URL de la API con datos JSON de todos los países del mundo
+    const URL = "https://raw.githubusercontent.com/mledoze/countries/master/countries.json";
+
+
+    // Obtener referencias a los elementos del DOM
+    const selContinente = document.getElementById("continente");
+    const selPais = document.getElementById("pais");
+    const resultado = document.getElementById("resultado");
+
+
+    // Variables globales para almacenar datos
+    let datos = [];                // Array que contendrá todos los países del JSON
+    let continentes = {};          // Objeto que mapea continente -> array de países
+                                   // Ejemplo: { "Europe": ["Spain", "France", ...], "Asia": [...] }
+
+
+    // 1. Obtener JSON desde Internet usando fetch
+    fetch(URL)
+        .then(res => {
+            // Convertir la respuesta a formato JSON
+            return res.json();
+        })
+        .then(json => {
+            // Almacenar el array completo de países
+            datos = json;
+            
+            // Procesar los datos para organizar por continentes
+            procesarDatos();
+        })
+        .catch(err => {
+            // Capturar y mostrar errores de red o parseo
+            console.error("Error cargando JSON:", err);
+        });
+
+
+
+    // 2. Procesar JSON para organizar países por continente
+    function procesarDatos() {
+        // Recorrer cada país del array
+        datos.forEach(pais => {
+            // Obtener la región (continente) del país
+            // Si no tiene región, usar "Sin región"
+            const cont = pais.region || "Sin región";
+
+
+            // Si el continente no existe en el objeto, crear un array vacío
+            if (!continentes[cont]) continentes[cont] = [];
+
+
+            // Añadir el nombre común del país al array del continente
+            // pais.name.common contiene el nombre del país en inglés
+            continentes[cont].push(pais.name.common);
+        });
+
+
+        // Una vez procesados los datos, llenar el select de continentes
+        cargarContinentes();
+    }
+
+
+    // 3. Llenar el primer select con los continentes disponibles
+    function cargarContinentes() {
+        // Object.keys() devuelve un array con las claves del objeto continentes
+        // Es decir, los nombres de los continentes
+        Object.keys(continentes).forEach(cont => {
+            // Crear un nuevo elemento <option>
+            const opt = document.createElement("option");
+            
+            // Establecer el valor del option
+            opt.value = cont;
+            
+            // Establecer el texto visible del option
+            opt.textContent = cont;
+            
+            // Añadir el option al select de continentes
+            selContinente.appendChild(opt);
+        });
+    }
+
+
+    // 4. Evento que se ejecuta cuando cambia la selección del continente
+    selContinente.addEventListener("change", () => {
+        // Limpiar el select de países, dejando solo la opción por defecto
+        selPais.innerHTML = `<option value="">Seleccione un país</option>`;
+        
+        // Deshabilitar el select de países mientras se carga
+        selPais.disabled = true;
+
+
+        // Obtener el continente seleccionado
+        const cont = selContinente.value;
+        
+        // Si no hay continente seleccionado, salir de la función
+        if (!cont) return;
+
+
+        // Obtener el array de países del continente seleccionado y ordenarlo alfabéticamente
+        const paises = continentes[cont].sort();
+
+
+        // Recorrer cada país del continente
+        paises.forEach(nombre => {
+            // Crear un nuevo elemento <option> para cada país
+            const opt = document.createElement("option");
+            
+            // Establecer el valor del option
+            opt.value = nombre;
+            
+            // Establecer el texto visible del option
+            opt.textContent = nombre;
+            
+            // Añadir el option al select de países
+            selPais.appendChild(opt);
+        });
+
+
+        // Habilitar el select de países para que el usuario pueda seleccionar
+        selPais.disabled = false;
+    });
+
+
+    // 5. Mostrar el resultado final cuando se selecciona un país
+    selPais.addEventListener("change", () => {
+        // Verificar si hay un país seleccionado (value no está vacío)
+        if (selPais.value) {
+            // Mostrar mensaje con el país seleccionado
+            resultado.textContent = `Has seleccionado: ${selPais.value}`;
+        }
+    });
+</script>
+
+
+</body>
+</html>

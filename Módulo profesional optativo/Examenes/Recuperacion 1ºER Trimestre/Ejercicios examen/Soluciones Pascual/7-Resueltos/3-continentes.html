@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Práctica: Select dependientes desde paises</title>
+<style>
+    body { font-family: Arial; padding: 20px; }
+    select { padding: 8px; margin: 10px 0; width: 300px; }
+</style>
+</head>
+<body>
+
+<h2>Práctica: Select dependientes desde paises</h2>
+
+<label>Continente:</label>
+<select id="continente">
+    <option value="">Seleccione un continente</option>
+</select>
+
+<label>País:</label>
+<select id="pais" disabled>
+    <option value="">Seleccione un país</option>
+</select>
+<div id="resultado"></div>
+
+<script>
+    const URL = "https://raw.githubusercontent.com/mledoze/countries/master/countries.json";
+
+    const selContinente = document.getElementById("continente");
+    const selPais = document.getElementById("pais");
+      const resultado = document.getElementById("resultado");
+
+    let datos = [];                // JSON completo
+    let continentes = {};          // Mapa continente -> países
+
+    // 1. Obtener JSON desde Internet
+    fetch(URL)
+        .then(res => res.json())
+        .then(json => {
+            datos = json;
+            procesarDatos();
+        })
+        .catch(err => console.error("Error cargando JSON:", err));
+
+
+    // 2. Procesar JSON para obtener continentes únicos
+    function procesarDatos() {
+        datos.forEach(pais => {
+            const cont = pais.region || "Sin región";
+
+            if (!continentes[cont]) continentes[cont] = [];
+
+            continentes[cont].push(pais.name.common);
+        });
+
+        cargarContinentes();
+    }
+
+    // 3. Llenar el primer select
+    function cargarContinentes() {
+        Object.keys(continentes).forEach(cont => {
+            const opt = document.createElement("option");
+            opt.value = cont;
+            opt.textContent = cont;
+            selContinente.appendChild(opt);
+        });
+    }
+
+    // 4. Cuando cambia el continente, llenar países
+    selContinente.addEventListener("change", () => {
+        selPais.innerHTML = `<option value="">Seleccione un país</option>`;
+        selPais.disabled = true;
+
+        const cont = selContinente.value;
+        if (!cont) return;
+
+        const paises = continentes[cont].sort();
+
+        paises.forEach(nombre => {
+            const opt = document.createElement("option");
+            opt.value = nombre;
+            opt.textContent = nombre;
+            selPais.appendChild(opt);
+        });
+
+        selPais.disabled = false;
+    });
+
+    // Mostrar resultado final
+    selPais.addEventListener("change", () => {
+    if (selPais.value) {
+      resultado.textContent =
+        `Has seleccionado: ${selPais.value}`;
+    }
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

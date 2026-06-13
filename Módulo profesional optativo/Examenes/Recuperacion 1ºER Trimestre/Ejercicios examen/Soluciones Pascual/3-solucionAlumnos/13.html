@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function formatearFecha(fecha) {
+            var nomMeses = ["enero", "febrero", "marzo", "abril", "mayo", "junio",
+            "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+            ];
+            var nomDia = ["domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"]
+            document.getElementById("result").innerHTML = nomDia[fecha.getDay()] + ", " + fecha.getDate() + " de " + nomMeses[fecha.getMonth()] + " de " + fecha.getFullYear();
+        }
+        function obtenerFecha() {
+            var dia = document.getElementById("dia").value;
+            var mes = document.getElementById("mes").value;
+            mes -= 1;
+            var anyo = document.getElementById("anyo").value;
+            var fecha = new Date(anyo,mes,dia);
+            formatearFecha(fecha);
+
+        }
+    </script>
+    <form>
+        <br/>
+        <p>Inserte la fecha: </p>
+        Dia: <input type="text" id="dia" size="1"/> Mes: <input type="text" id="mes" size="1"/> Año: <input type="text" id="anyo" size="2"/><br><br>
+        <input type="submit" value="Enviar" onclick="obtenerFecha(); return false;"/><br><br>
+        <p id="result"/>
+    </form>
+</body>
+</html>

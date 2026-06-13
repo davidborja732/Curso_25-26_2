@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio5.4</title>
+    <script>
+        function actualizar(){
+            var s1=document.getElementById("s1");
+            var post=document.getElementById("post");
+            // Obtenemos el valor del seleccionado
+            var ind=s1.selectedIndex;
+            var val=s1.options[ind].value;
+
+            if(val=="1"){
+                // Cambiamos HTML de s2
+                s2.innerHTML="<option>Ninguno seleccionado</option><option>Huesca capital</option><option>Jaca</option><option>Barbastro</option>";
+                
+            }
+            else if(val=="2"){
+                // Cambiamos HTML de s2
+                s2.innerHTML="<option>Ninguno seleccionado</option><option>Zaragoza capital</option><option>Calatayud</option><option>Ejea de los caballeros</option>";
+                
+            }
+            else if(val=="3"){
+                // Cambiamos HTML de s2
+                s2.innerHTML="<option>Ninguno seleccionado</option><option>Teruel capital</option><option selected='selected'>Alcañiz</option><option>Calamocha</option>";
+                
+            }
+        }
+
+        function comprobar(){
+            var s1=document.getElementById("s1");
+            var s2=document.getElementById("s2");
+            var p=document.getElementById("parrafo");
+                if(s1.selectedIndex=="0"){
+                    p.textContent ="Seleccione una provincia"
+                    return false;
+                }
+                else{
+                    if(s2.selectedIndex=="0"){
+                        p.textContent ="Seleccione una localidad"
+                        return false;
+                    } 
+                    else{
+                        p.textContent =""
+                        console.log("Se ha seleccionado provincia y localidad");
+                        return true;
+                    }
+                }
+            }
+
+        // Cuando se haya cargado la pagina
+        window.onload=function (){
+            
+            var s1=document.getElementById("s1");
+            s1.onchange=actualizar;
+        }
+    </script>
+</head>
+    <body>
+		
+        <form id="miForm" action="http://www.google.es" >
+            <select id="s1">
+                <option>Ninguno seleccionado</option>
+                <option value="1">Huesca</option>
+                <option value="2">Zaragoza</option>
+                <option value="3">Teruel</option>
+            </select>
+            <select id="s2">
+                <option>Ninguno seleccionado</option>
+            </select>
+            <input type="button" value="Enviar" onclick="comprobar()" />
+            <p id="parrafo"></p>
+        </form>
+        
+	</body>
+</html>

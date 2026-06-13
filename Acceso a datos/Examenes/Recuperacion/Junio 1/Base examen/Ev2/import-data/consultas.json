@@ -1,0 +1,67 @@
+[
+  {
+    "_id": { "$oid": "bbbbbb000000000000000001" },
+    "fechaConsulta": { "$date": "2024-01-15T10:30:00.000Z" },
+    "motivo": "Revisión anual",
+    "diagnostico": "Estado general bueno",
+    "tratamiento": "Vacuna antirrábica y desparasitación",
+    "precio": 65.0,
+    "mascota": { "$ref": "mascotas", "$id": { "$oid": "aaaaaa000000000000000001" } },
+    "sintomas": [
+      { "descripcion": "Ligera pérdida de apetito", "gravedad": "LEVE" }
+    ]
+  },
+  {
+    "_id": { "$oid": "bbbbbb000000000000000002" },
+    "fechaConsulta": { "$date": "2024-03-08T16:00:00.000Z" },
+    "motivo": "Vómitos y letargia",
+    "diagnostico": "Gastroenteritis aguda",
+    "tratamiento": "Dieta blanda y metronidazol 5 días",
+    "precio": 95.0,
+    "mascota": { "$ref": "mascotas", "$id": { "$oid": "aaaaaa000000000000000002" } },
+    "sintomas": [
+      { "descripcion": "Vómitos frecuentes", "gravedad": "MODERADA" },
+      { "descripcion": "Letargia", "gravedad": "MODERADA" },
+      { "descripcion": "Fiebre leve", "gravedad": "LEVE" }
+    ]
+  },
+  {
+    "_id": { "$oid": "bbbbbb000000000000000003" },
+    "fechaConsulta": { "$date": "2024-05-20T09:15:00.000Z" },
+    "motivo": "Dificultad respiratoria",
+    "diagnostico": "Infección respiratoria",
+    "tratamiento": "Antibiótico y nebulización",
+    "precio": 80.0,
+    "mascota": { "$ref": "mascotas", "$id": { "$oid": "aaaaaa000000000000000003" } },
+    "sintomas": [
+      { "descripcion": "Dificultad para respirar", "gravedad": "GRAVE" },
+      { "descripcion": "Secreción nasal", "gravedad": "MODERADA" }
+    ]
+  },
+  {
+    "_id": { "$oid": "bbbbbb000000000000000004" },
+    "fechaConsulta": { "$date": "2025-02-14T11:45:00.000Z" },
+    "motivo": "Cojera en pata trasera izquierda",
+    "diagnostico": "Esguince leve",
+    "tratamiento": "Reposo y antiinflamatorio 3 días",
+    "precio": 55.0,
+    "mascota": { "$ref": "mascotas", "$id": { "$oid": "aaaaaa000000000000000004" } },
+    "sintomas": [
+      { "descripcion": "Cojera", "gravedad": "LEVE" }
+    ]
+  },
+  {
+    "_id": { "$oid": "bbbbbb000000000000000005" },
+    "fechaConsulta": { "$date": "2025-04-03T17:30:00.000Z" },
+    "motivo": "Urgencia - trauma por atropello",
+    "diagnostico": "Fractura de costilla y contusiones",
+    "tratamiento": "Cirugía + hospitalización 48h + analgesia",
+    "precio": 850.0,
+    "mascota": { "$ref": "mascotas", "$id": { "$oid": "aaaaaa000000000000000001" } },
+    "sintomas": [
+      { "descripcion": "Fractura costilla derecha", "gravedad": "GRAVE" },
+      { "descripcion": "Contusiones múltiples", "gravedad": "GRAVE" },
+      { "descripcion": "Shock traumático", "gravedad": "GRAVE" }
+    ]
+  }
+]

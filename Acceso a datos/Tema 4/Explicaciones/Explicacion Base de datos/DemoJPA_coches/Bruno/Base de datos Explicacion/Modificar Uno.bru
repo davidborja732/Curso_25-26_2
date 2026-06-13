@@ -1,0 +1,26 @@
+meta {
+  name: Modificar Uno
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8080/api/coches/1
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "marca": "Tesla",
+    "modelo": "Model 3",
+    "cilindrada": "2100",
+    "potencia": "205",
+    "matricula": "5789POL"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

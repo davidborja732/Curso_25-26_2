@@ -1,0 +1,11 @@
+meta {
+  name: 05 Delete Entrenador (Ejecutar 03-post-crear primero, usar el id devuelto)
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/api/entrenadores/{{nuevoEntrenadorId}}
+  body: none
+  auth: none
+}

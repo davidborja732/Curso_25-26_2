@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio05</title>
+</head>
+<!--5. - Crea un script que dados dos números que introducirá 
+el usuario por pantalla diga cuál es mayor de los dos. -->
+<body>
+    <h1>Ejercicio 5</h1>
+    <script>
+
+        var num1 = prompt("Introduce el primer numero: ")
+        var num2 = prompt("Introduce el segundo numero: ")
+
+        var numMayor = parseInt(num1, 10)
+        var nummenor = parseInt(num2, 10)
+
+        if(numMayor > nummenor){
+            document.write("<p>El numero " + num1 + " es mayorque el numero " + num2 +"</p>")
+        }else{
+            document.write("<p>El numero " + num2 + " es mayor que el numero " + num1 +"</p>")
+        }
+
+    </script>
+</body>
+</html>

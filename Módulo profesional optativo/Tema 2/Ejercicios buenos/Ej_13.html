@@ -1,0 +1,36 @@
+<!--
+Crea un script que pida un número y nos muestre la siguiente estructura hasta el
+impar más próximo al número.
+Ej. para número = 8
+***1***
+**333**
+*55555*
+7777777
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let variable1=8;
+        for (i=1;i<variable1;i+=2){
+            var fin=parseInt((variable1-i)/2)
+            for(k=0;k<fin;k++){
+                document.write("*")
+            }
+            for(j=0;j<i;j++){
+                document.write(i)
+            }
+            for(k=0;k<fin;k++){
+                document.write("*")
+            }
+            document.write("<br>")
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

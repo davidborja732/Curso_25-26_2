@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio07</title>
+</head>
+<!--Crear un script que solicite una cadena y diga si es palíndromo, es decir, se escribe igual
+de derecha a izquierda y de izquierda a derecha.
+Ejemplo de palíndromo: Allí ves Sevilla.
+-->
+<body>
+    <h1>Ejercicio 7</h1>
+
+    <script>
+
+        function esPalindromo(cadena){
+            //Normalizo, quito los acentos,convierto a minusculas y quito los espacios y puntuaciones
+            const cadenalimpia = cadena
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase()
+                .replace(/[^a-z0-9]/g, "");
+            
+            //Invierto la cadena
+            const cadenaInvertida = cadenalimpia.split("").reverse().join("");
+
+            //Comparar
+            return cadenalimpia === cadenaInvertida;
+        }
+
+        const texto = prompt("Introduce una palabra o una frase");
+        if(texto !== null && texto.trim !== ""){
+            if(esPalindromo(texto)){
+                alert(`"${texto}" Si es un palindromo`);
+            }else{
+                alert(`"${texto}" No es un palindromo`);
+            }
+        }else{
+            alert("No se ingrso ningun texto");
+        }
+
+    </script>
+</body>
+</html>

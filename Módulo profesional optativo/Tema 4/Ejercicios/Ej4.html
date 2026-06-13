@@ -1,0 +1,62 @@
+<!--
+Haz un programa que tenga 3 elementos <p> y al hacer clic sobre ellos desaparezcan (se 
+oculten) y al hacer doble clic los elimine. También deberá tener un botón “Reaparecer” que 
+hará que aparezcan todos los elementos desaparecidos (pero no los eliminados). 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function ocultarElemento(event) {
+            event.target.style.display = 'none';
+        }   
+        function eliminarElemento(event) {
+            event.target.remove();
+        }
+        function reaparecerElementos() {
+            const elementos = document.querySelectorAll('p');
+            elementos.forEach(elemento => {
+                if (elemento.style.display === 'none') {
+                    elemento.style.display = 'block';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const parrafos = document.querySelectorAll('p');
+            parrafos.forEach(parrafo => {
+                parrafo.addEventListener('click', ocultarElemento);
+                parrafo.addEventListener('dblclick', eliminarElemento);
+            });
+        });
+        function reaparecerElementos() {
+            const elementos = document.querySelectorAll('p');
+            elementos.forEach(elemento => {
+                if (elemento.style.display === 'none') {
+                    elemento.style.display = 'block';
+                }
+            });
+        }
+        function agregarEventos() {
+            const parrafos = document.querySelectorAll('p');
+            parrafos.forEach(parrafo => {
+                parrafo.addEventListener('click', ocultarElemento);
+                parrafo.addEventListener('dblclick', eliminarElemento);
+            });
+        }
+    </script>
+    <p>Primer párrafo</p>
+    <p>Segundo párrafo</p>  
+    <p>Tercer párrafo</p>
+    <p>Cuarto párrafo</p>
+    <button onclick="reaparecerElementos(); agregarEventos();">Reaparecer</button> 
+    <button onclick="location.reload();">Recargar página</button>
+    <button onclick="alert('Los párrafos eliminados no pueden reaparecer. Recarga la página para restaurarlos.');">Ayuda</button>
+</body>
+</html>

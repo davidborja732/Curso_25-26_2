@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rick and Morty API - Práctica Fetch</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #202329;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #00b5cc;
+    }
+    #characters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      background-color: #2c2f36;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 200px;
+      cursor: pointer;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card h3 {
+      text-align: center;
+      margin: 10px 0;
+    }
+    #details {
+      margin-top: 30px;
+      padding: 20px;
+      background: #2c2f36;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Personajes de Rick and Morty</h1>
+  <div id="characters"></div>
+  <div id="details"></div>
+
+  <script>
+    const apiURL = "https://rickandmortyapi.com/api/character";
+
+    // Obtener los personajes con fetch
+    fetch(apiURL)
+      .then(response => {
+        if (!response.ok) throw new Error("Error al cargar los personajes");
+        return response.json();
+      })
+      .then(data => {
+        const personajes = data.results;
+        const container = document.getElementById("characters");
+
+        personajes.forEach(personaje => {
+          const card = document.createElement("div");
+          card.className = "card";
+
+          const img = document.createElement("img");
+          img.src = personaje.image;
+          img.alt = personaje.name;
+
+          const name = document.createElement("h3");
+          name.textContent = personaje.name;
+
+          card.appendChild(img);
+          card.appendChild(name);
+          card.addEventListener("click", () => post(personaje));
+
+          container.appendChild(card);
+        });
+      })
+      .catch(error => console.error(error));
+
+    // Mostrar detalles del personaje sin usar plantillas
+
+    function post(personaje){
+
+      const dni = prompt("Introduce un dni: ") 
+      const nombre = personaje.name
+      const apellido = 'Aznar'
+      if(!dni){
+        alert("Debes introducie un dni")
+        return;
+      }
+
+      const datosPersonaje  = JSON.stringify({
+        'dni': dni,
+        'nombre': nombre,
+        'apellidos': apellido})
+      
+
+      console.log("CArgando los datos de: " + datosPersonaje);
+
+      fetch('http://192.168.50.120:8069/socio?data=' + datosPersonaje,{
+        method: 'POST',
+      })
+      .then(response => response.json())
+            .then(data => {
+            console.log('Éxito:', data);
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            alert("Error ya existe un usuario con ese mismo id")
+            });
+
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quizz David</string>
+    <string name="Encabezado">Cuestionarios</string>
+    <string name="tv_pregunta">"¿Qué valor de 'y' es solución de esta ecuación?</string>
+    <string name="bt_enviar">ENVIAR</string>
+    <string name="toast_select_option">Selecciona una opción</string>
+    <string name="tv_operacion">Operación</string>
+    <string name="tv_equacion">Ecuación</string>
+    <string name="opcion1">Opción 1</string>
+    <string name="opcion2">Opción 2</string>
+    <string name="encabezado2">Cuestionarios</string>
+    <string name="tv_bienmal">Bien/Mal</string>
+    <string name="bt_resultado">Continuar</string>
+    <string name="resultado_correcto">Correcto</string>
+    <string name="resultado_incorrecto">Incorrecto</string>
+    <string name="resultado_siguiente">Siguiente</string>
+    <string name="resultado_finusu">¡Felicidades! Has terminado la lección</string>
+    <string name="resultado_acabado">Finalizar</string>
+    <string name="resultado_reiniciar">Volver a empezar</string>
+</resources>
+
+
+

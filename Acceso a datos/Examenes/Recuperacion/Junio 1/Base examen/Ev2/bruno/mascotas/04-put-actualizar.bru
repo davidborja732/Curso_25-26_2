@@ -1,0 +1,32 @@
+meta {
+  name: 04 Put Actualizar Mascota
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api/mascotas/{{mascotaId}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "nombre": "Rex",
+    "especie": "PERRO",
+    "raza": "Pastor Alemán",
+    "fechaNacimiento": "2018-03-15",
+    "peso": 33.2,
+    "veterinario": "Dra. Ana Martínez",
+    "propietario": {
+      "nombre": "Carlos",
+      "apellidos": "García López",
+      "telefono": "612345678",
+      "email": "carlos.garcia@email.com"
+    }
+  }
+}

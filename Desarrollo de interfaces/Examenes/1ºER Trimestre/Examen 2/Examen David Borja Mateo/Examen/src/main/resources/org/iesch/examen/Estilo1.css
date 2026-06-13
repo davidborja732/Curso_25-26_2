@@ -1,0 +1,26 @@
+.label{
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14;
+}
+
+.label-titulo {
+    -fx-text-fill: white;
+    -fx-font-size: 28;
+    -fx-font-family: "Tahoma";
+    -fx-background-color:blue;
+}
+.toggle-button {
+    -fx-background-color:blue;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+}
+.toggle-button:selected {
+    -fx-background-color:red;
+    -fx-text-fill: white;
+}
+.radio-button {
+    -fx-mark-color: green;
+}
+.radio-button .radio {
+    -fx-background-color:red;
+}

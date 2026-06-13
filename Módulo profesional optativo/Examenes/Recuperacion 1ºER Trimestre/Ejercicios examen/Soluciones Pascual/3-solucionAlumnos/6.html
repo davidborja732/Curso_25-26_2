@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <br/>
+        Dirección Mail: <input type="text" id="mail"/>  
+        <input type="submit" value="Enviar" onclick="comprobarMail(); return false;"/><br/><br/>
+        <p id="result"/>
+    </form>
+
+    <script>
+        function comprobarMail() {
+            var dir = document.getElementById("mail").value;
+            var posArr = dir.indexOf('@');
+            var posDom = dir.indexOf('.');
+            
+            if (posArr!=null && posArr!=0 && posDom > posArr+1) {
+                document.getElementById("result").innerHTML = "Es válido, el nombre de usuario es: " + dir.substring(0,posArr) + ", y el nombre de dominio es: " + dir.substring(posArr+1,dir.length);
+            } else {
+                document.getElementById("result").innerHTML = "No es válido.";
+            }
+        }
+    </script>
+</body>
+</html>

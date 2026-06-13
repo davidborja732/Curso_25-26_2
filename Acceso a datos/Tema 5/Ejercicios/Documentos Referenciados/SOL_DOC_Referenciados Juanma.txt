@@ -1,0 +1,524 @@
+
+### Documentos Referenciados.
+
+1:
+    db.libros.find()
+
+2:
+    db.autores.find({_id:1})
+    db.autores.findOne({_id:1})    
+
+3:
+    db.libros.aggregate([
+        {
+            $lookup: {
+                from: "autores", 
+                localField: "autor_id",
+                foreignField: "_id",
+                as: "info_autor"
+            }
+        }, 
+        {$match: { autor_id : 1}}
+    ])
+
+4:
+    db.libros.aggregate([
+        {
+            $lookup: {
+                from: "autores", 
+                localField: "autor_id",
+                foreignField: "_id",
+                as: "info_autor"
+            }
+        }, 
+    ])
+
+
+5:
+    db.libros.aggregate([
+        {
+            $lookup: {
+                from: "autores", 
+                localField: "autor_id",
+                foreignField: "_id",
+                as: "info_autor"
+            }
+        },
+        {   $unwind: "$info_autor"} 
+    ])
+
+
+6:
+      db.libros.aggregate([
+        {
+            $lookup: {
+                from: "autores", 
+                localField: "autor_id",
+                foreignField: "_id",
+                as: "autor"
+            }
+        },
+        {
+            $lookup: {
+                from: "editoriales", 
+                localField: "editorial_id",
+                foreignField: "_id",
+                as: "editorial"
+            }
+        },
+        { $unwind : "$autor"},
+        { $unwind : "$editorial"},
+        
+    ])  
+
+
+7:
+    db.prestamos.aggregate([
+        {
+            $lookup:{
+                from: "libros",
+                localField: "libro_id",
+                foreignField: "_id",
+                as :"libro"
+            }
+        },
+        {$unwind : "$libro"},
+        {
+             $lookup:{
+                from: "autores",
+                localField: "libro.autor_id",
+                foreignField: "_id",
+                as :"autor"
+            }
+        },
+        {$unwind : "$autor"},
+        {
+             $lookup:{
+                from: "usuarios",
+                localField: "usuario_id",
+                foreignField: "_id",
+                as :"usuario"
+            }
+        },
+        {$unwind : "$usuario"}
+
+    ])   
+    
+7: Con project.
+
+    db.prestamos.aggregate([
+        {
+            $lookup:{
+                from: "libros",
+                localField: "libro_id",
+                foreignField: "_id",
+                as :"libro"
+            }
+        },
+        {$unwind : "$libro"},
+        {
+             $lookup:{
+                from: "autores",
+                localField: "libro.autor_id",
+                foreignField: "_id",
+                as :"autor"
+            }
+        },
+        {$unwind : "$autor"},
+        {
+             $lookup:{
+                from: "usuarios",
+                localField: "usuario_id",
+                foreignField: "_id",
+                as :"usuario"
+            }
+        },
+        {$unwind : "$usuario"},
+        {
+            $project:{
+                "libro.titulo": 1,
+                "autor.nombre":1,
+                "usuario.nombre":1,
+                "fecha_prestamo":1,
+                "devuelto":1,
+                _id:0   //Para que no saque el _id
+            }
+        }
+
+    ])  
+
+
+8:
+
+    db.autores.aggregate([
+        {
+            $match: {premios:"Nobel"}
+        },
+        {
+            $lookup: {
+                from: "libros",
+                localField: "_id",
+                foreignField: "autor_id",
+                as :"libros"
+            }
+        },
+        {$unwind:"$libros"}
+
+    ])
+
+8: Sacando ciertos datos solo:
+
+db.autores.aggregate([
+        {
+            $match: {premios:"Nobel"}
+        },
+        {
+            $lookup: {
+                from: "libros",
+                localField: "_id",
+                foreignField: "autor_id",
+                as :"libros"
+            }
+        },
+        {$unwind:"$libros"},
+        {
+            $project:{
+                "nombre":1,
+                "libros.titulo":1,
+                "libros.año_publicacion":1,
+                _id:0
+            }
+        }
+
+    ])
+
+9:
+    db.libros.aggregate([
+        {
+            $group:{
+                _id:"$editorial_id",
+                total_libros:{$sum:1}
+            }
+        },
+        {
+            $lookup:{   //Cuidado el _id hace referencia a la etapa anterior.
+                from: "editoriales",
+                localField: "_id",
+                foreignField: "_id",
+                as :"editorial"
+            }
+        },
+        {$unwind:"$editorial"},
+        //Mostrar solo ciertos datos.
+        {
+            $project:{
+                "editorial.nombre":1,
+                total_libros:1,
+                _id:0
+            }
+        }
+
+    ])       
+
+10:
+
+    db.prestamos.aggregate([
+        {
+            $match: {devuelto: false}
+        },
+        {
+            $lookup:{
+                from: "libros",
+                localField: "libro_id",
+                foreignField: "_id",
+                as :"libro"
+            }
+        },
+        {$unwind: "$libro"}
+        ,
+        {
+            $lookup:{
+                from: "autores",
+                localField: "libro.autor_id",
+                foreignField: "_id",
+                as :"autor"
+            }
+
+        }
+        ,{$unwind: "$autor"},
+        {
+            $lookup:{
+                from: "usuarios",
+                localField: "usuario_id",
+                foreignField: "_id",
+                as :"usuario"
+            }
+
+        }
+        ,{$unwind: "$usuario"},
+        {
+            $project:{
+                "libro.titulo":1,
+                "autor.nombre":1,
+                "usuario.nombre":1,
+                "fecha_prestamo":1,
+                "fecha_devolucion":1,
+                _id:0
+            }
+        }
+
+    ])
+
+11:
+
+    db.libros.aggregate([
+        {
+            $group:{
+                _id: "$autor_id",
+                cantidad_libros: {$sum:1}
+            }
+        },
+        {
+            $lookup:{
+                from: "autores",
+                localField: "_id",
+                foreignField: "_id",
+                as :"autor"
+            }
+        },
+        {$unwind:"$autor"},
+        {
+            $project:{
+                "autor.nombre":1,
+                "cantidad_libros":1,
+                _id:0
+            }
+        }
+    ])
+
+
+12:
+    db.usuarios.aggregate([
+        {
+            $match:{tipo:"premium"}
+        },
+        {
+            $lookup:{
+                from: "prestamos",
+                localField: "_id",
+                foreignField: "usuario_id",
+                as :"prestamos"
+            }
+        },
+         {$unwind:"$prestamos"},
+         {
+             $match:{"prestamos.devuelto":false}
+         },
+         {
+            $lookup:{
+                from: "libros",
+                localField: "prestamos.libro_id",
+                foreignField: "_id",
+                as :"libro"
+            }
+         },
+           {$unwind:"$libro"},
+           //Meter un project y sacar los campos q os interese.
+    ])   
+
+
+13:
+    db.libros.aggregate([
+        {
+            $match:{año_publicacion: {$lt:1970}}
+        },
+        {
+            $lookup:{
+                from: "autores",
+                localField: "autor_id",
+                foreignField: "_id",
+                as :"autor"
+            }
+        },
+        {$unwind:"$autor"},
+        {
+            $lookup:{   
+                from: "editoriales",
+                localField: "editorial_id",
+                foreignField: "_id",
+                as :"editorial"
+            }
+        },
+                {$unwind:"$editorial"},
+        //Project con los datos a mostrar (falta, opcional)
+
+
+    ])
+
+14:
+    db.libros.aggregate([
+        {
+            $group:{_id: "$genero",
+                promedio_paginas:{$avg: "$paginas"},
+                cantidad_libros:{$sum:1}
+            }
+        }
+        //Añadir un project y mostar lo q querais.
+    ]) 
+
+15:
+    db.autores.aggregate([
+        {
+            $match:{nacionalidad: "Argentino"}
+        },
+        {
+            $lookup:{
+                from: "libros",
+                localField: "_id",
+                foreignField: "autor_id",
+                as :"libros"
+        }
+        },
+        {
+            $project:{
+                nombre:1,
+                cantidad_libros:{$size:"$libros"},
+                total_paginas:{$sum: "$libros.paginas"},
+                _id:0
+            }
+        }
+    ])   
+
+
+16:     
+    db.prestamos.aggregate([
+        {
+            $group:{
+                _id:"$usuario_id",
+                total_prestamos: {$sum:1},
+                prestamos_activos: {
+                    $sum: { $cond: [{$eq: ["$devuelto", false]},1,0]}
+                }
+
+            }
+        },
+        {
+            $match: {total_prestamos: {$gt:1}}
+        },
+        {
+            $lookup: {
+                from: "usuarios",
+                localField: "_id",
+                foreignField: "_id",
+                as :"usuario"
+            }
+        },
+        {
+            $unwind : "$usuario"
+        },
+        //mostrar lo que me interesa.
+        {
+            $project:{
+                "usuario.nombre":1,
+                "usuario.email":1,
+                "total_prestamos":1,
+                "prestamos_activos":1,
+                "_id":0
+
+            }
+        },
+        //Ordenar: tampoco se pide
+        {
+            $sort: {total_prestamos:-1}
+        }
+    ])      
+
+
+17:
+
+    db.libros.aggregate([
+        {
+            $sort:{paginas: -1}
+        },
+        {
+            $limit: 1
+        },
+        {
+            $lookup:{
+                from: "autores",
+                localField: "autor_id",
+                foreignField: "_id",
+                as: "autor"
+            }
+        },
+        {
+            $unwind: "$autor"
+        },
+        {
+            $lookup:{
+                from:"editoriales",
+                "localField":"editorial_id",
+                "foreignField":"_id",
+                as: "editorial"
+            }
+        },
+        {
+            $unwind: "$editorial"
+        },
+        //Mostramos la info que nos interese.
+        {
+            $project: {
+                "titulo":1,
+                "paginas":1,
+                "autor.nombre":1,
+                "autor.nacionalidad":1,
+                "editorial.nombre":1,
+                "editorial.pais":1,
+                "_id":0
+            }
+        }
+
+    ])
+
+
+18:
+    
+     db.libros.aggregate([
+        {
+            $lookup: {
+                from:"prestamos",
+                localField:"_id",
+                foreignField:"libro_id",
+                as:"prestamos"
+            }
+        },
+        {
+            $match:{
+                prestamos:{$size:0} //no tiene prestamos
+            }
+        },
+        {
+            $lookup:{
+                from:"autores",
+                localField:"autor_id",
+                foreignField:"_id",
+                as:"autor"
+            }
+        },
+        {
+            $unwind:"$autor"
+        }
+        ,
+        {
+            $project:{
+                "titulo": 1,
+                "autor.nombre":1,
+                "año_publicacion":1,
+                "_id":0
+            }
+        }
+
+    ])
+
+
+

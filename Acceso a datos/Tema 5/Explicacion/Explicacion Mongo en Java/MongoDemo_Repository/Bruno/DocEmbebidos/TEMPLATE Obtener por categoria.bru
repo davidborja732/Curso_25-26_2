@@ -1,0 +1,20 @@
+meta {
+  name: TEMPLATE Obtener por categoria
+  type: http
+  seq: 14
+}
+
+get {
+  url: http://127.0.0.1:8080/api/book/template/search/categoria?cat=Ficción
+  body: none
+  auth: inherit
+}
+
+params:query {
+  cat: Ficción
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

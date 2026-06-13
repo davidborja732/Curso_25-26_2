@@ -1,0 +1,30 @@
+<!--Haz un programa que mediante eventos y el uso del objeto event, te muestre en todo
+momento la posición actual del ratón en pantalla.
+Para mostrarlo modificaremos de forma dinámica un elemento XHTML (Ejemplo, un <p>) que
+nos muestre la posición actual del ratón.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function posicion(ev){
+            obj = document.getElementById('label'); 
+            py = parseInt(ev.clientY);
+            px = parseInt(ev.clientX);
+            obj.innerHTML = "X: "+px+" Y: "+py;
+            obj.style.top = py+'px';
+            obj.style.left = px+'px';
+        }
+    </script>
+</head>
+<body>
+    <div id="label" style="position:absolute">
+    </div>
+    <script>
+        posicion()
+    </script>
+</body>
+</html>

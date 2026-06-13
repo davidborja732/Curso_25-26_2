@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIREST</title>
+</head>
+<body>
+    <h1 id="operando1">Operando 1: </h1>
+    <h1 id="operando2">Operando 2: </h1>
+    <h1 id="resultado">Resultado: </h1>    
+
+    <script>
+
+        const ipv4Regex = /^((25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)$/;
+
+        async function pedirNumero(url) {
+            const respuesta = await fetch(url);
+            const texto = await respuesta.text();   // La API devuelve un número como texto
+            return Number(texto);                   // Convertimos a número
+        }
+
+        async function main() {
+
+            let ip = "";
+
+            // Pedir IP hasta que sea válida
+            do {
+                ip = prompt("Introduce la IP del servidor (IPv4):");
+            } while (!ipv4Regex.test(ip));
+
+            const url = `http://${ip}:8069/school/random`;
+            //const url = `http://localhost:8069/school/random`;
+            // Primera llamada
+            const n1 = await pedirNumero(url);
+            document.getElementById("operando1").textContent = "Operando 1: " + n1;
+
+            // Segunda llamada
+            const n2 = await pedirNumero(url);
+            document.getElementById("operando2").textContent = "Operando 2: " + n2;
+
+            // Resultado
+            document.getElementById("resultado").textContent = "Resultado: " + (n1 + n2);
+        }
+
+        main();
+
+    </script>
+</body>
+</html>

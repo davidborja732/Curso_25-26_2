@@ -1,0 +1,42 @@
+[
+  {
+    "_id": 301,
+    "libro_id": 101,
+    "usuario_id": 401,
+    "fecha_prestamo": "2024-11-01",
+    "fecha_devolucion": "2024-11-15",
+    "devuelto": true
+  },
+  {
+    "_id": 302,
+    "libro_id": 103,
+    "usuario_id": 402,
+    "fecha_prestamo": "2024-11-10",
+    "fecha_devolucion": "2024-11-24",
+    "devuelto": false
+  },
+  {
+    "_id": 303,
+    "libro_id": 107,
+    "usuario_id": 401,
+    "fecha_prestamo": "2024-11-15",
+    "fecha_devolucion": "2024-11-29",
+    "devuelto": false
+  },
+  {
+    "_id": 304,
+    "libro_id": 105,
+    "usuario_id": 403,
+    "fecha_prestamo": "2024-11-05",
+    "fecha_devolucion": "2024-11-19",
+    "devuelto": true
+  },
+  {
+    "_id": 305,
+    "libro_id": 102,
+    "usuario_id": 404,
+    "fecha_prestamo": "2024-11-20",
+    "fecha_devolucion": "2024-12-04",
+    "devuelto": false
+  }
+]

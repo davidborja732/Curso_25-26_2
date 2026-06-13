@@ -1,0 +1,15 @@
+meta {
+  name: 06 Get Mascotas por Especie
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/api/mascotas/find
+  body: none
+  auth: none
+}
+
+params:query {
+  especie: PERRO
+}

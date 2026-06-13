@@ -1,0 +1,21 @@
+meta {
+  name: Buscar Por Autor Y Categoria
+  type: http
+  seq: 24
+}
+
+get {
+  url: http://127.0.0.1:8080/api/books/search/nativo/titulocat?titulo=El&categoria=Ficción
+  body: none
+  auth: inherit
+}
+
+params:query {
+  titulo: El
+  categoria: Ficción
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

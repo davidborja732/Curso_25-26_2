@@ -1,0 +1,36 @@
+<!--
+Haz un programa que cree 100 elementos “checkbox” con números aleatorios. Además,
+la página tendrá un botón “Marcar todos” y un botón “Desmarcar todos”.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function crearcheckbox(){
+            for (let index = 0; index<100;index++){
+                document.write('<input type="checkbox" id="checkbox' + index + '"> <label for="checkbox' + index + '">'+ Math.floor(Math.random()*1000) +'</label><br>');
+            }
+        }
+    </script>
+</head>
+<body>
+    <script>
+        crearcheckbox()
+        function marcarTodos(){
+            for (let index = 0; index<100;index++){
+                document.getElementById('checkbox' + index).checked = true;
+            }
+        }
+        function desmarcarTodos(){
+            for (let index = 0; index<100;index++){
+                document.getElementById('checkbox' + index).checked = false;
+            }
+        }
+    </script>
+    <button onclick="marcarTodos()">Marcar todos</button>
+    <button onclick="desmarcarTodos()">Desmarcar todos</button>
+</body>
+</html>

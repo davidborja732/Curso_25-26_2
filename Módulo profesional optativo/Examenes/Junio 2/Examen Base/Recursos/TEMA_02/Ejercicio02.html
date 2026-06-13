@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio02</title>
+</head>
+<!--2.	Crea un script que pida al usuario un número y
+ muestre en la página un párrafo indicando si el número introducido es par o impar. -->
+<body>
+    <h1>Ejercicio 2</h1>
+
+    <script>
+
+        var numero = prompt("Introduce un numero: ")
+        //Convierto el numero de texto a un entero
+        var n = parseInt(numero, 10)
+
+        //Verifico que el valor de un numero es valido
+        if ( isNaN(n)){
+            document.write("<p>No se ha introducido un numero valido</p>")
+        }else{
+            //Miro que el numero es par usando el operador ===
+            if(n%2 === 0){
+                document.write("<p>El numero " + n + " es par.</p>")
+            }else{
+                document.write("<p>El numero " + n + " es impar.</p>")
+            }
+        }
+
+    </script>
+
+</body>
+</html>

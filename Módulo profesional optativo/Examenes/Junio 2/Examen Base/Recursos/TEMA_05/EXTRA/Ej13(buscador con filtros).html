@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 13 - Buscador de Productos</title>
+</head>
+
+<body>
+    <h2>Buscador de Productos</h2>
+    <form id="formBuscar">
+        <label>Buscar producto:</label><br>
+        <input type="text" id="busqueda" name="busqueda" placeholder="Escribe para buscar..."><br><br>
+
+        <label>Categoría:</label><br>
+        <select id="categoria" name="categoria">
+            <option value="">Todas</option>
+            <option value="electronica">Electrónica</option>
+            <option value="ropa">Ropa</option>
+            <option value="hogar">Hogar</option>
+            <option value="deporte">Deporte</option>
+        </select><br><br>
+
+        <label>Precio máximo (€):</label><br>
+        <input type="range" id="precioMax" name="precioMax" min="0" max="500" value="500">
+        <span id="valorPrecio">500</span> €<br><br>
+
+        <label>
+            <input type="checkbox" id="disponible" name="disponible" checked>
+            Solo productos disponibles
+        </label><br><br>
+
+        <input type="button" value="Buscar" id="btnBuscar">
+    </form>
+
+    <div id="resultados"></div>
+
+    <script>
+        // Base de datos de productos (simulada)
+        var productos = [
+            { nombre: "Portátil HP", categoria: "electronica", precio: 450, disponible: true },
+            { nombre: "Camiseta Nike", categoria: "ropa", precio: 35, disponible: true },
+            { nombre: "Lámpara LED", categoria: "hogar", precio: 25, disponible: false },
+            { nombre: "Balón Adidas", categoria: "deporte", precio: 20, disponible: true },
+            { nombre: "Teclado Logitech", categoria: "electronica", precio: 50, disponible: true },
+            { nombre: "Pantalón Levi's", categoria: "ropa", precio: 80, disponible: true },
+            { nombre: "Silla Oficina", categoria: "hogar", precio: 120, disponible: true },
+            { nombre: "Raqueta Wilson", categoria: "deporte", precio: 150, disponible: false },
+            { nombre: "Monitor Samsung", categoria: "electronica", precio: 200, disponible: true },
+            { nombre: "Zapatillas Puma", categoria: "ropa", precio: 65, disponible: true }
+        ];
+
+        // Obtener elementos
+        var busqueda = document.getElementById("busqueda");
+        var categoria = document.getElementById("categoria");
+        var precioMax = document.getElementById("precioMax");
+        var valorPrecio = document.getElementById("valorPrecio");
+        var disponible = document.getElementById("disponible");
+        var btnBuscar = document.getElementById("btnBuscar");
+        var resultados = document.getElementById("resultados");
+
+        // Actualizar valor del precio en tiempo real
+        precioMax.addEventListener("input", function () {
+            valorPrecio.textContent = precioMax.value;
+        });
+
+        // Buscar automáticamente al escribir
+        busqueda.addEventListener("keyup", buscarProductos);
+        categoria.addEventListener("change", buscarProductos);
+        precioMax.addEventListener("input", buscarProductos);
+        disponible.addEventListener("change", buscarProductos);
+        btnBuscar.addEventListener("click", buscarProductos);
+
+        function buscarProductos() {
+            var textoBusqueda = busqueda.value.toLowerCase().trim();
+            var categoriaSeleccionada = categoria.value;
+            var precioMaximo = parseInt(precioMax.value);
+            var soloDisponibles = disponible.checked;
+
+            // Filtrar productos
+            var productosFiltrados = productos.filter(function (producto) {
+                // Filtro por texto de búsqueda
+                var coincideTexto = producto.nombre.toLowerCase().includes(textoBusqueda);
+
+                // Filtro por categoría
+                var coincideCategoria = categoriaSeleccionada === "" || producto.categoria === categoriaSeleccionada;
+
+                // Filtro por precio
+                var coincidePrecio = producto.precio <= precioMaximo;
+
+                // Filtro por disponibilidad
+                var coincideDisponibilidad = !soloDisponibles || producto.disponible;
+
+                return coincideTexto && coincideCategoria && coincidePrecio && coincideDisponibilidad;
+            });
+
+            // Mostrar resultados
+            mostrarResultados(productosFiltrados);
+        }
+
+        function mostrarResultados(productosFiltrados) {
+            if (productosFiltrados.length === 0) {
+                resultados.innerHTML = "<p>No se encontraron productos con esos criterios</p>";
+                return;
+            }
+
+            var html = "<h3>Resultados (" + productosFiltrados.length + "):</h3>";
+            html += "<table border='1'>";
+            html += "<tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Estado</th></tr>";
+
+            for (var i = 0; i < productosFiltrados.length; i++) {
+                var producto = productosFiltrados[i];
+                var estado = producto.disponible ? "Disponible" : "No disponible";
+                var color = producto.disponible ? "green" : "red";
+
+                html += "<tr>";
+                html += "<td>" + producto.nombre + "</td>";
+                html += "<td>" + producto.categoria + "</td>";
+                html += "<td>" + producto.precio + " €</td>";
+                html += "<td style='color:" + color + "'>" + estado + "</td>";
+                html += "</tr>";
+            }
+
+            html += "</table>";
+            resultados.innerHTML = html;
+        }
+
+        // Mostrar todos los productos al cargar
+        buscarProductos();
+    </script>
+</body>
+
+</html>

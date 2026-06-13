@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 9 - Validación de Contraseña</title>
+</head>
+<body>
+    <h2>Crear Contraseña Segura</h2>
+
+    <!-- Formulario: novalidate evita la validación nativa para usar la propia lógica JS -->
+    <form id="formPassword" novalidate>
+        <label for="password">Contraseña:</label><br>
+        <input type="password" id="password" name="password" autocomplete="new-password"><br><br>
+
+        <label for="password2">Repetir Contraseña:</label><br>
+        <input type="password" id="password2" name="password2" autocomplete="new-password"><br><br>
+
+        <div id="requisitos">
+            <p>La contraseña debe cumplir:</p>
+            <ul>
+                <li id="req-longitud">Mínimo 8 caracteres</li>
+                <li id="req-mayuscula">Al menos una mayúscula</li>
+                <li id="req-minuscula">Al menos una minúscula</li>
+                <li id="req-numero">Al menos un número</li>
+            </ul>
+        </div>
+
+        <input type="submit" value="Registrar">
+    </form>
+
+    <script>
+        /*
+         Comentarios orientativos (muy explicativos):
+
+         1) Propósito: dar feedback inmediato sobre si la contraseña cumple
+            los requisitos mínimos (longitud, mayúscula, minúscula, número)
+            y verificar que ambas contraseñas coinciden antes de enviar.
+
+         2) UX: validación en tiempo real (evento 'keyup') para que el usuario
+            vea en colores qué requisitos ya cumple. Esto reduce errores
+            y frustración al enviar el formulario.
+
+         3) Seguridad: la validación en cliente mejora la experiencia, pero
+            NO sustituye a la validación en servidor. Siempre validar y
+            hashear la contraseña en el servidor antes de almacenarla.
+
+         4) Regex usados (explicación breve):
+            - /[A-Z]/ busca cualquier letra mayúscula (A-Z).
+            - /[a-z]/ busca cualquier letra minúscula (a-z).
+            - /[0-9]/ busca cualquier dígito (0-9).
+            Para añadir un requisito de carácter especial, usar:
+            /[!@#$%^&*(),.?":{}|<>]/ (o una clase adaptada a tus necesidades).
+        */
+
+        // Caching de elementos del DOM para no buscarlos cada vez
+        const formPassword = document.getElementById('formPassword');
+        const password = document.getElementById('password');
+        const password2 = document.getElementById('password2');
+
+        // Validación en tiempo real: cada vez que se escribe actualizamos la lista
+        password.addEventListener('keyup', () => validarRequisitos(password.value));
+
+        // Función que pinta en verde/rojo cada requisito según se cumpla
+        function validarRequisitos(pass) {
+            // Longitud mínima: 8 caracteres
+            document.getElementById('req-longitud').style.color = pass.length >= 8 ? 'green' : 'red';
+
+            // Al menos una mayúscula
+            document.getElementById('req-mayuscula').style.color = /[A-Z]/.test(pass) ? 'green' : 'red';
+
+            // Al menos una minúscula
+            document.getElementById('req-minuscula').style.color = /[a-z]/.test(pass) ? 'green' : 'red';
+
+            // Al menos un número
+            document.getElementById('req-numero').style.color = /[0-9]/.test(pass) ? 'green' : 'red';
+        }
+
+        // Validación final al enviar: comprobamos todos los requisitos y la coincidencia
+        formPassword.addEventListener('submit', (evento) => {
+            // Evitar envío automático hasta validar
+            evento.preventDefault();
+
+            const pass1 = password.value;
+            const pass2 = password2.value;
+
+            // Comprobaciones desglosadas para poder ampliar mensajes o acciones
+            const tieneLongitud = pass1.length >= 8;
+            const tieneMayus = /[A-Z]/.test(pass1);
+            const tieneMinus = /[a-z]/.test(pass1);
+            const tieneNumero = /[0-9]/.test(pass1);
+
+            if (!tieneLongitud || !tieneMayus || !tieneMinus || !tieneNumero) {
+                // Podríamos mostrar mensajes más concretos en el DOM en lugar de alert
+                alert('La contraseña no cumple todos los requisitos');
+                return;
+            }
+
+            if (pass1 !== pass2) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+
+            // Si se desea, aquí se puede enviar por AJAX (fetch) para evitar recarga.
+            // Para este ejemplo simple llamamos a submit() tras la validación.
+            alert('Contraseña válida. Formulario enviado correctamente');
+            formPassword.submit();
+        });
+    </script>
+</body>
+</html>

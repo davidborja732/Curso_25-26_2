@@ -1,0 +1,20 @@
+meta {
+  name: Obtener por Precio
+  type: http
+  seq: 7
+}
+
+get {
+  url: http://localhost:8080/api/books/search/autor?aut=Carlos Ruiz Zafón
+  body: none
+  auth: inherit
+}
+
+params:query {
+  aut: Carlos Ruiz Zafón
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

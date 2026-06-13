@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendario mensual</title>
+
+    <script>
+
+        const festivosPorMes = {
+            1: [1, 6],
+            2: [],
+            3: [],
+            4: [],
+            5: [1],
+            6: [],
+            7: [],
+            8: [15,16,28],
+            9: [],
+            10: [12],
+            11: [1],
+            12: [25]
+        };
+
+        const nombresMeses = [
+            "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+            "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
+        ];
+
+        function generarCalendario(mes, año = new Date().getFullYear()) {
+            const diasSemana = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+
+            let tabla = `<h2>${nombresMeses[mes - 1]} ${año}</h2>`;
+            tabla += "<table border='1' style='text-align:center; width:100%; border-collapse:collapse;'>";
+
+            tabla += "<tr>";
+            for (let dia of diasSemana) {
+                tabla += `<th style='padding:10px; background-color:#ddd;'>${dia}</th>`;
+            }
+            tabla += "</tr>";
+
+            let primerDia = new Date(año, mes - 1, 1).getDay();
+            primerDia = (primerDia === 0) ? 6 : primerDia - 1;
+
+            let ultimoDia = new Date(año, mes, 0).getDate();
+            let festivos = festivosPorMes[mes] || [];
+
+            let dia = 1;
+
+            while (dia <= ultimoDia) {
+                tabla += "<tr>";
+
+                for (let i = 0; i < 7; i++) {
+                    if (dia === 1 && i < primerDia) {
+                        tabla += "<td></td>";
+                    } else if (dia <= ultimoDia) {
+
+                        let esFestivo = festivos.includes(dia);
+                        let esFinSemana = (i === 5 || i === 6);
+
+                        let estilo = esFestivo ? 'background-color:#ff9999; font-weight:bold;' :
+                                    esFinSemana ? 'background-color:#f0f0f0;' : '';
+
+                        tabla += `<td style='padding:10px; ${estilo}'>${dia}</td>`;
+                        dia++;
+                    } else {
+                        tabla += "<td></td>";
+                    }
+                }
+
+                tabla += "</tr>";
+            }
+
+            tabla += "</table>";
+            return tabla;
+        }
+
+        function cargarOpciones() {
+            const año = new Date().getFullYear();
+            const selectGrupo = document.getElementById("grupoMeses");
+
+            selectGrupo.innerHTML = `
+                <option value="">-- Selecciona tipo de mes --</option>
+                <option value="31">Meses con 31 días</option>
+                <option value="30">Meses con 30 días</option>
+            `;
+
+            const diasFebrero = new Date(año, 2, 0).getDate();
+            if (diasFebrero === 28) {
+                const op = document.createElement("option");
+                op.value = "28";
+                op.textContent = "Febrero (28 días)";
+                selectGrupo.appendChild(op);
+            }
+        }
+
+        function cargarMesesPorGrupo() {
+            const grupo = document.getElementById("grupoMeses").value;
+            const selectMes = document.getElementById("selectorMes");
+            const contenedor = document.getElementById("contenedor");
+
+            selectMes.innerHTML = "";
+            contenedor.innerHTML = "";
+
+            // Si elige febrero → cargar directamente
+            if (grupo === "28") {
+                contenedor.innerHTML = generarCalendario(2);
+                return;
+            }
+
+            // Si elige 30 o 31 días → mostrar segundo desplegable
+            let meses = [];
+
+            if (grupo === "31") meses = [1,3,5,7,8,10,12];
+            if (grupo === "30") meses = [4,6,9,11];
+
+            meses.forEach(m => {
+                const op = document.createElement("option");
+                op.value = m;
+                op.textContent = nombresMeses[m-1];
+                selectMes.appendChild(op);
+            });
+        }
+
+        function mostrarCalendario() {
+            const mes = parseInt(document.getElementById("selectorMes").value);
+            const año = new Date().getFullYear();
+
+            if (mes) {
+                document.getElementById("contenedor").innerHTML = generarCalendario(mes, año);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", cargarOpciones);
+
+    </script>
+</head>
+
+<body>
+
+    <h2>Selecciona un tipo de mes</h2>
+
+    <select id="grupoMeses" onchange="cargarMesesPorGrupo()"></select>
+
+    <br><br>
+
+    <select id="selectorMes" onchange="mostrarCalendario()"></select>
+
+    <div id="contenedor"></div>
+
+</body>
+</html>

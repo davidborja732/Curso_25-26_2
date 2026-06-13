@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio05</title>
+</head>
+<body>
+    <h1>Ejercicio 5</h1>
+
+    <script>
+
+        // Array doble indexado: festivos[mes][días festivos]
+        var festivos = [
+            [1, 6],           // Enero: 1 y 6
+            [],               // Febrero: ninguno
+            [],               // Marzo: ninguno
+            [],               // Abril: ninguno
+            [1],              // Mayo: 1
+            [],               // Junio: ninguno
+            [],               // Julio: ninguno
+            [15],             // Agosto: 15
+            [],               // Septiembre: ninguno
+            [12],             // Octubre: 12
+            [1],              // Noviembre: 1
+            [6, 8, 25]        // Diciembre: 6, 8 y 25
+        ];
+
+        // Nombres de los meses
+        var nombresMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+                            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+        // Días en cada mes (año no bisiesto)
+        var diasMes = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        // Pedir mes al usuario
+        var mes = parseInt(prompt("Introduce el número del mes (1-12):")) - 1;
+
+        // Validar mes
+        if (mes < 0 || mes > 11 || isNaN(mes)) {
+            alert("Mes inválido");
+        } else {
+            // Generar calendario
+            document.write("<h2>" + nombresMeses[mes].toUpperCase() + "</h2>");
+            //Crea la tabla
+            document.write("<table border='1' style='border-collapse: collapse;'>");
+            document.write("<tr>");
+            document.write(
+                "<th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th><th>Sábado</th><th>Domingo</th>"
+            );
+            document.write("</tr>");
+            
+            // Calcular primer día de la semana (asumo que empieza en lunes)
+            var primerDia = new Date(2025, mes, 1).getDay();
+            primerDia = primerDia === 0 ? 6 : primerDia - 1; // Ajustar: domingo=6
+            
+            var dia = 1;
+            var totalDias = diasMes[mes];
+            
+            // Generar semanas
+            for (var semana = 0; semana < 6; semana++) {
+                document.write("<tr>");
+                
+                for (var diaSemana = 0; diaSemana < 7; diaSemana++) {
+                    if ((semana === 0 && diaSemana < primerDia) || dia > totalDias) {
+                        document.write("<td></td>");
+                    } else {
+                        // Verificar si es festivo
+                        var esFestivo = festivos[mes].includes(dia);
+                        var color = esFestivo ? "red" : "black";
+                        
+                        document.write("<td style='color:" + color + "; text-align:center; padding:10px;'>" + dia + "</td>");
+                        dia++;
+                    }
+                }
+                
+                document.write("</tr>");
+                
+                if (dia > totalDias) break;
+            }
+            
+            document.write("</table>");
+            
+            // Mostrar festivos del mes
+            document.write("<br><b>Festivos de " + nombresMeses[mes] + ":</b> ");
+            if (festivos[mes].length > 0) {
+                document.write(festivos[mes].join(", "));
+            } else {
+                document.write("Ninguno");
+            }
+        }
+
+    </script>
+
+</body>
+</html>

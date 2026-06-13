@@ -1,0 +1,99 @@
+<!--
+ Realiza un formulario con dos elementos “select”. Al cambiar el primero, se actualizará 
+el segundo. Al enviar el formulario, se comprobará que ambos han sido marcados. 
+Cuando no tengan ninguna selección previa, los “select” mostrarán “Select no 
+seleccionado”. 
+Los valores del primer “select” serán “Huesca”, “Zaragoza”, “Teruel”.  
+Por defecto no habrá ninguno seleccionado. 
+Los valores del segundo “select” son: 
+• Para Huesca: “Huesca Capital”, “Jaca”, “Barbastro”. 
+• Para Zaragoza: “Zaragoza Capital”, “Calatayud”, “Ejea de los caballeros”. 
+• Para Teruel: “Teruel Capital”, “Alcañiz”, “Calamocha”. (Aquí saldrá por defecto 
+seleccionado “Alcañiz”).
+-->
+<!DOCTYPE html> <!-- Declara el documento como HTML5 -->
+<html lang="es"> <!-- Define el idioma de la página como español -->
+<head> <!-- Inicio de la cabecera del documento -->
+  <meta charset="UTF-8"> <!-- Establece la codificación de caracteres a UTF-8 -->
+  <title>Formulario Provincias</title> <!-- Título que verá el usuario en la pestaña -->
+</head> <!-- Fin de la cabecera -->
+<body> <!-- Inicio del cuerpo del documento -->
+  <h2>Formulario Provincias y Localidades</h2> <!-- Encabezado principal de la página -->
+
+  <form id="formulario"> <!-- Formulario con un ID para poder referenciarlo desde JavaScript -->
+    <!-- Primer select: provincias -->
+    <label for="provincia">Provincia:</label> <!-- Etiqueta asociada al select de provincia -->
+    <select id="provincia" name="provincia"> <!-- Select de provincias con ID y nombre -->
+      <option value="">Select no seleccionado</option> <!-- Opción por defecto cuando no hay selección -->
+      <option value="Huesca">Huesca</option> <!-- Opción Huesca -->
+      <option value="Zaragoza">Zaragoza</option> <!-- Opción Zaragoza -->
+      <option value="Teruel">Teruel</option> <!-- Opción Teruel -->
+    </select> <!-- Fin del select de provincia -->
+    <br><br> <!-- Saltos de línea para separar visualmente sin CSS -->
+
+    <!-- Segundo select: localidades -->
+    <label for="localidad">Localidad:</label> <!-- Etiqueta asociada al select de localidad -->
+    <select id="localidad" name="localidad"> <!-- Select de localidades con ID y nombre -->
+      <option value="">Select no seleccionado</option> <!-- Opción por defecto cuando no hay selección -->
+    </select> <!-- Fin del select de localidad -->
+    <br><br> <!-- Saltos de línea para separación -->
+
+    <button type="submit">Enviar</button> <!-- Botón para enviar el formulario -->
+  </form> <!-- Fin del formulario -->
+
+  <script> <!-- Inicio del bloque de JavaScript -->
+    // Referencias a los selects
+    const provinciaSelect = document.getElementById('provincia'); // Obtiene el select de provincia por su ID
+    const localidadSelect = document.getElementById('localidad'); // Obtiene el select de localidad por su ID
+    const formulario = document.getElementById('formulario'); // Obtiene el formulario por su ID
+
+    // Datos de localidades por provincia
+    const localidades = { // Objeto que mapea cada provincia a su lista de localidades
+      Huesca: ["Huesca Capital", "Jaca", "Barbastro"], // Localidades de Huesca
+      Zaragoza: ["Zaragoza Capital", "Calatayud", "Ejea de los caballeros"], // Localidades de Zaragoza
+      Teruel: ["Teruel Capital", "Alcañiz", "Calamocha"] // Localidades de Teruel (Alcañiz será por defecto)
+    };
+
+    // Evento: cuando cambia la provincia
+    provinciaSelect.addEventListener('change', () => { // Añade un listener al cambio de selección de provincia
+      // Limpia el select de localidades
+      localidadSelect.innerHTML = ""; // Borra todas las opciones actuales del select de localidad
+
+      if (provinciaSelect.value === "") { // Si no hay provincia seleccionada
+        // Si no hay provincia seleccionada, muestra opción por defecto
+        const opt = document.createElement("option"); // Crea una nueva opción
+        opt.value = ""; // Establece el valor vacío para indicar no seleccionado
+        opt.textContent = "Select no seleccionado"; // Texto visible de la opción
+        localidadSelect.appendChild(opt); // Agrega la opción al select de localidad
+        return; // Termina la función aquí
+      }
+
+      // Carga las localidades correspondientes
+      localidades[provinciaSelect.value].forEach((loc) => { // Itera por cada localidad de la provincia seleccionada
+        const opt = document.createElement("option"); // Crea un elemento opción
+        opt.value = loc; // Asigna el valor de la opción como el nombre de la localidad
+        opt.textContent = loc; // Asigna el texto visible de la opción
+
+        // Si la provincia es Teruel y la localidad es "Alcañiz", la selecciona por defecto
+        if (provinciaSelect.value === "Teruel" && loc === "Alcañiz") { // Comprueba si es el caso especial
+          opt.selected = true; // Marca "Alcañiz" como opción seleccionada por defecto
+        }
+
+        localidadSelect.appendChild(opt); // Añade la opción al select de localidad
+      });
+    }); // Fin del listener de cambio de provincia
+
+    // Evento: al enviar el formulario
+    formulario.addEventListener('submit', (e) => { // Añade un listener para el envío del formulario
+      e.preventDefault(); // Previene el envío real para poder validar
+
+      // Validación: ambos selects deben estar seleccionados
+      if (provinciaSelect.value === "" || localidadSelect.value === "") { // Comprueba si alguno está sin seleccionar
+        alert("Debes seleccionar provincia y localidad."); // Muestra un mensaje de error
+      } else { // Si ambos tienen valor
+        alert(`Formulario enviado correctamente:\nProvincia: ${provinciaSelect.value}\nLocalidad: ${localidadSelect.value}`); // Muestra confirmación con los valores
+      }
+    }); // Fin del listener de envío del formulario
+  </script> <!-- Fin del bloque de JavaScript -->
+</body> <!-- Fin del cuerpo del documento -->
+</html> <!-- Fin del documento HTML -->

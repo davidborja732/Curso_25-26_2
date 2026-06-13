@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/CSS/Ejercicio 1/Ejercicio 1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CSS/Ejercicio 1/Ejercicio 1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CSS/Ejercicio 2/Ejercicio 2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CSS/Ejercicio 2/Ejercicio 2/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CSS/Ejercicio 3/Ejercicio 3/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CSS/Ejercicio 3/Ejercicio 3/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CSS/Ejercicio 5/Ejercicio 5/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CSS/Ejercicio 5/Ejercicio 5/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CSS/Ejercicio 6 (Aplicar estilos)/Ejercicio 6/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CSS/Ejercicio 6 (Aplicar estilos)/Ejercicio 6/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CSS/Explicacion 1 Tema 2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CSS/Explicacion 1 Tema 2/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicico Color Fondo Slider/Fondo Slider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicico Color Fondo Slider/Fondo Slider/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Accion Boton/Accion Event/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Accion Boton/Accion Event/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Alert/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Alert/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Almacen Imagenes/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Almacen Imagenes/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Audios/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Audios/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Barra Progreso/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Barra Progreso/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Base de datos con busqueda/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Base de datos con busqueda/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Buscar por poblacion/Boton/BotonFX/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Buscar por poblacion/Boton/BotonFX/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Calculadora/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Calculadora/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Cambiar tamaño foto/Ejercicio 4 Nuevo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Cambiar tamaño foto/Ejercicio 4 Nuevo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio ColoPicker/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio ColoPicker/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Color Fondo/Selector Color/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Color Fondo/Selector Color/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio ComboBox/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio ComboBox/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Datepicker/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Datepicker/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Datos 1 y 2/Datos_1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Datos 1 y 2/Datos_1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Datos 1 y 2/Datos_2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Datos 1 y 2/Datos_2/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Datos entre ventanas/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Datos entre ventanas/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Elementos MenuContextual/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Elementos MenuContextual/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Formulario varias ventnas/Varias ventanas/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Formulario varias ventnas/Varias ventanas/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Gridpane/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Gridpane/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Imagenes  Boton/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Imagenes  Boton/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Interfaz con pestañas/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Interfaz con pestañas/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Libreria/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Libreria/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Pestañas/Tapbane/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Pestañas/Tapbane/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Piezas/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Piezas/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio RadioButton/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio RadioButton/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Tabla con subtototal/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Tabla con subtototal/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio ToggleButton/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio ToggleButton/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Validator campos/Validator/Validator/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ejercicio Validator campos/Validator/Validator/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

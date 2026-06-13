@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Horario DAM</title>
+</head>
+<body>
+
+  <h2>Horario DAM</h2>
+
+  <label for="selectorCurso"><strong>Selecciona curso:</strong></label>
+  <select id="selectorCurso">
+    <option value="1">1º DAM</option>
+    <option value="2" selected>2º DAM</option>
+  </select>
+
+  <br><br>
+
+  <table border="1" id="tablaHorario"></table>
+
+  <script>
+    const dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+
+    // Horarios de 1º DAM
+    const horario1 = [
+      ["PROG", "BD", "LM", "FOL", "SINF"],
+      ["PROG", "BD", "LM", "FOL", "SINF"],
+      ["PROG", "BD", "LM", "FOL", "SINF"],
+      ["RECREO","RECREO","RECREO","RECREO","RECREO"],
+      ["PROG", "BD", "ED", "ED", "SINF"],
+      ["PROG", "BD", "ED", "ED", "SINF"],
+      ["PROG", "BD", "ED", "ED", "SINF"]
+    ];
+
+    // Horarios de 2º DAM (tu horario original)
+    const horario2 = [
+      ["IPPE", "PROY", "IPPE", "AD", "SGE"],
+      ["DI", "SGE", "AD", "AD", "SGE"],
+      ["DI", "SGE", "AD", "AD", "SASP"],
+      ["RECREO","RECREO","RECREO","RECREO","RECREO"],
+      ["DWC", "PMDM", "PMDM", "PROY", "DI"],
+      ["DWC", "PMDM", "PMDM", "PSP", "DI"],
+      ["DWC", "PMDM", "PMDM", "PSP", "DI"]
+    ];
+
+      function generarHoras(inicio, bloques) {
+    const horas = [];
+    let actual = new Date(`1970-01-01T${inicio}:00`);
+
+    for (let i = 0; i < bloques; i++) {
+
+      // Si es la franja del recreo (4ª fila, índice 3)
+      if (i === 3) {
+        horas.push("18:25 - 18:40");
+        // Después del recreo, la siguiente clase empieza a las 18:40
+        actual = new Date(`1970-01-01T18:40:00`);
+        continue;
+      }
+
+      // Inicio de la clase
+      const inicioStr = actual.toTimeString().substring(0, 5);
+
+      // Duración clase: 50 minutos
+      actual.setMinutes(actual.getMinutes() + 50);
+      const finStr = actual.toTimeString().substring(0, 5);
+
+      horas.push(`${inicioStr} - ${finStr}`);
+
+      // Descanso de 5 minutos antes de la siguiente clase
+      actual.setMinutes(actual.getMinutes() + 5);
+    }
+
+    return horas;
+  }
+
+    const tabla = document.getElementById("tablaHorario");
+    const selector = document.getElementById("selectorCurso");
+
+    function pintarHorario(curso) {
+      tabla.innerHTML = "";
+
+      const asignaturas = curso === "1" ? horario1 : horario2;
+      const franjas = generarHoras("15:45", asignaturas.length);
+
+      const encabezado = document.createElement("tr");
+      const celdaHora = document.createElement("th");
+      celdaHora.textContent = "Hora";
+      encabezado.appendChild(celdaHora);
+
+      dias.forEach(dia => {
+        const th = document.createElement("th");
+        th.textContent = dia;
+        encabezado.appendChild(th);
+      });
+
+      tabla.appendChild(encabezado);
+
+      for (let i = 0; i < franjas.length; i++) {
+        const fila = document.createElement("tr");
+
+        const celdaHora = document.createElement("td");
+        celdaHora.textContent = franjas[i];
+        fila.appendChild(celdaHora);
+
+        for (let j = 0; j < dias.length; j++) {
+          const celda = document.createElement("td");
+          celda.textContent = asignaturas[i][j];
+          fila.appendChild(celda);
+        }
+
+        tabla.appendChild(fila);
+      }
+    }
+
+    selector.addEventListener("change", () => {
+      pintarHorario(selector.value);
+    });
+
+    pintarHorario("2"); // Cargar 2º DAM por defecto
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+meta {
+  name: Obtener por Año
+  type: http
+  seq: 8
+}
+
+get {
+  url: http://localhost:8080/api/books/search/precio?min=5.0&max=15.0
+  body: none
+  auth: inherit
+}
+
+params:query {
+  min: 5.0
+  max: 15.0
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

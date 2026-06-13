@@ -1,0 +1,65 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="school.course_aux_form">
+      <field name="name">Wizard curso</field>
+      <field name="model">school.course_aux</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <button name="previous" class ="btn btn-oe_highlight" type="object" 
+              string="Previous" invisible = "state_wizard == '1'">
+            </button>
+            <button name="next" class ="btn btn-oe_highlight" type="object" 
+              string="Next" invisible = "state_wizard == '4'">
+            </button>
+
+            <field name="state_wizard" widget="statusbar"/> 
+          </header> 
+          <group col="4" string='Nuevo Curso'>
+            <field name="name_course_aux"/>
+            <field name="level_course_aux"/>
+            <field name="date_start_course_aux"/>
+            <field name="date_end_course_aux"/>
+          </group>       
+          <group string="Asignaturas" invisible = "state_wizard != '2'">
+            <field name="name_subject_aux"/>
+            <button name="add_asignatura" class ="btn oe_highlight-secondary" type="object" 
+              string="Añadir asignatura">
+            </button>
+            <field name="subject_id_aux"/>
+          </group>
+
+          <group col="6" string="Alumnos" invisible = "state_wizard != '3'">
+            <field name="name_student_aux"/>
+            <field name="surname_student_aux"/>
+            <field name="birthday_student_aux"/> 
+            <field name="gender_student_aux"/> 
+            <field name="dni_student_aux"/> 
+          </group>
+          <group invisible = "state_wizard != '3'">
+            <button name="add_student" class ="btn btn-oe_highlight" type="object" 
+              string="Añadir estudiantes">
+            </button>  
+            <field name="student_id_aux"/>             
+          </group>
+          <group invisible = "state_wizard != '4'">
+            <field name="subject_id_aux" />
+            <field name="student_id_aux"/>             
+          </group>
+
+
+          <!-- pie de pagina con la opcion cancelar y crear -->
+            <footer>
+              <button name="create_course" type="object"
+                  string="Crear curso" class="oe_highlight" invisible= "state_wizard != '4'"/>
+              <button special="cancel" string="Cancel"/>
+            </footer>
+
+        </form>
+      </field>
+    </record>
+
+  </data>
+</odoo>

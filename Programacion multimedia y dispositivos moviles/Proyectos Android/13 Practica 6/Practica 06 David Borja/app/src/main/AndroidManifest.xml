@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="CoarseFineLocation">
+    <!-- Declaración del manifiesto principal de la aplicación.
+         Se definen permisos, características y actividades. -->
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <!-- Indica que la app puede usar la cámara, pero no es obligatoria. -->
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Permiso para usar la cámara. -->
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Permiso para mostrar notificaciones (Android 13+). -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Permiso para acceder a Internet. -->
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Permiso para acceder a la ubicación precisa (GPS). -->
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Permiso para acceder a la ubicación aproximada (WiFi/Red). -->
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme._03_Menu_Principal">
+        <!-- Configuración general de la aplicación:
+             - Backup permitido
+             - Iconos
+             - Nombre de la app
+             - Soporte RTL (Right-To-Left)
+             - Tema principal -->
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="org.practica_6.david.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <!-- FileProvider para compartir archivos entre apps (ej. fotos de cámara). -->
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+            <!-- Define las rutas de archivos permitidas en file_paths.xml -->
+        </provider>
+
+        <!-- Declaración de actividades de la aplicación -->
+        <activity
+            android:name="org.iesch.a03_menu_principal.ajustes.AjustesActivity"
+            android:exported="false" />
+        <!-- Pantalla de ajustes, no exportada (solo accesible desde la app). -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.preguntas.MainActivityPregunta"
+            android:exported="false"
+            android:theme="@style/Theme.PreguntaActivity" />
+        <!-- Pantalla de preguntas, con tema específico. -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.preguntas.MainActivityResultado"
+            android:exported="false"
+            android:theme="@style/Theme.PreguntaActivity" />
+        <!-- Pantalla de resultados de preguntas. -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.crearcuenta.RegisterActivity"
+            android:exported="false" />
+        <!-- Pantalla de registro de usuario. -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.MenuActivity"
+            android:exported="false" />
+        <!-- Menú principal de la aplicación. -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.mapas.MapasActivity"
+            android:exported="false" />
+        <!-- Pantalla de mapas con Mapbox. -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.cine.ListaPeliculasActivity"
+            android:exported="false" />
+        <!-- Pantalla de lista de películas. -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.settings.SettingsActivity"
+            android:exported="false" />
+        <!-- Pantalla de configuración (otra sección de ajustes). -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.calculadora.MainActivityCalculadora"
+            android:exported="false"
+            android:theme="@style/Theme.CalculadoraActivity" />
+        <!-- Pantalla de calculadora, con tema propio. -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.superheroes.detalle.DetalleHeroeActivity"
+            android:exported="false"
+            android:theme="@style/Registro_SuperHeroes" />
+        <!-- Pantalla de detalle de superhéroe. -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.superheroes.RegistroSuperHeroeActivity"
+            android:exported="false"
+            android:theme="@style/Registro_SuperHeroes" />
+        <!-- Pantalla de registro de superhéroe. -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.edadcanina.EdadCaninaActivity"
+            android:exported="false"
+            android:theme="@style/Edad_Canina" />
+        <!-- Pantalla de cálculo de edad canina. -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.fragments.FragmentsActivity"
+            android:exported="false" />
+        <!-- Pantalla de ejemplo con fragments. -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.apirazas.RazasApiActivity"
+            android:exported="false" />
+        <!-- Pantalla que consume API de razas de perros. -->
+
+        <activity
+            android:name="org.iesch.a03_menu_principal.Login.LoginActivity"
+            android:exported="true"
+            android:theme="@style/SplashScreen">
+            <!-- Pantalla de login, exportada porque es el punto de entrada de la app. -->
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <!-- Acción para recibir eventos de Firebase Cloud Messaging. -->
+
+                <action android:name="android.intent.action.MAIN" />
+                <!-- Acción principal de la aplicación. -->
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- Categoría que indica que esta actividad es la que se lanza al abrir la app. -->
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CRUD Completo - Tareas API REST</title>
+<style>
+    body { font-family: Arial; padding: 20px; }
+    table { border-collapse: collapse; width: 80%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #f0f0f0; }
+    button { margin: 5px; padding: 10px; }
+</style>
+</head>
+<body>
+
+<h2>Gestión de Tareas - CRUD Completo</h2>
+
+<!-- Botones de acciones -->
+<button onclick="listarTareas()">GET - Listar Tareas</button>
+<button onclick="crearTarea()">POST - Crear Tarea</button>
+<button onclick="actualizarTarea()">PUT - Actualizar Tarea</button>
+<button onclick="borrarTarea()">DELETE - Borrar Tarea</button>
+
+<hr>
+
+<!-- Contenedor para la tabla -->
+<div id="resultado"></div>
+
+<script>
+  // URL de la API (cambiar por la del examen)
+  const URL = "https://jsonplaceholder.typicode.com/todos"; // API de prueba
+  let tareas = [];
+
+  // ========================================
+  // GET - Listar todas las tareas
+  // ========================================
+  function listarTareas() {
+    console.log("GET: Listando tareas...");
+    
+    fetch(URL + "?_limit=10") // Limitar a 10 para pruebas
+      .then(response => {
+        if (!response.ok) throw new Error("Error al cargar tareas");
+        return response.json();
+      })
+      .then(data => {
+        tareas = data;
+        console.log("Tareas cargadas:", tareas);
+        mostrarTabla(tareas);
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("Error al cargar las tareas");
+      });
+  }
+
+  // ========================================
+  // Función para mostrar la tabla
+  // ========================================
+  function mostrarTabla(arr) {
+    if (arr.length === 0) {
+      document.getElementById("resultado").innerHTML = "<p>No hay tareas para mostrar.</p>";
+      return;
+    }
+
+    let html = `
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Usuario ID</th>
+          <th>Título</th>
+          <th>Completada</th>
+        </tr>
+    `;
+
+    arr.forEach(item => {
+      html += `
+        <tr>
+          <td>${item.id}</td>
+          <td>${item.userId}</td>
+          <td>${item.title}</td>
+          <td>${item.completed ? "Sí" : "No"}</td>
+        </tr>
+      `;
+    });
+
+    html += "</table>";
+    document.getElementById("resultado").innerHTML = html;
+  }
+
+  // ========================================
+  // POST - Crear una nueva tarea
+  // ========================================
+  function crearTarea() {
+    const titulo = prompt("Introduce el título de la nueva tarea:");
+    
+    if (!titulo) {
+      alert("Debes introducir un título");
+      return;
+    }
+
+    console.log("POST: Creando tarea...");
+
+    // Datos de la nueva tarea
+    const nuevaTarea = {
+      userId: 1,
+      title: titulo,
+      completed: false
+    };
+
+    fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(nuevaTarea)
+    })
+    .then(response => {
+      if (!response.ok) throw new Error("Error al crear tarea");
+      return response.json();
+    })
+    .then(data => {
+      console.log("Tarea creada:", data);
+      alert("Tarea creada correctamente con ID: " + data.id);
+      
+      // Actualizar la tabla (añadir la nueva tarea)
+      tareas.unshift(data); // Añadir al inicio
+      mostrarTabla(tareas);
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      alert("Error al crear la tarea");
+    });
+  }
+
+  // ========================================
+  // PUT - Actualizar una tarea existente
+  // ========================================
+  function actualizarTarea() {
+    const id = prompt("Introduce el ID de la tarea a actualizar:");
+    
+    if (!id) {
+      alert("Debes introducir un ID");
+      return;
+    }
+
+    const nuevoTitulo = prompt("Introduce el nuevo título:");
+    
+    if (!nuevoTitulo) {
+      alert("Debes introducir un título");
+      return;
+    }
+
+    console.log("PUT: Actualizando tarea ID " + id);
+
+    // Datos actualizados
+    const tareaActualizada = {
+      userId: 1,
+      title: nuevoTitulo,
+      completed: false
+    };
+
+    fetch(URL + "/" + id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(tareaActualizada)
+    })
+    .then(response => {
+      if (!response.ok) throw new Error("Error al actualizar tarea");
+      return response.json();
+    })
+    .then(data => {
+      console.log("Tarea actualizada:", data);
+      alert("Tarea ID " + id + " actualizada correctamente");
+      
+      // Actualizar en el array local
+      const index = tareas.findIndex(t => t.id == id);
+      if (index !== -1) {
+        tareas[index] = data;
+        mostrarTabla(tareas);
+      }
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      alert("Error al actualizar la tarea");
+    });
+  }
+
+  // ========================================
+  // DELETE - Borrar una tarea
+  // ========================================
+  function borrarTarea() {
+    const id = prompt("Introduce el ID de la tarea que deseas borrar:");
+    
+    if (!id) {
+      alert("Debes introducir un ID");
+      return;
+    }
+
+    console.log("DELETE: Borrando tarea ID " + id);
+
+    fetch(URL + "/" + id, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (!response.ok) throw new Error("Error al borrar tarea");
+      console.log("Tarea eliminada correctamente");
+      alert("Tarea ID " + id + " eliminada correctamente");
+      
+      // Eliminar del array local
+      tareas = tareas.filter(t => t.id != id);
+      mostrarTabla(tareas);
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      alert("Error al borrar la tarea");
+    });
+  }
+
+  // Cargar tareas al inicio
+  window.onload = function() {
+    listarTareas();
+  };
+</script>
+
+</body>
+</html>

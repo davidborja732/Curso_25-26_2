@@ -1,0 +1,16 @@
+meta {
+  name: Obtener por ciclo
+  type: http
+  seq: 7
+}
+
+get {
+  url: http://localhost:8080/api/estudiantes/dam
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

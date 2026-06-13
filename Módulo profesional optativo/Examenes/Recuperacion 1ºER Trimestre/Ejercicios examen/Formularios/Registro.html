@@ -1,0 +1,138 @@
+<!DOCTYPE html> <!-- Declara el documento como HTML5 -->
+<html lang="es"> <!-- Define el idioma del contenido como español -->
+<head> <!-- Inicio de la cabecera del documento -->
+    <meta charset="UTF-8"> <!-- Establece la codificación de caracteres a UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura la vista en móviles para que escale correctamente -->
+    <title>Formulario de Registro</title> <!-- Título que aparece en la pestaña del navegador -->
+    
+</head> <!-- Fin de la cabecera -->
+<body> <!-- Inicio del cuerpo del documento -->
+    <h1>Formulario de Registro</h1> <!-- Título principal visible en la página -->
+    <form id="miFormulario"> <!-- Formulario con identificador para manipulación en JS -->
+        <div class="form-group"> <!-- Grupo de campo: nombre -->
+            <label for="nombre">Nombre y Apellido:</label> <!-- Etiqueta del campo nombre -->
+            <input type="text" id="nombre" name="nombre" required> <!-- Campo de texto para nombre, obligatorio -->
+            <span class="error" id="errorNombre"></span> <!-- Contenedor para mostrar error de nombre -->
+        </div> <!-- Fin grupo nombre -->
+
+        <div class="form-group"> <!-- Grupo de campo: correo -->
+            <label for="correo">Correo Electrónico:</label> <!-- Etiqueta del campo correo -->
+            <input type="email" id="correo" name="correo" required> <!-- Campo de email, validación HTML, obligatorio -->
+            <span class="error" id="errorCorreo"></span> <!-- Contenedor para mostrar error de correo -->
+        </div> <!-- Fin grupo correo -->
+
+        <div class="form-group"> <!-- Grupo de campo: población -->
+            <label for="poblacion">Población:</label> <!-- Etiqueta del campo población -->
+            <input type="text" id="poblacion" name="poblacion" required> <!-- Campo de texto para población, obligatorio -->
+            <span class="error" id="errorPoblacion"></span> <!-- Contenedor para mostrar error de población -->
+        </div> <!-- Fin grupo población -->
+
+        <div class="form-group"> <!-- Grupo de campo: provincia -->
+            <label for="provincia">Provincia:</label> <!-- Etiqueta del campo provincia -->
+            <input type="text" id="provincia" name="provincia" required> <!-- Campo de texto para provincia, obligatorio -->
+            <span class="error" id="errorProvincia"></span> <!-- Contenedor para mostrar error de provincia -->
+        </div> <!-- Fin grupo provincia -->
+
+        <div class="form-group"> <!-- Grupo de campo: edad -->
+            <label for="edad">Edad:</label> <!-- Etiqueta del campo edad -->
+            <input type="number" id="edad" name="edad" required> <!-- Campo numérico para edad, obligatorio -->
+            <span class="error" id="errorEdad"></span> <!-- Contenedor para mostrar error de edad -->
+        </div> <!-- Fin grupo edad -->
+
+        <div class="form-group"> <!-- Grupo de campo: cómo conociste -->
+            <label>¿Cómo nos conociste?</label> <!-- Texto para el grupo de checkboxes -->
+            <div class="checkbox-group"> <!-- Grupo de checkbox individual -->
+                <input type="checkbox" id="google" name="conocimiento" value="google"> <!-- Checkbox opción Google -->
+                <label for="google">Google</label> <!-- Label asociado al checkbox Google -->
+            </div> <!-- Fin checkbox Google -->
+            <div class="checkbox-group"> <!-- Grupo de checkbox individual -->
+                <input type="checkbox" id="redes" name="conocimiento" value="redes"> <!-- Checkbox opción Redes Sociales -->
+                <label for="redes">Redes Sociales</label> <!-- Label asociado al checkbox Redes -->
+            </div> <!-- Fin checkbox Redes -->
+            <div class="checkbox-group"> <!-- Grupo de checkbox individual -->
+                <input type="checkbox" id="amigo" name="conocimiento" value="amigo"> <!-- Checkbox opción Un Amigo -->
+                <label for="amigo">Un Amigo</label> <!-- Label asociado al checkbox Amigo -->
+            </div> <!-- Fin checkbox Amigo -->
+            <span class="error" id="errorConocimiento"></span> <!-- Contenedor para mostrar error si no se selecciona nada -->
+        </div> <!-- Fin grupo cómo conociste -->
+
+        <div class="form-group"> <!-- Grupo de campo: opinión -->
+            <label for="opinion">Opinión y Sugerencias:</label> <!-- Etiqueta del área de texto -->
+            <textarea id="opinion" name="opinion" maxlength="150"></textarea> <!-- Área de texto con límite de 150 caracteres -->
+            <span id="contador">0/150</span> <!-- Contador de caracteres escritos -->
+            <span class="error" id="errorOpinion"></span> <!-- Contenedor para posibles errores del campo opinión -->
+        </div> <!-- Fin grupo opinión -->
+
+        <button type="submit">Enviar</button> <!-- Botón para enviar el formulario -->
+    </form> <!-- Fin del formulario -->
+
+    <script> <!-- Inicio del script de la página -->
+        const formulario = document.getElementById('miFormulario'); // Obtiene referencia al formulario por su ID
+        const textareaOpinion = document.getElementById('opinion'); // Obtiene referencia al textarea de opinión
+        const contador = document.getElementById('contador'); // Obtiene referencia al span del contador
+
+        textareaOpinion.addEventListener('input', () => { // Escucha cambios de texto en el textarea
+            contador.textContent = textareaOpinion.value.length + '/150'; // Actualiza el contador con la longitud actual
+        }); // Fin del listener de input
+
+        formulario.addEventListener('submit', (e) => { // Escucha el evento submit del formulario
+            e.preventDefault(); // Previene el envío por defecto para validar manualmente
+            limpiarErrores(); // Limpia mensajes de error previos
+
+            if (validarFormulario()) { // Si la validación pasa
+                alert('Formulario enviado correctamente'); // Muestra confirmación al usuario
+                formulario.reset(); // Resetea todos los campos del formulario
+                contador.textContent = '0/150'; // Reinicia el contador de caracteres
+            } // Fin de condición de envío correcto
+        }); // Fin del listener de submit
+
+        function validarFormulario() { // Función que valida todos los campos del formulario
+            let valido = true; // Bandera de estado de validación
+
+            const nombre = document.getElementById('nombre').value.trim(); // Obtiene y recorta el valor de nombre
+            if (!nombre || !/^[a-zA-Zá-úÁ-Ú\s]+$/.test(nombre)) { // Verifica que no esté vacío y cumpla el patrón de letras y espacios
+                document.getElementById('errorNombre').textContent = 'Nombre inválido (solo texto)'; // Muestra error específico
+                valido = false; // Marca validación como fallida
+            }
+
+            const correo = document.getElementById('correo').value.trim(); // Obtiene y recorta el valor de correo
+            if (!correo || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) { // Comprueba formato básico de email
+                document.getElementById('errorCorreo').textContent = 'Correo inválido (formato: a@b.dom)'; // Muestra error de correo
+                valido = false; // Marca validación como fallida
+            }
+
+            const poblacion = document.getElementById('poblacion').value.trim(); // Obtiene y recorta el valor de población
+            if (!poblacion || !/^[a-zA-Zá-úÁ-Ú\s]+$/.test(poblacion)) { // Verifica solo letras y espacios
+                document.getElementById('errorPoblacion').textContent = 'Población inválida (solo texto)'; // Muestra error de población
+                valido = false; // Marca validación como fallida
+            }
+
+            const provincia = document.getElementById('provincia').value.trim(); // Obtiene y recorta el valor de provincia
+            if (!provincia || !/^[a-zA-Zá-úÁ-Ú\s]+$/.test(provincia)) { // Verifica solo letras y espacios
+                document.getElementById('errorProvincia').textContent = 'Provincia inválida (solo texto)'; // Muestra error de provincia
+                valido = false; // Marca validación como fallida
+            }
+
+            const edad = document.getElementById('edad').value; // Obtiene el valor de edad (como string)
+            if (!edad || isNaN(edad) || edad < 18 || edad > 100) { // Valida que exista, sea número y esté en rango 18-100
+                document.getElementById('errorEdad').textContent = 'Edad inválida (18-100 años)'; // Muestra error de edad
+                valido = false; // Marca validación como fallida
+            }
+
+            const checkboxes = document.querySelectorAll('input[name="conocimiento"]:checked'); // Selecciona todas las opciones marcadas
+            if (checkboxes.length === 0) { // Verifica que al menos una esté marcada
+                document.getElementById('errorConocimiento').textContent = 'Selecciona al menos una opción'; // Muestra error de selección
+                valido = false; // Marca validación como fallida
+            }
+
+            return valido; // Devuelve el estado de validación (true/false)
+        } // Fin de la función validarFormulario
+
+        function limpiarErrores() { // Función que limpia todos los mensajes de error
+            document.querySelectorAll('.error').forEach(error => { // Selecciona todos los elementos con clase .error
+                error.textContent = ''; // Vacía el contenido de texto de cada uno
+            }); // Fin del recorrido de errores
+        } // Fin de la función limpiarErrores
+    </script> <!-- Fin del script -->
+</body> <!-- Fin del cuerpo del documento -->
+</html> <!-- Fin del documento HTML -->

@@ -1,0 +1,31 @@
+meta {
+  name: 13 Put Actualizar Consulta
+  type: http
+  seq: 13
+}
+
+put {
+  url: {{baseUrl}}/api/consultas/{{consultaId}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "fechaConsulta": "2024-01-15T10:30:00",
+    "motivo": "Revisión anual",
+    "diagnostico": "Estado general excelente",
+    "tratamiento": "Vacuna antirrábica, desparasitación y vitaminas",
+    "precio": 70.0,
+    "mascota": {
+      "id": "aaaaaa000000000000000001"
+    },
+    "sintomas": [
+      { "descripcion": "Ligera pérdida de apetito", "gravedad": "LEVE" }
+    ]
+  }
+}

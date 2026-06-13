@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Países por Continente</title>
+</head>
+<body>
+
+
+    <h1>🌍 Países del Mundo por Continente</h1>
+    <p>Selecciona un continente para ver la lista de países.</p>
+    
+    <!-- Botones de control para cargar datos y limpiar la interfaz -->
+    <button onclick="cargarDatos()">Cargar Datos</button>
+    <button onclick="limpiarTodo()">Limpiar</button>
+    
+    <hr>
+    
+    <!-- Select para elegir continente (inicialmente oculto hasta cargar datos) -->
+    <div id="selectorContinente" style="display: none;">
+        <label for="selectContinente"><strong>Selecciona un continente:</strong></label>
+        <!-- Select que ejecuta mostrarPaises() cuando cambia la selección -->
+        <select id="selectContinente" onchange="mostrarPaises()">
+            <option value="">-- Selecciona un continente --</option>
+        </select>
+    </div>
+    
+    <hr>
+    
+    <!-- Contenedor donde se mostrará la lista de países del continente seleccionado -->
+    <div id="listaPaises"></div>
+    
+    <hr>
+    
+    <!-- Contenedor donde se mostrarán los detalles del país clickeado -->
+    <div id="detallePais"></div>
+
+
+    <script>
+        // --- 1. Variables globales ---
+        
+        // Array que almacenará todos los países obtenidos de la API
+        let paises = [];
+        
+        // Array que almacenará los continentes únicos extraídos de los países
+        let continentes = [];
+
+
+        // --- 2. Función para cargar los datos desde la API ---
+        function cargarDatos() {
+            // Obtener referencias a los divs principales
+            let divSelector = document.getElementById("selectorContinente");
+            let divPaises = document.getElementById("listaPaises");
+            let divDetalle = document.getElementById("detallePais");
+            
+            // Limpiamos todo y mostramos mensaje de carga
+            divPaises.innerHTML = "<p>⏳ Cargando datos de países...</p>";
+            divDetalle.innerHTML = "";
+            divSelector.style.display = "none";
+            
+            // --- Realizamos la petición fetch ---
+            // Añadimos timestamp (milisegundos actuales) para evitar que el navegador use caché
+            let timestamp = new Date().getTime();
+            fetch("https://raw.githubusercontent.com/mledoze/countries/master/countries.json?_=" + timestamp)
+                .then(function(response) {
+                    // Verificamos que la respuesta HTTP sea exitosa (código 200-299)
+                    if (!response.ok) {
+                        // Si hay error, lanzar excepción con el código de estado
+                        throw new Error("Error en la petición: " + response.status);
+                    }
+                    // Convertimos la respuesta a formato JSON
+                    return response.json();
+                })
+                .then(function(data) {
+                    // --- Guardamos todos los países en el array global ---
+                    paises = data;
+                    
+                    // Mostrar en consola cuántos países se cargaron
+                    console.log("Total de países cargados:", paises.length);
+                    
+                    // --- Llamamos a función para extraer continentes únicos ---
+                    extraerContinentes();
+                    
+                    // --- Mostramos el selector de continentes ---
+                    mostrarSelectorContinentes();
+                    
+                    // Actualizar mensaje de éxito
+                    divPaises.innerHTML = "<p>✓ Datos cargados correctamente. Selecciona un continente.</p>";
+                })
+                .catch(function(error) {
+                    // Capturamos cualquier error (red, parseo, etc.)
+                    divPaises.innerHTML = "<p style='color: red;'>❌ Error al cargar los datos: " + error.message + "</p>";
+                    console.error("Error:", error);
+                });
+        }
+
+
+        // --- 3. Función para extraer los continentes únicos de todos los países ---
+        function extraerContinentes() {
+            // Usamos Set para almacenar valores únicos (evita duplicados automáticamente)
+            let continentesSet = new Set();
+            
+            // Recorremos todos los países con bucle for tradicional
+            for (let i = 0; i < paises.length; i++) {
+                // Los continentes están en el campo "region" de cada país
+                let continente = paises[i].region;
+                
+                // Solo añadimos si no está vacío o null
+                if (continente && continente !== "") {
+                    // add() añade el valor al Set (ignora duplicados)
+                    continentesSet.add(continente);
+                }
+            }
+            
+            // Convertimos el Set a Array usando Array.from() y lo ordenamos alfabéticamente
+            continentes = Array.from(continentesSet).sort();
+            
+            // Mostrar en consola los continentes encontrados
+            console.log("Continentes encontrados:", continentes);
+        }
+
+
+        // --- 4. Función para mostrar el selector de continentes ---
+        function mostrarSelectorContinentes() {
+            // Obtener referencias a los elementos
+            let divSelector = document.getElementById("selectorContinente");
+            let select = document.getElementById("selectContinente");
+            
+            // Limpiamos el select (dejamos solo la opción por defecto)
+            select.innerHTML = '<option value="">-- Selecciona un continente --</option>';
+            
+            // Añadimos cada continente como una opción del select
+            for (let i = 0; i < continentes.length; i++) {
+                // Crear elemento <option>
+                let option = document.createElement("option");
+                
+                // Establecer el valor (lo que se envía/lee)
+                option.value = continentes[i];
+                
+                // Establecer el texto visible
+                option.textContent = continentes[i];
+                
+                // Añadir la opción al select
+                select.appendChild(option);
+            }
+            
+            // Mostramos el selector cambiando display de "none" a "block"
+            divSelector.style.display = "block";
+        }
+
+
+        // --- 5. Función para mostrar los países del continente seleccionado ---
+        function mostrarPaises() {
+            // Obtener referencias a los elementos
+            let select = document.getElementById("selectContinente");
+            let continenteSeleccionado = select.value; // Valor del select
+            let divPaises = document.getElementById("listaPaises");
+            let divDetalle = document.getElementById("detallePais");
+            
+            // Limpiamos el detalle del país anterior
+            divDetalle.innerHTML = "";
+            
+            // Si no hay continente seleccionado (opción por defecto), limpiamos y salimos
+            if (continenteSeleccionado === "") {
+                divPaises.innerHTML = "";
+                return;
+            }
+            
+            // --- Filtramos los países del continente seleccionado ---
+            let paisesFiltrados = [];
+            
+            // Recorrer todos los países
+            for (let i = 0; i < paises.length; i++) {
+                // Si el país pertenece al continente seleccionado
+                if (paises[i].region === continenteSeleccionado) {
+                    // Añadirlo al array de filtrados
+                    paisesFiltrados.push(paises[i]);
+                }
+            }
+            
+            // Ordenamos los países alfabéticamente por nombre común
+            paisesFiltrados.sort(function(a, b) {
+                // Convertir a minúsculas para comparación insensible a mayúsculas
+                let nombreA = a.name.common.toLowerCase();
+                let nombreB = b.name.common.toLowerCase();
+                
+                // Comparación: -1 si A va antes, 1 si B va antes, 0 si son iguales
+                if (nombreA < nombreB) return -1;
+                if (nombreA > nombreB) return 1;
+                return 0;
+            });
+            
+            // --- Construimos el HTML para mostrar la lista de países ---
+            let html = `<h2>Países de ${continenteSeleccionado} (Total: ${paisesFiltrados.length}):</h2>`;
+            html += "<ul>";
+            
+            // Recorrer cada país filtrado
+            for (let i = 0; i < paisesFiltrados.length; i++) {
+                // Guardamos el índice original del país en el array global "paises"
+                // indexOf busca el objeto en el array y devuelve su posición
+                let indiceOriginal = paises.indexOf(paisesFiltrados[i]);
+                
+                // Crear un enlace clickeable para cada país
+                // onclick llama a mostrarDetalle con el índice original
+                // return false evita que el enlace navegue
+                html += `<li>
+                            <a href="#" onclick="mostrarDetalle(${indiceOriginal}); return false;">
+                                ${paisesFiltrados[i].name.common}
+                            </a>
+                         </li>`;
+            }
+            
+            html += "</ul>";
+            
+            // Insertar el HTML generado en el div
+            divPaises.innerHTML = html;
+        }
+
+
+        // --- 6. Función para mostrar los detalles completos de un país ---
+        // Parámetro: indice - posición del país en el array global "paises"
+        function mostrarDetalle(indice) {
+            // Obtener el div donde mostraremos los detalles
+            let divDetalle = document.getElementById("detallePais");
+            
+            // Obtenemos el objeto país del array usando el índice
+            let pais = paises[indice];
+            
+            // Comenzamos a construir el HTML con los detalles
+            let html = "<h2>Detalles del País:</h2>";
+            html += "<div>";
+            
+            // --- Bandera (si existe en los datos) ---
+            if (pais.flags && pais.flags.png) {
+                html += `<img src="${pais.flags.png}" alt="Bandera de ${pais.name.common}" width="200"><br><br>`;
+            }
+            
+            // --- Nombre común del país ---
+            html += `<h3>${pais.name.common}</h3>`;
+            html += "<ul>";
+            
+            // --- Nombre oficial ---
+            html += `<li><strong>Nombre oficial:</strong> ${pais.name.official}</li>`;
+            
+            // --- Código ISO del país (3 letras) ---
+            html += `<li><strong>Código (ISO):</strong> ${pais.cca3}</li>`;
+            
+            // --- Continente (región) ---
+            html += `<li><strong>Continente:</strong> ${pais.region}</li>`;
+            
+            // --- Subregión (si existe) ---
+            if (pais.subregion) {
+                html += `<li><strong>Subregión:</strong> ${pais.subregion}</li>`;
+            }
+            
+            // --- Capital (si existe y tiene elementos) ---
+            // capital es un array, tomamos el primer elemento
+            if (pais.capital && pais.capital.length > 0) {
+                html += `<li><strong>Capital:</strong> ${pais.capital[0]}</li>`;
+            }
+            
+            // --- Población (si existe) ---
+            // toLocaleString formatea el número con separadores de miles
+            if (pais.population) {
+                html += `<li><strong>Población:</strong> ${pais.population.toLocaleString('es-ES')} habitantes</li>`;
+            }
+            
+            // --- Área en km² (si existe) ---
+            if (pais.area) {
+                html += `<li><strong>Área:</strong> ${pais.area.toLocaleString('es-ES')} km²</li>`;
+            }
+            
+            // --- Idiomas (si existen) ---
+            // languages es un objeto, usamos Object.values para obtener solo los valores
+            if (pais.languages) {
+                let idiomas = Object.values(pais.languages).join(", ");
+                html += `<li><strong>Idiomas:</strong> ${idiomas}</li>`;
+            }
+            
+            // --- Monedas (si existen) ---
+            // currencies es un objeto, iteramos con for...in
+            if (pais.currencies) {
+                let monedas = [];
+                // Recorrer cada código de moneda
+                for (let codigo in pais.currencies) {
+                    // Añadir nombre y símbolo de la moneda
+                    monedas.push(pais.currencies[codigo].name + " (" + pais.currencies[codigo].symbol + ")");
+                }
+                html += `<li><strong>Monedas:</strong> ${monedas.join(", ")}</li>`;
+            }
+            
+            // --- Zonas horarias (si existen) ---
+            // timezones es un array
+            if (pais.timezones && pais.timezones.length > 0) {
+                html += `<li><strong>Zonas horarias:</strong> ${pais.timezones.join(", ")}</li>`;
+            }
+            
+            // --- Fronteras con otros países (si existen) ---
+            // borders es un array con códigos ISO de países vecinos
+            if (pais.borders && pais.borders.length > 0) {
+                html += `<li><strong>Fronteras con:</strong> ${pais.borders.join(", ")}</li>`;
+            }
+            
+            html += "</ul>";
+            html += "</div>";
+            
+            // Mostramos los detalles insertando el HTML generado
+            divDetalle.innerHTML = html;
+        }
+
+
+        // --- 7. Función para limpiar todo y reiniciar la aplicación ---
+        function limpiarTodo() {
+            // Ocultar el selector de continentes
+            document.getElementById("selectorContinente").style.display = "none";
+            
+            // Resetear el select a su estado inicial
+            document.getElementById("selectContinente").innerHTML = '<option value="">-- Selecciona un continente --</option>';
+            
+            // Vaciar el contenedor de países
+            document.getElementById("listaPaises").innerHTML = "";
+            
+            // Vaciar el contenedor de detalles
+            document.getElementById("detallePais").innerHTML = "";
+            
+            // Vaciar los arrays globales
+            paises = [];
+            continentes = [];
+        }
+    </script>
+
+
+</body>
+</html>

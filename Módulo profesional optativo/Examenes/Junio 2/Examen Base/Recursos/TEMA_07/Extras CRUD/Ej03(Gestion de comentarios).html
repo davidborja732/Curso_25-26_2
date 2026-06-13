@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Comentarios</title>
+</head>
+<!--Requisitos:
+ Botón GET para listar los primeros 15 comentarios (ID, Nombre, Email)
+ Botón POST para crear un comentario (pedir nombre, email y texto)
+ Botón PUT para actualizar el email de un comentario (pedir ID y nuevo email)
+ Botón DELETE para borrar un comentario por ID-->
+<body>
+  <h1>Gestión de Comentarios</h1>
+  
+  <button onclick="listarComentarios()">GET - Listar Comentarios</button>
+  <button onclick="crearComentario()">POST - Crear Comentario</button>
+  <button onclick="actualizarComentario()">PUT - Actualizar Email</button>
+  <button onclick="borrarComentario()">DELETE - Borrar Comentario</button>
+  
+  <hr>
+  <div id="resultado"></div>
+
+  <script>
+    const URL = "https://jsonplaceholder.typicode.com/comments";
+    let comentarios = [];
+
+    // GET - Listar comentarios
+    function listarComentarios() {
+      fetch(URL + "?_limit=15")
+        .then(res => res.json())
+        .then(data => {
+          comentarios = data;
+          mostrarTabla();
+        })
+        .catch(err => alert("Error: " + err));
+    }
+
+    // Mostrar tabla
+    function mostrarTabla() {
+      let html = "<table border='1'><tr><th>ID</th><th>Nombre</th><th>Email</th><th>Comentario</th></tr>";
+      
+      comentarios.forEach(com => {
+        html += `<tr>
+          <td>${com.id}</td>
+          <td>${com.name}</td>
+          <td>${com.email}</td>
+          <td>${com.body.substring(0, 50)}...</td>
+        </tr>`;
+      });
+      
+      html += "</table>";
+      document.getElementById("resultado").innerHTML = html;
+    }
+
+    // POST - Crear comentario
+    function crearComentario() {
+      const nombre = prompt("Nombre:");
+      const email = prompt("Email:");
+      const texto = prompt("Texto del comentario:");
+      
+      if (!nombre || !email || !texto) {
+        alert("Debes completar todos los campos");
+        return;
+      }
+
+      const nuevoComentario = {
+        postId: 1,
+        name: nombre,
+        email: email,
+        body: texto
+      };
+
+      fetch(URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nuevoComentario)
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("Comentario creado con ID: " + data.id);
+        comentarios.unshift(data);
+        mostrarTabla();
+      })
+      .catch(err => alert("Error: " + err));
+    }
+
+    // PUT - Actualizar email
+    function actualizarComentario() {
+      const id = prompt("ID del comentario a actualizar:");
+      const nuevoEmail = prompt("Nuevo email:");
+      
+      if (!id || !nuevoEmail) {
+        alert("Debes completar todos los campos");
+        return;
+      }
+
+      fetch(URL + "/" + id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: nuevoEmail })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("Email actualizado correctamente");
+        const index = comentarios.findIndex(c => c.id == id);
+        if (index !== -1) {
+          comentarios[index].email = nuevoEmail;
+          mostrarTabla();
+        }
+      })
+      .catch(err => alert("Error: " + err));
+    }
+
+    // DELETE - Borrar comentario
+    function borrarComentario() {
+      const id = prompt("ID del comentario a borrar:");
+      
+      if (!id) {
+        alert("Debes introducir un ID");
+        return;
+      }
+
+      fetch(URL + "/" + id, {
+        method: 'DELETE'
+      })
+      .then(res => {
+        alert("Comentario borrado correctamente");
+        comentarios = comentarios.filter(c => c.id != id);
+        mostrarTabla();
+      })
+      .catch(err => alert("Error: " + err));
+    }
+  </script>
+</body>
+</html>

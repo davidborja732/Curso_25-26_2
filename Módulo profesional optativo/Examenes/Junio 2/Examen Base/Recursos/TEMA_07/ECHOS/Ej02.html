@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rick and Morty API - Personajes</title>
+  <style>
+    /* Sin estilos - solo HTML básico */
+  </style>
+</head>
+<body>
+  <h1>Personajes de Rick and Morty</h1>
+  
+  <!-- Contenedor donde se mostrarán las tarjetas de los personajes -->
+  <div id="characters"></div>
+  
+  <!-- Contenedor donde se mostrarán los detalles del personaje seleccionado -->
+  <div id="details"></div>
+
+  <script>
+    // URL de la API de Rick and Morty (devuelve los primeros 20 personajes)
+    const apiURL = "https://rickandmortyapi.com/api/character";
+
+    // Obtener los personajes con fetch
+    fetch(apiURL)
+      .then(response => {
+        // Verificar si la respuesta es correcta
+        if (!response.ok) throw new Error("Error al cargar los personajes");
+        // Convertir la respuesta a JSON
+        return response.json();
+      })
+      .then(data => {
+        // El array de personajes está en data.results
+        const personajes = data.results;
+        
+        // Obtener el contenedor donde vamos a poner los personajes
+        const container = document.getElementById("characters");
+
+        // Recorrer cada personaje y crear su tarjeta
+        personajes.forEach(personaje => {
+          // Crear un div para cada personaje
+          const card = document.createElement("div");
+
+          // Crear una imagen del personaje
+          const img = document.createElement("img");
+          img.src = personaje.image;
+          img.alt = personaje.name;
+
+          // Crear un párrafo con el nombre del personaje
+          const name = document.createElement("h3");
+          name.textContent = personaje.name;
+
+          // Añadir la imagen y el nombre al div
+          card.appendChild(img);
+          card.appendChild(name);
+          
+          // Añadir un evento de click para mostrar detalles
+          card.addEventListener("click", () => showDetails(personaje));
+
+          // Añadir la tarjeta al contenedor principal
+          container.appendChild(card);
+        });
+      })
+      .catch(error => console.error(error));
+
+    // Función para mostrar detalles del personaje seleccionado
+    function showDetails(character) {
+      // Obtener el contenedor de detalles
+      const details = document.getElementById("details");
+      
+      // Limpiar los detalles anteriores
+      details.innerHTML = "";
+
+      // Crear y añadir el título con el nombre
+      const title = document.createElement("h2");
+      title.textContent = character.name;
+      details.appendChild(title);
+
+      // Crear y añadir la imagen grande
+      const img = document.createElement("img");
+      img.src = character.image;
+      img.alt = character.name;
+      details.appendChild(img);
+
+      // Crear y añadir el ID
+      const p1 = document.createElement("p");
+      p1.innerHTML = "<strong>ID:</strong> " + character.id;
+      details.appendChild(p1);
+
+      // Crear y añadir el estado (Alive, Dead, unknown)
+      const p2 = document.createElement("p");
+      p2.innerHTML = "<strong>Estado:</strong> " + character.status;
+      details.appendChild(p2);
+
+      // Crear y añadir la especie (Human, Alien, etc.)
+      const p3 = document.createElement("p");
+      p3.innerHTML = "<strong>Especie:</strong> " + character.species;
+      details.appendChild(p3);
+
+      // Crear y añadir el tipo (puede estar vacío)
+      const p4 = document.createElement("p");
+      p4.innerHTML = "<strong>Tipo:</strong> " + (character.type || "N/A");
+      details.appendChild(p4);
+
+      // Crear y añadir el género
+      const p5 = document.createElement("p");
+      p5.innerHTML = "<strong>Género:</strong> " + character.gender;
+      details.appendChild(p5);
+
+      // Crear y añadir el origen (character.origin.name)
+      const p6 = document.createElement("p");
+      p6.innerHTML = "<strong>Origen:</strong> " + character.origin.name;
+      details.appendChild(p6);
+
+      // Crear y añadir la ubicación actual (character.location.name)
+      const p7 = document.createElement("p");
+      p7.innerHTML = "<strong>Ubicación:</strong> " + character.location.name;
+      details.appendChild(p7);
+
+      // Crear y añadir el número de episodios
+      const p8 = document.createElement("p");
+      p8.innerHTML = "<strong>Número de episodios:</strong> " + character.episode.length;
+      details.appendChild(p8);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+meta {
+  name: 18 Put Actualizar Jugador
+  type: http
+  seq: 18
+}
+
+put {
+  url: {{baseUrl}}/api/jugadores/{{jugadorId}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "nombre": "Erling",
+    "apellidos": "Haaland",
+    "fechaNacimiento": "2000-07-21",
+    "fechaFichaje": "2022-07-01T00:00:00",
+    "altura": 1.94,
+    "peso": 89.0,
+    "posicion": "DELANTERO",
+    "dorsal": 9,
+    "salario": 50000.0,
+    "pais": "Noruega",
+    "equipo": { "id": 1 }
+  }
+}

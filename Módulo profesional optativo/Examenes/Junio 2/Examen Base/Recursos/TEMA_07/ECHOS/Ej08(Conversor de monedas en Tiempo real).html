@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conversor de Monedas</title>
+  <style>
+    /* Sin estilos - solo HTML básico */
+  </style>
+</head>
+<!--Usa la API gratuita: https://api.exchangerate-api.com/v4/latest/USD
+Requisitos:
+ Cargar las tasas de cambio actuales
+ Dos selectores: "De" y "A" con diferentes monedas (USD, EUR, GBP, JPY, MXN, etc.)
+ Un input para la cantidad a convertir
+Botón "Convertir" que muestre el resultado
+ Mostrar la fecha de última actualización de las tasas
+ Ejemplo: "100 USD = 84.50 EUR (actualizado: 2024-01-15)"-->
+<body>
+  <h1>Conversor de Monedas en Tiempo Real</h1>
+  
+  <!-- Botón para cargar tasas -->
+  <button onclick="cargarTasas()">Cargar Tasas de Cambio</button>
+  <button onclick="limpiarConversor()">Limpiar</button>
+  
+  <hr>
+  
+  <!-- Información de las tasas -->
+  <div id="infoTasas"></div>
+  
+  <hr>
+  
+  <!-- Formulario de conversión -->
+  <div id="formularioConversion"></div>
+  
+  <hr>
+  
+  <!-- Resultado de la conversión -->
+  <div id="resultadoConversion"></div>
+
+  <script>
+    // Variables globales
+    let tasas = {}; // Objeto con las tasas de cambio
+    let monedaBase = ""; // Moneda base de las tasas
+    let fechaActualizacion = ""; // Fecha de última actualización
+    let monedasDisponibles = []; // Array con las monedas disponibles
+
+    // Función para cargar las tasas de cambio
+    function cargarTasas() {
+      const divInfo = document.getElementById("infoTasas");
+      const divFormulario = document.getElementById("formularioConversion");
+      const divResultado = document.getElementById("resultadoConversion");
+      
+      // Limpiar y mostrar mensaje de carga
+      divInfo.innerHTML = "<p>Cargando tasas de cambio...</p>";
+      divFormulario.innerHTML = "";
+      divResultado.innerHTML = "";
+      
+      // Hacer petición a la API
+      fetch("https://api.exchangerate-api.com/v4/latest/USD")
+        .then(response => {
+          if (!response.ok) throw new Error("Error al cargar tasas");
+          return response.json();
+        })
+        .then(data => {
+          // Guardar los datos
+          monedaBase = data.base; // "USD"
+          tasas = data.rates; // Objeto con todas las tasas
+          fechaActualizacion = data.date; // Fecha de actualización
+          
+          // Extraer las monedas disponibles (claves del objeto rates)
+          // Object.keys() devuelve un array con las claves
+          monedasDisponibles = Object.keys(tasas).sort(); // Ordenar alfabéticamente
+          
+          console.log("Moneda base:", monedaBase);
+          console.log("Total de monedas:", monedasDisponibles.length);
+          console.log("Fecha actualización:", fechaActualizacion);
+          
+          // Mostrar información
+          mostrarInformacion();
+          
+          // Mostrar el formulario
+          mostrarFormulario();
+        })
+        .catch(error => {
+          divInfo.innerHTML = "<p>Error: " + error.message + "</p>";
+          console.error(error);
+        });
+    }
+
+    // Función para mostrar información de las tasas
+    function mostrarInformacion() {
+      const divInfo = document.getElementById("infoTasas");
+      
+      let html = "<h3>Información de las Tasas</h3>";
+      html += "<p><strong>Moneda base:</strong> " + monedaBase + "</p>";
+      html += "<p><strong>Total de monedas disponibles:</strong> " + monedasDisponibles.length + "</p>";
+      html += "<p><strong>Fecha de actualización:</strong> " + fechaActualizacion + "</p>";
+      
+      divInfo.innerHTML = html;
+    }
+
+    // Función para mostrar el formulario de conversión
+    function mostrarFormulario() {
+      const divFormulario = document.getElementById("formularioConversion");
+      
+      let html = "<h3>Convertir Moneda</h3>";
+      
+      // Input para la cantidad
+      html += "<label for='cantidad'><strong>Cantidad:</strong></label><br>";
+      html += "<input type='number' id='cantidad' value='100' min='0' step='0.01'>";
+      html += "<br><br>";
+      
+      // Selector "De" (moneda origen)
+      html += "<label for='monedaOrigen'><strong>De:</strong></label><br>";
+      html += "<select id='monedaOrigen'>";
+      
+      // Recorrer todas las monedas disponibles
+      monedasDisponibles.forEach(moneda => {
+        // Marcar USD como seleccionado por defecto
+        const selected = moneda === "USD" ? " selected" : "";
+        html += "<option value='" + moneda + "'" + selected + ">" + moneda + "</option>";
+      });
+      
+      html += "</select>";
+      html += "<br><br>";
+      
+      // Selector "A" (moneda destino)
+      html += "<label for='monedaDestino'><strong>A:</strong></label><br>";
+      html += "<select id='monedaDestino'>";
+      
+      // Recorrer todas las monedas disponibles
+      monedasDisponibles.forEach(moneda => {
+        // Marcar EUR como seleccionado por defecto
+        const selected = moneda === "EUR" ? " selected" : "";
+        html += "<option value='" + moneda + "'" + selected + ">" + moneda + "</option>";
+      });
+      
+      html += "</select>";
+      html += "<br><br>";
+      
+      // Botón para convertir
+      html += "<button onclick='convertirMoneda()'>Convertir</button>";
+      
+      divFormulario.innerHTML = html;
+    }
+
+    // Función para convertir moneda
+    function convertirMoneda() {
+      const divResultado = document.getElementById("resultadoConversion");
+      
+      // Obtener los valores del formulario
+      const cantidad = parseFloat(document.getElementById("cantidad").value);
+      const monedaOrigen = document.getElementById("monedaOrigen").value;
+      const monedaDestino = document.getElementById("monedaDestino").value;
+      
+      // Validar que la cantidad sea válida
+      if (isNaN(cantidad) || cantidad <= 0) {
+        divResultado.innerHTML = "<p>Error: Introduce una cantidad válida mayor que 0.</p>";
+        return;
+      }
+      
+      // Validar que las monedas sean diferentes
+      if (monedaOrigen === monedaDestino) {
+        divResultado.innerHTML = "<p>Advertencia: Las monedas son iguales.</p>";
+        divResultado.innerHTML += "<p>" + cantidad + " " + monedaOrigen + " = " + cantidad + " " + monedaDestino + "</p>";
+        return;
+      }
+      
+      // CÁLCULO DE LA CONVERSIÓN
+      // Las tasas están en base USD
+      // Para convertir de cualquier moneda a otra, necesitamos dos pasos:
+      
+      // Paso 1: Convertir la moneda origen a USD
+      let valorEnUSD;
+      
+      if (monedaOrigen === "USD") {
+        // Si ya es USD, no hace falta conversión
+        valorEnUSD = cantidad;
+      } else {
+        // Para convertir a USD, dividimos por la tasa de la moneda origen
+        // Ejemplo: 100 EUR / 0.85 = 117.65 USD
+        valorEnUSD = cantidad / tasas[monedaOrigen];
+      }
+      
+      // Paso 2: Convertir de USD a la moneda destino
+      let resultado;
+      
+      if (monedaDestino === "USD") {
+        // Si el destino es USD, ya lo tenemos
+        resultado = valorEnUSD;
+      } else {
+        // Multiplicamos el valor en USD por la tasa de la moneda destino
+        // Ejemplo: 117.65 USD * 110.25 = 12970.31 JPY
+        resultado = valorEnUSD * tasas[monedaDestino];
+      }
+      
+      // Redondear a 2 decimales
+      resultado = Math.round(resultado * 100) / 100;
+      
+      // Mostrar el resultado
+      let html = "<h3>Resultado de la Conversión</h3>";
+      html += "<p><strong>" + cantidad + " " + monedaOrigen + " = " + resultado + " " + monedaDestino + "</strong></p>";
+      html += "<p>(Actualizado: " + fechaActualizacion + ")</p>";
+      
+      divResultado.innerHTML = html;
+    }
+
+    // Función para limpiar el conversor
+    function limpiarConversor() {
+      document.getElementById("infoTasas").innerHTML = "";
+      document.getElementById("formularioConversion").innerHTML = "";
+      document.getElementById("resultadoConversion").innerHTML = "";
+      tasas = {};
+      monedaBase = "";
+      fechaActualizacion = "";
+      monedasDisponibles = [];
+    }
+  </script>
+</body>
+</html>

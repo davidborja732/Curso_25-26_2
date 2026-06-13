@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloqueoDesbloqueo</title>
+</head>
+<body>
+    <script>
+
+        (() => {
+
+        function count() {
+            // Trabajo pesado
+            let i = 0;
+            for (let j = 0; j < 1e7; j++) {
+            i++;
+            }
+           // console.log("Tiempo de realización " + (Date.now() - start) + 'ms');
+        }
+
+        let start1 = Date.now();
+        count();   // Esto bloquea el navegador
+        console.log("Tiempo de realización " + (Date.now() - start1) + 'ms');
+
+        let start2 = Date.now();
+        setTimeout(count, 0); //no bloquea
+        console.log("Tiempo de realización " + (Date.now() - start2) + 'ms');
+
+        let start3 = Date.now();
+        count();   // Esto bloquea el navegador
+        console.log("Tiempo de realización " + (Date.now() - start3) + 'ms');
+        })();
+
+    </script>
+</body>
+</html>

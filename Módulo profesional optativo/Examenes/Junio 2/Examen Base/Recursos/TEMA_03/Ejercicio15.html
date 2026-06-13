@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio15</title>
+</head>
+<!--Crea un script que nos devuelva la edad actual de una persona a partir de su
+fecha de nacimiento.-->
+<body>
+    <h1>Ejercicio 15</h1>
+
+    <script>
+        // Función que calcula la diferencia de años entre una fecha ingresada y la fecha actual
+        function obtenerDif() {
+            // Obtiene el valor del campo "dia" del formulario
+            var dia = document.getElementById("dia").value;
+            
+            // Obtiene el valor del campo "mes" del formulario
+            var mes = document.getElementById("mes").value;
+            
+            // Resta 1 al mes porque JavaScript cuenta los meses desde 0 (enero) hasta 11 (diciembre)
+            // Si el usuario ingresa 3 (marzo), el Date necesita recibir 2
+            mes -= 1;
+            
+            // Obtiene el valor del campo "anyo" (año) del formulario
+            var anyo = document.getElementById("anyo").value;
+            
+            // Crea un nuevo objeto Date con la fecha de nacimiento ingresada
+            // El formato es: new Date(año, mes, día)
+            var fecha = new Date(anyo, mes, dia);
+            
+            // Date.now() devuelve el número de milisegundos transcurridos desde 
+            // el 1 de enero de 1970 (00:00:00 UTC) hasta el momento actual
+            var fechaAct = Date.now();
+            
+            // Calcula la diferencia en milisegundos entre la fecha actual y la fecha de nacimiento
+            // Math.abs() convierte el resultado en valor absoluto (elimina el signo negativo si existe)
+            // fecha (objeto Date) se convierte automáticamente a milisegundos al hacer la resta
+            var difTiempo = Math.abs(fechaAct - fecha);
+            
+            // Convierte los milisegundos a días
+            // 1000 milisegundos = 1 segundo
+            // 60 segundos = 1 minuto
+            // 60 minutos = 1 hora
+            // 24 horas = 1 día
+            // Math.ceil() redondea hacia arriba al entero más cercano
+            var difDias = Math.ceil(difTiempo / (1000 * 60 * 60 * 24));
+            
+            // Convierte los días a años (aproximadamente)
+            // Divide el total de días entre 365 (días por año)
+            // Math.floor() redondea hacia abajo para obtener solo los años completos
+            // Nota: Esta es una aproximación que no considera años bisiestos con precisión
+            var anyos = Math.floor(difDias / 365);
+        
+            // Muestra el resultado en el elemento con id "result"
+            document.getElementById("result").innerHTML = "Usted tiene " + anyos + " años.";
+        }
+    </script>
+
+    <form>
+        <br/>
+        <p>Inserte la fecha: </p>
+        
+        <!-- Campos de entrada para día, mes y año de nacimiento -->
+        Dia: <input type="text" id="dia" size="1"/> 
+        Mes: <input type="text" id="mes" size="1"/> 
+        Año: <input type="text" id="anyo" size="2"/><br><br>
+        
+        <!-- Botón de envío que ejecuta obtenerDif() -->
+        <!-- return false evita que el formulario se envíe y recargue la página -->
+        <input type="submit" value="Enviar" onclick="obtenerDif(); return false;"/><br><br>
+        
+        <!-- Elemento donde se mostrará la edad calculada -->
+        <p id="result"/>
+    </form>
+
+</body>
+</html>

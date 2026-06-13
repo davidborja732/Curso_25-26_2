@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "897793124837",
+    "project_id": "repasoexamen-6e211",
+    "storage_bucket": "repasoexamen-6e211.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897793124837:android:a965165c01f08e574d670c",
+        "android_client_info": {
+          "package_name": "com.example.repaso_david"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDkJPKHT4rSTiihw_BDAZmv6ws-ps5QX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html> <!-- Declara el documento como HTML5 -->
+<html lang="en"> <!-- Define el idioma de la página como inglés -->
+<head>
+    <meta charset="UTF-8"> <!-- Codificación de caracteres UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ajuste de vista en móviles -->
+    <title>Ejercicio 1</title> <!-- Título de la pestaña -->
+
+    <script>
+        // Array con las letras válidas del DNI según el cálculo del resto
+        const letras = ["T","R","W","A","G","M","Y","F","P","D","X","B",
+                        "N","J","Z","S","Q","V","H","L","C","K","E"];
+
+        // Función que valida el DNI
+        function devolverdni(){
+            // Obtiene el input por su ID
+            var dni = document.getElementById("DNIusuario");
+
+            // Extrae la letra introducida (último carácter del valor)
+            var letradni = dni.value.charAt(dni.value.length - 1).toUpperCase();
+
+            // Extrae los números del DNI (todos menos el último carácter)
+            var numerosdni = Number(dni.value.slice(0, -1));
+
+            // Calcula el resto de dividir los números entre 23
+            var resto = numerosdni % 23;
+
+            // Obtiene la letra correcta según el resto
+            var letracalculo = letras[resto];
+
+            // Obtiene el formulario por su ID
+            var elemento = document.getElementById("miform");
+
+            // Compara la letra introducida con la calculada
+            if(letradni === letracalculo){
+                // Si coincide, envía el formulario
+                elemento.submit();
+            }else{
+                // Si no coincide, muestra mensaje en consola
+                console.log("El DNI no es válido");
+                alert("El DNI no es válido"); // También muestra alerta al usuario
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Formulario con ID para poder referenciarlo -->
+    <form id="miform" action="https://google.es/">
+        <p>
+            Introduce tu DNI
+            <!-- Campo de texto para introducir el DNI -->
+            <input type="text" name="dni" id="DNIusuario"> 
+            <!-- Botón que ejecuta la función de validación -->
+            <input type="button" value="Enviar" onclick="devolverdni()">
+        </p>
+    </form>
+</body>
+</html>

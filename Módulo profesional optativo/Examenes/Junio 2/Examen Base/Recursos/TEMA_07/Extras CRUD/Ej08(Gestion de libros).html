@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Libros</title>
+</head>
+<!--API de ejemplo (simulada con JSONPlaceholder posts)
+Requisitos:
+ Botón GET para listar libros (ID, Título, Autor)
+ Botón POST para añadir un libro (pedir título y autor)
+ Botón PUT para actualizar el título de un libro (pedir ID y nuevo título)
+ Botón DELETE para borrar un libro por ID
+ Filtrar libros por autor usando un input de búsqueda-->
+<body>
+  <h1>Gestión de Biblioteca</h1>
+  
+  <button onclick="listarLibros()">GET - Listar Libros</button>
+  <button onclick="crearLibro()">POST - Añadir Libro</button>
+  <button onclick="actualizarLibro()">PUT - Actualizar Título</button>
+  <button onclick="borrarLibro()">DELETE - Borrar Libro</button>
+  
+  <hr>
+  
+  <label>Buscar por autor: </label>
+  <input type="text" id="buscarAutor" onkeyup="filtrarPorAutor()" placeholder="Escribe un autor...">
+  
+  <hr>
+  <div id="resultado"></div>
+
+  <script>
+    const URL = "https://jsonplaceholder.typicode.com/posts";
+    let libros = [];
+    let librosFiltrados = [];
+
+    // GET - Listar libros
+    function listarLibros() {
+      fetch(URL + "?_limit=15")
+        .then(res => res.json())
+        .then(data => {
+          // Simulamos que el userId es el autor
+          libros = data.map(post => ({
+            id: post.id,
+            titulo: post.title,
+            autor: "Autor " + post.userId
+          }));
+          librosFiltrados = libros;
+          mostrarTabla();
+        })
+        .catch(err => alert("Error: " + err));
+    }
+
+    // Mostrar tabla
+    function mostrarTabla() {
+      let html = "<table border='1'>";
+      html += "<tr><th>ID</th><th>Título</th><th>Autor</th></tr>";
+      
+      librosFiltrados.forEach(libro => {
+        html += `<tr>
+          <td>${libro.id}</td>
+          <td>${libro.titulo}</td>
+          <td>${libro.autor}</td>
+        </tr>`;
+      });
+      
+      html += "</table>";
+      document.getElementById("resultado").innerHTML = html;
+    }
+
+    // Filtrar por autor en tiempo real
+    function filtrarPorAutor() {
+      const textoBusqueda = document.getElementById("buscarAutor").value.toLowerCase();
+      
+      if (textoBusqueda === "") {
+        librosFiltrados = libros;
+      } else {
+        librosFiltrados = libros.filter(libro => 
+          libro.autor.toLowerCase().includes(textoBusqueda)
+        );
+      }
+      
+      mostrarTabla();
+    }
+
+    // POST - Crear libro
+    function crearLibro() {
+      const titulo = prompt("Título del libro:");
+      const autor = prompt("Autor del libro:");
+      
+      if (!titulo || !autor) {
+        alert("Debes completar todos los campos");
+        return;
+      }
+
+      const nuevoLibro = {
+        userId: 1,
+        title: titulo
+      };
+
+      fetch(URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nuevoLibro)
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("Libro creado con ID: " + data.id);
+        const libro = {
+          id: data.id,
+          titulo: titulo,
+          autor: autor
+        };
+        libros.unshift(libro);
+        librosFiltrados = libros;
+        mostrarTabla();
+      })
+      .catch(err => alert("Error: " + err));
+    }
+
+    // PUT - Actualizar libro
+    function actualizarLibro() {
+      const id = prompt("ID del libro:");
+      const nuevoTitulo = prompt("Nuevo título:");
+      
+      if (!id || !nuevoTitulo) {
+        alert("Debes completar todos los campos");
+        return;
+      }
+
+      fetch(URL + "/" + id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: nuevoTitulo })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("Libro actualizado correctamente");
+        const index = libros.findIndex(l => l.id == id);
+        if (index !== -1) {
+          libros[index].titulo = nuevoTitulo;
+          librosFiltrados = libros;
+          mostrarTabla();
+        }
+      })
+      .catch(err => alert("Error: " + err));
+    }
+
+    // DELETE - Borrar libro
+    function borrarLibro() {
+      const id = prompt("ID del libro a borrar:");
+      
+      if (!id) {
+        alert("Debes introducir un ID");
+        return;
+      }
+
+      fetch(URL + "/" + id, {
+        method: 'DELETE'
+      })
+      .then(res => {
+        alert("Libro borrado correctamente");
+        libros = libros.filter(l => l.id != id);
+        librosFiltrados = libros;
+        mostrarTabla();
+      })
+      .catch(err => alert("Error: " + err));
+    }
+  </script>
+</body>
+</html>

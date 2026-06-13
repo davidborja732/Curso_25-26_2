@@ -1,0 +1,31 @@
+meta {
+  name: 17 Post Crear Jugador
+  type: http
+  seq: 17
+}
+
+post {
+  url: {{baseUrl}}/api/jugadores
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "nombre": "Bukayo",
+    "apellidos": "Saka",
+    "fechaNacimiento": "2001-09-05",
+    "fechaFichaje": "2023-07-01T00:00:00",
+    "altura": 1.78,
+    "peso": 72.0,
+    "posicion": "DELANTERO",
+    "dorsal": 7,
+    "salario": 28000.0,
+    "pais": "Inglaterra",
+    "equipo": { "id": 1 }
+  }
+}

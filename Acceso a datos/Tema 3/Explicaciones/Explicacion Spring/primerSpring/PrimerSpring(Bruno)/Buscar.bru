@@ -1,0 +1,20 @@
+meta {
+  name: Buscar
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:8080/buscar?nombre=luis
+  body: none
+  auth: inherit
+}
+
+params:query {
+  nombre: luis
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

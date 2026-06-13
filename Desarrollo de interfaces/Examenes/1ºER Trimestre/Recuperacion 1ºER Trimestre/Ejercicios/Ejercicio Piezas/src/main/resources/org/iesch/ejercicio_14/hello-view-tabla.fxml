@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="622.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesch.ejercicio_14.HelloController1">
+   <children>
+      <HBox layoutX="21.0" layoutY="24.0" prefHeight="443.0" prefWidth="576.0">
+         <children>
+            <TableView fx:id="tabla" layoutX="440.0" layoutY="74.0" prefHeight="443.0" prefWidth="575.0">
+               <columns>
+                  <TableColumn fx:id="colId" prefWidth="174.0" text="Id" />
+                  <TableColumn fx:id="colNombre" prefWidth="199.0" text="Nombre" />
+                  <TableColumn fx:id="colPrecio" prefWidth="201.0" text="Precio" />
+               </columns>
+            </TableView>
+         </children>
+      </HBox>
+   </children>
+</Pane>

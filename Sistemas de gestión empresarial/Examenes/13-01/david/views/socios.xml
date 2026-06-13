@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="david.socio_list">
+      <field name="name">Socios</field>
+      <field name="model">david.socios</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="nombre"/>
+          <field name="apellidos"/>
+          <field name="dni"/>
+        </list>
+      </field>
+    </record>
+  </data>
+</odoo>

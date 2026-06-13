@@ -1,0 +1,11 @@
+meta {
+  name: 19 Delete Jugador (Ejecutar 17-post-crear primero, usar el id devuelto)
+  type: http
+  seq: 19
+}
+
+delete {
+  url: {{baseUrl}}/api/jugadores/{{nuevoJugadorId}}
+  body: none
+  auth: none
+}

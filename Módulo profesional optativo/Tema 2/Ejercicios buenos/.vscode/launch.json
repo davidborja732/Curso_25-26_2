@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Abrir proyecto en Edge (localhost:8080)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Abrir index.html en Edge (Live Server)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:5500/index.html",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Adjuntar a Edge",
+      "type": "msedge",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}
+
+
+

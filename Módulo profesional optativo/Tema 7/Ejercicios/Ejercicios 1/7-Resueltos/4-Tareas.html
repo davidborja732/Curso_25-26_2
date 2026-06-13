@@ -1,0 +1,282 @@
+<!DOCTYPE html> <!-- Declaro el documento como HTML5 -->
+<html lang="es"> <!-- Idioma principal español -->
+<head> <!-- Inicio de la cabecera -->
+<meta charset="UTF-8"> <!-- Codificación UTF-8 -->
+<title>Mostrar tareas APIREST</title> <!-- Título de la página -->
+<style> /* Estilos embebidos */
+    body { font-family: Arial; padding: 20px; } /* Tipografía y relleno general */
+    table { border-collapse: collapse; width: 60%; } /* Tabla sin separación de bordes y ancho fijo */
+    th, td {
+        border: 1px solid #ccc; /* Borde gris claro para celdas */
+        padding: 8px; /* Espaciado interno */
+        text-align: left; /* Alineación del texto */
+    }
+    th { background: #f0f0f0; } /* Fondo para los encabezados de tabla */
+
+    /* Estilos para las ventanas modales (añadido para abrir formularios en ventana) */
+    .modal {
+        display: none; /* Oculta el modal inicialmente */
+        position: fixed; /* Fija posición respecto a la ventana */
+        z-index: 1; /* Se muestra por encima del contenido */
+        left: 0; top: 0; /* Ocupa desde la esquina superior izquierda */
+        width: 100%; height: 100%; /* Cubre toda la pantalla */
+        background-color: rgba(0,0,0,0.5); /* Fondo semitransparente para oscurecer */
+    }
+    .modal-content {
+        background: #fff; /* Fondo del cuadro modal */
+        margin: 10% auto; /* Centrado con margen superior */
+        padding: 20px; /* Relleno interno */
+        border: 1px solid #888; /* Borde del modal */
+        width: 40%; /* Ancho del contenido del modal */
+        border-radius: 5px; /* Esquinas redondeadas */
+    }
+    .close {
+        float: right; /* Botón de cerrar alineado a la derecha */
+        font-size: 20px; /* Tamaño del icono de cierre */
+        cursor: pointer; /* Muestra cursor de mano */
+    }
+</style> <!-- Fin de los estilos -->
+</head> <!-- Fin de la cabecera -->
+<body> <!-- Inicio del cuerpo -->
+
+<h2>Mostrar tareas APIREST</h2> <!-- Título de la sección principal -->
+
+<button id="btnMostrar">Mostrar Datos</button> <!-- Botón para solicitar y mostrar tareas -->
+<div id="resultado"></div> <!-- Contenedor donde se dibuja la tabla -->
+
+<button onclick="del()">DELETE</button> <!-- Botón para borrar una tarea mediante prompt -->
+<button id="btnAdd">Añadir Tarea</button> <!-- Botón para abrir el modal de añadir -->
+<button id="btnEdit">Modificar Tarea</button> <!-- Botón para abrir el modal de editar -->
+
+<!-- Modal Añadir (nuevo: formulario dentro de ventana modal) -->
+<div id="modalAdd" class="modal"> <!-- Contenedor del modal de añadir -->
+  <div class="modal-content"> <!-- Caja de contenido del modal -->
+    <span class="close" onclick="cerrarModal('modalAdd')">&times;</span> <!-- Botón de cierre del modal -->
+    <h3>Añadir nueva tarea</h3> <!-- Título del modal -->
+    <form id="addTaskForm"> <!-- Formulario de alta de tarea -->
+        <input type="text" id="tarea" placeholder="Tarea" required><br> <!-- Campo tarea -->
+        <input type="text" id="prioridad" placeholder="Prioridad" required><br> <!-- Campo prioridad -->
+        <input type="text" id="urgente" placeholder="Urgente" required><br> <!-- Campo urgente -->
+        <input type="text" id="realizada" placeholder="Realizada" required><br> <!-- Campo realizada -->
+        <input type="text" id="responsable" placeholder="Responsable" required><br> <!-- Campo responsable -->
+        <button type="submit">Añadir Tarea</button> <!-- Envío del formulario -->
+    </form> <!-- Fin del formulario -->
+  </div> <!-- Fin contenido del modal -->
+</div> <!-- Fin modal de añadir -->
+
+<!-- Modal Editar (nuevo: formulario de edición en ventana modal) -->
+<div id="modalEdit" class="modal"> <!-- Contenedor del modal de editar -->
+  <div class="modal-content"> <!-- Caja de contenido del modal -->
+    <span class="close" onclick="cerrarModal('modalEdit')">&times;</span> <!-- Botón de cierre del modal -->
+    <h3>Modificar tarea</h3> <!-- Título del modal -->
+    <form id="editTaskForm"> <!-- Formulario de edición de tarea -->
+        <input type="text" id="editId" placeholder="ID de la tarea" required><br> <!-- Campo ID de tarea a modificar -->
+        <input type="text" id="editTarea" placeholder="Nueva Tarea" required><br> <!-- Campo nueva descripción -->
+        <input type="text" id="editPrioridad" placeholder="Nueva Prioridad" required><br> <!-- Campo nueva prioridad -->
+        <input type="text" id="editUrgente" placeholder="Nuevo Urgente" required><br> <!-- Campo nuevo urgente -->
+        <input type="text" id="editRealizada" placeholder="Nueva Realizada" required><br> <!-- Campo nuevo estado realizada -->
+        <input type="text" id="editResponsable" placeholder="Nuevo Responsable" required><br> <!-- Campo nuevo responsable -->
+        <button type="submit">Modificar Tarea</button> <!-- Envío del formulario -->
+    </form> <!-- Fin del formulario -->
+  </div> <!-- Fin contenido del modal -->
+</div> <!-- Fin modal de editar -->
+
+<script> <!-- Inicio del script -->
+const URL = "http://192.168.50.120:8069"; // URL base del API
+let datos = []; // Array para cachear las tareas recibidas
+
+function actualizarTabla(){ // Función para pedir tareas y renderizar tabla
+    fetch(URL+'/listartareas') // Petición GET al endpoint de listado
+        .then(res => res.json()) // Parseo de la respuesta a JSON
+        .then(json => {
+            datos = json; // Guardado de datos en variable global
+            mostrarTabla(datos); // Generación y visualización de la tabla
+        })
+        .catch(err => console.error("Error cargando JSON:", err)); // Manejo de errores de red/parsing
+}
+
+document.getElementById("btnMostrar").addEventListener("click", actualizarTabla); // Al hacer click, carga y muestra datos
+
+function mostrarTabla(arr) { // Renderiza la tabla a partir del array
+    let html = `
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Tarea</th>
+                <th>Prioridad</th>
+                <th>Urgente</th>
+                <th>Realizada</th>
+                <th>Responsable</th>                
+            </tr>
+    `; // Cabecera de la tabla
+    arr.forEach(item => { // Iteración por cada tarea (se asume estructura por índice)
+        html += `
+            <tr>
+                <td>${item[0]}</td>
+                <td>${item[1]}</td>
+                <td>${item[2]}</td>
+                <td>${item[3]}</td>
+                <td>${item[4]}</td>
+                <td>${item[5]}</td>
+            </tr>
+        `; // Fila con las seis columnas esperadas
+    });
+    html += "</table>"; // Cierre de la tabla
+    document.getElementById("resultado").innerHTML = html; // Inserción en el contenedor
+}
+
+/* =========================
+   Helpers de validación
+   ========================= */
+
+// Función para obtener y limpiar el valor de un input por id
+function getVal(id){ return document.getElementById(id).value.trim(); } // Devuelve el valor sin espacios
+
+// Función que comprueba que todos los campos de un objeto tengan contenido no vacío
+function todosLlenos(obj){
+    // Recorre todas las claves y verifica que el valor no sea cadena vacía
+    return Object.values(obj).every(v => typeof v === 'string' && v.trim().length > 0);
+}
+
+// Función que asegura tener datos cacheados; si no, hace fetch del listado
+function asegurarDatos(){ // Devuelve una Promesa que resuelve cuando 'datos' está cargado
+    if (Array.isArray(datos) && datos.length > 0) return Promise.resolve(); // Ya tenemos datos
+    return fetch(URL+'/listartareas') // Pide el listado
+        .then(r => r.json()) // Convierte a JSON
+        .then(json => { datos = json; }) // Actualiza el cache local
+        .catch(err => { // En caso de error, informa y propaga
+            console.error("No se pudo cargar el listado para validar IDs:", err);
+            throw err; // Propaga para que el flujo de edición se detenga
+        });
+}
+
+// Función que comprueba si un ID existe en el array 'datos' (estructura [id, ...])
+function existeId(id){ // id es texto, se compara como cadena con item[0]
+    // Busca al menos un elemento cuyo primer índice (ID) coincida exactamente
+    return datos.some(item => String(item[0]) === String(id));
+}
+
+/* =========================
+   Operaciones CRUD
+   ========================= */
+
+function del(){ // Borrado de tarea mediante ID introducido por el usuario
+    const idTarea = prompt('Introduce el id de la tarea que deseas borrar'); // Prompt para el ID
+    if (!idTarea || idTarea.trim() === '') { // Validación de entrada vacía
+        alert('El ID no puede estar vacío. No se realizará el borrado.'); // Aviso al usuario
+        return; // Corta la ejecución
+    }
+    fetch(URL+'/gestion/lista_tareas.lista_tareas?data={"id":"'+idTarea.trim()+'"}', {method: 'DELETE'}) // Petición DELETE con query data
+        .then(response => {
+            if (!response.ok) throw new Error('La respuesta de la red no fue correcta'); // Validación de estado HTTP
+            console.log('Recurso eliminado correctamente'); // Log de éxito
+            actualizarTabla(); // Refresca la tabla tras borrar
+        })
+        .catch(error => console.error('Hubo un problema con la solicitud DELETE:', error.message)); // Log de error
+}
+
+// Abrir y cerrar modales (nuevo: control de visibilidad de modales)
+document.getElementById("btnAdd").addEventListener("click", () => abrirModal('modalAdd')); // Abre modal de añadir
+document.getElementById("btnEdit").addEventListener("click", () => abrirModal('modalEdit')); // Abre modal de editar
+
+function abrirModal(id){ document.getElementById(id).style.display = "block"; } // Muestra el modal indicado
+function cerrarModal(id){ document.getElementById(id).style.display = "none"; } // Oculta el modal indicado
+
+// Formulario Añadir (envío dentro del modal)
+document.getElementById("addTaskForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Evita recarga de la página
+
+    // Construcción del objeto a enviar recogiendo y limpiando valores
+    const nuevaTarea = {
+        tarea: getVal("tarea"), // Tarea
+        prioridad: getVal("prioridad"), // Prioridad
+        urgente: getVal("urgente"), // Urgente
+        realizada: getVal("realizada"), // Realizada
+        responsable: getVal("responsable") // Responsable
+    };
+
+    // Validación: todos los campos deben estar llenos
+    if (!todosLlenos(nuevaTarea)) { // Si hay algún vacío
+        alert("Todos los campos deben estar llenos. No se guardará la tarea."); // Aviso
+        return; // Corta el envío
+    }
+
+    // Envío al API solo si pasa la validación
+    fetch(URL+'/gestion/lista_tareas.lista_tareas', { // Endpoint de creación
+        method: 'POST', // Método HTTP POST
+        headers: {'Content-Type': 'application/json'}, // Cabecera JSON
+        body: JSON.stringify(nuevaTarea) // Cuerpo con la nueva tarea
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('Error al añadir la tarea'); // Verificación del estado HTTP
+        console.log('Tarea añadida correctamente'); // Log de éxito
+        cerrarModal('modalAdd'); // Cierra el modal tras añadir
+        // Limpia el formulario para evitar valores residuales
+        document.getElementById("addTaskForm").reset(); // Resetea inputs
+        actualizarTabla(); // Refresca la lista
+    })
+    .catch(error => console.error('Hubo un problema con la solicitud POST:', error.message)); // Manejo de errores
+});
+
+// Formulario Editar (envío dentro del modal) — uso función async para validaciones previas
+document.getElementById("editTaskForm").addEventListener("submit", async function(event) {
+    event.preventDefault(); // Evita recarga
+
+    // Obtiene y limpia el ID a editar
+    const idTarea = getVal("editId"); // ID a editar
+
+    // Validación inicial: ID no vacío
+    if (!idTarea) { // Si está vacío
+        alert("El ID de la tarea es obligatorio. No se realizará la actualización."); // Aviso
+        return; // Corta el flujo
+    }
+
+    // Asegura tener datos cacheados para poder validar existencia de ID
+    try {
+        await asegurarDatos(); // Carga 'datos' si está vacío
+    } catch(e) {
+        alert("No se pudo validar el ID contra la API. Inténtalo de nuevo."); // Mensaje al usuario
+        return; // No continuamos si no se pudo cargar el listado
+    }
+
+    // Comprueba que el ID exista en la API (en el listado)
+    const idExiste = existeId(idTarea); // true si lo encuentra
+    if (!idExiste) { // Si el ID no existe
+        alert("El ID indicado no existe en la API. No se actualizará la tarea."); // Aviso
+        return; // Bloquea la actualización
+    }
+
+    // Construcción del objeto con cambios (valores limpiados)
+    const tareaModificada = {
+        tarea: getVal("editTarea"), // Nueva tarea
+        prioridad: getVal("editPrioridad"), // Nueva prioridad
+        urgente: getVal("editUrgente"), // Nuevo urgente
+        realizada: getVal("editRealizada"), // Nueva realizada
+        responsable: getVal("editResponsable") // Nuevo responsable
+    };
+
+    // Validación: todos los campos de edición deben estar llenos
+    if (!todosLlenos(tareaModificada)) { // Si hay algún campo vacío
+        alert("Todos los campos de modificación deben estar llenos. No se actualizará la tarea."); // Aviso
+        return; // Corta el flujo
+    }
+
+    // Si pasa todas las validaciones, realiza la solicitud PUT
+    fetch(URL+'/gestion/lista_tareas.lista_tareas?data={"id":"'+idTarea+'"}', { // Endpoint de edición con ID en query
+        method: 'PUT', // Método HTTP PUT
+        headers: {'Content-Type': 'application/json'}, // Cabecera JSON
+        body: JSON.stringify(tareaModificada) // Cuerpo con los cambios
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('Error al modificar la tarea'); // Verificación del estado HTTP
+        console.log('Tarea modificada correctamente'); // Log de éxito
+        cerrarModal('modalEdit'); // Cierra el modal tras editar
+        // Limpia el formulario de edición tras éxito
+        document.getElementById("editTaskForm").reset(); // Resetea inputs
+        actualizarTabla(); // Refresca la lista
+    })
+    .catch(error => console.error('Hubo un problema con la solicitud PUT:', error.message)); // Manejo de errores
+});
+</script> <!-- Fin del script -->
+</body> <!-- Fin del cuerpo -->
+</html> <!-- Fin del documento -->

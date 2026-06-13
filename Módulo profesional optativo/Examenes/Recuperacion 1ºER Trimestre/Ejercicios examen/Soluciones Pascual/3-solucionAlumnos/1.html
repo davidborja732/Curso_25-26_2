@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num;
+        var arrayNums = new Array();
+        do {
+            num = prompt("Inserte un número");
+            if (num>0) {
+                arrayNums.push(parseInt(num));
+            }
+        } while (num!=0)
+        var sum = arrayNums.reduce((sum, val) => (sum += val));
+        var len = arrayNums.length;
+        var med = sum / parseInt(len);
+
+        alert("Media aritmética: " + med);
+    </script>
+</body>
+</html>

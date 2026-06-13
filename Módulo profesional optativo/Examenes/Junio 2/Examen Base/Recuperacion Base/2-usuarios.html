@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Consumo de API REST usuarios</title>
+</head>
+<body>
+
+  <h1>Usuarios</h1>
+  
+  <input id="btnCargar" type="button" value="Cargar Usuarios" onclick="cargarUssuarios()">
+  <ul id="lista">
+  </ul>
+  
+
+  <script>
+    const lista = document.getElementById("lista");
+    let botonPulsado = false;   // 🔥 Controla si ya se pulsó el botón
+    
+    function cargarUssuarios(){
+
+      // Si se pulsa por segunda vez muestra una advertencia y no hace nada
+      if (botonPulsado) {
+        alert("Ya has cargado los usuarios. No puedes volver a pulsar el botón.");
+        return;   // ⛔ Detener la función
+      }
+
+      // Marcar que el botón ya fue pulsado
+      botonPulsado = true;
+
+      /*  
+      OPCIÓN ALTERNATIVA 1 (comentada):
+      Desactivar el botón para que no se pueda pulsar más veces
+
+      document.getElementById("btnCargar").disabled = true;
+      */
+
+      /*  
+      OPCIÓN ALTERNATIVA 2 (comentada):
+      Mostrar un aviso en vez de desactivar el botón
+
+      alert("Los usuarios ya se están cargando, espera un momento...");
+      return; 
+      */
+
+      fetch('https://jsonplaceholder.typicode.com/users') 
+        .then(response => {
+          if (!response.ok) throw new Error("Error al cargar usuarios");
+          return response.json();
+        })
+        .then(data => {
+          usuario = data;
+          console.log("usuarios cargados:", usuario);
+          mostrarlista(usuario);
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          alert("Error al cargar los usuarios");
+        });
+
+      function mostrarlista(arr){
+        
+        arr.forEach(item => {
+          console.log(item)
+          nuevoHijo = document.createElement("LI");
+          nuevoTexto = document.createTextNode(`${item.name} - ${item.email}`)
+          
+          nuevoHijo.appendChild(nuevoTexto);
+          document.getElementById("lista").appendChild(nuevoHijo);
+        });
+        
+      }
+      
+    }
+    
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,246 @@
+========================================
+CLASES Y DOCUMENTACIÓN FLUTTERFIRE + FIREBASE + FLUTTER
+========================================
+
+Este archivo contiene enlaces directos a la documentación oficial de:
+- FlutterFire (Firebase para Flutter)
+- Firebase general
+- Flutter oficial (widgets, clases base, render, foundation)
+
+========================================
+1. FIREBASE CORE (FLUTTERFIRE)
+========================================
+FirebaseApp
+https://pub.dev/documentation/firebase_core/latest/firebase_core/FirebaseApp-class.html
+
+FirebaseOptions
+https://pub.dev/documentation/firebase_core/latest/firebase_core/FirebaseOptions-class.html
+
+========================================
+2. FIREBASE AUTH
+========================================
+FirebaseAuth
+https://pub.dev/documentation/firebase_auth/latest/firebase_auth/FirebaseAuth-class.html
+
+User
+https://pub.dev/documentation/firebase_auth/latest/firebase_auth/User-class.html
+
+UserCredential
+https://pub.dev/documentation/firebase_auth/latest/firebase_auth/UserCredential-class.html
+
+AuthCredential
+https://pub.dev/documentation/firebase_auth/latest/firebase_auth/AuthCredential-class.html
+
+AuthProvider (Google, Email, etc.)
+https://pub.dev/documentation/firebase_auth/latest/firebase_auth/firebase_auth-library.html
+
+========================================
+3. CLOUD FIRESTORE
+========================================
+FirebaseFirestore
+https://pub.dev/documentation/cloud_firestore/latest/cloud_firestore/FirebaseFirestore-class.html
+
+CollectionReference
+https://pub.dev/documentation/cloud_firestore/latest/cloud_firestore/CollectionReference-class.html
+
+DocumentReference
+https://pub.dev/documentation/cloud_firestore/latest/cloud_firestore/DocumentReference-class.html
+
+DocumentSnapshot
+https://pub.dev/documentation/cloud_firestore/latest/cloud_firestore/DocumentSnapshot-class.html
+
+Query
+https://pub.dev/documentation/cloud_firestore/latest/cloud_firestore/Query-class.html
+
+QuerySnapshot
+https://pub.dev/documentation/cloud_firestore/latest/cloud_firestore/QuerySnapshot-class.html
+
+========================================
+4. CLOUD STORAGE
+========================================
+FirebaseStorage
+https://pub.dev/documentation/firebase_storage/latest/firebase_storage/FirebaseStorage-class.html
+
+Reference
+https://pub.dev/documentation/firebase_storage/latest/firebase_storage/Reference-class.html
+
+UploadTask
+https://pub.dev/documentation/firebase_storage/latest/firebase_storage/UploadTask-class.html
+
+TaskSnapshot
+https://pub.dev/documentation/firebase_storage/latest/firebase_storage/TaskSnapshot-class.html
+
+========================================
+5. CLOUD MESSAGING (FCM)
+========================================
+FirebaseMessaging
+https://pub.dev/documentation/firebase_messaging/latest/firebase_messaging/FirebaseMessaging-class.html
+
+RemoteMessage
+https://pub.dev/documentation/firebase_messaging/latest/firebase_messaging/RemoteMessage-class.html
+
+RemoteNotification
+https://pub.dev/documentation/firebase_messaging/latest/firebase_messaging/RemoteNotification-class.html
+
+========================================
+6. REMOTE CONFIG
+========================================
+FirebaseRemoteConfig
+https://pub.dev/documentation/firebase_remote_config/latest/firebase_remote_config/FirebaseRemoteConfig-class.html
+
+RemoteConfigValue
+https://pub.dev/documentation/firebase_remote_config/latest/firebase_remote_config/RemoteConfigValue-class.html
+
+========================================
+7. CRASHLYTICS
+========================================
+FirebaseCrashlytics
+https://pub.dev/documentation/firebase_crashlytics/latest/firebase_crashlytics/FirebaseCrashlytics-class.html
+
+========================================
+8. CLOUD FUNCTIONS
+========================================
+FirebaseFunctions
+https://pub.dev/documentation/cloud_functions/latest/cloud_functions/FirebaseFunctions-class.html
+
+HttpsCallable
+https://pub.dev/documentation/cloud_functions/latest/cloud_functions/HttpsCallable-class.html
+
+========================================
+9. REALTIME DATABASE
+========================================
+FirebaseDatabase
+https://pub.dev/documentation/firebase_database/latest/firebase_database/FirebaseDatabase-class.html
+
+DatabaseReference
+https://pub.dev/documentation/firebase_database/latest/firebase_database/DatabaseReference-class.html
+
+DataSnapshot
+https://pub.dev/documentation/firebase_database/latest/firebase_database/DataSnapshot-class.html
+
+========================================
+10. DOCUMENTACIÓN GENERAL FIREBASE
+========================================
+Firebase Docs (todas las APIs)
+https://firebase.google.com/docs
+
+FlutterFire Docs (guías oficiales)
+https://firebase.flutter.dev/docs/overview
+
+========================================
+11. FLUTTER OFICIAL – WIDGETS PRINCIPALES
+========================================
+Widget (clase base)
+https://api.flutter.dev/flutter/widgets/Widget-class.html
+
+StatelessWidget
+https://api.flutter.dev/flutter/widgets/StatelessWidget-class.html
+
+StatefulWidget
+https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html
+
+State
+https://api.flutter.dev/flutter/widgets/State-class.html
+
+BuildContext
+https://api.flutter.dev/flutter/widgets/BuildContext-class.html
+
+Element
+https://api.flutter.dev/flutter/widgets/Element-class.html
+
+========================================
+12. FLUTTER – WIDGETS DE INTERFAZ
+========================================
+Text
+https://api.flutter.dev/flutter/widgets/Text-class.html
+
+Container
+https://api.flutter.dev/flutter/widgets/Container-class.html
+
+Row
+https://api.flutter.dev/flutter/widgets/Row-class.html
+
+Column
+https://api.flutter.dev/flutter/widgets/Column-class.html
+
+Stack
+https://api.flutter.dev/flutter/widgets/Stack-class.html
+
+Image
+https://api.flutter.dev/flutter/widgets/Image-class.html
+
+Icon
+https://api.flutter.dev/flutter/widgets/Icon-class.html
+
+ElevatedButton
+https://api.flutter.dev/flutter/material/ElevatedButton-class.html
+
+Scaffold
+https://api.flutter.dev/flutter/material/Scaffold-class.html
+
+AppBar
+https://api.flutter.dev/flutter/material/AppBar-class.html
+
+MaterialApp
+https://api.flutter.dev/flutter/material/MaterialApp-class.html
+
+========================================
+13. FLUTTER – NAVEGACIÓN
+========================================
+Navigator
+https://api.flutter.dev/flutter/widgets/Navigator-class.html
+
+Route
+https://api.flutter.dev/flutter/widgets/Route-class.html
+
+MaterialPageRoute
+https://api.flutter.dev/flutter/material/MaterialPageRoute-class.html
+
+========================================
+14. FLUTTER – ANIMACIONES
+========================================
+Animation
+https://api.flutter.dev/flutter/animation/Animation-class.html
+
+AnimationController
+https://api.flutter.dev/flutter/animation/AnimationController-class.html
+
+Tween
+https://api.flutter.dev/flutter/animation/Tween-class.html
+
+AnimatedBuilder
+https://api.flutter.dev/flutter/widgets/AnimatedBuilder-class.html
+
+========================================
+15. FLUTTER – RENDERING Y FOUNDATION
+========================================
+RenderObject
+https://api.flutter.dev/flutter/rendering/RenderObject-class.html
+
+RenderBox
+https://api.flutter.dev/flutter/rendering/RenderBox-class.html
+
+Key
+https://api.flutter.dev/flutter/foundation/Key-class.html
+
+GlobalKey
+https://api.flutter.dev/flutter/widgets/GlobalKey-class.html
+
+ChangeNotifier
+https://api.flutter.dev/flutter/foundation/ChangeNotifier-class.html
+
+========================================
+16. DOCUMENTACIÓN GENERAL FLUTTER
+========================================
+Flutter Docs (oficial)
+https://docs.flutter.dev/
+
+API completa de Flutter
+https://api.flutter.dev/
+
+Widgets catalog
+https://docs.flutter.dev/ui/widgets
+
+========================================
+FIN DEL DOCUMENTO
+========================================

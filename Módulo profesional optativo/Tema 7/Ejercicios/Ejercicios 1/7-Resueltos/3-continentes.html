@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Práctica: Select dependientes desde paises</title>
+<style>
+    body { font-family: Arial; padding: 20px; }
+    select { padding: 8px; margin: 10px 0; width: 300px; }
+</style>
+</head>
+<body>
+
+<h2>Práctica: Select dependientes desde paises</h2>
+
+<label>Continente:</label>
+<select id="continente">
+    <option value="">Seleccione un continente</option>
+</select>
+
+<label>País:</label>
+<select id="pais" disabled>
+    <option value="">Seleccione un país</option>
+</select>
+<div id="resultado"></div>
+
+<script>
+    // URL de la API con datos de países
+    const URL = "https://raw.githubusercontent.com/mledoze/countries/master/countries.json";
+
+    // Referencias a los elementos del DOM
+    const selContinente = document.getElementById("continente");
+    const selPais = document.getElementById("pais");
+    const resultado = document.getElementById("resultado");
+
+    let datos = [];                // JSON completo de todos los países
+    let continentes = {};          // Mapa: continente -> array de países
+
+    // 1. Obtener JSON desde Internet
+    fetch(URL)
+        .then(res => res.json())           // Convertir la respuesta a JSON
+        .then(json => {                     // Cuando se obtiene el JSON correctamente
+            datos = json;                   // Guardar los datos en la variable
+            procesarDatos();                // Llamar a la función para procesarlos
+        })
+        .catch(err => console.error("Error cargando JSON:", err));  // Si hay error, mostrarlo en consola
+
+    // 2. Procesar JSON para extraer continentes únicos y sus países
+    function procesarDatos() {
+        datos.forEach(pais => {             // Iterar sobre cada país del JSON
+            const cont = pais.region || "Sin región";  // Obtener la región (continente)
+            if (!continentes[cont]) {       // Si el continente no existe en el objeto
+                continentes[cont] = [];     // Crear un array vacío para ese continente
+            }
+            continentes[cont].push(pais.name.common);  // Añadir el nombre del país al array del continente
+        });
+        cargarContinentes();                // Llamar a la función para llenar el select
+    }
+
+    // 3. Llenar el select de continentes
+    function cargarContinentes() {
+        Object.keys(continentes).forEach(cont => {  // Iterar sobre las claves (continentes)
+            const opt = document.createElement("option");  // Crear un elemento <option>
+            opt.value = cont;               // Asignar el valor del continente
+            opt.textContent = cont;         // Asignar el texto visible
+            selContinente.appendChild(opt); // Añadir la opción al select
+        });
+    }
+
+    // 4. Evento: cuando cambia el continente, rellenar los países
+    selContinente.addEventListener("change", () => {
+        selPais.innerHTML = `<option value="">Seleccione un pais</option>`;  // Limpiar opciones previas
+        selPais.disabled = true;            // Deshabilitar el select de países temporalmente
+
+        const cont = selContinente.value;   // Obtener el continente seleccionado
+        if (!cont) return;                  // Si no hay continente seleccionado, salir
+
+        const paises = continentes[cont].sort();  // Obtener países del continente y ordenarlos alfabéticamente
+        paises.forEach(nombre => {         // Iterar sobre cada país
+            const opt = document.createElement("option");  // Crear una opción
+            opt.value = nombre;             // Asignar el nombre como valor
+            opt.textContent = nombre;       // Asignar el nombre como texto visible
+            selPais.appendChild(opt);       // Añadir la opción al select
+        });
+
+        selPais.disabled = false;           // Habilitar el select de países
+    });
+
+    // 5. Evento: mostrar el país seleccionado
+    selPais.addEventListener("change", () => {
+        if (selPais.value) {                // Si hay un país seleccionado
+            resultado.textContent = `Has seleccionado: ${selPais.value}`;  // Mostrar el mensaje con el país
+        }
+    });
+</script>
+
+</body>
+</html>

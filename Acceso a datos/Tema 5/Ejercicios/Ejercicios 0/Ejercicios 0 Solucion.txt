@@ -1,0 +1,267 @@
+// Para elegir que base de datos se usa (Recordatorio)
+use blog_posts
+
+Ejercicio 1=
+1 db.blog_posts.find()
+2 db.blog_posts.find().pretty()
+3 db.blog_posts.countDocuments()
+4 db.blog_posts.find({creador:'Ana García'})
+5 db.blog_posts.find({ "likes": { "$gt": 100 }})
+6 db.blog_posts.find({tags: /programacion/})
+7 db.blog_posts.find({},{"creador": 1, "contenido": 1, "_id": 0})
+Ejercicio 2= 
+8 db.blog_posts.find({"comments.0" : {$exists:true}}) // Elijo el elemento 0 y si existe significa que tiene un comentario al menos 
+9 db.blog_posts.find({"comments.0" : {$exists:false}}) // Elijo el elemento 0 y si no existe significa que no tiene ningun comentario 
+10 db.blog_posts.find({"comments.creador" : "Pedro Ruiz"})
+11 db.blog_posts.find({$expr:{$gt: [{$size:"comments"}, 3]}})
+12 db.blog_posts.find({"comments.like" : { "$gt": 5 }})
+13 db.blog_posts.find({},{"creador": 1, "comments": 1, "_id": 0})
+14 db.blog_posts.find({},{"creador": 1, "comments": 1, , "comments.creador": 1,"_id": 0}) // muestro creador contenido y el creador de cada comentario 
+Ejercicio 3= 
+15=  
+	db.blog_posts.aggregate([
+		{$project:{
+				numeroComentarios:
+					{
+						$size:"$comments"
+					}
+			}
+		},
+		{
+			$group: {
+				_id: null,numeroComentarios: {
+					$sum: "$numeroComentarios"
+				}
+			}
+		}
+	])
+16= 
+	// Solo muestro id;
+	db.blog_posts.aggregate([
+		{$project:
+			{
+			numeroComentarios:
+				{$size:"$comments"}
+			}
+		},
+		{
+			$sort: {numeroComentarios: -1}
+		},
+		{
+			$limit: 1
+		}
+	]) 
+	// Muestro mas cosas
+	db.blog_posts.aggregate([
+		{$project:
+			{
+			creador:1,
+			contenido:1,
+			numeroComentarios:
+				{$size:"$comments"}
+			}
+		},
+		{
+			$sort: {numeroComentarios: -1}
+		},
+		{
+			$limit: 1
+		}
+	])
+17= 
+	db.blog_posts.aggregate([
+		{
+			$group: {
+				_id: null,
+				promedioLikea: {
+					$avg: "$likes"
+				}
+			}
+		}
+	])
+18=
+	db.blog_posts.aggregate([
+		{
+			$group: {
+				_id: "$creador",
+				numeroPost: {
+					$count: {}
+				}
+			}
+		}
+	])
+	// ordeno por numero de post
+	db.blog_posts.aggregate([
+		
+			$group: {
+				_id: "$creador",
+				numeroPost: {
+					$count: {}
+				}
+				
+			},
+			{$sort:{numeroPost:-1}}
+		
+	])
+
+19 =
+	db.blog_posts.aggregate([
+		{$unwind:"$comments"}
+	])
+	// el resultado resultante debe conter creador,contenido,comentario_creador,comentario_texto,Fecha_comentario
+	db.blog_posts.aggregate([
+		{$unwind:"$comments"},
+		{$project:
+			{
+				post_creador:"$creador",
+				post_contenido:"$contenido",
+				comentario_creador:"$comments.creador",
+				comentario_texto:"$comments.comentario",
+				comentario_fecha:"$comments.fecha"
+			}
+		}
+	])
+20 = 
+	db.blog_posts.aggregate([
+		{$unwind:"$comments"},
+		{$group:{
+				_id: "$comments.creador",
+				numeroComentarios:{$count:{}}
+			}
+		},
+		{$sort:{numeroComentarios:-1}},
+		{$limit:1}
+	])
+21 =
+	db.blog_posts.aggregate([
+		{$unwind:"$comments"},
+		{$sort:{"comments.likes":-1}},
+	])
+	// Agrupando los post (postergado)
+	
+22 = 
+	db.blog_posts.aggregate([
+		{$unwind:"$tags"},
+		{$group: {
+				_id: "$tags",
+				numeroLikesTotal: {
+					$sum: "$likes"
+				}
+				
+			}
+		}
+	])
+	// Añado el numero de post con cada etiqueta
+	db.blog_posts.aggregate([
+		{$unwind:"$tags"},
+		{$group: {
+				_id: "$tags",
+				numeroLikesTotal: {
+					$sum: "$likes"
+				},
+				numeroPost:{$count:{}}
+				
+			}
+		},
+		{$sort:{numeroLikesTotal:-1}}
+	])
+23 = 
+	db.blog_posts.aggregate([
+		{$project:{
+				mes:{$month:"$fecha"},
+				año:{$year:"$fecha"}
+			}
+			
+		},
+		{
+			$group:{
+				_id:{
+					año:"$año",
+					mes:"$mes"
+				},
+				cantidad:{$count:{}}
+			}
+		},
+		{$sort:{"_id.año":1,"_id.mes":1}},// por mes y año 
+		{$sort:{"cantidad":1}},// por cantidad
+	])
+24 = 
+	db.blog_posts.aggregate([
+  {
+    $match: {
+      "comments.creador": "Ana García"
+    }
+  },
+  {
+    $project: {
+      creador: 1,
+      contenido: 1,
+      comments: {
+        $filter: {
+          input: "$comments",
+          as: "comment",
+          cond: { $eq: ["$$comment.creador", "Ana García"] }
+        }
+      }
+    }
+  }
+])
+
+25 = // Copiar de solucion
+   -- likes,numero de comentarios y numero de likes por comentario 
+26 = 
+	db.blog_posts.updateOne(
+		{_id:8},
+		{$push:{
+			comments:{
+				id_comment:11111,
+				creador:"Usuario",
+				comentario:"Comentario añadido al 8",
+				fecha: new Date(),
+				likes:12
+				}
+			}
+		}
+	)
+27 = 
+	db.blog_posts.updateOne(
+ 		{_id:1},
+ 		{$inc:{
+			likes:1
+			}
+		}
+
+ 	)
+
+28 =
+	db.blog_posts.updateOne(
+ 		{_id:10,"comments.id_comment":1},
+ 		{$inc:{
+ 			"comments.$.likes":1
+ 			}
+ 		}
+
+ 	)
+
+
+29 // añadimos japon en vez de aventura
+	db.blog_posts.updateOne(
+ 		{_id:1},
+ 		{$addToSet: {
+			tags:"Japon"
+			}
+ 		}
+
+ 	)
+30: //post 3: comentario:2
+	db.blog_posts.updateOne(
+ 		{_id:3},
+ 		{$pull: {
+			comments:{
+				id_comment:2
+				}
+			}
+ 		}
+
+ 	)
+

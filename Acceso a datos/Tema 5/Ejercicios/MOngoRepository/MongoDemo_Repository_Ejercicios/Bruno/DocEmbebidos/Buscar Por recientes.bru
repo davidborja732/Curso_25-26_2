@@ -1,0 +1,20 @@
+meta {
+  name: Buscar Por recientes
+  type: http
+  seq: 11
+}
+
+get {
+  url: http://127.0.0.1:8080/api/books/search/recientes?anio=2022
+  body: none
+  auth: inherit
+}
+
+params:query {
+  anio: 2022
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

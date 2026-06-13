@@ -1,0 +1,224 @@
+
+
+.Button1 {
+    -fx-background-color: red;   /* El fondo del botón será rojo */
+    -fx-text-fill: white;        /* El texto dentro del botón será blanco */
+    -fx-font-weight: bold;       /* El texto se mostrará en negrita */
+}
+
+.Button2 {
+    -fx-background-color: green; /* El fondo del botón será verde */
+    -fx-text-fill: white;        /* El texto dentro del botón será blanco */
+    -fx-font-weight: bold;       /* El texto se mostrará en negrita */
+}
+
+.Button3 {
+    -fx-background-color: pink;  /* El fondo del botón será rosa */
+    -fx-text-fill: white;        /* El texto dentro del botón será blanco */
+    -fx-font-weight: bold;       /* El texto se mostrará en negrita */
+}
+
+.Titulo {
+    -fx-font-size: 26;           /* El tamaño de la fuente será grande (26px) */
+    -fx-font-weight: bold;       /* El texto se mostrará en negrita */
+}
+
+.TextoNormal {
+    -fx-font-size: 14;           /* El tamaño de la fuente será estándar (14px) */
+    -fx-font-weight: bold;       /* El texto se mostrará en negrita */
+}
+
+.Imc {
+    -fx-text-fill: purple;       /* El texto se mostrará en color morado */
+    -fx-font-size: 16;           /* El tamaño de la fuente será medio (16px) */
+}
+
+.Estado {
+    -fx-text-fill: red;          /* El texto se mostrará en color rojo */
+    -fx-font-size: 16;           /* El tamaño de la fuente será medio (16px) */
+}
+
+/* ========================================================= */
+/*        ARCHIVO CSS COMPLETO DE PROPIEDADES JAVAFX 8        */
+/* ========================================================= */
+
+/* ---------- Fondo y relleno ---------- */
+.node {
+    -fx-background-color: red;              /* Color de fondo (sólido, gradiente o múltiples capas) */
+    -fx-background-image: url("image.png"); /* Imagen de fondo */
+    -fx-background-repeat: repeat;          /* Repetición de imagen (repeat, no-repeat, round, space) */
+    -fx-background-position: center;        /* Posición de la imagen */
+    -fx-background-radius: 5;               /* Radio de esquinas redondeadas */
+    -fx-background-insets: 0;               /* Margen interno del fondo */
+    -fx-padding: 10;                        /* Espaciado interno */
+    -fx-margin: 5;                          /* Margen externo */
+}
+
+/* ---------- Texto ---------- */
+.text {
+    -fx-fill: black;                        /* Color del texto */
+    -fx-text-fill: black;                   /* Color del texto en controles */
+    -fx-font-family: "Arial";               /* Familia tipográfica */
+    -fx-font-size: 14;                      /* Tamaño de fuente */
+    -fx-font-weight: bold;                  /* Peso (normal, bold, 100–900) */
+    -fx-font-style: italic;                 /* Estilo (normal, italic, oblique) */
+    -fx-text-alignment: center;             /* Alineación horizontal (left, right, center, justify) */
+    -fx-text-origin: baseline;              /* Origen vertical del texto (baseline, top, bottom) */
+    -fx-text-overrun: ellipsis;             /* Qué hacer si el texto se desborda */
+    -fx-wrap-text: true;                    /* Permitir salto de línea */
+}
+
+/* ---------- Bordes ---------- */
+.shape {
+    -fx-border-color: black;                /* Color del borde */
+    -fx-border-width: 2;                    /* Grosor del borde */
+    -fx-border-radius: 4;                   /* Bordes redondeados */
+    -fx-border-insets: 0;                   /* Margen interno del borde */
+    -fx-stroke: blue;                       /* Color de trazo (para shapes) */
+    -fx-stroke-width: 2;                    /* Grosor del trazo */
+    -fx-stroke-dash-array: 12 2 4 2;        /* Patrón de guiones */
+    -fx-stroke-line-cap: round;             /* Terminación de línea (butt, round, square) */
+    -fx-stroke-line-join: miter;            /* Unión de líneas (miter, bevel, round) */
+}
+
+/* ---------- Efectos ---------- */
+.effects {
+    -fx-effect: dropshadow(gaussian, gray, 10, 0.5, 2, 2);
+    /* Sombra externa */
+
+    -fx-effect: innershadow(gaussian, black, 10, 0.5, 2, 2);
+    /* Sombra interna */
+}
+
+/* ---------- Cursor y visibilidad ---------- */
+.cursor {
+    -fx-cursor: hand;                       /* Cursor (default, hand, crosshair, text, wait, move, etc.) */
+    -fx-opacity: 0.8;                       /* Transparencia del nodo */
+    -fx-visible: true;                      /* Visibilidad */
+}
+
+/* ---------- Gradientes ---------- */
+.gradient {
+    -fx-background-color: linear-gradient(to bottom, lightblue, darkblue);
+    /* Gradiente lineal */
+    -fx-background-color: radial-gradient(radius 100%, red, yellow, green);
+    /* Gradiente radial */
+}
+
+/* ---------- Botones ---------- */
+.button {
+    -fx-background-color: lightgray;        /* Fondo */
+    -fx-text-fill: black;                   /* Texto */
+    -fx-font-size: 14;                      /* Tamaño de fuente */
+    -fx-font-weight: bold;                  /* Negrita */
+    -fx-border-color: black;                /* Borde */
+    -fx-border-width: 1;                    /* Grosor del borde */
+    -fx-background-radius: 4;               /* Bordes redondeados */
+    -fx-padding: 8;                         /* Espaciado interno */
+}
+
+/* ---------- Campos de texto ---------- */
+.text-field {
+    -fx-background-color: white;            /* Fondo */
+    -fx-text-fill: black;                   /* Texto */
+    -fx-prompt-text-fill: gray;             /* Texto de sugerencia */
+    -fx-highlight-fill: lightblue;          /* Color de selección */
+    -fx-highlight-text-fill: black;         /* Texto seleccionado */
+}
+
+/* ---------- Áreas de texto ---------- */
+.text-area {
+    -fx-background-color: white;            /* Fondo */
+    -fx-text-fill: black;                   /* Texto */
+    -fx-prompt-text-fill: gray;             /* Texto de sugerencia */
+}
+
+/* ---------- Barras de progreso ---------- */
+.progress-bar {
+    -fx-accent: green;                      /* Color de progreso */
+}
+
+/* ---------- Tooltips ---------- */
+.tooltip {
+    -fx-background-color: yellow;           /* Fondo */
+    -fx-text-fill: black;                   /* Texto */
+    -fx-font-size: 12;                      /* Tamaño de fuente */
+}
+
+/* ---------- Scrollbars ---------- */
+.scroll-bar {
+    -fx-background-color: transparent;      /* Fondo */
+    -fx-thumb: gray;                        /* Color del "pulgar" */
+}
+
+/* ---------- Tablas ---------- */
+.table-view {
+    -fx-background-color: white;            /* Fondo */
+    -fx-table-cell-border-color: lightgray; /* Color de borde de celdas */
+    -fx-selection-bar: lightblue;           /* Color de selección */
+}
+
+/* ---------- Listas ---------- */
+.list-view {
+    -fx-background-color: white;            /* Fondo */
+    -fx-selection-bar: lightblue;           /* Color de selección */
+}
+
+/* ---------- Menús ---------- */
+.menu-bar {
+    -fx-background-color: lightgray;        /* Fondo */
+    -fx-text-fill: black;                   /* Texto */
+}
+
+/* ---------- Sliders ---------- */
+.slider {
+    -fx-background-color: transparent;      /* Fondo */
+    -fx-tick-label-fill: black;             /* Color de etiquetas */
+}
+
+/* ---------- Otros controles ---------- */
+.check-box {
+    -fx-mark-color: green;                  /* Color de la marca */
+}
+
+.radio-button {
+    -fx-mark-color: blue;                   /* Color del círculo */
+}
+
+.combo-box {
+    -fx-background-color: white;            /* Fondo */
+    -fx-text-fill: black;                   /* Texto */
+}
+
+/* ========================================================= */
+/*        TIPOS DE LETRA DISPONIBLES EN JAVAFX               */
+/* ========================================================= */
+/* JavaFX usa las fuentes instaladas en el sistema operativo.
+   Ejemplos comunes: */
+.text {
+    -fx-font-family: "Arial";               /* Sans-serif clásico */
+    -fx-font-family: "Verdana";             /* Sans-serif legible */
+    -fx-font-family: "Tahoma";              /* Sans-serif compacto */
+    -fx-font-family: "Times New Roman";     /* Serif tradicional */
+    -fx-font-family: "Courier New";         /* Monoespaciada */
+    -fx-font-family: "Georgia";             /* Serif elegante */
+    -fx-font-family: "Comic Sans MS";       /* Estilo informal */
+}
+
+/* ========================================================= */
+/*        POSICIONES Y ALINEACIONES DEL TEXTO                */
+/* ========================================================= */
+/* Horizontal (propiedad: -fx-text-alignment) */
+.text {
+    -fx-text-alignment: left;               /* Alineado a la izquierda */
+    -fx-text-alignment: right;              /* Alineado a la derecha */
+    -fx-text-alignment: center;             /* Centrado */
+    -fx-text-alignment: justify;            /* Justificado */
+}
+
+/* Vertical (propiedad: -fx-text-origin) */
+.text {
+    -fx-text-origin: baseline;              /* Línea base del texto */
+    -fx-text-origin: top;                   /* Parte superior */
+    -fx-text-origin: bottom;                /* Parte inferior */
+}

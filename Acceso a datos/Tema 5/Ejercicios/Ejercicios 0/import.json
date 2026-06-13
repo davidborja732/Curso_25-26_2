@@ -1,0 +1,300 @@
+[
+  {
+    "_id": 1,
+    "creador": "Ana García",
+    "contenido": "Hoy comienza mi viaje por Asia. Estoy emocionada por visitar Japón y Tailandia.",
+    "rutaImagen": "https://example.com/images/asia1.jpg",
+    "fecha": ISODate("2024-01-15T10:30:00Z"),
+    "tags": ["viajes", "asia", "aventura"],
+    "likes": 45,
+    "comments": [
+      {
+        "id_comment": 1,
+        "creador": "Pedro Ruiz",
+        "comentario": "¡Qué suerte! Disfruta mucho del viaje",
+        "fecha": ISODate("2024-01-15T11:00:00Z"),
+        "likes": 3
+      },
+      {
+        "id_comment": 2,
+        "creador": "Laura Martín",
+        "comentario": "Visita Kioto, es increíble",
+        "fecha": ISODate("2024-01-15T12:30:00Z"),
+        "likes": 5
+      },
+      {
+        "id_comment": 3,
+        "creador": "Carlos López",
+        "comentario": "Comparte muchas fotos por favor",
+        "fecha": ISODate("2024-01-15T14:00:00Z"),
+        "likes": 2
+      }
+    ]
+  },
+  {
+    "_id": 2,
+    "creador": "Miguel Torres",
+    "contenido": "Tutorial de MongoDB: Aprende a usar agregaciones con ejemplos prácticos",
+    "rutaImagen": "https://example.com/images/mongodb.jpg",
+    "fecha": ISODate("2024-02-10T09:00:00Z"),
+    "tags": ["programacion", "mongodb", "tutorial", "bases de datos"],
+    "likes": 120,
+    "comments": [
+      {
+        "id_comment": 1,
+        "creador": "Sara Gómez",
+        "comentario": "Excelente tutorial, muy útil",
+        "fecha": ISODate("2024-02-10T10:00:00Z"),
+        "likes": 8
+      },
+      {
+        "id_comment": 2,
+        "creador": "Juan Pérez",
+        "comentario": "¿Podrías hacer uno sobre índices?",
+        "fecha": ISODate("2024-02-10T11:30:00Z"),
+        "likes": 4
+      }
+    ]
+  },
+  {
+    "_id": 3,
+    "creador": "Elena Sánchez",
+    "contenido": "Receta del día: Tarta de manzana casera. Ingredientes: manzanas, azúcar, canela...",
+    "rutaImagen": "https://example.com/images/tarta.jpg",
+    "fecha": ISODate("2024-03-05T16:45:00Z"),
+    "tags": ["cocina", "recetas", "postres"],
+    "likes": 78,
+    "comments": [
+      {
+        "id_comment": 1,
+        "creador": "Rosa Díaz",
+        "comentario": "La hice ayer y quedó deliciosa",
+        "fecha": ISODate("2024-03-05T17:00:00Z"),
+        "likes": 6
+      },
+      {
+        "id_comment": 2,
+        "creador": "Alberto Ruiz",
+        "comentario": "¿Cuánto tiempo al horno?",
+        "fecha": ISODate("2024-03-05T17:30:00Z"),
+        "likes": 1
+      },
+      {
+        "id_comment": 3,
+        "creador": "Elena Sánchez",
+        "comentario": "@Alberto Ruiz 35-40 minutos a 180 grados",
+        "fecha": ISODate("2024-03-05T18:00:00Z"),
+        "likes": 3
+      },
+      {
+        "id_comment": 4,
+        "creador": "María Castro",
+        "comentario": "Se ve espectacular en la foto",
+        "fecha": ISODate("2024-03-05T19:00:00Z"),
+        "likes": 2
+      }
+    ]
+  },
+  {
+    "_id": 4,
+    "creador": "David Hernández",
+    "contenido": "Mi experiencia aprendiendo JavaScript en 30 días. Día 15: Promesas y async/await",
+    "rutaImagen": "https://example.com/images/js.jpg",
+    "fecha": ISODate("2024-03-20T08:00:00Z"),
+    "tags": ["programacion", "javascript", "aprendizaje"],
+    "likes": 95,
+    "comments": [
+      {
+        "id_comment": 1,
+        "creador": "Luis Moreno",
+        "comentario": "Yo también estoy aprendiendo JS, ¡ánimo!",
+        "fecha": ISODate("2024-03-20T09:00:00Z"),
+        "likes": 7
+      },
+      {
+        "id_comment": 2,
+        "creador": "Ana García",
+        "comentario": "Las promesas son difíciles al principio, pero son geniales",
+        "fecha": ISODate("2024-03-20T10:30:00Z"),
+        "likes": 5
+      },
+      {
+        "id_comment": 3,
+        "creador": "Pedro Ruiz",
+        "comentario": "¿Qué recursos estás usando?",
+        "fecha": ISODate("2024-03-20T11:00:00Z"),
+        "likes": 3
+      }
+    ]
+  },
+  {
+    "_id": 5,
+    "creador": "Carmen Vega",
+    "contenido": "Consejos para entrenar tu primera maratón. Semana 1: Comenzando con 5km diarios",
+    "rutaImagen": "https://example.com/images/maraton.jpg",
+    "fecha": ISODate("2024-04-01T07:00:00Z"),
+    "tags": ["deporte", "running", "salud", "maraton"],
+    "likes": 62,
+    "comments": [
+      {
+        "id_comment": 1,
+        "creador": "Roberto Gil",
+        "comentario": "Yo corrí mi primera maratón el año pasado, mucho ánimo",
+        "fecha": ISODate("2024-04-01T08:00:00Z"),
+        "likes": 4
+      },
+      {
+        "id_comment": 2,
+        "creador": "Lucía Romero",
+        "comentario": "¿Qué zapatillas recomiendas?",
+        "fecha": ISODate("2024-04-01T09:30:00Z"),
+        "likes": 2
+      }
+    ]
+  },
+  {
+    "_id": 6,
+    "creador": "Ana García",
+    "contenido": "Día 10 en Tokio. La ciudad es increíble, he visitado el templo Senso-ji",
+    "rutaImagen": "https://example.com/images/tokio.jpg",
+    "fecha": ISODate("2024-01-25T14:00:00Z"),
+    "tags": ["viajes", "japon", "tokio"],
+    "likes": 89,
+    "comments": [
+      {
+        "id_comment": 1,
+        "creador": "Laura Martín",
+        "comentario": "¡Te lo dije! Kioto también es precioso",
+        "fecha": ISODate("2024-01-25T15:00:00Z"),
+        "likes": 6
+      },
+      {
+        "id_comment": 2,
+        "creador": "Javier Santos",
+        "comentario": "Prueba el ramen auténtico",
+        "fecha": ISODate("2024-01-25T16:00:00Z"),
+        "likes": 4
+      },
+      {
+        "id_comment": 3,
+        "creador": "Ana García",
+        "comentario": "@Javier Ya lo probé, ¡delicioso!",
+        "fecha": ISODate("2024-01-25T17:00:00Z"),
+        "likes": 3
+      }
+    ]
+  },
+  {
+    "_id": 7,
+    "creador": "Miguel Torres",
+    "contenido": "Parte 2 del tutorial: Índices en MongoDB para mejorar el rendimiento",
+    "rutaImagen": "https://example.com/images/mongodb2.jpg",
+    "fecha": ISODate("2024-02-25T09:00:00Z"),
+    "tags": ["programacion", "mongodb", "tutorial", "rendimiento"],
+    "likes": 134,
+    "comments": [
+      {
+        "id_comment": 1,
+        "creador": "Juan Pérez",
+        "comentario": "¡Justo lo que pedí! Gracias",
+        "fecha": ISODate("2024-02-25T10:00:00Z"),
+        "likes": 10
+      },
+      {
+        "id_comment": 2,
+        "creador": "Sara Gómez",
+        "comentario": "Muy claro como siempre",
+        "fecha": ISODate("2024-02-25T11:00:00Z"),
+        "likes": 7
+      },
+      {
+        "id_comment": 3,
+        "creador": "Carlos López",
+        "comentario": "¿Cuándo harás uno sobre sharding?",
+        "fecha": ISODate("2024-02-25T12:00:00Z"),
+        "likes": 5
+      },
+      {
+        "id_comment": 4,
+        "creador": "Miguel Torres",
+        "comentario": "@Carlos López Próximamente, estate atento",
+        "fecha": ISODate("2024-02-25T13:00:00Z"),
+        "likes": 8
+      }
+    ]
+  },
+  {
+    "_id": 8,
+    "creador": "Pedro Ruiz",
+    "contenido": "Fotografía nocturna: capturando las estrellas. Configuración ISO 3200, 30 segundos",
+    "rutaImagen": "https://example.com/images/estrellas.jpg",
+    "fecha": ISODate("2024-03-10T22:00:00Z"),
+    "tags": ["fotografia", "nocturna", "estrellas"],
+    "likes": 156,
+    "comments": []
+  },
+  {
+    "_id": 9,
+    "creador": "Elena Sánchez",
+    "contenido": "Nueva receta: Gazpacho andaluz perfecto para el verano",
+    "rutaImagen": "https://example.com/images/gazpacho.jpg",
+    "fecha": ISODate("2024-04-15T12:00:00Z"),
+    "tags": ["cocina", "recetas", "verano", "saludable"],
+    "likes": 91,
+    "comments": [
+      {
+        "id_comment": 1,
+        "creador": "Antonio Jiménez",
+        "comentario": "El gazpacho de mi abuela es similar",
+        "fecha": ISODate("2024-04-15T13:00:00Z"),
+        "likes": 5
+      }
+    ]
+  },
+  {
+    "_id": 10,
+    "creador": "David Hernández",
+    "contenido": "Día 30: Completé el reto de JavaScript. Resumen y proyecto final",
+    "rutaImagen": "https://example.com/images/js-final.jpg",
+    "fecha": ISODate("2024-04-19T20:00:00Z"),
+    "tags": ["programacion", "javascript", "aprendizaje", "logro"],
+    "likes": 203,
+    "comments": [
+      {
+        "id_comment": 1,
+        "creador": "Luis Moreno",
+        "comentario": "¡Enhorabuena! Yo voy por el día 20",
+        "fecha": ISODate("2024-04-19T21:00:00Z"),
+        "likes": 9
+      },
+      {
+        "id_comment": 2,
+        "creador": "Ana García",
+        "comentario": "Felicidades, gran esfuerzo",
+        "fecha": ISODate("2024-04-19T21:30:00Z"),
+        "likes": 7
+      },
+      {
+        "id_comment": 3,
+        "creador": "Miguel Torres",
+        "comentario": "Inspiras a muchos, sigue así",
+        "fecha": ISODate("2024-04-19T22:00:00Z"),
+        "likes": 6
+      },
+      {
+        "id_comment": 4,
+        "creador": "Sara Gómez",
+        "comentario": "¿Cuál es tu siguiente reto?",
+        "fecha": ISODate("2024-04-20T08:00:00Z"),
+        "likes": 4
+      },
+      {
+        "id_comment": 5,
+        "creador": "David Hernández",
+        "comentario": "@Sara Gómez Voy a por React en 30 días",
+        "fecha": ISODate("2024-04-20T09:00:00Z"),
+        "likes": 11
+      }
+    ]
+  }
+]

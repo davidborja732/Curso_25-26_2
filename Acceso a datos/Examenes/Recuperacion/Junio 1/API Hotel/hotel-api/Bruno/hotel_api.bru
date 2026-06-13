@@ -1,0 +1,117 @@
+{
+  "version": "1.0",
+  "type": "collection",
+  "name": "Hotel API - David",
+  "items": [
+    {
+      "type": "http",
+      "name": "Crear Cliente",
+      "method": "POST",
+      "url": "http://localhost:8080/clientes",
+      "body": {
+        "type": "json",
+        "content": {
+          "dni": "12345678A",
+          "nombre": "David",
+          "apellidos": "García López",
+          "telefono": "666777888",
+          "email": "david@example.com"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Crear Habitación",
+      "method": "POST",
+      "url": "http://localhost:8080/habitaciones",
+      "body": {
+        "type": "json",
+        "content": {
+          "numero": "101",
+          "tipo": "Doble",
+          "capacidad": 2,
+          "precioNoche": 80.0,
+          "estado": "LIBRE"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Crear Servicio",
+      "method": "POST",
+      "url": "http://localhost:8080/servicios",
+      "body": {
+        "type": "json",
+        "content": {
+          "id": "SRV-001",
+          "tipoServicio": "Desayuno",
+          "precioUnitario": 10.0
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Crear Reserva",
+      "method": "POST",
+      "url": "http://localhost:8080/reservas",
+      "body": {
+        "type": "json",
+        "content": {
+          "dniCliente": "12345678A",
+          "numeroHabitacion": "101",
+          "fechaEntrada": "2026-06-01",
+          "fechaSalida": "2026-06-05",
+          "numeroPersonas": 2,
+          "regimen": "Media Pensión",
+          "temporada": "Alta",
+          "serviciosAdicionales": [
+            {
+              "id": "SRV-001",
+              "cantidad": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Listar Reservas",
+      "method": "GET",
+      "url": "http://localhost:8080/reservas"
+    },
+    {
+      "type": "http",
+      "name": "Eliminar Reserva",
+      "method": "DELETE",
+      "url": "http://localhost:8080/reservas/RSV-REEMPLAZAR"
+    },
+    {
+      "type": "http",
+      "name": "Bruno - Crear Documento",
+      "method": "POST",
+      "url": "http://localhost:8080/bruno",
+      "body": {
+        "type": "json",
+        "content": {
+          "nombre": "Bruno",
+          "edad": 19,
+          "rol": "Crack supremo",
+          "descripcion": "Bruno es el mejor del grupo, siempre ayudando y con estilo.",
+          "nivelPoder": 9999,
+          "habilidades": [
+            "Dormir 14 horas",
+            "Comer como un campeón",
+            "Ser un máquina",
+            "Hacer reír al grupo"
+          ]
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Bruno - Listar",
+      "method": "GET",
+      "url": "http://localhost:8080/bruno"
+    }
+  ]
+}

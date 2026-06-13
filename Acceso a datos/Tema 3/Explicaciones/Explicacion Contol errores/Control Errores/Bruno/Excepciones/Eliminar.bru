@@ -1,0 +1,26 @@
+meta {
+  name: Eliminar
+  type: http
+  seq: 6
+}
+
+delete {
+  url: http://localhost:8080/api/estudiantes/1
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nombre" : "Prueba1",
+    "apellidos" : "Pruebita1",
+    "email" : "prueba@gmail.com",
+    "edad" : 24,
+    "ciclo" : "DAW"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

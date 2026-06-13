@@ -1,0 +1,66 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme._03_Menu_Principal" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme._03_Menu_Principal" parent="Base.Theme._03_Menu_Principal" />
+    <!-- Tema para SplashScreen -->
+    <style name="SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <!--Duracion de la animacion-->
+        <item name="windowSplashScreenAnimationDuration">2000</item>
+        <item name="postSplashScreenTheme">@style/Theme._03_Menu_Principal</item>
+    </style>
+    <!-- Tema para Edad Canina -->
+    <style name="Edad_Canina" parent="Theme.AppCompat.DayNight.DarkActionBar">
+
+        <item name="colorPrimary">@color/menu_verde</item>
+        <item name="colorOnPrimary">@color/menu_verde</item>
+        <item name="colorAccent">@color/menu_verde</item>
+        <item name="colorButtonNormal">@color/menu_verde</item>
+        <item name="statusBarBackground">@color/menu_verde</item>
+
+    </style>
+
+    <!-- Tema para Registro de SuperHeroes -->
+    <style name="Registro_SuperHeroes" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/menu_naranja</item>
+        <item name="colorOnPrimary">@color/menu_naranja</item>
+        <item name="colorAccent">@color/menu_naranja</item>
+        <item name="colorButtonNormal">@color/menu_naranja</item>
+        <item name="statusBarBackground">@color/menu_naranja</item>
+    </style>
+
+    <style name="Theme.AjustesActivity" parent="Base.Theme._03_Menu_Principal">
+        <item name="colorPrimary">@color/blue_700</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="colorButtonNormal">@color/blue_700</item>
+    </style>
+
+    <style name="Theme.CalculadoraActivity" parent="Base.Theme._03_Menu_Principal">
+        <item name="colorPrimary">@color/green_700</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="colorButtonNormal">@color/green_700</item>
+    </style>
+
+    <style name="Theme.PreguntaActivity" parent="Base.Theme._03_Menu_Principal">
+        <item name="android:textColor">@color/black</item>
+        <item name="colorButtonNormal">@color/purple_700</item>
+    </style>
+
+    <style name="Theme.RazasActivity" parent="Base.Theme._03_Menu_Principal">
+        <item name="colorPrimary">@color/orange_700</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="colorButtonNormal">@color/orange_700</item>
+    </style>
+
+    <style name="Theme.RegisterActivity" parent="Base.Theme._03_Menu_Principal">
+        <item name="colorPrimary">@color/red_700</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="colorButtonNormal">@color/red_700</item>
+    </style>
+
+</resources>

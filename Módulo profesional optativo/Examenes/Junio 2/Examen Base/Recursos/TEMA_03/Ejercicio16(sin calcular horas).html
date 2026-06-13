@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio16</title>
+</head>
+<!--Usa un array bidimensional para guardar los datos que vas a mostrar. Sin horas ni días.
+ Usa objetos Date para mostrar las fechas.
+ Las horas de la primera columna, se deben de calcular.-->
+<!--SIN CALCULAR LAS HORAS-->
+<body>
+    <h1>Ejercicio 16</h1>
+
+    <script>
+
+        // Array bidimensional con los datos del horario
+        // Sin horas ni días - solo las asignaturas como pide el ejercicio
+        let horario = [
+            ["IPPE", "PROY", "IPPE", "AD", "SGE"],
+            ["DI", "SGE", "AD", "AD", "SGE"],
+            ["DI", "SGE", "AD", "AD", "SASP"],
+            ["RECREO", "RECREO", "RECREO", "RECREO", "RECREO"],
+            ["DWC", "PMDM", "PMDM", "PROY", "DI"],
+            ["DWC", "PMDM", "PMDM", "PSP", "DI"],
+            ["DWC", "PMDM", "PMDM", "PSP", "DI"]
+        ];
+
+        // Función que genera la tabla HTML del horario
+        function generarHorario() {
+            // Array con los nombres de los días (para el encabezado)
+            let diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+            
+            // Array con las franjas horarias (para la primera columna)
+            // Las horas se deben calcular a partir de la primera columna
+            let horas = [
+                "15:45-16:35",
+                "16:40-17:30",
+                "17:35-18:25",
+                "18:25-18:40",
+                "18:40-19:30",
+                "19:35-20:25",
+                "20:30-21:20"
+            ];
+            
+            // Crear el elemento <table>
+            let tabla = document.createElement("table");
+            tabla.setAttribute("border", "1");
+            tabla.setAttribute("cellpadding", "10");
+            tabla.setAttribute("cellspacing", "0");
+            
+            // ===== CREAR FILA DE ENCABEZADOS =====
+            let filaEncabezado = document.createElement("tr");
+            
+            // Primera celda vacía (esquina superior izquierda)
+            let thVacio = document.createElement("th");
+            thVacio.textContent = "";
+            filaEncabezado.appendChild(thVacio);
+            
+            // Crear celdas <th> para cada día de la semana
+            for (let i = 0; i < diasSemana.length; i++) {
+                let th = document.createElement("th");
+                th.textContent = diasSemana[i];
+                filaEncabezado.appendChild(th);
+            }
+            
+            // Añadir la fila de encabezados a la tabla
+            tabla.appendChild(filaEncabezado);
+            
+            // ===== CREAR FILAS DE DATOS =====
+            // Recorrer cada franja horaria del array bidimensional
+            for (let i = 0; i < horario.length; i++) {
+                // Crear una nueva fila <tr>
+                let fila = document.createElement("tr");
+                
+                // Primera celda: mostrar la hora (se debe calcular)
+                let tdHora = document.createElement("td");
+                tdHora.textContent = horas[i];
+                tdHora.style.fontWeight = "bold";
+                tdHora.style.backgroundColor = "#f0f0f0";
+                fila.appendChild(tdHora);
+                
+                // Crear celdas <td> para cada día de la semana
+                for (let j = 0; j < horario[i].length; j++) {
+                    let td = document.createElement("td");
+                    td.textContent = horario[i][j];
+                    td.style.textAlign = "center";
+                    fila.appendChild(td);
+                }
+                
+                // Añadir la fila completa a la tabla
+                tabla.appendChild(fila);
+            }
+            
+            // Insertar la tabla en el body del documento
+            document.body.appendChild(tabla);
+        }
+
+        // Ejecutar la función cuando se carga la página
+        // Usa objetos Date para mostrar las fechas (requisito del ejercicio)
+        window.onload = function() {
+            // Mostrar título con fecha actual usando Date
+            let fechaActual = new Date();
+            let titulo = document.createElement("h1");
+            titulo.textContent = "Horario 2º DAM";
+            titulo.style.textAlign = "center";
+            document.body.appendChild(titulo);
+            
+            // Mostrar fecha actual
+            let parrafoFecha = document.createElement("p");
+            parrafoFecha.textContent = "Generado el: " + fechaActual.toLocaleDateString('es-ES');
+            parrafoFecha.style.textAlign = "center";
+            document.body.appendChild(parrafoFecha);
+            
+            // Generar el horario
+            generarHorario();
+        };
+
+    </script>
+
+</body>
+</html>

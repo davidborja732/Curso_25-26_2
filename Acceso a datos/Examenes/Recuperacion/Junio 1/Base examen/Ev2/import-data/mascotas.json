@@ -1,0 +1,62 @@
+[
+  {
+    "_id": { "$oid": "aaaaaa000000000000000001" },
+    "nombre": "Rex",
+    "especie": "PERRO",
+    "raza": "Pastor Alemán",
+    "fechaNacimiento": { "$date": "2018-03-15T00:00:00.000Z" },
+    "peso": 32.5,
+    "veterinario": "Dra. Ana Martínez",
+    "propietario": {
+      "nombre": "Carlos",
+      "apellidos": "García López",
+      "telefono": "612345678",
+      "email": "carlos.garcia@email.com"
+    }
+  },
+  {
+    "_id": { "$oid": "aaaaaa000000000000000002" },
+    "nombre": "Luna",
+    "especie": "GATO",
+    "raza": "Siamés",
+    "fechaNacimiento": { "$date": "2020-07-22T00:00:00.000Z" },
+    "peso": 4.1,
+    "veterinario": "Dr. Pedro Sánchez",
+    "propietario": {
+      "nombre": "María",
+      "apellidos": "López Ruiz",
+      "telefono": "698765432",
+      "email": "maria.lopez@email.com"
+    }
+  },
+  {
+    "_id": { "$oid": "aaaaaa000000000000000003" },
+    "nombre": "Kiwi",
+    "especie": "AVE",
+    "raza": "Periquito",
+    "fechaNacimiento": { "$date": "2022-01-10T00:00:00.000Z" },
+    "peso": 0.035,
+    "veterinario": "Dra. Ana Martínez",
+    "propietario": {
+      "nombre": "Laura",
+      "apellidos": "Fernández Gil",
+      "telefono": "655432198",
+      "email": "laura.fernandez@email.com"
+    }
+  },
+  {
+    "_id": { "$oid": "aaaaaa000000000000000004" },
+    "nombre": "Toby",
+    "especie": "PERRO",
+    "raza": "Golden Retriever",
+    "fechaNacimiento": { "$date": "2019-11-05T00:00:00.000Z" },
+    "peso": 28.0,
+    "veterinario": "Dr. Pedro Sánchez",
+    "propietario": {
+      "nombre": "Carlos",
+      "apellidos": "García López",
+      "telefono": "612345678",
+      "email": "carlos.garcia@email.com"
+    }
+  }
+]

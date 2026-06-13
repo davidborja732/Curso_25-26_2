@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabla con suma por fila</title>
+  <script>
+    function creartabla() {
+      // variable que acumula la suma de cada fila
+      let suma = 0;
+      // variable que controla si es la primera celda
+      let contador = 0;
+      // numero inicial desde el que se empieza a restar
+      let numero = 100;
+
+      // se pide al usuario cuantas filas quiere
+      const filas = Number(prompt("Dime el numero de filas"));
+      // se pide al usuario cuantas columnas quiere
+      const columnas = Number(prompt("Dime el numero de columnas"));
+
+      // se crea la tabla HTML
+      const tabla = document.createElement("table");
+      tabla.setAttribute("border", "1");
+      tabla.style.borderCollapse = "collapse";
+
+      // bucle externo para recorrer las filas
+      for (let i = 1; i <= filas; i++) {
+        // se crea una fila
+        const fila = document.createElement("tr");
+        tabla.appendChild(fila);
+
+        // bucle interno para recorrer las columnas
+        for (let j = 1; j <= columnas; j++) {
+          // se crea una celda
+          const celda = document.createElement("td");
+          // si es la primera celda se usa el numero inicial, si no se resta 1
+          numero = contador === 0 ? numero : numero - 1;
+          // se escribe el numero dentro de la celda
+          celda.textContent = numero;
+          // se suma el numero al acumulador de la fila
+          suma += numero;
+          // se marca que ya no es la primera celda
+          contador = 1;
+          // se agrega la celda a la fila
+          fila.appendChild(celda);
+        }
+
+        // al terminar la fila se crea una celda extra con el resultado de la suma
+        const celdaResultado = document.createElement("td");
+        celdaResultado.textContent = "La suma es " + suma;
+        fila.appendChild(celdaResultado);
+
+        // se reinicia la suma para la siguiente fila
+        suma = 0;
+      }
+
+      // se agrega la tabla completa al cuerpo del documento
+      document.body.appendChild(tabla);
+    }
+  </script>
+</head>
+<body>
+  <script>
+    // se llama a la funcion para que se ejecute al cargar la pagina
+    creartabla();
+  </script>
+</body>
+</html>
+

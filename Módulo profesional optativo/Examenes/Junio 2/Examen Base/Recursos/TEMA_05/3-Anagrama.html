@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--Realiza un formulario que tenga dos campos de texto. Deberá validar antes de enviarse
+si uno de los campos es un anagrama del otro y enviarse solo si lo es. Se ignorarán
+mayúsculas, minúsculas y espacios.
+https://es.wikipedia.org/wiki/Anagrama
+Ejemplo de anagrama
+Roma y amor-->
+<html>
+    <head>
+        <script>
+            // Función que comprueba si dos palabras son anagramas
+            // Un anagrama es una palabra formada reordenando las letras de otra
+            // Ejemplo: "amor" y "roma" son anagramas
+            // Retorna: true si son anagramas, false en caso contrario
+            function comprobar(){
+                // Obtener el primer campo de texto
+                var t1 = document.getElementById("miTexto1");
+                
+                // Obtener el segundo campo de texto
+                var t2 = document.getElementById("miTexto2");
+                
+                // Convertir el primer texto en un array de caracteres
+                // split('') separa cada letra en un elemento del array
+                // Ejemplo: "otto" -> ['o', 't', 't', 'o']
+                var texto1 = t1.value.split('');
+                
+                // Convertir el segundo texto en un array de caracteres
+                // Ejemplo: "toot" -> ['t', 'o', 'o', 't']
+                var texto2 = t2.value.split('');
+                
+                // Ordenar alfabéticamente el primer array
+                // sort() ordena los elementos del array
+                // Ejemplo: ['o', 't', 't', 'o'] -> ['o', 'o', 't', 't']
+                var result1 = texto1.sort();
+                
+                // Ordenar alfabéticamente el segundo array
+                // Ejemplo: ['t', 'o', 'o', 't'] -> ['o', 'o', 't', 't']
+                var result2 = texto2.sort();    
+                
+                // Comparar si los dos arrays ordenados son iguales
+                // toString() convierte el array en una cadena de texto
+                // Ejemplo: ['o', 'o', 't', 't'] -> "o,o,t,t"
+                // Si ambos arrays ordenados son iguales, las palabras son anagramas
+                if(result1.toString() == result2.toString()){
+                    alert("Son anagramas");
+                    // Permitir el envío del formulario
+                    return true;
+                }
+                else{
+                    alert("No son anagramas");
+                    // Cancelar el envío del formulario
+                    return false;
+                }
+            }
+
+
+            // Evento que se ejecuta cuando se ha cargado completamente la página
+            window.onload = function(){
+                
+                // Obtener el elemento formulario con id "miForm"
+                var f = document.getElementById("miForm");
+                
+                // Asignar la función comprobar al evento onsubmit del formulario
+                // Se ejecutará cuando el usuario intente enviar el formulario
+                f.onsubmit = comprobar;
+            }
+        </script> 
+    </head>
+    <body>
+        
+        <!-- Formulario que se enviará a Google si las palabras son anagramas -->
+        <form id="miForm" action="http://www.google.es">
+            <!-- Etiqueta informativa para el usuario -->
+            <p>Comprobar son anagramas</p>
+            
+            <!-- Primer campo de texto con valor por defecto "otto" -->
+            <input type="text" id="miTexto1" value="otto"/>
+            
+            <!-- Segundo campo de texto con valor por defecto "toot" -->
+            <input type="text" id="miTexto2" value="toot"/>
+            
+            <!-- Botón para enviar el formulario -->
+            <input type="submit" />
+        </form>
+        
+    </body>
+</html>

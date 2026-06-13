@@ -1,0 +1,15 @@
+meta {
+  name: 17 Get Consultas desde Fecha
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{baseUrl}}/api/consultas/fecha
+  body: none
+  auth: none
+}
+
+params:query {
+  desde: 2024-06-01T00:00:00
+}

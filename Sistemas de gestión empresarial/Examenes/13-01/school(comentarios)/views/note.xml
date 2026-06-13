@@ -1,0 +1,32 @@
+<odoo>                                                     <!-- Nodo raíz obligatorio para cargar datos en Odoo. -->
+  <data>                                                  <!-- Contenedor de registros y definiciones. -->
+
+    <!-- explicit list view definition -->                 <!-- Comentario informativo sobre la vista lista. -->
+
+    <record model="ir.ui.view" id="school.note_list">     <!-- Crea una vista en ir.ui.view con ID único. -->
+      <field name="name">Notas</field>                    <!-- Nombre interno de la vista. -->
+      <field name="model">school.note</field>             <!-- Modelo al que pertenece la vista. -->
+      <field name="arch" type="xml">                      <!-- Contenido XML que define la vista. -->
+        <list>                                            <!-- Vista tipo lista (tree). -->
+          <field name="note"/>                            <!-- Columna: nota numérica. -->
+          <field name="subject_id"/>                      <!-- Columna: asignatura asociada. -->
+          <field name="student_id"/>                      <!-- Columna: estudiante asociado. -->
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="school.note_graph">    <!-- Crea una vista gráfica para school.note. -->
+      <field name="name">Notas</field>                    <!-- Nombre interno de la vista. -->
+      <field name="model">school.note</field>             <!-- Modelo al que pertenece la vista. -->
+      <field name="arch" type="xml">                      <!-- Contenido XML de la vista. -->
+        <graph string="Notas" type="bar">                 <!-- Vista tipo gráfico, formato barras. -->
+          <field name="note" type="measure"/>             <!-- Medida numérica representada en el gráfico. -->
+          <field name="subject_id" type="row"/>           <!-- Agrupación por asignatura. -->
+          <field name="student_id" type="col"/>           <!-- Agrupación por estudiante. -->
+        </graph>
+      </field>
+    </record>
+
+  </data>
+</odoo>
+

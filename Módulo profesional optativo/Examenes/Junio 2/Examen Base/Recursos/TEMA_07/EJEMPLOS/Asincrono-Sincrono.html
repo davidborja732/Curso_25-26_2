@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sincronismo</title>
+</head>
+<body>
+    <button onclick="sincrono()">Sincrono</button> 
+    <button onclick="asincrono()">Asincrono</button>
+    <button onclick="callback()">Callback</button>
+    <button onclick="promesas()">Promesas</button>
+    <button onclick="AsyncAwait()">Async / Await</button>
+
+    <script>
+    function AsyncAwait(){
+        console.log("AsyncAwait")
+        function AsyncAwait1(value) {
+            if (typeof value !== "number") {
+            return Promise.reject(
+            'Error, el valor " ${value} " ingresado no es un número'
+            );
+        }
+
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+            resolve({
+                value,
+                result: value * value,
+            });
+            },100);
+        });
+        }
+
+        function AsyncAwait2(value) {
+            if (typeof value !== "number") {
+            return Promise.reject(
+            'Error, el valor " ${value} " ingresado no es un número'
+            );
+        }
+
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+            resolve({
+                value,
+                result: value * value,
+            });
+            }, 5000);
+        });
+        }
+
+        async function funcionAsincrona() {
+        try {
+            let obj = await AsyncAwait1(0);
+            console.log(1);
+
+            obj = await AsyncAwait2(1);
+            console.log(2);
+
+            obj = await AsyncAwait1(2);
+            console.log(3);
+
+        } catch (err) {
+            console.error(err);
+        }
+        }
+        funcionAsincrona();
+       
+    }    
+
+    function promesas(){
+        console.log("Promesas")
+        function Promisa1(value) {
+            if (typeof value !== "number") {
+                return Promise.reject(
+                'Error, el valor " ${value} " ingresado no es un número'
+                );
+            }
+
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                resolve({
+                    value,
+                    result: value * value,
+                });
+                },5000);
+            });
+            }
+
+            function Promisa2(value) {
+            if (typeof value !== "number") {
+                return Promise.reject(
+                'Error, el valor " ${value} " ingresado no es un número'
+                );
+            }
+
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                resolve({
+                    value,
+                    result: value * value,
+                });
+                },100);
+            });
+            }
+
+            Promisa1(0)
+            .then((obj) => {
+                console.log(1);
+                return Promisa1(1);
+            })
+            .then((obj) => {
+                console.log(2);
+                return Promisa2(2);
+            })
+            .then((obj) => {
+                console.log(3);
+            })
+            .catch((err) => console.error(err));
+
+    }
+
+    function callback(){
+        console.log('callback');
+        function fun1(value, callBK) {
+            setTimeout(function() {
+                callBK(value, value * 1 );
+                console.log(value);
+ 
+            }, 5000);
+        }
+
+        function fun2(value, callBK) {
+            setTimeout(function() {
+                callBK(value, value * 1);
+         
+            }, 100);
+        }
+
+        console.log('1');
+        fun1(2, (value, result) => {
+            console.log('2');
+            fun2(3, (value, result) => {
+                console.log('3');
+            });
+        });
+
+    }
+
+    function asincrono(){
+        console.log('asincrono');
+        console.log('1');
+        setTimeout(function () {
+            console.log("2");
+            }, 5000);
+        console.log('3');
+    }
+
+    function sincrono(){
+        console.log('sincrono');
+        console.log('1');
+        console.log('2');
+        console.log('3');
+    }
+    </script>
+</body>
+</html>

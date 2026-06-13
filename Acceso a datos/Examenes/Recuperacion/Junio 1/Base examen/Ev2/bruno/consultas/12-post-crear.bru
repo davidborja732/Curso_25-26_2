@@ -1,0 +1,31 @@
+meta {
+  name: 12 Post Crear Consulta
+  type: http
+  seq: 12
+}
+
+post {
+  url: {{baseUrl}}/api/consultas
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "fechaConsulta": "2025-06-01T09:00:00",
+    "motivo": "Revisión de seguimiento",
+    "diagnostico": "Evolución favorable",
+    "tratamiento": "Continuar tratamiento 5 días más",
+    "precio": 45.0,
+    "mascota": {
+      "id": "aaaaaa000000000000000001"
+    },
+    "sintomas": [
+      { "descripcion": "Sin síntomas aparentes", "gravedad": "LEVE" }
+    ]
+  }
+}

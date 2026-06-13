@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio01</title>
+</head>
+<!--1.	Crea un script que pida al usuario su nombre, edad y profesión, 
+almacene estos datos en unas variables y los imprima en la página. 
+Utiliza document.write();-->
+<body>
+    <h1>Ejercicio 1</h1>
+
+    <script>
+
+        //Solicito los datos del usuario
+        var nombre = prompt ("Introduce tu nombre: ")
+        var edad = prompt ("Introduce tu edad: ")
+        var profesion = prompt ("Introduce tu profesión: ")
+
+        //Muestro los daros en la pagina
+        document.write("<h2>Datos Personales</h2>")
+        document.write("<p><strong>Nombre: </strong>" + nombre + "</p>")
+        document.write("<p><strong>Edad: </strong>" + edad + "</p>")
+        document.write("<p><strong>Profesión: </strong>" + profesion + "</p>")
+
+    </script>
+
+</body>
+</html>

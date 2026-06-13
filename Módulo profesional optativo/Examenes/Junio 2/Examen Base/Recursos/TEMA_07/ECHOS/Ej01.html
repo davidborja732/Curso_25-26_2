@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Star Wars API - Personajes</title>
+  <style>
+    /* Sin estilos - solo HTML básico */
+  </style>
+</head>
+<body>
+  <h1>Personajes de Star Wars</h1>
+  
+  <!-- Contenedor donde se mostrarán las tarjetas de los personajes -->
+  <div id="characters"></div>
+  
+  <!-- Contenedor donde se mostrarán los detalles del personaje seleccionado -->
+  <div id="details"></div>
+
+  <script>
+    // URL de la API de Star Wars (devuelve los primeros 10 personajes)
+    const apiURL = "https://swapi.dev/api/people/";
+
+    // Obtener los personajes con fetch
+    fetch(apiURL)
+      .then(response => {
+        // Verificar si la respuesta es correcta
+        if (!response.ok) throw new Error("Error al cargar los personajes");
+        // Convertir la respuesta a JSON
+        return response.json();
+      })
+      .then(data => {
+        // El array de personajes está en data.results
+        const personajes = data.results;
+        
+        // Obtener el contenedor donde vamos a poner los personajes
+        const container = document.getElementById("characters");
+
+        // Recorrer cada personaje y crear su tarjeta
+        personajes.forEach(personaje => {
+          // Crear un div para cada personaje
+          const card = document.createElement("div");
+
+          // Crear un párrafo con el nombre del personaje
+          const name = document.createElement("h3");
+          name.textContent = personaje.name;
+
+          // Añadir el nombre al div
+          card.appendChild(name);
+          
+          // Añadir un evento de click para mostrar detalles
+          card.addEventListener("click", () => showDetails(personaje));
+
+          // Añadir la tarjeta al contenedor principal
+          container.appendChild(card);
+        });
+      })
+      .catch(error => console.error(error));
+
+    // Función para mostrar detalles del personaje seleccionado
+    function showDetails(character) {
+      // Obtener el contenedor de detalles
+      const details = document.getElementById("details");
+      
+      // Limpiar los detalles anteriores
+      details.innerHTML = "";
+
+      // Crear y añadir el título con el nombre
+      const title = document.createElement("h2");
+      title.textContent = character.name;
+      details.appendChild(title);
+
+      // Crear y añadir la altura
+      const p1 = document.createElement("p");
+      p1.innerHTML = "<strong>Altura:</strong> " + character.height + " cm";
+      details.appendChild(p1);
+
+      // Crear y añadir el peso
+      const p2 = document.createElement("p");
+      p2.innerHTML = "<strong>Peso:</strong> " + character.mass + " kg";
+      details.appendChild(p2);
+
+      // Crear y añadir el color de cabello
+      const p3 = document.createElement("p");
+      p3.innerHTML = "<strong>Color de cabello:</strong> " + character.hair_color;
+      details.appendChild(p3);
+
+      // Crear y añadir el color de piel
+      const p4 = document.createElement("p");
+      p4.innerHTML = "<strong>Color de piel:</strong> " + character.skin_color;
+      details.appendChild(p4);
+
+      // Crear y añadir el color de ojos
+      const p5 = document.createElement("p");
+      p5.innerHTML = "<strong>Color de ojos:</strong> " + character.eye_color;
+      details.appendChild(p5);
+
+      // Crear y añadir el año de nacimiento
+      const p6 = document.createElement("p");
+      p6.innerHTML = "<strong>Año de nacimiento:</strong> " + character.birth_year;
+      details.appendChild(p6);
+
+      // Crear y añadir el género
+      const p7 = document.createElement("p");
+      p7.innerHTML = "<strong>Género:</strong> " + character.gender;
+      details.appendChild(p7);
+    }
+  </script>
+</body>
+</html>

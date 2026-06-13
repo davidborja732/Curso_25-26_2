@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista de Usuarios con Filtro</title>
+  <style>
+    /* Sin estilos - solo HTML básico */
+  </style>
+</head>
+<!--Crea una página que muestre usuarios de la API https://jsonplaceholder.typi-code.com/users.
+Requisitos:
+ Mostrar una tabla con: ID, Nombre, Username, Email, Ciudad
+ Añadir un campo de texto para filtrar usuarios por nombre (en tiempo real mientras escribes)
+ Al hacer clic en un usuario, mostrar sus detalles completos incluyendo: te-léfono, empresa y coordenadas geográficas
+ Botón para "Limpiar filtro"-->
+<body>
+  <h1>Lista de Usuarios</h1>
+  
+  <!-- Botón para cargar usuarios desde la API -->
+  <button onclick="cargarUsuarios()">Cargar Usuarios</button>
+  <!-- Botón para limpiar toda la interfaz y datos -->
+  <button onclick="limpiarTodo()">Limpiar Todo</button>
+  
+  <hr>
+  
+  <!-- Contenedor donde aparecerá el campo de búsqueda (inicialmente vacío) -->
+  <div id="campoBusqueda"></div>
+  
+  <hr>
+  
+  <!-- Contenedor donde se mostrará la tabla de usuarios -->
+  <div id="tablaUsuarios"></div>
+  
+  <hr>
+  
+  <!-- Contenedor donde se mostrarán los detalles del usuario seleccionado -->
+  <div id="detalleUsuario"></div>
+
+
+  <script>
+    // Array global para guardar todos los usuarios obtenidos de la API
+    let usuarios = [];
+    
+    // Array global para guardar los usuarios que coinciden con el filtro de búsqueda
+    // Inicialmente contendrá todos los usuarios
+    let usuariosFiltrados = [];
+
+
+    // Función para cargar los usuarios desde la API de JSONPlaceholder
+    function cargarUsuarios() {
+      // Obtener referencias a los contenedores del DOM
+      const divBusqueda = document.getElementById("campoBusqueda");
+      const divTabla = document.getElementById("tablaUsuarios");
+      const divDetalle = document.getElementById("detalleUsuario");
+      
+      // Limpiar todos los contenedores y mostrar mensaje de carga
+      divBusqueda.innerHTML = "";
+      divTabla.innerHTML = "<p>Cargando usuarios...</p>";
+      divDetalle.innerHTML = "";
+      
+      // Realizar petición HTTP GET a la API
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then(response => {
+          // Verificar si la respuesta HTTP es correcta
+          if (!response.ok) throw new Error("Error al cargar usuarios");
+          
+          // Convertir la respuesta a formato JSON
+          return response.json();
+        })
+        .then(data => {
+          // Guardar los usuarios en el array global
+          usuarios = data;
+          
+          // Inicialmente todos los usuarios están filtrados (sin filtro)
+          usuariosFiltrados = usuarios;
+          
+          // Mostrar en consola cuántos usuarios se cargaron
+          console.log("Usuarios cargados:", usuarios.length);
+          
+          // Mostrar el campo de búsqueda
+          mostrarCampoBusqueda();
+          
+          // Mostrar la tabla con todos los usuarios
+          mostrarTabla();
+        })
+        .catch(error => {
+          // Capturar y mostrar cualquier error
+          divTabla.innerHTML = "<p>Error: " + error.message + "</p>";
+          console.error(error);
+        });
+    }
+
+
+    // Función para crear y mostrar el campo de búsqueda
+    function mostrarCampoBusqueda() {
+      // Obtener el contenedor
+      const divBusqueda = document.getElementById("campoBusqueda");
+      
+      // Construir el HTML del campo de búsqueda
+      let html = "<label for='inputBusqueda'><strong>Buscar por nombre:</strong></label><br>";
+      
+      // Input con evento onkeyup que filtra en tiempo real al escribir
+      html += "<input type='text' id='inputBusqueda' placeholder='Escribe un nombre...' onkeyup='filtrarUsuarios()'>";
+      
+      // Botón para limpiar el filtro de búsqueda
+      html += " <button onclick='limpiarFiltro()'>Limpiar Filtro</button>";
+      
+      // Span donde se mostrará el contador de resultados
+      html += " <span id='contador'></span>";
+      
+      // Insertar el HTML en el contenedor
+      divBusqueda.innerHTML = html;
+    }
+
+
+    // Función para mostrar la tabla de usuarios filtrados
+    function mostrarTabla() {
+      // Obtener el contenedor de la tabla
+      const divTabla = document.getElementById("tablaUsuarios");
+      
+      // Si no hay usuarios filtrados, mostrar mensaje
+      if (usuariosFiltrados.length === 0) {
+        divTabla.innerHTML = "<p>No se encontraron usuarios.</p>";
+        document.getElementById("contador").textContent = "(0 resultados)";
+        return; // Salir de la función
+      }
+      
+      // Actualizar el contador de resultados
+      document.getElementById("contador").textContent = "(" + usuariosFiltrados.length + " resultados)";
+      
+      // Comenzar a construir el HTML de la tabla
+      let html = "<h2>Usuarios (" + usuariosFiltrados.length + "):</h2>";
+      html += "<table border='1'>";
+      
+      // --- Crear la cabecera de la tabla ---
+      html += "<thead>";
+      html += "<tr>";
+      html += "<th>ID</th>";
+      html += "<th>Nombre</th>";
+      html += "<th>Username</th>";
+      html += "<th>Email</th>";
+      html += "<th>Ciudad</th>";
+      html += "</tr>";
+      html += "</thead>";
+      
+      // --- Crear el cuerpo de la tabla ---
+      html += "<tbody>";
+      
+      // Recorrer cada usuario filtrado usando forEach
+      usuariosFiltrados.forEach(usuario => {
+        // Crear una fila clickeable para cada usuario
+        // onclick llama a verDetalle con el ID del usuario
+        // style='cursor: pointer;' cambia el cursor a mano
+        html += "<tr onclick='verDetalle(" + usuario.id + ")' style='cursor: pointer;'>";
+        html += "<td>" + usuario.id + "</td>";
+        html += "<td>" + usuario.name + "</td>";
+        html += "<td>" + usuario.username + "</td>";
+        html += "<td>" + usuario.email + "</td>";
+        
+        // La ciudad está dentro del objeto anidado address
+        html += "<td>" + usuario.address.city + "</td>";
+        html += "</tr>";
+      });
+      
+      html += "</tbody>";
+      html += "</table>";
+      
+      // Insertar el HTML de la tabla en el contenedor
+      divTabla.innerHTML = html;
+    }
+
+
+    // Función que filtra usuarios en tiempo real según el texto ingresado
+    function filtrarUsuarios() {
+      // Obtener el elemento input de búsqueda
+      const inputBusqueda = document.getElementById("inputBusqueda");
+      
+      // Obtener el texto, convertir a minúsculas y eliminar espacios
+      // toLowerCase() para hacer búsqueda insensible a mayúsculas
+      // trim() para eliminar espacios al inicio y final
+      const textoBusqueda = inputBusqueda.value.toLowerCase().trim();
+      
+      // Si el campo está vacío, mostrar todos los usuarios
+      if (textoBusqueda === "") {
+        usuariosFiltrados = usuarios;
+        mostrarTabla();
+        return;
+      }
+      
+      // Vaciar el array de usuarios filtrados
+      usuariosFiltrados = [];
+      
+      // Recorrer todos los usuarios
+      usuarios.forEach(usuario => {
+        // Convertir el nombre del usuario a minúsculas
+        const nombreUsuario = usuario.name.toLowerCase();
+        
+        // indexOf devuelve -1 si no encuentra el texto
+        // Si encuentra el texto, devuelve la posición (>= 0)
+        if (nombreUsuario.indexOf(textoBusqueda) !== -1) {
+          // Añadir el usuario al array de filtrados
+          usuariosFiltrados.push(usuario);
+        }
+      });
+      
+      // Actualizar la tabla con los usuarios filtrados
+      mostrarTabla();
+    }
+
+
+    // Función para ver los detalles completos de un usuario
+    // Parámetro: idUsuario - el ID del usuario a mostrar
+    function verDetalle(idUsuario) {
+      // Obtener el contenedor de detalles
+      const divDetalle = document.getElementById("detalleUsuario");
+      
+      // Variable para almacenar el usuario encontrado
+      let usuarioEncontrado = null;
+      
+      // Buscar el usuario en el array por su ID
+      usuarios.forEach(usuario => {
+        if (usuario.id === idUsuario) {
+          usuarioEncontrado = usuario;
+        }
+      });
+      
+      // Si no se encontró el usuario
+      if (usuarioEncontrado === null) {
+        divDetalle.innerHTML = "<p>Usuario no encontrado.</p>";
+        return;
+      }
+      
+      // --- Construir el HTML con todos los detalles del usuario ---
+      let html = "<h2>Detalles del Usuario</h2>";
+      
+      // --- Información básica del usuario ---
+      html += "<h3>Información Personal</h3>";
+      html += "<ul>";
+      html += "<li><strong>ID:</strong> " + usuarioEncontrado.id + "</li>";
+      html += "<li><strong>Nombre:</strong> " + usuarioEncontrado.name + "</li>";
+      html += "<li><strong>Username:</strong> " + usuarioEncontrado.username + "</li>";
+      html += "<li><strong>Email:</strong> " + usuarioEncontrado.email + "</li>";
+      html += "<li><strong>Teléfono:</strong> " + usuarioEncontrado.phone + "</li>";
+      html += "<li><strong>Website:</strong> " + usuarioEncontrado.website + "</li>";
+      html += "</ul>";
+      
+      // --- Dirección del usuario ---
+      // Accediendo al objeto anidado address
+      html += "<h3>Dirección</h3>";
+      html += "<ul>";
+      html += "<li><strong>Calle:</strong> " + usuarioEncontrado.address.street + "</li>";
+      html += "<li><strong>Suite:</strong> " + usuarioEncontrado.address.suite + "</li>";
+      html += "<li><strong>Ciudad:</strong> " + usuarioEncontrado.address.city + "</li>";
+      html += "<li><strong>Código Postal:</strong> " + usuarioEncontrado.address.zipcode + "</li>";
+      html += "</ul>";
+      
+      // --- Coordenadas geográficas ---
+      // Accediendo al objeto doblemente anidado address.geo
+      html += "<h3>Coordenadas Geográficas</h3>";
+      html += "<ul>";
+      html += "<li><strong>Latitud:</strong> " + usuarioEncontrado.address.geo.lat + "</li>";
+      html += "<li><strong>Longitud:</strong> " + usuarioEncontrado.address.geo.lng + "</li>";
+      html += "</ul>";
+      
+      // --- Información de la empresa ---
+      // Accediendo al objeto anidado company
+      html += "<h3>Empresa</h3>";
+      html += "<ul>";
+      html += "<li><strong>Nombre:</strong> " + usuarioEncontrado.company.name + "</li>";
+      html += "<li><strong>Eslogan:</strong> " + usuarioEncontrado.company.catchPhrase + "</li>";
+      html += "<li><strong>Actividad:</strong> " + usuarioEncontrado.company.bs + "</li>";
+      html += "</ul>";
+      
+      // Botón para cerrar/ocultar los detalles
+      html += "<button onclick='cerrarDetalle()'>Cerrar Detalles</button>";
+      
+      // Insertar el HTML completo en el contenedor
+      divDetalle.innerHTML = html;
+    }
+
+
+    // Función para cerrar/ocultar los detalles del usuario
+    function cerrarDetalle() {
+      // Vaciar el contenedor de detalles
+      document.getElementById("detalleUsuario").innerHTML = "";
+    }
+
+
+    // Función para limpiar el filtro de búsqueda
+    function limpiarFiltro() {
+      // Limpiar el valor del input de búsqueda
+      document.getElementById("inputBusqueda").value = "";
+      
+      // Resetear el array filtrado para mostrar todos los usuarios
+      usuariosFiltrados = usuarios;
+      
+      // Actualizar la tabla
+      mostrarTabla();
+      
+      // Cerrar los detalles si estaban abiertos
+      cerrarDetalle();
+    }
+
+
+    // Función para limpiar completamente la aplicación
+    function limpiarTodo() {
+      // Vaciar todos los contenedores
+      document.getElementById("campoBusqueda").innerHTML = "";
+      document.getElementById("tablaUsuarios").innerHTML = "";
+      document.getElementById("detalleUsuario").innerHTML = "";
+      
+      // Vaciar los arrays globales
+      usuarios = [];
+      usuariosFiltrados = [];
+    }
+  </script>
+</body>
+
+</html>

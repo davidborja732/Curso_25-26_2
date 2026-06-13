@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tareas</title>
+</head>
+<body>
+    <h2>Mis Tareas Pendientes</h2>
+    <div id="lista-tareas"></div>
+
+    <script>
+        // Array con las tareas pendientes
+        var tareas = [
+            "Estudiar JavaScript",
+            "Hacer ejercicios HTML",
+            "Repasar arrays",
+            "Practicar DOM",
+            "Revisar fechas"
+        ];
+        
+        // Array con las prioridades de cada tarea (1=Alta, 2=Media, 3=Baja)
+        // Los índices coinciden con el array de tareas
+        var prioridades = [3, 1, 2, 3, 1];
+
+        // Inicializa la tabla HTML con bordes
+        let html = "<table border='1'>";
+        // Añade la fila de encabezados
+        html += "<tr><th>Nº</th><th>Tarea</th><th>Prioridad</th></tr>";
+        
+        // Itera sobre cada tarea usando su índice
+        for (let i = 0; i < tareas.length; i++) {
+            // Variables para almacenar el texto y color de la prioridad
+            let textoprioridad;
+            let color;
+            
+            // Determina el texto y color según el nivel de prioridad
+            if (prioridades[i] === 1) {
+                textoprioridad = "ALTA";
+                color = "red";
+            } else if (prioridades[i] === 2) {
+                textoprioridad = "MEDIA";
+                color = "orange";
+            } else {
+                textoprioridad = "BAJA";
+                color = "green";
+            }
+            
+            // Construye una fila de la tabla
+            html += "<tr>";
+            // Añade el número de la tarea (i + 1 para empezar desde 1 en lugar de 0)
+            html += `<td>${i + 1}</td>`;
+            // Añade el nombre de la tarea
+            html += `<td>${tareas[i]}</td>`;
+            // Añade la prioridad con color y estilo negrita
+            html += `<td style='color:${color}; font-weight:bold'>${textoprioridad}</td>`;
+            // Cierra la fila
+            html += "</tr>";
+        }
+        
+        // Cierra la tabla
+        html += "</table>";
+        // Inserta el HTML generado en el elemento con id="lista-tareas"
+        document.getElementById("lista-tareas").innerHTML = html;
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var filas = parseInt(prompt("Inserte número de filas de la tabla:"));
+        var columnas = parseInt(prompt("Inserte número de columnas de la tabla:"));
+        var mTabla = new Array(filas);
+
+        for (i = 0; i < mTabla.length; i++) {
+            mTabla[i] = new Array(columnas);
+        }
+
+        mTabla[filas - 1][columnas - 1] = 0;
+
+        document.write("<section><table border='5px'>");
+
+        for (i = 0; i < mTabla.length; i++) {
+            document.write("<tr style='height:40px'>");
+            for (j = 0; j < mTabla[i].length; j++) {
+                if (j == (mTabla[i].length - 1) && i != (mTabla.length - 1)) {
+                    mTabla[i][j] = 0;
+                    for (k = 0; k < (mTabla[i].length - 1); k++) {
+                        mTabla[i][j] += mTabla[i][k];
+                    }
+                    mTabla[filas - 1][columnas - 1] += mTabla[i][j];
+                    document.write("<td style='width:200px'><center><b>Suma fila " + (i + 1) + ": " + mTabla[i][j] + "</b></center></td>");
+                } else if (i == (mTabla.length - 1) && j != (mTabla[i].length - 1)) {
+                    mTabla[i][j] = 0;
+                    for (l = 0; l < (mTabla.length - 1); l++) {
+                        mTabla[i][j] += mTabla[l][j];
+                    }
+                    document.write("<td style='width:200px'><center><b>Suma columna " + (j + 1) + ": " + mTabla[i][j] + "</b></center></td>");
+                } else if (i == (mTabla.length -1) && j == (mTabla[i].length - 1)) {
+                    document.write("<td style='width:200px'><center><b><u>Total: " + mTabla[i][j] + "</u></b></center></td>");
+                } else {
+                    mTabla[i][j] = Math.floor(Math.random() * 100);
+                    document.write("<td style='width:200px'><center>" + mTabla[i][j] + "</center></td>");
+                }
+            }
+            document.write("</tr>");
+        }
+        document.write("</table></section>");
+    </script>
+</body>
+</html>

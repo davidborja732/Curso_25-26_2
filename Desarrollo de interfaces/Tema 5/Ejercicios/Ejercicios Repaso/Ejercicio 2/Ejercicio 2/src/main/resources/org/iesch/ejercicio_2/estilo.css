@@ -1,0 +1,31 @@
+.Button1 {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.Button2 {
+    -fx-background-color: green;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.Button3 {
+    -fx-background-color: pink;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.Titulo {
+    -fx-font-size: 26;
+    -fx-font-weight: bold;
+}
+.TextoNormal {
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+.Imc {
+    -fx-text-fill: purple;
+    -fx-font-size: 16;
+}
+.Estado{
+    -fx-text-fill: red;
+    -fx-font-size: 16;
+}

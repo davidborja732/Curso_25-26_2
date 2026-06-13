@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mostrar tareas APIREST</title>
+<style>
+    /* Estilos generales del cuerpo */
+    body { 
+        font-family: Arial; 
+        padding: 20px; 
+    }
+    /* Estilos de la tabla */
+    table { 
+        border-collapse: collapse; /* Eliminar espacios entre bordes */
+        width: 60%; 
+    }
+    /* Estilos de celdas y encabezados */
+    th, td {
+        border: 1px solid #ccc; /* Borde gris claro */
+        padding: 8px;
+        text-align: left;
+    }
+    /* Estilo específico de los encabezados */
+    th { 
+        background: #f0f0f0; /* Fondo gris claro */
+    }
+</style>
+</head>
+<body>
+
+
+<h2>Mostrar tareas APIREST</h2>
+
+
+<!-- Botón para mostrar los datos de la API -->
+<button id="btnMostrar">Mostrar Datos</button>
+
+<!-- Contenedor donde se mostrará la tabla con las tareas -->
+<div id="resultado"></div>
+
+
+<!-- Botón para eliminar una tarea -->
+<button onclick="del()">DELETE</button>
+
+
+<script>
+  // URL base de la API REST donde están alojadas las tareas
+  const URL = "http://192.168.1.120:8069";
+  
+  // Array global para almacenar los datos de las tareas
+  let datos = [];
+
+
+  // Función que actualiza la tabla obteniendo datos frescos de la API
+  function actualizarTabla(){
+    // Declarar array local para almacenar datos (sobrescribe el global en este ámbito)
+    let datos = [];  
+    
+    // Hacer petición GET al endpoint de listar tareas
+    fetch(URL+'/listartareas')
+            .then(res => {
+                // Convertir la respuesta a formato JSON
+                return res.json();
+            })
+            .then(json => {
+                // Almacenar los datos recibidos
+                datos = json;
+                
+                // Mostrar la tabla con los datos recibidos
+                mostrarTabla(datos);
+            })
+            .catch(err => {
+                // Capturar y mostrar errores de red o parseo
+                console.error("Error cargando JSON:", err);
+            });
+
+
+    // Añadir evento click al botón "Mostrar Datos"
+    // Al pulsarlo, se vuelve a mostrar la tabla con los datos actuales
+    document.getElementById("btnMostrar").addEventListener("click", () => {
+        mostrarTabla(datos);
+    });
+  }
+
+
+// Llamar a la función al cargar la página para obtener y mostrar las tareas
+actualizarTabla()
+
+
+// Función que genera y muestra una tabla HTML con los datos de las tareas
+// Parámetro: arr - array de tareas, donde cada tarea es un array
+// Formato esperado: [id, tarea, prioridad, urgente, realizada, responsable]
+function mostrarTabla(arr) {
+    // Construir el HTML de la tabla usando template literals
+    // Crear encabezado de la tabla con las columnas
+    let html = `
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Tarea</th>
+                <th>Prioridad</th>
+                <th>Urgente</th>
+                <th>Realizada</th>
+                <th>Responsable</th>                
+            </tr>
+    `;
+
+
+    // Recorrer cada tarea del array
+    arr.forEach(item => {
+        // Añadir una fila por cada tarea
+        // item[0] = ID, item[1] = Tarea, item[2] = Prioridad, etc.
+        html += `
+            <tr>
+                <td>${item[0]}</td>
+                <td>${item[1]}</td>
+                <td>${item[2]}</td>
+                <td>${item[3]}</td>
+                <td>${item[4]}</td>
+                <td>${item[5]}</td>
+            </tr>
+        `;
+    });
+
+
+    // Cerrar la etiqueta de tabla
+    html += "</table>";
+
+
+    // Insertar el HTML generado en el div con id "resultado"
+    document.getElementById("resultado").innerHTML = html;
+}
+
+
+// Función que elimina una tarea mediante petición DELETE a la API
+function del(){
+
+    // Solicitar al usuario el ID de la tarea que desea borrar
+    // prompt() muestra un cuadro de diálogo para capturar entrada de texto
+    idTarea = prompt('Introduce el id de la tarea que deseas borrar')
+
+
+    // Realizar petición DELETE a la API
+    // Construir la URL con el ID de la tarea en formato JSON
+    fetch(URL+'/gestion/lista_tareas.lista_tareas?data={"id":"'+idTarea+'"}', {
+       method: 'DELETE', // Especificar método HTTP DELETE
+      })
+      .then(response => {
+       // Verificar si la respuesta es exitosa
+       if (!response.ok) {
+          // Si hay error, lanzar excepción
+          throw new Error('La respuesta de la red no fue correcta');
+        }
+        // Mostrar mensaje de éxito en consola
+        console.log('Recurso eliminado correctamente');
+        
+        // Actualizar la tabla para reflejar los cambios
+        // Vuelve a obtener los datos de la API y muestra la tabla actualizada
+        actualizarTabla()
+        })
+        .catch(error => {
+        // Capturar y mostrar errores de la petición DELETE
+        console.error('Hubo un problema con la solicitud DELETE:', error.message);
+        });
+
+    }
+
+
+
+</script>
+
+
+</body>
+</html>
+

@@ -1,0 +1,20 @@
+meta {
+  name: TEMPLATE Obtener por precio ordenado
+  type: http
+  seq: 21
+}
+
+get {
+  url: http://127.0.0.1:8080/api/book/template/search/precioorden?precio=18
+  body: none
+  auth: inherit
+}
+
+params:query {
+  precio: 18
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

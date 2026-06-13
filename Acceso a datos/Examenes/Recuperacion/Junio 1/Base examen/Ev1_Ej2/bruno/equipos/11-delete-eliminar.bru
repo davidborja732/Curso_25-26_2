@@ -1,0 +1,11 @@
+meta {
+  name: 11 Delete Equipo (Ejecutar 09-post-crear primero, usar el id devuelto)
+  type: http
+  seq: 11
+}
+
+delete {
+  url: {{baseUrl}}/api/equipos/{{nuevoEquipoId}}
+  body: none
+  auth: none
+}

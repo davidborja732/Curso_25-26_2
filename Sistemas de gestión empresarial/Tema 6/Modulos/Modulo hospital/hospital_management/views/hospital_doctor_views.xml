@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_hospital_doctor_tree" model="ir.ui.view">
+        <field name="name">hospital.doctor.tree</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="last_name"/>
+                <field name="specialty"/>
+                <field name="phone"/>
+                <field name="license_number"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hospital_doctor_kanban" model="ir.ui.view">
+        <field name="name">hospital.doctor.kanban</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="specialty">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card">
+                            <field name="image_1920" widget="image"/>
+                            <div>
+                                <strong><field name="name"/> <field name="last_name"/></strong>
+                                <div><field name="specialty"/></div>
+                                <div>Colegiado: <field name="license_number"/></div>
+                                <div>Tel: <field name="phone"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_hospital_doctor_form" model="ir.ui.view">
+        <field name="name">hospital.doctor.form</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="last_name"/>
+                            <field name="specialty"/>
+                            <field name="phone"/>
+                            <field name="license_number"/>
+                        </group>
+                        <group>
+                            <field name="image_1920" widget="image"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Ingresos">
+                            <field name="admission_ids">
+                                <list>
+                                    <field name="patient_id"/>
+                                    <field name="admission_date"/>
+                                    <field name="discharge_date"/>
+                                    <field name="room_id"/>
+                                    <field name="bed"/>
+                                </list>
+                            </field>
+                        </page>
+
+                        <page string="Diagnósticos">
+                            <field name="diagnosis_ids">
+                                <list>
+                                    <field name="diagnosis_date"/>
+                                    <field name="patient_id"/>
+                                    <field name="type"/>
+                                    <field name="name"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hospital_doctor" model="ir.actions.act_window">
+        <field name="name">Médicos</field>
+        <field name="res_model">hospital.doctor</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+</odoo>

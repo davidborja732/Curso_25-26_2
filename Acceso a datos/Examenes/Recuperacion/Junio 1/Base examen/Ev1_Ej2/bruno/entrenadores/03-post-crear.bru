@@ -1,0 +1,25 @@
+meta {
+  name: 03 Post Crear Entrenador
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/entrenadores
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "nombre": "Jurgen",
+    "apellidos": "Klopp",
+    "fechaNacimiento": "1967-06-16",
+    "nacionalidad": "Alemana",
+    "email": "jurgen.klopp@test.com"
+  }
+}

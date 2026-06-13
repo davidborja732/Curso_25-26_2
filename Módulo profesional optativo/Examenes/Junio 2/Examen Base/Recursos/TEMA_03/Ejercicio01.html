@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio01</title>
+</head>
+<!--Crea un script en el que se pida al usuario un vector de números enteros e indique en
+pantalla la media aritmética de todos sus elementos. Para parar la introducción de número, teclea un 0.
+-->
+
+<body>
+    <h1>Ejercicio01</h1>
+
+
+    <script>
+
+        //Variables para acumular la suma y contar cuantos numeros se han introducido
+        let suma = 0;
+        let contador = 0;
+        console.log("Inicio");
+
+        let num = parseInt(prompt("Introduce un numero entero (pon 0 para terminar): "), 10);
+        console.log("Primer numero introducido: ", num);
+
+        //Mientras que no sea 0, sigo pidiendo
+        while (num !== 0) {
+
+            //Si no es un numero valido lo registra y lo ignoramos
+            if (isNaN(num)) {
+                console.log("VAlor no valido introducido. Se ignora y se pide otro numero");
+            } else {
+                suma = suma + num;//sumo el numero a la variable suma
+                contador++;//aumento en 1 el contador de numeros
+                console.log("Numero correcto: ", num, "| suma ahora es: ", suma, "| contador es: ", contador)
+            }
+            num = parseInt(prompt("Introduce un numero entero (pon 0 para terminar): "), 10);
+            console.log("Siguiente numero introducido: ", num);
+        }
+
+        //si se introducen numeros (contador > 0), calculo y muestro la media
+        if (contador > 0) {
+            let media = suma / contador;
+            console.log("Calculo final -> suma: ", suma, ", Contador: ", contador, " y MEDIA: ", media);
+            document.textContent = "La media es: " + media;
+            document.write("La media es: " + media)
+        } else {
+            console.log("No se introdujo ningun numero valido. Contador = 0")
+            document.textContent = "No has introducido ningun numero";
+        }
+
+    </script>
+
+</body>
+
+</html>

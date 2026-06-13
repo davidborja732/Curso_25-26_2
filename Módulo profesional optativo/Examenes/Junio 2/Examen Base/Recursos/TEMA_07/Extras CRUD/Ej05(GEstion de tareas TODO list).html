@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Tareas</title>
+</head>
+<!--Requisitos:
+ Botón GET para listar las primeras 20 tareas (ID, Título, Completada)
+ Botón POST para crear una tarea (pedir título)
+ Botón PUT para marcar una tarea como completada (pedir ID)
+ Botón DELETE para borrar una tarea por ID
+ Mostrar tareas completadas en color verde y pendientes en rojo-->
+<body>
+  <h1>Lista de Tareas (TODO)</h1>
+  
+  <button onclick="listarTareas()">GET - Listar Tareas</button>
+  <button onclick="crearTarea()">POST - Crear Tarea</button>
+  <button onclick="completarTarea()">PUT - Completar Tarea</button>
+  <button onclick="borrarTarea()">DELETE - Borrar Tarea</button>
+  
+  <hr>
+  <div id="resultado"></div>
+
+  <script>
+    /*
+      Script orientativo para CRUD de tareas usando la API pública de ejemplo
+      (https://jsonplaceholder.typicode.com).
+
+      Notas importantes:
+      - jsonplaceholder es una API de pruebas: las operaciones POST/PUT/DELETE
+        no modifican datos reales en el servidor (devuelven respuestas simuladas).
+      - Esta página muestra cómo llamar a endpoints REST desde el cliente y
+        cómo actualizar la UI localmente en base a las respuestas.
+      - Siempre validar/filtrar inputs provenientes del usuario antes de
+        usarlos en peticiones reales (evitar inyección y errores de tipo).
+    */
+
+    // URL base del recurso "todos"
+    const URL = "https://jsonplaceholder.typicode.com/todos";
+    // Array local para almacenar las tareas recuperadas y poder actualizar la UI
+    let tareas = [];
+
+    // ------------------ FUNCIONES CRUD ------------------
+
+    // GET - Listar tareas (trae las primeras 20 mediante el parámetro _limit)
+    // - fetch devuelve una promesa que resolvemos con .then
+    // - Guardamos la respuesta en la variable 'tareas' y llamamos a mostrarTabla()
+    function listarTareas() {
+      fetch(URL + "?_limit=20")
+        .then(res => res.json())
+        .then(data => {
+          // 'data' es un array de objetos tipo { userId, id, title, completed }
+          tareas = data;
+          mostrarTabla();
+        })
+        .catch(err => alert("Error: " + err));
+    }
+
+    // Mostrar tabla con colores según estado (completada -> verde, pendiente -> rojo)
+    // - Recorremos 'tareas' y generamos HTML dinámico para insertar en el DOM
+    function mostrarTabla() {
+      let html = "<table border='1'>";
+      html += "<tr><th>ID</th><th>Título</th><th>Estado</th></tr>";
+
+      tareas.forEach(tarea => {
+        // Decide color y texto según tarea.completed (boolean)
+        const color = tarea.completed ? "green" : "red";
+        const estado = tarea.completed ? "Completada" : "Pendiente";
+
+        // Construye la fila (usamos style inline por simplicidad; en producción usar clases CSS)
+        html += `<tr style='color: ${color}'>\n` +
+                `  <td>${tarea.id}</td>` +
+                `  <td>${tarea.title}</td>` +
+                `  <td>${estado}</td>` +
+                `</tr>`;
+      });
+
+      html += "</table>";
+      document.getElementById("resultado").innerHTML = html;
+    }
+
+    // POST - Crear tarea
+    // - Pide al usuario el título mediante prompt
+    // - Crea un objeto y lo envía al endpoint con método POST
+    // - En jsonplaceholder la respuesta incluirá un id simulado
+    function crearTarea() {
+      const titulo = prompt("Título de la tarea:");
+
+      // Validación simple: el título no puede estar vacío
+      if (!titulo) {
+        alert("Debes introducir un título");
+        return;
+      }
+
+      const nuevaTarea = {
+        userId: 1,
+        title: titulo,
+        completed: false
+      };
+
+      fetch(URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nuevaTarea)
+      })
+      .then(res => res.json())
+      .then(data => {
+        // 'data' contiene la tarea creada (id simulado en este servicio)
+        alert("Tarea creada con ID: " + data.id);
+        // Insertamos la nueva tarea al principio del array local para actualizar la vista
+        tareas.unshift(data);
+        mostrarTabla();
+      })
+      .catch(err => alert("Error: " + err));
+    }
+
+    // PUT - Completar tarea
+    // - Pide el ID al usuario
+    // - Envía una petición PUT para marcar completed=true
+    // - Actualiza el array local si encuentra la tarea
+    function completarTarea() {
+      const id = prompt("ID de la tarea a completar:");
+
+      if (!id) {
+        alert("Debes introducir un ID");
+        return;
+      }
+
+      // Nota: en APIs reales conviene validar que 'id' sea numérico: parseInt(id)
+      fetch(URL + "/" + id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ completed: true })
+      })
+      .then(res => res.json())
+      .then(data => {
+        // Respuesta satisfactoria (recuerda: en jsonplaceholder no se persiste realmente)
+        alert("Tarea marcada como completada");
+        // Actualizamos la copia local si existe
+        const index = tareas.findIndex(t => t.id == id);
+        if (index !== -1) {
+          tareas[index].completed = true;
+          mostrarTabla();
+        }
+      })
+      .catch(err => alert("Error: " + err));
+    }
+
+    // DELETE - Borrar tarea
+    // - Pide el ID, llama al endpoint DELETE y filtra el array local para quitarla
+    function borrarTarea() {
+      const id = prompt("ID de la tarea a borrar:");
+
+      if (!id) {
+        alert("Debes introducir un ID");
+        return;
+      }
+
+      fetch(URL + "/" + id, {
+        method: 'DELETE'
+      })
+      .then(res => {
+        // En caso de éxito actualizamos la lista local y la vista
+        alert("Tarea borrada correctamente");
+        tareas = tareas.filter(t => t.id != id);
+        mostrarTabla();
+      })
+      .catch(err => alert("Error: " + err));
+    }
+  </script>
+</body>
+</html>

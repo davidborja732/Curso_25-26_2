@@ -1,0 +1,15 @@
+meta {
+  name: 20 Get Jugadores por Pais
+  type: http
+  seq: 20
+}
+
+get {
+  url: {{baseUrl}}/api/jugadores/find
+  body: none
+  auth: none
+}
+
+params:query {
+  pais: Belgica
+}

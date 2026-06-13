@@ -1,0 +1,25 @@
+meta {
+  name: 04 Put Actualizar Entrenador
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api/entrenadores/{{entrenadorId}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "nombre": "Pep",
+    "apellidos": "Guardiola",
+    "fechaNacimiento": "1971-01-18",
+    "nacionalidad": "Española",
+    "email": "pep.guardiola@updated.com"
+  }
+}

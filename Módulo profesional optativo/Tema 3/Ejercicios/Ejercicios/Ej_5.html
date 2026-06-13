@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+  <meta charset="UTF-8"> 
+  <title>Calendario</title> 
+</head>
+<body> 
+  <!-- Contenedor donde se insertará el calendario -->
+  <div id="calendario"></div>
+  <script>
+    // Array bidimensional que contiene los días festivos por mes (0 = enero, 11 = diciembre)
+    const festivos = [
+        [1,6],[],[],[17,18,23],[1],[],[],[15],[],[12],[1],[6,8,25]
+    ];
+
+    // Array con los nombres de los meses en español
+    const nombresMeses = [
+      "enero", "febrero", "marzo", "abril", "mayo", "junio",
+      "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+    ];
+
+    // Función principal que genera el calendario
+    function generarCalendario() {
+      const año = 2025; // Año fijo para el calendario
+
+      // Solicita al usuario el nombre del mes y lo normaliza (minúsculas y sin espacios)
+      let entrada = prompt("Escribe el nombre del mes (ejemplo: octubre):").toLowerCase().trim();
+
+      // Busca el índice del mes en el array nombresMeses
+      let mes = nombresMeses.indexOf(entrada);
+
+      // Si el mes no es válido (no está en el array), muestra un mensaje y termina
+      if (mes === -1) {
+        alert("Mes inválido. Escribe un nombre como 'enero', 'febrero', etc.");
+        return;
+      }
+
+      // Array con los días de la semana, empezando por lunes
+      const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+
+      // Crea una fecha con el primer día del mes
+      const fecha = new Date(año, mes, 1);
+
+      // Ajusta el día de la semana para que lunes sea 0 (JavaScript usa domingo = 0)
+      const primerDia = (fecha.getDay() + 6) % 7;
+
+      // Calcula cuántos días tiene el mes
+      const diasMes = new Date(año, mes + 1, 0).getDate();
+
+      // Extrae los días festivos del mes actual
+      const festivosMes = festivos[mes] || [];
+
+      // Comienza a construir el HTML con el título del mes
+      let html = `<h2>${entrada.charAt(0).toUpperCase() + entrada.slice(1)}</h2>`;
+
+      // Comienza la tabla con borde simple y fila de encabezado
+      html += '<table border="1"><tr>';
+
+      // Añade los nombres de los días como encabezados de columna
+      diasSemana.forEach(dia => html += `<th>${dia}</th>`);
+
+      html += '</tr><tr>'; // Comienza la primera fila de días
+
+      // Añade celdas vacías antes del primer día del mes
+      for (let i = 0; i < primerDia; i++) {
+        html += "<td></td>";
+      }
+
+      // Bucle para generar cada día del mes
+      for (let dia = 1; dia <= diasMes; dia++) {
+        // Verifica si el día actual es festivo
+        const esFestivo = festivosMes.includes(dia);
+
+        // Si es festivo, aplica estilo en línea para fondo rojo y texto blanco
+        const estilo = esFestivo ? ' style="background-color:red;color:white;font-weight:bold;"' : '';
+
+        // Añade la celda con el número del día y estilo si es festivo
+        html += `<td${estilo}>${dia}</td>`;
+
+        // Si se completa una semana (7 días), se inicia una nueva fila
+        if ((dia + primerDia) % 7 === 0) html += "</tr><tr>";
+      }
+
+      html += "</tr></table>"; // Cierra la tabla
+
+      // Inserta el HTML generado en el contenedor con id "calendario"
+      document.getElementById("calendario").innerHTML = html;
+    }
+
+    // Llama a la función al cargar la página
+    generarCalendario();
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,16 @@
+1- Click derecho en "Sort Fields" en Outline
+2- "Create Sort Field"
+3- Elegir campo por el que ordenamos
+4- En Properties pdemos elegir si será orden ascendente/Descendiente
+
+Recordatorio= Para poder agrupar por un campo es necesario que los 
+registros estén ordenados por ese campo
+
+5- Click derecho en nombre informe
+6- Create Group
+
+Aparecerán en el informe dos secciones nuevas
+● NombreGrupo Group Header
+● NombreGrupo Group Footer
+El campo por el que queremos agrupar lo arrastramos a 
+"Group Header" y lo quitamos de Detail

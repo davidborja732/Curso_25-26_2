@@ -1,0 +1,26 @@
+meta {
+  name: 09 Post Crear Equipo (Ejecutar 03-post-crear entrenador primero)
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/api/equipos
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "nombre": "Liverpool FC",
+    "ciudad": "Liverpool",
+    "estadio": "Anfield",
+    "presupuesto": 450.0,
+    "fechaFundacion": "1892-06-03",
+    "entrenador": { "id": 5 }
+  }
+}

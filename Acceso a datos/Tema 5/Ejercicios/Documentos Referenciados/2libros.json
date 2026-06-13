@@ -1,0 +1,74 @@
+[
+  {
+    "_id": 101,
+    "titulo": "Cien años de soledad",
+    "autor_id": 1,
+    "genero": "Realismo mágico",
+    "año_publicacion": 1967,
+    "paginas": 471,
+    "editorial_id": 201
+  },
+  {
+    "_id": 102,
+    "titulo": "El amor en los tiempos del cólera",
+    "autor_id": 1,
+    "genero": "Romance",
+    "año_publicacion": 1985,
+    "paginas": 368,
+    "editorial_id": 201
+  },
+  {
+    "_id": 103,
+    "titulo": "La casa de los espíritus",
+    "autor_id": 2,
+    "genero": "Realismo mágico",
+    "año_publicacion": 1982,
+    "paginas": 433,
+    "editorial_id": 202
+  },
+  {
+    "_id": 104,
+    "titulo": "Paula",
+    "autor_id": 2,
+    "genero": "Autobiografía",
+    "año_publicacion": 1994,
+    "paginas": 330,
+    "editorial_id": 202
+  },
+  {
+    "_id": 105,
+    "titulo": "La ciudad y los perros",
+    "autor_id": 3,
+    "genero": "Novela",
+    "año_publicacion": 1963,
+    "paginas": 409,
+    "editorial_id": 203
+  },
+  {
+    "_id": 106,
+    "titulo": "Conversación en La Catedral",
+    "autor_id": 3,
+    "genero": "Novela política",
+    "año_publicacion": 1969,
+    "paginas": 729,
+    "editorial_id": 203
+  },
+  {
+    "_id": 107,
+    "titulo": "Ficciones",
+    "autor_id": 4,
+    "genero": "Cuentos",
+    "año_publicacion": 1944,
+    "paginas": 174,
+    "editorial_id": 204
+  },
+  {
+    "_id": 108,
+    "titulo": "El Aleph",
+    "autor_id": 4,
+    "genero": "Cuentos",
+    "año_publicacion": 1949,
+    "paginas": 210,
+    "editorial_id": 204
+  }
+]

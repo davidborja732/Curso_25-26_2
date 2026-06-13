@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio14</title>
+</head>
+<!--Crea un script que diga si la fecha es de un año bisiesto.-->
+<body>
+    <h1>Ejercicio 14</h1>
+
+    <script>
+        // Función que determina si un año es bisiesto
+        // Un año es bisiesto si:
+        // 1. Es divisible por 4 Y NO es divisible por 100
+        // 2. O si es divisible por 400
+        function bisiesto(anyo) {
+            // Primera condición: (anyo % 4 == 0) && (anyo % 100 != 0)
+            // - Divisible por 4 pero no por 100: 2024, 2020, 2016...
+            // Segunda condición: (anyo % 400 == 0)
+            // - Divisible por 400: 2000, 2400...
+            // Ejemplos: 2024 es bisiesto, 1900 NO es bisiesto, 2000 SÍ es bisiesto
+            return ((anyo % 4 == 0) && (anyo % 100 != 0)) || (anyo % 400 == 0);
+        }
+        
+        // Función que obtiene los valores del formulario y verifica si el año es bisiesto
+        function obtenerFecha() {
+            // Obtiene el valor del campo "dia" del formulario
+            var dia = document.getElementById("dia").value;
+            
+            // Obtiene el valor del campo "mes" del formulario
+            var mes = document.getElementById("mes").value;
+            
+            // Resta 1 al mes porque JavaScript cuenta los meses desde 0 (enero) hasta 11 (diciembre)
+            // Si el usuario ingresa 2 (febrero), el Date necesita recibir 1
+            mes -= 1;
+            
+            // Obtiene el valor del campo "anyo" (año) del formulario
+            var anyo = document.getElementById("anyo").value;
+            
+            // Crea un nuevo objeto Date con los valores obtenidos
+            // El formato es: new Date(año, mes, día)
+            var fecha = new Date(anyo, mes, dia);
+            
+            // Verifica si el año de la fecha creada es bisiesto
+            // parseInt() convierte el año a número entero (aunque getFullYear() ya devuelve un número)
+            // fecha.getFullYear() obtiene el año del objeto Date (4 dígitos)
+            if (bisiesto(parseInt(fecha.getFullYear()))) {
+                // Si la función bisiesto() devuelve true, muestra este mensaje
+                document.getElementById("result").innerHTML = "Es bisiesto";
+            } else {
+                // Si la función bisiesto() devuelve false, muestra este mensaje
+                document.getElementById("result").innerHTML = "No es bisiesto";
+            }
+        }
+    </script>
+
+    <form>
+        <br/>
+        <p>Inserte la fecha: </p>
+        
+        <!-- Campos de entrada para día, mes y año -->
+        <!-- size="1" y size="2" controlan el ancho visual del campo -->
+        Dia: <input type="text" id="dia" size="1"/> 
+        Mes: <input type="text" id="mes" size="1"/> 
+        Año: <input type="text" id="anyo" size="2"/><br><br>
+        
+        <!-- Botón de envío que ejecuta obtenerFecha() -->
+        <!-- return false evita que el formulario se envíe y recargue la página -->
+        <input type="submit" value="Enviar" onclick="obtenerFecha(); return false;"/><br><br>
+        
+        <!-- Elemento donde se mostrará si el año es bisiesto o no -->
+        <p id="result"/>
+    </form>
+</body>
+</html>

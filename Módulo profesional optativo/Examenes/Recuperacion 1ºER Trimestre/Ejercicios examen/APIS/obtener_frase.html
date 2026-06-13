@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Analizar frase desde API</title>
+</head>
+<body>
+
+    <h2>Resultados</h2>
+
+    <p><strong>Frase recibida:</strong> <span id="frase"></span></p>
+    <p><strong>Longitud:</strong> <span id="longitud"></span></p>
+    <p><strong>Número de palabras:</strong> <span id="palabras"></span></p>
+    <p><strong>Mayúsculas:</strong> <span id="mayus"></span></p>
+    <p><strong>Minúsculas:</strong> <span id="minus"></span></p>
+    <p><strong>¿Contiene números?</strong> <span id="tieneNum"></span></p>
+    <p><strong>Frase invertida:</strong> <span id="invertida"></span></p>
+    <p><strong>Palabras ordenadas:</strong></p>
+    <pre id="ordenadas"></pre>
+
+    <p id="error" style="color:red;"></p>
+
+    <script>
+        function invertirTexto(texto) {
+            return texto.split("").reverse().join("");
+        }
+
+        function ordenarPalabras(texto) {
+            return texto
+                .split(/\s+/)
+                .filter(p => p.trim().length > 0)
+                .sort((a, b) => a.localeCompare(b));
+        }
+
+        async function obtenerYAnalizar() {
+            try {
+                const respuesta = await fetch("https://dummyjson.com/quotes/random");
+                const datos = await respuesta.json();
+
+                const frase = datos.quote;
+
+                if (!frase || typeof frase !== "string") {
+                    document.getElementById("error").textContent =
+                        "La API no devolvió una frase válida";
+                    return;
+                }
+
+                document.getElementById("frase").textContent = frase;
+                document.getElementById("longitud").textContent = frase.length;
+
+                const palabras = frase.trim().split(/\s+/);
+                document.getElementById("palabras").textContent = palabras.length;
+
+                document.getElementById("mayus").textContent = frase.toUpperCase();
+                document.getElementById("minus").textContent = frase.toLowerCase();
+
+                const contieneNum = /\d/.test(frase);
+                document.getElementById("tieneNum").textContent = contieneNum ? "Sí" : "No";
+
+                document.getElementById("invertida").textContent = invertirTexto(frase);
+
+                const listaOrdenada = ordenarPalabras(frase);
+                document.getElementById("ordenadas").textContent = listaOrdenada.join(", ");
+
+            } catch (error) {
+                document.getElementById("error").textContent =
+                    "Error al obtener la frase: " + error;
+            }
+        }
+
+        obtenerYAnalizar();
+    </script>
+
+</body>
+</html>

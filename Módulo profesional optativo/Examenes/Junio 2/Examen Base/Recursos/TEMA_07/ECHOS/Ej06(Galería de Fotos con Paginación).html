@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería de Fotos con Paginación</title>
+  <style>
+    /* Sin estilos - solo HTML básico */
+  </style>
+</head>
+<!--Usa la API https://jsonplaceholder.typicode.com/photos que devuelve 5000 fo-tos.
+Requisitos:
+ Cargar solo las primeras 20 fotos (usa ?_limit=20)
+ Mostrar en una cuadrícula: thumbnail, título y ID
+ Botones "Página Anterior" y "Página Siguiente" para navegar
+ Al hacer clic en una foto, mostrar la imagen completa en grande
+ Contador: "Mostrando fotos 1-20 de 5000"
+Pista: Usa parámetros _limit y _start en la URL:
+https://jsonplaceholder.typicode.com/photos?_start=0&_limit=20
+https://jsonplaceholder.typicode.com/photos?_start=20&_limit=20-->
+<body>
+  <h1>Galería de Fotos</h1>
+  
+  <!-- Botón para cargar la primera página de la galería -->
+  <button onclick="cargarPrimeraPagina()">Cargar Galería</button>
+  <!-- Botón para limpiar toda la galería -->
+  <button onclick="limpiarGaleria()">Limpiar</button>
+  
+  <hr>
+  
+  <!-- Contenedor donde aparecerán los controles de navegación (botones y contador) -->
+  <div id="controles"></div>
+  
+  <hr>
+  
+  <!-- Contenedor donde se mostrarán las miniaturas de las fotos -->
+  <div id="galeria"></div>
+  
+  <hr>
+  
+  <!-- Contenedor para el modal (imagen en grande) -->
+  <div id="modal"></div>
+
+
+  <script>
+    // --- Variables globales ---
+    
+    // Array que almacenará las fotos de la página actual (20 fotos)
+    let fotos = [];
+    
+    // Número de la página actual (empieza en 1)
+    let paginaActual = 1;
+    
+    // Constante: número de fotos que se muestran por página
+    const fotosPorPagina = 20;
+    
+    // Constante: total de fotos disponibles en la API
+    const totalFotos = 5000;
+    
+    // Constante: total de páginas calculadas
+    // Math.ceil redondea hacia arriba: 5000/20 = 250 páginas
+    const totalPaginas = Math.ceil(totalFotos / fotosPorPagina);
+
+
+    // Función para cargar la primera página (resetea a página 1)
+    function cargarPrimeraPagina() {
+      // Establecer la página actual en 1
+      paginaActual = 1;
+      
+      // Llamar a la función que carga las fotos
+      cargarFotos();
+    }
+
+
+    // Función principal que carga las fotos de una página desde la API
+    function cargarFotos() {
+      // Obtener referencias a los contenedores del DOM
+      const divGaleria = document.getElementById("galeria");
+      const divControles = document.getElementById("controles");
+      const divModal = document.getElementById("modal");
+      
+      // Limpiar todos los contenedores y mostrar mensaje de carga
+      divGaleria.innerHTML = "<p>Cargando fotos...</p>";
+      divControles.innerHTML = "";
+      divModal.innerHTML = "";
+      
+      // Calcular el índice de inicio según la página actual
+      // Fórmula: (página - 1) × fotos_por_página
+      // Página 1: (1-1) × 20 = 0  → fotos 1-20
+      // Página 2: (2-1) × 20 = 20 → fotos 21-40
+      // Página 3: (3-1) × 20 = 40 → fotos 41-60
+      const start = (paginaActual - 1) * fotosPorPagina;
+      
+      // Construir la URL con parámetros de paginación
+      // _start: índice inicial
+      // _limit: cantidad de elementos a traer
+      const url = "https://jsonplaceholder.typicode.com/photos?_start=" + start + "&_limit=" + fotosPorPagina;
+      
+      // Mostrar en consola la URL y parámetros para debug
+      console.log("Cargando URL:", url);
+      console.log("Página:", paginaActual, "Start:", start);
+      
+      // Realizar petición HTTP GET a la API
+      fetch(url)
+        .then(response => {
+          // Verificar si la respuesta es exitosa
+          if (!response.ok) throw new Error("Error al cargar fotos");
+          
+          // Convertir la respuesta a formato JSON
+          return response.json();
+        })
+        .then(data => {
+          // Guardar las fotos recibidas en el array global
+          fotos = data;
+          
+          // Mostrar en consola cuántas fotos se cargaron
+          console.log("Fotos cargadas:", fotos.length);
+          
+          // Llamar a la función que muestra las fotos en la galería
+          mostrarGaleria();
+          
+          // Llamar a la función que muestra los controles de navegación
+          mostrarControles();
+        })
+        .catch(error => {
+          // Capturar y mostrar cualquier error
+          divGaleria.innerHTML = "<p>Error: " + error.message + "</p>";
+          console.error(error);
+        });
+    }
+
+
+    // Función para mostrar la galería de fotos (thumbnails)
+    function mostrarGaleria() {
+      // Obtener el contenedor de la galería
+      const divGaleria = document.getElementById("galeria");
+      
+      // Si no hay fotos, mostrar mensaje
+      if (fotos.length === 0) {
+        divGaleria.innerHTML = "<p>No hay fotos para mostrar.</p>";
+        return;
+      }
+      
+      // Variable para construir el HTML
+      let html = "";
+      
+      // Recorrer cada foto del array
+      // forEach proporciona el elemento (foto) y el índice
+      fotos.forEach((foto, index) => {
+        // Crear un div para cada foto con estilos inline
+        // onclick llama a verImagenGrande con el índice de la foto
+        // display: inline-block permite que los divs se alineen horizontalmente
+        html += "<div onclick='verImagenGrande(" + index + ")' style='display: inline-block; margin: 10px; text-align: center; cursor: pointer; border: 1px solid #ccc; padding: 10px;'>";
+        
+        // Mostrar la miniatura (thumbnailUrl es 150x150 px)
+        html += "<img src='" + foto.thumbnailUrl + "' alt='" + foto.title + "'>";
+        
+        // Mostrar el ID de la foto
+        html += "<p><strong>ID:</strong> " + foto.id + "</p>";
+        
+        // Mostrar el título de la foto
+        html += "<p>" + foto.title + "</p>";
+        
+        html += "</div>";
+      });
+      
+      // Insertar el HTML generado en el contenedor
+      divGaleria.innerHTML = html;
+    }
+
+
+    // Función para mostrar los controles de navegación (botones y contadores)
+    function mostrarControles() {
+      // Obtener el contenedor de controles
+      const divControles = document.getElementById("controles");
+      
+      // Calcular el número de la primera foto que estamos mostrando
+      // Página 1: (1-1) × 20 + 1 = 1
+      // Página 2: (2-1) × 20 + 1 = 21
+      const fotoInicio = (paginaActual - 1) * fotosPorPagina + 1;
+      
+      // Calcular el número de la última foto que estamos mostrando
+      // Math.min asegura que no superemos el total de fotos
+      // Página 1: min(1 × 20, 5000) = 20
+      // Página 250: min(250 × 20, 5000) = 5000
+      const fotoFin = Math.min(paginaActual * fotosPorPagina, totalFotos);
+      
+      // Variable para construir el HTML
+      let html = "";
+      
+      // --- Botón "Página Anterior" ---
+      if (paginaActual > 1) {
+        // Si NO estamos en la primera página, botón habilitado
+        html += "<button onclick='paginaAnterior()'>Página Anterior</button> ";
+      } else {
+        // Si estamos en la primera página, botón deshabilitado
+        html += "<button disabled>Página Anterior</button> ";
+      }
+      
+      // --- Información de la página actual ---
+      html += "<span>Página " + paginaActual + " de " + totalPaginas + "</span> ";
+      
+      // --- Botón "Página Siguiente" ---
+      if (paginaActual < totalPaginas) {
+        // Si NO estamos en la última página, botón habilitado
+        html += "<button onclick='paginaSiguiente()'>Página Siguiente</button>";
+      } else {
+        // Si estamos en la última página, botón deshabilitado
+        html += "<button disabled>Página Siguiente</button>";
+      }
+      
+      html += "<br><br>";
+      
+      // --- Contador de fotos ---
+      // Ejemplo: "Mostrando fotos 1-20 de 5000"
+      html += "<span>Mostrando fotos " + fotoInicio + "-" + fotoFin + " de " + totalFotos + "</span>";
+      
+      // Insertar el HTML en el contenedor
+      divControles.innerHTML = html;
+    }
+
+
+    // Función para ir a la página anterior
+    function paginaAnterior() {
+      // Verificar que no estemos en la primera página
+      if (paginaActual > 1) {
+        // Decrementar el número de página
+        paginaActual--;
+        
+        // Cargar las fotos de la nueva página
+        cargarFotos();
+      }
+    }
+
+
+    // Función para ir a la página siguiente
+    function paginaSiguiente() {
+      // Verificar que no estemos en la última página
+      if (paginaActual < totalPaginas) {
+        // Incrementar el número de página
+        paginaActual++;
+        
+        // Cargar las fotos de la nueva página
+        cargarFotos();
+      }
+    }
+
+
+    // Función para mostrar la imagen en tamaño grande en un modal
+    // Parámetro: indice - posición de la foto en el array fotos[]
+    function verImagenGrande(indice) {
+      // Obtener la foto del array usando el índice
+      const foto = fotos[indice];
+      
+      // Obtener el contenedor del modal
+      const divModal = document.getElementById("modal");
+      
+      // Crear el HTML del modal
+      // position: fixed - se posiciona sobre toda la pantalla
+      // background-color: rgba(0,0,0,0.8) - fondo negro semi-transparente
+      // z-index: 1000 - aparece por encima de todo
+      // onclick='cerrarModal()' - al hacer clic en el fondo se cierra
+      let html = "<div onclick='cerrarModal()' style='position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000;'>";
+      
+      html += "<div style='text-align: center; padding-top: 50px;'>";
+      
+      // Botón de cerrar (×) en la esquina
+      html += "<span onclick='cerrarModal()' style='color: white; font-size: 40px; cursor: pointer;'>×</span><br>";
+      
+      // Mostrar la imagen en tamaño completo (url es 600x600 px)
+      // max-width y max-height aseguran que la imagen no sea más grande que la ventana
+      html += "<img src='" + foto.url + "' alt='" + foto.title + "' style='max-width: 90%; max-height: 80vh;'><br>";
+      
+      // Mostrar el título y el ID de la foto
+      html += "<p style='color: white; font-size: 18px;'>" + foto.title + " (ID: " + foto.id + ")</p>";
+      
+      html += "</div>";
+      html += "</div>";
+      
+      // Insertar el modal en el contenedor
+      divModal.innerHTML = html;
+    }
+
+
+    // Función para cerrar el modal
+    function cerrarModal() {
+      // Vaciar el contenedor del modal para ocultarlo
+      document.getElementById("modal").innerHTML = "";
+    }
+
+
+    // Función para limpiar completamente la galería
+    function limpiarGaleria() {
+      // Vaciar todos los contenedores
+      document.getElementById("controles").innerHTML = "";
+      document.getElementById("galeria").innerHTML = "";
+      document.getElementById("modal").innerHTML = "";
+      
+      // Resetear el array de fotos
+      fotos = [];
+      
+      // Resetear la página actual a 1
+      paginaActual = 1;
+    }
+  </script>
+</body>
+
+</html>

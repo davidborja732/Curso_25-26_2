@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calificaciones</title>
+</head>
+<!--Lista de Alumnos con Notas -->
+<body>
+    <h2>Sistema de Calificaciones</h2>
+    <div id="tabla-notas"></div>
+
+    <script>
+        // Array con los nombres de los alumnos
+        var alumnos = ["Ana García", "Luis Martínez", "María López", "Carlos Ruiz", "Elena Torres"];
+        // Array con las notas correspondientes de cada alumno (índices coinciden)
+        var notas = [8.5, 4.2, 9.0, 5.5, 3.8];
+
+        // Inicializa la tabla HTML con bordes
+        let html = "<table border='1'>";
+        // Añade la fila de encabezados
+        html += "<tr><th>Alumno</th><th>Nota</th><th>Estado</th></tr>";
+        
+        // Itera sobre los alumnos usando su índice
+        for (let i = 0; i < alumnos.length; i++) {
+            // Determina el estado: APROBADO si nota >= 5, sino SUSPENSO (operador ternario)
+            let estado = notas[i] >= 5 ? "APROBADO" : "SUSPENSO";
+            // Asigna un color: verde para aprobado, rojo para suspenso
+            let color = notas[i] >= 5 ? "green" : "red";
+            
+            // Abre una fila de tabla
+            html += "<tr>";
+            // Añade el nombre del alumno en la primera columna
+            html += `<td>${alumnos[i]}</td>`;
+            // Añade la nota en la segunda columna
+            html += `<td>${notas[i]}</td>`;
+            // Añade el estado con estilo (color y negrita)
+            html += `<td style='color:${color}; font-weight:bold'>${estado}</td>`;
+            // Cierra la fila
+            html += "</tr>";
+        }
+        
+        // Cierra la tabla
+        html += "</table>";
+        // Inserta el HTML generado en el elemento con id="tabla-notas"
+        document.getElementById("tabla-notas").innerHTML = html;
+    </script>
+</body>
+</html>

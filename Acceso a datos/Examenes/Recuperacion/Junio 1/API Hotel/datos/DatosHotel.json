@@ -1,0 +1,265 @@
+// ===============================================
+//   BASE DE DATOS HOTEL - DATOS DE PRUEBA COMPLETOS
+// ===============================================
+
+use("hotelDB");
+
+// ===============================
+// 1. CLIENTES
+// ===============================
+db.clientes.drop();
+db.clientes.insertMany([
+  {
+    dni: "12345678A",
+    nombre: "Laura",
+    apellidos: "García Pérez",
+    telefono: "612345678",
+    email: "laura.garcia@gmail.com",
+    fechaRegistro: new Date("2026-01-10T09:30:00Z")
+  },
+  {
+    dni: "23456789B",
+    nombre: "Carlos",
+    apellidos: "Martínez López",
+    telefono: "622334455",
+    email: "carlos.martinez@hotmail.com",
+    fechaRegistro: new Date("2026-02-01T11:15:00Z")
+  },
+  {
+    dni: "34567890C",
+    nombre: "Ana",
+    apellidos: "Serrano Ruiz",
+    telefono: "633221144",
+    email: "ana.serrano@gmail.com",
+    fechaRegistro: new Date("2026-02-15T17:40:00Z")
+  },
+  {
+    dni: "45678901D",
+    nombre: "Javier",
+    apellidos: "Torres Gil",
+    telefono: "644556677",
+    email: "javier.torres@yahoo.es",
+    fechaRegistro: new Date("2025-12-20T14:00:00Z")
+  },
+  {
+    dni: "99999999Z",
+    nombre: "Cliente",
+    apellidos: "SinReservas",
+    telefono: "600000000",
+    email: "nada@nada.com",
+    fechaRegistro: new Date("2026-03-01T10:00:00Z")
+  }
+]);
+
+// ===============================
+// 2. HABITACIONES
+// ===============================
+db.habitaciones.drop();
+db.habitaciones.insertMany([
+  { numero: "101", tipo: "INDIVIDUAL", capacidad: 1, precioNoche: 60, estado: "LIBRE" },
+  { numero: "102", tipo: "INDIVIDUAL", capacidad: 1, precioNoche: 65, estado: "OCUPADA" },
+  { numero: "201", tipo: "DOBLE", capacidad: 2, precioNoche: 90, estado: "LIBRE" },
+  { numero: "203", tipo: "DOBLE", capacidad: 2, precioNoche: 95, estado: "OCUPADA" },
+  { numero: "301", tipo: "SUITE", capacidad: 3, precioNoche: 180, estado: "LIBRE" },
+  { numero: "999", tipo: "SUITE", capacidad: 4, precioNoche: 220, estado: "MANTENIMIENTO" }
+]);
+
+// ===============================
+// 3. SERVICIOS
+// ===============================
+db.servicios.drop();
+db.servicios.insertMany([
+  { id: "SRV-001", tipoServicio: "MINIBAR", precioUnitario: 15 },
+  { id: "SRV-002", tipoServicio: "SPA", precioUnitario: 50 },
+  { id: "SRV-003", tipoServicio: "PARKING", precioUnitario: 10 },
+  { id: "SRV-004", tipoServicio: "DESAYUNO_EXTRA", precioUnitario: 12 },
+  { id: "SRV-005", tipoServicio: "CENA_GOURMET", precioUnitario: 35 },
+  { id: "SRV-006", tipoServicio: "LATE_CHECKOUT", precioUnitario: 20 }
+]);
+
+// ===============================
+// 4. RESERVAS
+// ===============================
+db.reservas.drop();
+db.reservas.insertMany([
+  // ------------------------------
+  // 1. CORRECTA
+  // ------------------------------
+  {
+    codigo: "HTL-20260208-A1F3",
+    dniCliente: "12345678A",
+    numeroHabitacion: "102",
+    tipoHabitacion: "INDIVIDUAL",
+    fechaEntrada: new Date("2026-02-08T14:00:00Z"),
+    fechaSalida: new Date("2026-02-12T12:00:00Z"),
+    numeroNoches: 4,
+    numeroPersonas: 1,
+    regimen: "DESAYUNO",
+    temporada: "MEDIA",
+    estado: "EN_CURSO",
+    precioBase: 260,
+    precioTotal: 320,
+    serviciosAdicionales: [
+      {
+        id: "SRV-001",
+        tipoServicio: "MINIBAR",
+        cantidad: 2,
+        importeUnitario: 15,
+        importeTotal: 30
+      }
+    ],
+    fechaCreacion: new Date("2026-02-05T10:30:00Z"),
+    fechaActualizacion: new Date("2026-02-08T15:30:00Z")
+  },
+
+  // ------------------------------
+  // 2. CORRECTA
+  // ------------------------------
+  {
+    codigo: "HTL-20260209-B7K2",
+    dniCliente: "34567890C",
+    numeroHabitacion: "203",
+    tipoHabitacion: "DOBLE",
+    fechaEntrada: new Date("2026-02-09T14:00:00Z"),
+    fechaSalida: new Date("2026-02-16T12:00:00Z"),
+    numeroNoches: 7,
+    numeroPersonas: 2,
+    regimen: "MEDIA_PENSION",
+    temporada: "MEDIA",
+    estado: "EN_CURSO",
+    precioBase: 665,
+    precioTotal: 910,
+    serviciosAdicionales: [
+      { id: "SRV-002", tipoServicio: "SPA", cantidad: 1, importeUnitario: 50, importeTotal: 50 },
+      { id: "SRV-003", tipoServicio: "PARKING", cantidad: 7, importeUnitario: 10, importeTotal: 70 }
+    ],
+    fechaCreacion: new Date("2026-01-20T09:15:00Z"),
+    fechaActualizacion: new Date("2026-02-10T11:00:00Z")
+  },
+
+  // ------------------------------
+  // 3. CORRECTA
+  // ------------------------------
+  {
+    codigo: "HTL-20260115-C3M8",
+    dniCliente: "45678901D",
+    numeroHabitacion: "301",
+    tipoHabitacion: "SUITE",
+    fechaEntrada: new Date("2026-01-15T14:00:00Z"),
+    fechaSalida: new Date("2026-01-22T12:00:00Z"),
+    numeroNoches: 7,
+    numeroPersonas: 3,
+    regimen: "PENSION_COMPLETA",
+    temporada: "BAJA",
+    estado: "FINALIZADA",
+    precioBase: 1260,
+    precioTotal: 1645,
+    serviciosAdicionales: [
+      { id: "SRV-002", tipoServicio: "SPA", cantidad: 2, importeUnitario: 50, importeTotal: 100 }
+    ],
+    fechaCreacion: new Date("2025-12-10T16:20:00Z"),
+    fechaActualizacion: new Date("2026-01-22T11:45:00Z")
+  },
+
+  // ------------------------------
+  // 4. ERROR: FECHA SALIDA < FECHA ENTRADA
+  // ------------------------------
+  {
+    codigo: "ERR-FECHAS-001",
+    dniCliente: "12345678A",
+    numeroHabitacion: "201",
+    tipoHabitacion: "DOBLE",
+    fechaEntrada: new Date("2026-03-10T14:00:00Z"),
+    fechaSalida: new Date("2026-03-09T12:00:00Z"),
+    numeroNoches: 1,
+    numeroPersonas: 2,
+    regimen: "DESAYUNO",
+    temporada: "BAJA",
+    estado: "RESERVADA",
+    precioBase: 90,
+    precioTotal: 90,
+    serviciosAdicionales: []
+  },
+
+  // ------------------------------
+  // 5. ERROR: DNI NO EXISTE
+  // ------------------------------
+  {
+    codigo: "ERR-DNI-001",
+    dniCliente: "00000000X",
+    numeroHabitacion: "101",
+    tipoHabitacion: "INDIVIDUAL",
+    fechaEntrada: new Date("2026-03-15T14:00:00Z"),
+    fechaSalida: new Date("2026-03-17T12:00:00Z"),
+    numeroNoches: 2,
+    numeroPersonas: 1,
+    regimen: "SOLO_ALOJAMIENTO",
+    temporada: "BAJA",
+    estado: "RESERVADA",
+    precioBase: 120,
+    precioTotal: 120,
+    serviciosAdicionales: []
+  },
+
+  // ------------------------------
+  // 6. ERROR: HABITACIÓN NO EXISTE
+  // ------------------------------
+  {
+    codigo: "ERR-HAB-001",
+    dniCliente: "23456789B",
+    numeroHabitacion: "777",
+    tipoHabitacion: "SUITE",
+    fechaEntrada: new Date("2026-04-01T14:00:00Z"),
+    fechaSalida: new Date("2026-04-05T12:00:00Z"),
+    numeroNoches: 4,
+    numeroPersonas: 2,
+    regimen: "MEDIA_PENSION",
+    temporada: "ALTA",
+    estado: "RESERVADA",
+    precioBase: 800,
+    precioTotal: 900,
+    serviciosAdicionales: []
+  },
+
+  // ------------------------------
+  // 7. ERROR: SOLAPAMIENTO
+  // ------------------------------
+  {
+    codigo: "ERR-SOLAPO-001",
+    dniCliente: "34567890C",
+    numeroHabitacion: "203",
+    tipoHabitacion: "DOBLE",
+    fechaEntrada: new Date("2026-02-12T10:00:00Z"),
+    fechaSalida: new Date("2026-02-14T12:00:00Z"),
+    numeroNoches: 2,
+    numeroPersonas: 2,
+    regimen: "DESAYUNO",
+    temporada: "MEDIA",
+    estado: "RESERVADA",
+    precioBase: 180,
+    precioTotal: 200,
+    serviciosAdicionales: []
+  },
+
+  // ------------------------------
+  // 8. ERROR: numeroNoches incorrecto
+  // ------------------------------
+  {
+    codigo: "ERR-NOCHES-001",
+    dniCliente: "23456789B",
+    numeroHabitacion: "201",
+    tipoHabitacion: "DOBLE",
+    fechaEntrada: new Date("2026-05-01T14:00:00Z"),
+    fechaSalida: new Date("2026-05-05T12:00:00Z"),
+    numeroNoches: 10,
+    numeroPersonas: 2,
+    regimen: "DESAYUNO",
+    temporada: "ALTA",
+    estado: "RESERVADA",
+    precioBase: 360,
+    precioTotal: 360,
+    serviciosAdicionales: []
+  }
+]);
+
+print("Datos insertados correctamente en hotelDB");

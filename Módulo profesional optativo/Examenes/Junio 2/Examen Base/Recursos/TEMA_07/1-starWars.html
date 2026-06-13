@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+  <!--Crea una página web que muestre una lista de personajes de Star Wars y permita ver
+más detalles al hacer clic en cada uno.
+La dirección para descargar los datos es:
+https://swapi.dev/api/people/
+En la llamada nos muestra los 10 primeros personajes (no queremos al resto).
+El json que devuelve tiene el siguiente formato-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Star Wars API - Práctica Fetch</title>
+  <style>
+    /* Estilos del cuerpo de la página */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #111; /* Fondo oscuro tipo Star Wars */
+      color: #eee; /* Texto claro */
+      margin: 0;
+      padding: 20px;
+    }
+    /* Estilo del título principal */
+    h1 {
+      text-align: center;
+      color: #ffe81f; /* Color amarillo característico de Star Wars */
+    }
+    /* Contenedor de las tarjetas de personajes */
+    #characters {
+      display: flex; /* Diseño flexible */
+      flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias filas */
+      gap: 20px; /* Espacio entre tarjetas */
+      justify-content: center; /* Centrar las tarjetas */
+    }
+    /* Estilos de cada tarjeta de personaje */
+    .card {
+      background: #222; /* Fondo gris oscuro */
+      border: 1px solid #333; /* Borde gris */
+      padding: 15px;
+      border-radius: 10px; /* Esquinas redondeadas */
+      width: 200px;
+      text-align: center;
+      cursor: pointer; /* Cambiar cursor a mano al pasar por encima */
+      transition: transform 0.2s; /* Animación suave al hacer hover */
+    }
+    /* Efecto al pasar el mouse sobre la tarjeta */
+    .card:hover {
+      transform: scale(1.05); /* Aumentar tamaño 5% */
+      background-color: #333; /* Fondo ligeramente más claro */
+    }
+    /* Contenedor de detalles del personaje */
+    #details {
+      margin-top: 30px;
+      padding: 20px;
+      background: #222;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Personajes de Star Wars</h1>
+  <div id="characters"></div>
+  <div id="details"></div>
+
+
+  <script>
+    // Realizar petición HTTP a la API de Star Wars para obtener personajes
+    // fetch() devuelve una Promise que se resuelve con la respuesta
+    fetch("https://swapi.dev/api/people/")
+      .then(response => {
+        // Verificar si la respuesta es exitosa (código 200-299)
+        if (!response.ok) throw new Error("Error en la petición");
+        
+        // Convertir la respuesta a formato JSON
+        // json() también devuelve una Promise
+        return response.json();
+      })
+      .then(data => {
+        // data.results contiene el array de personajes
+        const characters = data.results;
+        
+        // Obtener el contenedor donde se mostrarán las tarjetas
+        const container = document.getElementById("characters");
+
+
+        // Iterar sobre cada personaje en el array
+        // forEach ejecuta una función por cada elemento
+        characters.forEach(person => {
+          // Crear un elemento <div> para la tarjeta
+          const card = document.createElement("div");
+          
+          // Añadir la clase CSS "card" al div
+          card.classList.add("card");
+          
+          // Establecer el nombre del personaje como contenido de texto
+          card.textContent = person.name;
+          
+          // Añadir evento click a la tarjeta
+          // Cuando se hace clic, ejecuta showDetails pasando el objeto person
+          card.addEventListener("click", () => showDetails(person));
+          
+          // Insertar la tarjeta en el contenedor
+          container.appendChild(card);
+        });
+      })
+      .catch(error => {
+        // Capturar y mostrar cualquier error en la consola
+        // Puede ser error de red o error en el procesamiento
+        console.error("Error:", error);
+      });
+
+
+    // Función que muestra los detalles completos de un personaje
+    // Parámetro: person - objeto con toda la información del personaje
+    function showDetails(person) {
+        // Obtener el contenedor de detalles
+        const details = document.getElementById("details");
+  
+        // Limpiar cualquier contenido previo del contenedor
+        details.innerHTML = "";
+
+
+        // Crear y añadir el título con el nombre del personaje
+        const title = document.createElement("h2");
+        title.textContent = person.name;
+        details.appendChild(title);
+
+
+        // Crear párrafo con la altura del personaje
+        const p1 = document.createElement("p");
+        // innerHTML permite insertar HTML (en este caso <strong>)
+        p1.innerHTML = "<strong>Altura:</strong> " + person.height + " cm";
+        details.appendChild(p1);
+
+
+        // Crear párrafo con el peso del personaje
+        const p2 = document.createElement("p");
+        p2.innerHTML = "<strong>Peso:</strong> " + person.mass + " kg";
+        details.appendChild(p2);
+
+
+        // Crear párrafo con el color de cabello
+        const p3 = document.createElement("p");
+        p3.innerHTML = "<strong>Color de cabello:</strong> " + person.hair_color;
+        details.appendChild(p3);
+
+
+        // Crear párrafo con el color de piel
+        const p4 = document.createElement("p");
+        p4.innerHTML = "<strong>Color de piel:</strong> " + person.skin_color;
+        details.appendChild(p4);
+
+
+        // Crear párrafo con el color de ojos
+        const p5 = document.createElement("p");
+        p5.innerHTML = "<strong>Color de ojos:</strong> " + person.eye_color;
+        details.appendChild(p5);
+
+
+        // Crear párrafo con el año de nacimiento
+        const p6 = document.createElement("p");
+        p6.innerHTML = "<strong>Año de nacimiento:</strong> " + person.birth_year;
+        details.appendChild(p6);
+
+
+        // Crear párrafo con el género del personaje
+        const p7 = document.createElement("p");
+        p7.innerHTML = "<strong>Género:</strong> " + person.gender;
+        details.appendChild(p7);
+    }
+  </script>
+</body>
+</html>

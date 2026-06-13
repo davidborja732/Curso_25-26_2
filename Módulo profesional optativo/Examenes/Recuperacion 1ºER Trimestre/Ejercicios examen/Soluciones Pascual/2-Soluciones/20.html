@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="jugar()">¡Jugar!</button>
+    <script>
+        function jugar() {
+            var vNumeros = [[prompt("Inserte número 1")],[prompt("Inserte número 2")]].sort();
+            var numeroAleatorio = Math.floor(Math.random() * (vNumeros[1] - vNumeros[0] + 1) + vNumeros[0]);
+            var dificultad = prompt("Elija dificultad: (Fácil/Normal/Difícil)");
+            var intentos;
+            var numeroIntroducido;
+            var victoria;
+
+            do {
+                juego:
+                switch (dificultad) {
+                case 'Fácil':
+                    intentos = Math.round((vNumeros[1] - vNumeros[0])/2);
+                    do {
+                        document.write("<br>Intentos restantes: " + intentos);
+                        numeroIntroducido = prompt("Introduzca número secreto:");
+                        if (numeroIntroducido == numeroAleatorio) {
+                            alert("¡Enhorabuena, ha ganado!");
+                            prompt("Introduzca su nombre. Dificultad: " + dificultad + " Intentos restantes: " + intentos);
+                            victoria = true;
+                            break juego;
+                        } else if (numeroIntroducido < numeroAleatorio) {
+                            alert("El número secreto es mayor que el introducido. Inténtelo de nuevo.");
+                            intentos--;
+                        } else {
+                            alert("El número secreto es menor que el introducido. Inténtelo de nuevo.");
+                            intentos--;
+                        }    
+                    } while (intentos > 0);
+                    alert("Ha agotado todos los intentos.");
+                    victoria = false;
+                    break;
+                case 'Normal':
+                    intentos = Math.round((vNumeros[1] - vNumeros[0])/4);
+                    do {
+                        document.write("<br>Intentos restantes: " + intentos);
+                        numeroIntroducido = prompt("Introduzca número secreto:");
+                        if (numeroIntroducido == numeroAleatorio) {
+                            alert("¡Enhorabuena, ha ganado!");
+                            prompt("Introduzca su nombre. Dificultad: " + dificultad + " Intentos restantes: " + intentos);
+                            victoria = true;
+                            break juego;
+                        } else if (numeroIntroducido < numeroAleatorio) {
+                            alert("El número secreto es mayor que el introducido. Inténtelo de nuevo.");
+                            intentos--;
+                        } else {
+                            alert("El número secreto es menor que el introducido. Inténtelo de nuevo.");
+                            intentos--;
+                        }    
+                    } while (intentos > 0);
+                    alert("Ha agotado todos los intentos.");
+                    victoria = false;
+                    break;
+                case 'Difícil':
+                    intentos = Math.round((vNumeros[1] - vNumeros[0])/8);
+                    do {
+                        document.write("<br>Intentos restantes: " + intentos);
+                        numeroIntroducido = prompt("Introduzca número secreto:");
+                        if (numeroIntroducido == numeroAleatorio) {
+                            alert("¡Enhorabuena, ha ganado!");
+                            prompt("Introduzca su nombre. Dificultad: " + dificultad + " Intentos restantes: " + intentos);
+                            victoria = true;
+                            break juego;
+                        } else {
+                            alert("Número incorrecto. Inténtelo de nuevo.");
+                            intentos--;
+                        }    
+                    } while (intentos > 0);
+                    alert("Ha agotado todos los intentos.");
+                    victoria = false;
+                    break;
+                default:
+                    alert("No ha establecido un nivel de dificultad correcto.");
+                }
+
+                if (victoria) {
+                    if (prompt("¿Quiere jugar de nuevo? (S/N)") == "S") {
+                        vNumeros = [[prompt("Inserte número 1")],[prompt("Inserte número 2")]].sort();
+                        numeroAleatorio = Math.floor(Math.random() * (vNumeros[1] - vNumeros[0] + 1) + vNumeros[0]);
+                        dificultad = prompt("Elija dificultad: (Fácil/Normal/Difícil)");
+                        intentos = 0;
+                    } else {
+                        break;
+                    }
+                } else {
+                    break;
+                }
+            } while (true);
+        }
+    </script>
+</body>
+</html>

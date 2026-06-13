@@ -1,0 +1,30 @@
+[
+  {
+    "_id": 401,
+    "nombre": "Juan Pérez",
+    "email": "juan@example.com",
+    "fecha_registro": "2024-01-15",
+    "tipo": "premium"
+  },
+  {
+    "_id": 402,
+    "nombre": "María González",
+    "email": "maria@example.com",
+    "fecha_registro": "2024-03-20",
+    "tipo": "standard"
+  },
+  {
+    "_id": 403,
+    "nombre": "Pedro Ramírez",
+    "email": "pedro@example.com",
+    "fecha_registro": "2024-06-10",
+    "tipo": "standard"
+  },
+  {
+    "_id": 404,
+    "nombre": "Laura Sánchez",
+    "email": "laura@example.com",
+    "fecha_registro": "2024-09-05",
+    "tipo": "premium"
+  }
+]

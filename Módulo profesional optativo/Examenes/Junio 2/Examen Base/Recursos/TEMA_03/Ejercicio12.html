@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio12</title>
+</head>
+<!--Crea un script en el que se pida la fecha de nacimiento y devuelva la fecha en
+formato: dd-mm-aaaa, es decir, 26-11-2015.-->
+<body>
+    <h1>Ejercicio 12</h1>
+
+    <script>
+
+        function formatearFechaNacimiento() {
+    // Solicitar al usuario que ingrese su fecha de nacimiento
+    // Se espera formato AAAA-MM-DD o MM/DD/AAAA (formatos estándar que Date reconoce)
+    const fechaNacimiento = prompt("Ingrese su fecha de nacimiento (formato: AAAA-MM-DD):");
+    
+    // Verificar si el usuario canceló o no ingresó nada
+    if (!fechaNacimiento) {
+        alert("No ingresó ninguna fecha");
+        return; // Salir de la función
+    }
+    
+    // Crear un objeto Date a partir de la cadena ingresada
+    const fecha = new Date(fechaNacimiento);
+    
+    // Validar si la fecha es válida
+    // isNaN(fecha.getTime()) devuelve true si la fecha es inválida
+    if (isNaN(fecha.getTime())) {
+        alert("Fecha inválida");
+        return;
+    }
+    
+    // Obtener el día del mes (1-31)
+    // padStart(2, '0') añade un cero a la izquierda si el número tiene solo un dígito
+    const dia = String(fecha.getDate()).padStart(2, '0');
+    
+    // Obtener el mes (0-11, por eso sumamos 1)
+    // Los meses en JavaScript empiezan desde 0 (enero) hasta 11 (diciembre)
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+    
+    // Obtener el año completo (4 dígitos)
+    const anio = fecha.getFullYear();
+    
+    // Construir la cadena en formato dd-mm-aaaa
+    const fechaFormateada = `${dia}-${mes}-${anio}`;
+    
+    // Mostrar el resultado al usuario
+    alert(`Fecha de nacimiento: ${fechaFormateada}`);
+    console.log(fechaFormateada); // También mostrar en consola
+}
+
+// Llamar la función para ejecutarla
+formatearFechaNacimiento();
+
+    </script>
+</body>
+</html>

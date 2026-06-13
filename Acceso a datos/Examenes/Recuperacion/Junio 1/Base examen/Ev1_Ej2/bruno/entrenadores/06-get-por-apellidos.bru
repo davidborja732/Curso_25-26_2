@@ -1,0 +1,15 @@
+meta {
+  name: 06 Get Entrenadores por Apellidos
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/api/entrenadores/find
+  body: none
+  auth: none
+}
+
+params:query {
+  apellidos: Ancelotti
+}

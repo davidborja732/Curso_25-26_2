@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio11</title>
+</head>
+<!--Calcula el tiempo transcurrido entre la pulsación de dos botones rotulados “Empezar
+a contar”, “Finalizar”.-->
+<body>
+    <h1>Ejercicio 11</h1>
+    <h2>Cronómetro</h2>
+    <button id="btnEmpezar">Empezar a contar</button>
+    <button id="btnFinalizar" disabled>Finalizar</button>
+    <p id="resultado"></p>
+    <script>
+
+         // Variable global para almacenar el momento de inicio
+        let tiempoInicio;
+        
+        // Obtener referencias a los elementos del DOM
+        const btnEmpezar = document.getElementById('btnEmpezar');
+        const btnFinalizar = document.getElementById('btnFinalizar');
+        const resultado = document.getElementById('resultado');
+
+        // Evento click del botón "Empezar a contar"
+        btnEmpezar.addEventListener('click', function() {
+            // Crear un nuevo objeto Date con la fecha y hora actual
+            tiempoInicio = new Date();
+            
+            // Deshabilitar el botón de inicio para evitar múltiples inicios
+            btnEmpezar.disabled = true;
+            
+            // Habilitar el botón de finalizar
+            btnFinalizar.disabled = false;
+            
+            // Mostrar mensaje de estado
+            resultado.textContent = 'Cronómetro iniciado...';
+        });
+
+        // Evento click del botón "Finalizar"
+        btnFinalizar.addEventListener('click', function() {
+            // Capturar el momento exacto de finalización
+            const tiempoFin = new Date();
+            
+            // Calcular la diferencia en milisegundos
+            // getTime() devuelve los milisegundos desde el 1 de enero de 1970
+            const diferencia = tiempoFin.getTime() - tiempoInicio.getTime();
+            
+            // Convertir milisegundos a diferentes unidades de tiempo
+            const milisegundos = diferencia % 1000; // Resto de dividir entre 1000
+            const segundos = Math.floor((diferencia / 1000) % 60); // Segundos completos
+            const minutos = Math.floor((diferencia / (1000 * 60)) % 60); // Minutos completos
+            const horas = Math.floor(diferencia / (1000 * 60 * 60)); // Horas completas
+            
+            // Mostrar el resultado formateado
+            resultado.textContent = `Tiempo transcurrido: ${horas}h ${minutos}m ${segundos}s ${milisegundos}ms`;
+            
+            // Volver a habilitar el botón de inicio para permitir otro cronometraje
+            btnEmpezar.disabled = false;
+            
+            // Deshabilitar el botón de finalizar
+            btnFinalizar.disabled = true;
+        });
+
+    </script>
+</body>
+</html>

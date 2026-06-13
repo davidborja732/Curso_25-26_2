@@ -1,0 +1,15 @@
+meta {
+  name: 23 Get Jugadores Fichados Desde Fecha
+  type: http
+  seq: 23
+}
+
+get {
+  url: {{baseUrl}}/api/jugadores/fichados
+  body: none
+  auth: none
+}
+
+params:query {
+  desde: 2022-01-01T00:00:00
+}
