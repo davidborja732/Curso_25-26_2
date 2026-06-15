@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hospital_patient,hospital.patient,model_hospital_patient,,1,1,1,1
+access_hospital_doctor,hospital.doctor,model_hospital_doctor,,1,1,1,1
+access_hospital_room,hospital.room,model_hospital_room,,1,1,1,1
+access_hospital_admission,hospital.admission,model_hospital_admission,,1,1,1,1
+access_hospital_diagnosis,hospital.diagnosis,model_hospital_diagnosis,,1,1,1,1

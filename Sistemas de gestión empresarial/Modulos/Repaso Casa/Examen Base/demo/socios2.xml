@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+
+      <record id="socio1" model="esther.socios">
+        <field name="nombre">Esther</field>
+        <field name="apellido">Aznar</field>
+        <field name="dni">12345678A</field>
+      </record>
+
+      <record id="socio2" model="esther.socios">
+        <field name="nombre">Raquel</field>
+        <field name="apellido">Aznar</field>
+        <field name="dni">12345678J</field>
+      </record>
+
+    </data>
+</odoo>

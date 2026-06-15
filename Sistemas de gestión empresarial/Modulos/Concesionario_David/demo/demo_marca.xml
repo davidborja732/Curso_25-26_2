@@ -1,0 +1,17 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="marca_toyota" model="concesionario.marca">
+            <field name="name">Toyota</field>
+            <field name="pais_origen">Japón</field>
+        </record>
+        <record id="marca_ford" model="concesionario.marca">
+            <field name="name">Ford</field>
+            <field name="pais_origen">EEUU</field>
+        </record>
+        <record id="marca_seat" model="concesionario.marca">
+            <field name="name">SEAT</field>
+            <field name="pais_origen">España</field>
+        </record>
+    </data>
+</odoo>

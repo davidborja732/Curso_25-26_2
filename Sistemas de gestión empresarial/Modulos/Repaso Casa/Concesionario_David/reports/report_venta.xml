@@ -1,0 +1,89 @@
+<odoo>
+    <data>
+
+        <record id="action_report_venta" model="ir.actions.report">
+            <field name="name">Contrato de Venta</field>
+            <field name="model">concesionario.venta</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">concesionario_david_borja_mateo.report_venta_template</field>
+            <field name="report_file">concesionario_david_borja_mateo.report_venta_template</field>
+            <field name="print_report_name">'Factura - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_concesionario_venta"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="report_venta_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page" style="font-family: Arial, sans-serif;">
+
+                            <div class="row" style="background-color: #f2f2f2; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                                <div class="col-6">
+                                    <h2 style="color: #2c3e50;">CONCESIONARIO MOTOR</h2>
+                                    <p><strong>Contrato de Venta:</strong> <span t-field="doc.name"/></p>
+                                    <p><strong>Fecha:</strong> <span t-field="doc.fecha_venta"/></p>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <h4>Cliente</h4>
+                                    <p><span t-field="doc.cliente_id.name"/></p>
+                                    <p>Vendedor: <span t-field="doc.empleado_id.name"/></p>
+                                </div>
+                            </div>
+
+                            <h3 style="color: #34495e; border-bottom: 2px solid #34495e; padding-bottom: 5px;">Detalles de los Vehículos</h3>
+
+                            <table class="table table-bordered table-striped" style="margin-top: 20px;">
+                                <thead style="background-color: #34495e; color: white;">
+                                    <tr>
+                                        <th>Fotografía</th>
+                                        <th>Vehículo</th>
+                                        <th>Matrícula</th>
+                                        <th class="text-right">Precio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.lineas_ids" t-as="linea">
+                                        <tr>
+
+                                            <td style="width: 25%; text-align: center;">
+                                                <img t-if="linea.vehiculo_id.image_1920" t-att-src="image_data_uri(linea.vehiculo_id.image_1920)" style="max-height: 80px; max-width: 150px; border-radius: 5px;"/>
+                                            </td>
+                                            <td style="vertical-align: middle;">
+                                                <span t-field="linea.vehiculo_id.marca_id.name"/> <span t-field="linea.vehiculo_id.modelo"/>
+                                            </td>
+                                            <td style="vertical-align: middle;">
+                                                <span t-field="linea.vehiculo_id.name"/>
+                                            </td>
+                                            <td class="text-right" style="vertical-align: middle;">
+                                                <span t-field="linea.precio_linea" t-options='{"widget": "monetary", "display_currency": user.company_id.currency_id}'/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+
+                            <div class="row mt-4">
+                                <div class="col-8"></div>
+                                <div class="col-4">
+                                    <table class="table table-sm">
+                                        <tr class="border-black o_total">
+                                            <td><strong>Total de Venta (con IVA)</strong></td>
+                                            <td class="text-right">
+                                                <span t-field="doc.total_venta" t-options='{"widget": "monetary", "display_currency": user.company_id.currency_id}'/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 50px; text-align: center; color: #7f8c8d; font-size: 12px;">
+                                <p>Gracias por confiar en Concesionario Motor. Este documento es oficial.</p>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

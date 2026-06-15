@@ -1,0 +1,52 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="cliente_1" model="res.partner">
+            <field name="name">Juan Pérez</field>
+            <field name="is_cliente_concesionario" eval="True"/>
+        </record>
+        <record id="cliente_2" model="res.partner">
+            <field name="name">María Gómez</field>
+            <field name="is_cliente_concesionario" eval="True"/>
+        </record>
+
+        <record id="empleado_vendedor" model="res.partner">
+            <field name="name">Carlos Vendedor</field>
+            <field name="is_empleado_concesionario" eval="True"/>
+            <field name="rol_empleado">vendedor</field>
+        </record>
+        <record id="user_vendedor" model="res.users">
+            <field name="name">Carlos Vendedor</field>
+            <field name="login">vendedor</field>
+            <field name="password">vendedor</field>
+            <field name="partner_id" ref="empleado_vendedor"/>
+            <field name="groups_id" eval="[(6, 0, [ref('group_concesionario_vendedor')])]"/>
+        </record>
+
+        <record id="empleado_mecanico" model="res.partner">
+            <field name="name">Luis Mecánico</field>
+            <field name="is_empleado_concesionario" eval="True"/>
+            <field name="rol_empleado">mecanico</field>
+        </record>
+        <record id="user_mecanico" model="res.users">
+            <field name="name">Luis Mecánico</field>
+            <field name="login">mecanico</field>
+            <field name="password">mecanico</field>
+            <field name="partner_id" ref="empleado_mecanico"/>
+            <field name="groups_id" eval="[(6, 0, [ref('group_concesionario_mecanico')])]"/>
+        </record>
+
+        <record id="empleado_director" model="res.partner">
+            <field name="name">Ana Directora</field>
+            <field name="is_empleado_concesionario" eval="True"/>
+            <field name="rol_empleado">director</field>
+        </record>
+        <record id="user_director" model="res.users">
+            <field name="name">Ana Directora</field>
+            <field name="login">director</field>
+            <field name="password">director</field>
+            <field name="partner_id" ref="empleado_director"/>
+            <field name="groups_id" eval="[(6, 0, [ref('group_concesionario_director')])]"/>
+        </record>
+    </data>
+</odoo>

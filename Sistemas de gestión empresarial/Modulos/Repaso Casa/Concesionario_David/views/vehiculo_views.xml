@@ -1,0 +1,107 @@
+<odoo>
+    <data>
+
+        <record id="view_concesionario_vehiculo_list" model="ir.ui.view">
+            <field name="name">concesionario.vehiculo.list</field>
+            <field name="model">concesionario.vehiculo</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list decoration-success="estado=='disponible'" decoration-danger="estado=='vendido'" decoration-warning="estado=='reservado'">
+                    <field name="name"/>
+                    <field name="marca_id"/>
+                    <field name="modelo"/>
+                    <field name="estado"/>
+                    <field name="precio_base" sum="Suma Total Precio Base"/>
+                    <field name="precio_total" sum="Suma Total con IVA"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_concesionario_vehiculo_kanban" model="ir.ui.view">
+            <field name="name">concesionario.vehiculo.kanban</field>
+            <field name="model">concesionario.vehiculo</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id"/>
+                    <field name="image_1920"/>
+                    <field name="name"/>
+                    <field name="marca_id"/>
+                    <field name="precio_total"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <img t-att-src="kanban_image('concesionario.vehiculo', 'image_1920', record.id.raw_value)" alt="Vehículo"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong><field name="name"/> - <field name="marca_id"/></strong>
+                                    <ul>
+                                        <li>Precio: <field name="precio_total"/></li>
+                                        <li>Estado: <field name="estado"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_concesionario_vehiculo_form" model="ir.ui.view">
+            <field name="name">concesionario.vehiculo.form</field>
+            <field name="model">concesionario.vehiculo</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="image_1920" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Matrícula"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="marca_id"/>
+                                <field name="modelo"/>
+                                <field name="pais_origen_marca"/>
+                            </group>
+                            <group>
+                                <field name="estado"/>
+                                <field name="precio_base"/>
+                                <field name="precio_total"/>
+                                <field name="documento_origen"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_concesionario_vehiculo_search" model="ir.ui.view">
+            <field name="name">concesionario.vehiculo.search</field>
+            <field name="model">concesionario.vehiculo</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="marca_id"/>
+
+                    <filter string="Disponibles" name="filtro_disponibles" domain="[('estado','=','disponible')]"/>
+                    <filter string="Vendidos" name="filtro_vendidos" domain="[('estado','=','vendido')]"/>
+
+                    <group expand="0" string="Agrupar Por">
+                        <filter string="Marca" name="group_by_marca" context="{'group_by':'marca_id'}"/>
+                        <filter string="Estado" name="group_by_estado" context="{'group_by':'estado'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_concesionario_vehiculo" model="ir.actions.act_window">
+            <field name="name">Vehículos</field>
+            <field name="res_model">concesionario.vehiculo</field>
+            <field name="view_mode">kanban,list,form</field>
+
+            <field name="context">{'search_default_filtro_disponibles': 1}</field>
+        </record>
+    </data>
+</odoo>

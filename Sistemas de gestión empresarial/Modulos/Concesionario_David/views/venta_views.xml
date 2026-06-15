@@ -1,0 +1,107 @@
+<odoo>
+    <data>
+
+        <record id="view_concesionario_venta_tree" model="ir.ui.view">
+            <field name="name">concesionario.venta.tree</field>
+            <field name="model">concesionario.venta</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name"/>
+                    <field name="cliente_id"/>
+                    <field name="empleado_id"/>
+                    <field name="fecha_venta"/>
+                    <field name="total_venta" sum="Total"/>
+                    <field name="state"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_concesionario_venta_form" model="ir.ui.view">
+            <field name="name">concesionario.venta.form</field>
+            <field name="model">concesionario.venta</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+
+                        <button name="action_confirmar" type="object" string="Confirmar Venta" class="oe_highlight" invisible="state != 'borrador'"/>
+                        <button name="action_cancelar" type="object" string="Cancelar Venta" invisible="state not in ('borrador', 'confirmado')"/>
+
+                        <field name="state" widget="statusbar" statusbar_visible="borrador,confirmado,cancelado"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+
+                                <field name="cliente_id" readonly="state != 'borrador'"/>
+                                <field name="empleado_id" readonly="state != 'borrador'"/>
+                            </group>
+                            <group>
+                                <field name="fecha_venta" readonly="state != 'borrador'"/>
+                                <field name="total_venta"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Vehículos (Líneas)">
+
+                                <field name="lineas_ids" readonly="state != 'borrador'">
+                                    <list editable="bottom">
+
+                                        <field name="vehiculo_id"/>
+                                        <field name="precio_linea"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_concesionario_venta_calendar" model="ir.ui.view">
+            <field name="name">concesionario.venta.calendar</field>
+            <field name="model">concesionario.venta</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendario de Ventas" date_start="fecha_venta" color="empleado_id">
+                    <field name="name"/>
+                    <field name="cliente_id"/>
+                    <field name="total_venta"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="view_concesionario_venta_graph" model="ir.ui.view">
+            <field name="name">concesionario.venta.graph</field>
+            <field name="model">concesionario.venta</field>
+            <field name="arch" type="xml">
+                <graph string="Ventas por Empleado">
+                    <field name="empleado_id"/>
+                    <field name="total_venta" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_concesionario_venta_pivot" model="ir.ui.view">
+            <field name="name">concesionario.venta.pivot</field>
+            <field name="model">concesionario.venta</field>
+            <field name="arch" type="xml">
+                <pivot string="Análisis de Ventas">
+                    <field name="empleado_id" type="row"/>
+                    <field name="fecha_venta" type="col" interval="month"/>
+                    <field name="total_venta" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="action_concesionario_venta" model="ir.actions.act_window">
+            <field name="name">Ventas</field>
+            <field name="res_model">concesionario.venta</field>
+            <field name="view_mode">list,form,calendar,graph,pivot</field>
+        </record>
+    </data>
+</odoo>

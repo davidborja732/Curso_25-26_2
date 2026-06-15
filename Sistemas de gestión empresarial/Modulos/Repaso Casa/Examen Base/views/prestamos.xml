@@ -1,0 +1,23 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="esther.prestamos_list">
+      <field name="name">prestamos</field>
+      <field name="model">esther.prestamos</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="libro"/>
+          <field name="socio"/>
+          <field name="fecha_prestamo"/>
+          <field name="fecha_devolucion"/>
+          <field name="activo"/>
+          <field name="empleado"/>
+
+        </list>
+      </field>
+    </record>
+
+
+  </data>
+</odoo>

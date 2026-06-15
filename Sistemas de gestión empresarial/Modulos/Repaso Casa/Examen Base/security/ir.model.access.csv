@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_esther_libros,esther.libros,model_esther_libros,base.group_user,1,1,1,1
+access_esther_socios,esther.socios,model_esther_socios,base.group_user,1,1,1,1
+access_esther_prestamos,esther.prestamos,model_esther_prestamos,base.group_user,1,1,1,1

@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+
+      <record id="libro1" model="esther.libros">
+        <field name="titulo">La casa de bernarda alba</field>
+        <field name="autor">Lorca</field>
+        <field name="isbn">12345678A</field>
+        <field name="numeropaginas">405</field>
+        <field name="aniolanzamiento">1995-09-15</field>
+        <field name="prestado">1</field>
+      </record>
+
+      <record id="libros2" model="esther.libros">
+        <field name="titulo">El quijote</field>
+        <field name="autor">Miguel de cervantes</field>
+        <field name="isbn">12345678XM</field>
+        <field name="numeropaginas">600</field>
+        <field name="aniolanzamiento">1865-10-30</field>
+        <field name="prestado">2</field>
+      </record>
+
+    </data>
+</odoo>

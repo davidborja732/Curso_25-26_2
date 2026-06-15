@@ -1,0 +1,20 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="venta_demo_1" model="concesionario.venta">
+            <field name="name">V-2023-001</field>
+            <field name="cliente_id" ref="cliente_1"/>
+            <field name="empleado_id" ref="empleado_vendedor"/>
+            <field name="fecha_venta">2023-05-15</field>
+            <field name="state">confirmado</field>
+
+        </record>
+
+        <record id="linea_venta_1" model="concesionario.venta.linea">
+            <field name="venta_id" ref="venta_demo_1"/>
+
+            <field name="vehiculo_id" ref="vehiculo_demo_1"/>
+        </record>
+
+    </data>
+</odoo>

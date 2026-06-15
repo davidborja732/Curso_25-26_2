@@ -1,0 +1,24 @@
+info:
+  name: Obtener Todo
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: |
+    http://127.0.0.1:8069/concesionario/api/vehiculos
+  body:
+    type: json
+    data: |
+      {
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": {}
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

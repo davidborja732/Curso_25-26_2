@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+
+        <record id="view_concesionario_empleado_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.concesionario.empleado.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='is_cliente_concesionario']" position="after">
+                    <field name="is_empleado_concesionario"/>
+                    <field name="rol_empleado" invisible="not is_empleado_concesionario" required="is_empleado_concesionario"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_concesionario_empleado" model="ir.actions.act_window">
+            <field name="name">Empleados Concesionario</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,list,form</field>
+            <field name="domain">[('is_empleado_concesionario', '=', True)]</field>
+            <field name="context">{'default_is_empleado_concesionario': True}</field>
+        </record>
+    </data>
+</odoo>

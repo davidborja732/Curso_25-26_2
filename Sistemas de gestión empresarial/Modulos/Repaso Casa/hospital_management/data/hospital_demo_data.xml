@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Doctores -->
+    <record id="doctor_1" model="hospital.doctor">
+        <field name="name">Ana</field>
+        <field name="last_name">García</field>
+        <field name="phone">600000001</field>
+        <field name="specialty">Cardiología</field>
+        <field name="license_number">COL-0001</field>
+    </record>
+
+    <record id="doctor_2" model="hospital.doctor">
+        <field name="name">Luis</field>
+        <field name="last_name">Martínez</field>
+        <field name="phone">600000002</field>
+        <field name="specialty">Neurología</field>
+        <field name="license_number">COL-0002</field>
+    </record>
+
+    <record id="doctor_3" model="hospital.doctor">
+        <field name="name">María</field>
+        <field name="last_name">López</field>
+        <field name="phone">600000003</field>
+        <field name="specialty">Pediatría</field>
+        <field name="license_number">COL-0003</field>
+    </record>
+
+    <record id="doctor_4" model="hospital.doctor">
+        <field name="name">Jorge</field>
+        <field name="last_name">Sanz</field>
+        <field name="phone">600000004</field>
+        <field name="specialty">Traumatología</field>
+        <field name="license_number">COL-0004</field>
+    </record>
+
+    <record id="doctor_5" model="hospital.doctor">
+        <field name="name">Lucía</field>
+        <field name="last_name">Ruiz</field>
+        <field name="phone">600000005</field>
+        <field name="specialty">Medicina Interna</field>
+        <field name="license_number">COL-0005</field>
+    </record>
+
+    <!-- Pacientes -->
+    <record id="patient_1" model="hospital.patient">
+        <field name="name">Carlos</field>
+        <field name="last_name">Pérez</field>
+        <field name="city">Zaragoza</field>
+        <field name="phone">700000001</field>
+        <field name="birth_date">1985-02-10</field>
+    </record>
+
+    <record id="patient_2" model="hospital.patient">
+        <field name="name">Elena</field>
+        <field name="last_name">Serrano</field>
+        <field name="city">Teruel</field>
+        <field name="phone">700000002</field>
+        <field name="birth_date">1990-06-20</field>
+    </record>
+
+    <record id="patient_3" model="hospital.patient">
+        <field name="name">Miguel</field>
+        <field name="last_name">Rodríguez</field>
+        <field name="city">Huesca</field>
+        <field name="phone">700000003</field>
+        <field name="birth_date">1978-11-05</field>
+    </record>
+
+    <record id="patient_4" model="hospital.patient">
+        <field name="name">Sara</field>
+        <field name="last_name">Gil</field>
+        <field name="city">Alcañiz</field>
+        <field name="phone">700000004</field>
+        <field name="birth_date">2000-01-15</field>
+    </record>
+
+    <record id="patient_5" model="hospital.patient">
+        <field name="name">David</field>
+        <field name="last_name">Navarro</field>
+        <field name="city">Calamocha</field>
+        <field name="phone">700000005</field>
+        <field name="birth_date">1995-09-30</field>
+    </record>
+
+    <!-- Ingresos recientes para respetar la restricción de 1 semana.
+         Aquí fijo fechas; si quieres exacto "hoy", puedes usar datos cargados según contexto
+         o ajustar manualmente para las pruebas. -->
+
+    <record id="admission_1" model="hospital.admission">
+        <field name="patient_id" ref="patient_1"/>
+        <field name="doctor_id" ref="doctor_1"/>
+        <field name="room_id" ref="hospital_management.room_101"/>
+        <field name="bed">1</field>
+        <field name="admission_date">2026-01-05</field>
+        <field name="symptoms">Dolor torácico y disnea.</field>
+    </record>
+
+    <record id="admission_2" model="hospital.admission">
+        <field name="patient_id" ref="patient_2"/>
+        <field name="doctor_id" ref="doctor_2"/>
+        <field name="room_id" ref="hospital_management.room_101"/>
+        <field name="bed">2</field>
+        <field name="admission_date">2026-01-06</field>
+        <field name="symptoms">Cefalea intensa.</field>
+    </record>
+
+    <record id="admission_3" model="hospital.admission">
+        <field name="patient_id" ref="patient_3"/>
+        <field name="doctor_id" ref="doctor_3"/>
+        <field name="room_id" ref="hospital_management.room_102"/>
+        <field name="bed">1</field>
+        <field name="admission_date">2026-01-07</field>
+        <field name="discharge_date">2026-01-09</field>
+        <field name="symptoms">Fiebre y tos.</field>
+    </record>
+
+    <record id="admission_4" model="hospital.admission">
+        <field name="patient_id" ref="patient_4"/>
+        <field name="doctor_id" ref="doctor_4"/>
+        <field name="room_id" ref="hospital_management.room_102"/>
+        <field name="bed">2</field>
+        <field name="admission_date">2026-01-08</field>
+        <field name="symptoms">Fractura de tobillo.</field>
+    </record>
+
+    <record id="admission_5" model="hospital.admission">
+        <field name="patient_id" ref="patient_5"/>
+        <field name="doctor_id" ref="doctor_5"/>
+        <field name="room_id" ref="hospital_management.room_103"/>
+        <field name="bed">1</field>
+        <field name="admission_date">2026-01-09</field>
+        <field name="symptoms">Dolor abdominal.</field>
+    </record>
+
+    <!-- Diagnósticos -->
+    <record id="diagnosis_1" model="hospital.diagnosis">
+        <field name="name">Angina estable</field>
+        <field name="type">moderado</field>
+        <field name="admission_id" ref="admission_1"/>
+        <field name="diagnosis_date">2026-01-06</field>
+        <field name="description">Tratamiento con betabloqueantes y reposo.</field>
+    </record>
+
+    <record id="diagnosis_2" model="hospital.diagnosis">
+        <field name="name">Migraña</field>
+        <field name="type">leve</field>
+        <field name="admission_id" ref="admission_2"/>
+        <field name="diagnosis_date">2026-01-07</field>
+        <field name="description">Analgesia y control del estrés.</field>
+    </record>
+
+    <record id="diagnosis_3" model="hospital.diagnosis">
+        <field name="name">Bronquitis</field>
+        <field name="type">moderado</field>
+        <field name="admission_id" ref="admission_3"/>
+        <field name="diagnosis_date">2026-01-08</field>
+        <field name="description">Antibióticos y aerosolterapia.</field>
+    </record>
+
+    <record id="diagnosis_4" model="hospital.diagnosis">
+        <field name="name">Fractura limpia</field>
+        <field name="type">grave</field>
+        <field name="admission_id" ref="admission_4"/>
+        <field name="diagnosis_date">2026-01-09</field>
+        <field name="description">Inmovilización y seguimiento traumatológico.</field>
+    </record>
+
+    <record id="diagnosis_5" model="hospital.diagnosis">
+        <field name="name">Gastroenteritis</field>
+        <field name="type">leve</field>
+        <field name="admission_id" ref="admission_5"/>
+        <field name="diagnosis_date">2026-01-10</field>
+        <field name="description">Reposo y dieta blanda.</field>
+    </record>
+
+</odoo>
